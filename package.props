@@ -9,10 +9,10 @@
     <Copyright>Copyright © Microsoft 2008</Copyright>
     <PackageIconUrl>https://nuget.org/Media/Default/Packages/Unity/2.0/entlib_new_icon_100x100.png</PackageIconUrl>
     <PackageLicenseUrl>http://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/EnterpriseLibrary/common-infrastructure</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/EnterpriseLibrary/data-access-application-block</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 
-    <RepositoryUrl>https://github.com/EnterpriseLibrary/common-infrastructure</RepositoryUrl>
+    <RepositoryUrl>https://github.com/EnterpriseLibrary/data-access-application-block</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
