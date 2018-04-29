@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.BVT", "Data.BVT.csproj", "{FA79AA63-2EDF-4833-A1F6-581EAA5E3573}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "..\..\source\Src\Data\Data.csproj", "{D349B6D8-992F-443F-BB57-57E50DD98794}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.SqlCe", "..\..\source\Src\SqlCe\Data.SqlCe.csproj", "{14DD9908-BB61-4402-810A-4C8A999163A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA79AA63-2EDF-4833-A1F6-581EAA5E3573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA79AA63-2EDF-4833-A1F6-581EAA5E3573}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA79AA63-2EDF-4833-A1F6-581EAA5E3573}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA79AA63-2EDF-4833-A1F6-581EAA5E3573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D349B6D8-992F-443F-BB57-57E50DD98794}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D349B6D8-992F-443F-BB57-57E50DD98794}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D349B6D8-992F-443F-BB57-57E50DD98794}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D349B6D8-992F-443F-BB57-57E50DD98794}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14DD9908-BB61-4402-810A-4C8A999163A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14DD9908-BB61-4402-810A-4C8A999163A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14DD9908-BB61-4402-810A-4C8A999163A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14DD9908-BB61-4402-810A-4C8A999163A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

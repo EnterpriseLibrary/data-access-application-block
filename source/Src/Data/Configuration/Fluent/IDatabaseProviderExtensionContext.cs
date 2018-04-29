@@ -1,0 +1,23 @@
+﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+
+using System.Configuration;
+using EnterpriseLibrary.Common.Configuration;
+
+namespace EnterpriseLibrary.Data.Configuration.Fluent
+{
+    /// <summary>
+    /// Provides extenson context for database provider extensions.
+    /// </summary>
+    public interface IDatabaseProviderExtensionContext
+    {
+        ///<summary>
+        /// The current connetion string under construction in the fluent interface.
+        ///</summary>
+        ConnectionStringSettings ConnectionString { get; }
+
+        ///<summary>
+        /// Context of the current builder for the extension
+        ///</summary>
+        IConfigurationSourceBuilder Builder { get;  }
+    }
+}

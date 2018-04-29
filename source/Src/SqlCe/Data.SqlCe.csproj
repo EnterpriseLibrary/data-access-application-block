@@ -1,0 +1,113 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\package.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net45;net46;net47</TargetFrameworks>
+
+    <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
+    <FileVersion>$(Version).$(Revision)</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyName>EnterpriseLibrary.Data.SqlCe</AssemblyName>
+    <RootNamespace>EnterpriseLibrary.Data.SqlCe</RootNamespace>
+    <AssemblyTitle>Enterprise Library Data Access Application Block</AssemblyTitle>
+
+    <PackageId>EnterpriseLibrary.Data.SqlCe</PackageId>
+    <Title>Data Access Application Block SQL CE Data Provider</Title>
+    <Description>The Data Access Application Block SQL CE Data Provider let developers use SQL CE databases in conjunction with the Data Access Application Block.</Description>
+    <Summary>The Data Access Application Block SQL CE Data Provider let developers use SQL CE databases in conjunction with the Data Access Application Block.</Summary>
+    <PackageTags>entlib entlib6 Enterprise Library data daab dab sql ce compact LOB futures OSS</PackageTags>
+
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Data.SqlCe.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <EntLibCommon>..\..\..\..\Common\source\Src\Common\Common.csproj</EntLibCommon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)')" />
+    <PackageReference Include="EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)')" />
+
+    <ProjectReference Include="..\Data\Data.csproj" />
+
+    <Reference Include="System.Data.SqlServerCe">
+      <HintPath>..\..\..\lib\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' AND '$(TargetFramework)' != 'netcoreapp2.0'">
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+
+    <None Include="..\..\DataAccess.licenseheader">
+      <Link>DataAccess.licenseheader</Link>
+    </None>
+
+    <Compile Update="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\NuGet\Readme.txt">
+      <Pack>true</Pack>
+      <Visible>False</Visible>
+      <PackagePath></PackagePath>
+    </Content>
+
+    <Content Include="..\NuGet\tools\SharedCommon\install.ps1">
+      <Pack>true</Pack>
+      <Visible>False</Visible>
+      <PackagePath>tools</PackagePath>
+    </Content>
+
+    <Content Include="..\NuGet\tools\SharedCommon\Utils.psm1">
+      <Pack>true</Pack>
+      <Visible>False</Visible>
+      <PackagePath>tools</PackagePath>
+    </Content>
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>$(SolutionDir)..\bin\Debug\$(AssemblyName).xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\..\EnterpriseLibrary.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>$(SolutionDir)..\bin\Release\$(AssemblyName).xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+</Project>

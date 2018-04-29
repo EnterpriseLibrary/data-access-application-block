@@ -1,0 +1,48 @@
+﻿<AccessTest>
+	<Employees>Nancy</Employees>
+		<Employees>
+			Andrew</Employees>
+	<Employees>Janet</Employees>
+	<Employees>
+			Margaret</Employees>
+<Employees>Steven</Employees>
+<Employees>Michael</Employees>
+<Employees>Robert</Employees>
+	<Employees>Laura</Employees>
+	<Employees>Anne</Employees>
+		<OrderDetails>Mozzarella di Giovanni</OrderDetails>
+	<OrderDetails>Singaporean Hokkien Fried Mee</OrderDetails>
+	<OrderDetails>Queso Cabrales</OrderDetails>
+	<Shippers>Speedy Express</Shippers>
+		<Shippers>
+			United Package
+		</Shippers>
+		<Shippers>
+			Federal Shipping
+		</Shippers>
+	<Categories>
+		Soft drinks, coffees, teas, beers, and ales
+	</Categories>
+	<Categories>
+		Sweet and savory sauces, relishes, spreads, and seasonings
+	</Categories>
+	<Categories>
+		Desserts, candies, and sweet breads
+	</Categories>
+	<Categories>
+		Cheeses
+	</Categories>
+	<Categories>
+		Breads, crackers, pasta, and cereal
+	</Categories>
+	<Categories>
+		Prepared meats
+	</Categories>
+	<Categories>
+		Dried fruit and bean curd
+	</Categories>
+	<Categories>
+		Seaweed and fish
+	</Categories>
+
+</AccessTest>

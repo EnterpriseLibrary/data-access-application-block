@@ -1,0 +1,1 @@
+OSQL -S (localdb)\v11.0 -E -i %~dp0\DROP_Northwind.sql

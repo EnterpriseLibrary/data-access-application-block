@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Customers>
+  <Customer>
+    <CustomerId>BLAUS</CustomerId>
+    <CompanyName>Blauer See Delikatessen</CompanyName>
+    <ContactName>Hanna Moos</ContactName>
+    <ContactTitle>Sales Representative</ContactTitle>
+    <Address>Forsterstr. 57</Address>
+      <City>Mannheim</City>
+      <Region></Region>
+      <PostalCode>68306</PostalCode>
+      <Country>Germany</Country>
+      <Phone>0621-08460</Phone>
+      <Fax>0621-08924</Fax>
+    </Customer>                         
+  <Customer>
+    <CustomerId>BLONP</CustomerId>
+    <CompanyName>Blondesddsl père et fils</CompanyName>
+    <ContactName>Frédérique Citeaux</ContactName>
+    <ContactTitle>Marketing Manager</ContactTitle>
+    <Address>24, place Kléber</Address>
+    <City>Strasbourg</City>
+    <Region></Region>
+    <PostalCode>67000</PostalCode>
+    <Country>France</Country>
+    <Phone>88.60.15.31</Phone>
+    <Fax>88.60.15.32</Fax>
+  </Customer>
+  <Customer>
+    <CustomerId>BOLID</CustomerId>
+    <CompanyName>Bólido Comidas preparadas</CompanyName>
+    <ContactName>Martín Sommer</ContactName>
+    <ContactTitle>Owner</ContactTitle>
+    <Address>C/ Araquil, 67</Address>
+    <City>Madrid</City>
+    <Region></Region>
+    <PostalCode>28023</PostalCode>
+    <Country>Spain</Country>
+    <Phone>(91) 555 22 82</Phone>
+    <Fax>(91) 555 91 99</Fax>
+  </Customer>
+</Customers>

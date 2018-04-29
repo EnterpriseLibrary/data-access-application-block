@@ -1,0 +1,91 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\package.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net47</TargetFrameworks>
+    <IsPackable>false</IsPackable>
+
+    <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
+    <FileVersion>$(Version).$(Revision)</FileVersion>
+
+    <AssemblyName>EnterpriseLibrary.Data.Oracle.Tests</AssemblyName>
+    <RootNamespace>EnterpriseLibrary.Data.Oracle.Tests</RootNamespace>
+    <AssemblyTitle>EnterpriseLibrary.Data.Oracle.Tests</AssemblyTitle>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.3.0-beta2" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.3.0-beta2" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <EntLibCommon>..\..\..\..\Common\source\Src\Common\Common.csproj</EntLibCommon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)')" />
+    <PackageReference Include="EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)')" />
+
+    <ProjectReference Include="..\..\Src\Data\Data.csproj" />
+    <ProjectReference Include="..\Data.TestSupport\Data.TestSupport.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.0'">
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.12.0-beta2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' AND '$(TargetFramework)' != 'netcoreapp2.0'">
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <PackageReference Include="Oracle.ManagedDataAccess" Version="12.2.1100" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\DataAccess.licenseheader">
+      <Link>DataAccess.licenseheader</Link>
+    </None>
+
+    <None Include="test.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\Tests.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\Tests.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+</Project>

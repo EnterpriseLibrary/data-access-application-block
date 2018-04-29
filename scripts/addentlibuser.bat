@@ -1,0 +1,1 @@
+OSQL -S (localdb)\v11.0 -E -i addentlibuser.sql

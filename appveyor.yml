@@ -1,0 +1,36 @@
+image: Visual Studio 2017
+configuration: Release
+platform: Any CPU
+skip_tags: true
+
+install:
+  - ps: gitversion /output buildserver
+  - ps: $env:APPVEYOR_BUILD_NUMBER = $env:GitVersion_CommitsSinceVersionSource
+  - ps: $env:major_version = (Select-Xml -Path ".\version.props" -XPath "/Project/PropertyGroup/MajorVersion" | Select-Object -ExpandProperty Node).InnerText
+  - ps: $env:minor_version = (Select-Xml -Path ".\version.props" -XPath "/Project/PropertyGroup/MinorVersion" | Select-Object -ExpandProperty Node).InnerText
+  - ps: $env:release_version = (Select-Xml -Path ".\version.props" -XPath "/Project/PropertyGroup/ReleaseVersion" | Select-Object -ExpandProperty Node).InnerText
+  - ps: Update-AppveyorBuild -Version "$env:major_version.$env:minor_version.$env:release_version.$env:APPVEYOR_BUILD_NUMBER"
+  - ps: $xRevision = Select-Xml -Path ".\version.props" -XPath "/Project/PropertyGroup/Revision"
+  - ps: $xRevision.Node.InnerText = $env:APPVEYOR_BUILD_NUMBER
+  - ps: $xRevision.Node.OwnerDocument.Save($xRevision.Path)
+
+dotnet_csproj:
+  patch: false
+
+before_build:
+- cmd: dotnet restore "source\Data.sln"
+
+build:
+  project: source\Data.sln
+  parallel: true
+  verbosity: minimal
+
+after_build:
+  - cmd: scripts\CREATE_Northwind.bat
+
+after_test:
+  - cmd: scripts\DROP_Northwind.bat
+
+artifacts:
+- path: 'bin\Release\EnterpriseLibrary.Data.*.nupkg'
+  name: 'EnterpriseLibrary.Data'

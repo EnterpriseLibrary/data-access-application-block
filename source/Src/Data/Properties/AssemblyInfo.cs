@@ -1,0 +1,25 @@
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+
+using System.Configuration;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.ConstrainedExecution;
+using System.Runtime.InteropServices;
+using System.Security;
+using EnterpriseLibrary.Common.Configuration.Design;
+using EnterpriseLibrary.Data.Configuration;
+
+[assembly: ReliabilityContract(Consistency.WillNotCorruptState, Cer.None)]
+[assembly: SecurityTransparent]
+
+[assembly: ComVisible(false)]
+
+[assembly: HandlesSection(DataAccessDesignTime.ConnectionStringSettingsSectionName)]
+[assembly: HandlesSection(DatabaseSettings.SectionName, ClearOnly = true)]
+
+[assembly: AddApplicationBlockCommand(
+            DataAccessDesignTime.ConnectionStringSettingsSectionName,
+            typeof(ConnectionStringsSection),
+            TitleResourceName = "AddDataSettings",
+            TitleResourceType = typeof(DesignResources),
+            CommandModelTypeName = DataAccessDesignTime.CommandTypeNames.AddDataAccessBlockCommand)]

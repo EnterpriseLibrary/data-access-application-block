@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Products>
+
+  <Product>
+    <ProductId>1</ProductId>
+    <ProductName>Product1</ProductName>
+    <CategoryId>1</CategoryId>
+    <UnitPrice>1000</UnitPrice>
+    <LastUpdate></LastUpdate>
+  </Product>
+
+  <Product>
+    <ProductId>2</ProductId>
+    <ProductName>Product2</ProductName>
+    <CategoryId>50</CategoryId>
+    <UnitPrice>25000</UnitPrice>
+    <LastUpdate></LastUpdate>
+  </Product>
+
+  <Product>
+    <ProductId>3</ProductId>
+    <ProductName>Product3</ProductName>
+    <CategoryId>100</CategoryId>
+    <UnitPrice>100000</UnitPrice>
+    <LastUpdate></LastUpdate>
+  </Product>
+
+  <Product>
+    <ProductId>4</ProductId>
+    <ProductName>Product4</ProductName>
+    <CategoryId>3</CategoryId>
+    <UnitPrice>55</UnitPrice>
+    <LastUpdate></LastUpdate>
+  </Product>
+
+  <Product>
+    <ProductId>5</ProductId>
+    <ProductName>Product5</ProductName>
+    <CategoryId>3</CategoryId>
+    <UnitPrice>15</UnitPrice>
+    <LastUpdate></LastUpdate>
+  </Product>
+
+</Products>

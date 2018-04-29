@@ -1,0 +1,180 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\package.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net45;net46;net47;netstandard2.0;netcoreapp2.0</TargetFrameworks>
+
+    <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
+    <FileVersion>$(Version).$(Revision)</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyName>EnterpriseLibrary.Data</AssemblyName>
+    <RootNamespace>EnterpriseLibrary.Data</RootNamespace>
+    <AssemblyTitle>Enterprise Library Data Access Application Block</AssemblyTitle>
+
+    <PackageId>EnterpriseLibrary.Data</PackageId>
+    <Title>Data Access Application Block</Title>
+    <Description>The Data Access Application Block simplifies the development of tasks that implement common data access functionality. Applications can use this application block in a variety of situations, such as reading data for display, passing data through application layers, and submitting changed data back to the database system.</Description>
+    <Summary>The Data Access Application Block simplifies the development of tasks that implement common data access functionality.</Summary>
+    <PackageTags>entlib entlib6 Enterprise Library data daab dab LOB futures OSS</PackageTags>
+
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Data.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <EntLibCommon>..\..\..\..\Common\source\Src\Common\Common.csproj</EntLibCommon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)')" />
+    <PackageReference Include="EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)')" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.0'">
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.12.0-beta2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0-preview2-26406-04" />
+    <PackageReference Include="System.Data.Odbc" Version="4.5.0-preview2-26406-04" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.5.0-preview2-26406-04" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' AND '$(TargetFramework)' != 'netcoreapp2.0'">
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Configuration" />
+    <PackageReference Include="Oracle.ManagedDataAccess" Version="12.2.1100" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+
+    <None Include="..\..\DataAccess.licenseheader">
+      <Link>DataAccess.licenseheader</Link>
+    </None>
+
+    <Compile Update="Configuration\DesignResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DesignResources.resx</DependentUpon>
+    </Compile>
+
+    <Compile Update="Oracle\Configuration\DesignResources.Designer.cs">
+      <DependentUpon>DesignResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+
+    <Compile Update="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+
+    <Compile Update="System.Data.Common\Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+
+    <EmbeddedResource Update="Configuration\DesignResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DesignResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    
+    <EmbeddedResource Update="Oracle\Configuration\DesignResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DesignResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+
+    <EmbeddedResource Update="System.Data.Common\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>System.Data.Common</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\NuGet\Readme.txt">
+      <Pack>true</Pack>
+      <Visible>False</Visible>
+      <PackagePath></PackagePath>
+    </Content>
+
+    <Content Include="..\NuGet\tools\SharedCommon\install.ps1">
+      <Pack>true</Pack>
+      <Visible>False</Visible>
+      <PackagePath>tools</PackagePath>
+    </Content>
+
+    <Content Include="..\NuGet\tools\SharedCommon\Utils.psm1">
+      <Pack>true</Pack>
+      <Visible>False</Visible>
+      <PackagePath>tools</PackagePath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.0'">
+    <Compile Remove="**\OleDb*.cs" />
+    <Compile Remove="**\*.Desktop.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' AND '$(TargetFramework)' != 'netcoreapp2.0'">
+    <Compile Remove="System.Data.Common\*.cs" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>$(SolutionDir)..\bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE;WMINET10</DefineConstants>
+    <DocumentationFile>$(SolutionDir)..\bin\Debug\$(AssemblyName).xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn></NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <FxCopRules>-Microsoft.Design#CA2210</FxCopRules>
+    <RunFxCop>false</RunFxCop>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\..\EnterpriseLibrary.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>$(SolutionDir)..\bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE;WMINET10</DefineConstants>
+    <DocumentationFile>$(SolutionDir)..\bin\Release\$(AssemblyName).xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn></NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+ </Project>

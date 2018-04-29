@@ -1,0 +1,52 @@
+
+CREATE TABLE COUNTRY
+(
+  COUNTRYCODE  VARCHAR2(5 BYTE)                 NOT NULL,
+  COUNTRYNAME  VARCHAR2(30 BYTE)                NOT NULL
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            MINEXTENTS       1
+            MAXEXTENTS       2147483645
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+CREATE UNIQUE INDEX COUNTRY_PK ON COUNTRY
+(COUNTRYCODE)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            MINEXTENTS       1
+            MAXEXTENTS       2147483645
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+ALTER TABLE COUNTRY ADD (
+  CONSTRAINT COUNTRY_PK
+ PRIMARY KEY
+ (COUNTRYCODE)
+    USING INDEX 
+    TABLESPACE USERS
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                MINEXTENTS       1
+                MAXEXTENTS       2147483645
+                PCTINCREASE      0
+               ));
+
+

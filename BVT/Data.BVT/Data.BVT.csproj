@@ -1,0 +1,205 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\package.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net47</TargetFramework>
+    <IsPackable>false</IsPackable>
+
+    <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
+    <FileVersion>$(Version).$(Revision)</FileVersion>
+
+    <AssemblyName>EnterpriseLibrary.Data.BVT</AssemblyName>
+    <RootNamespace>EnterpriseLibrary.Data.BVT</RootNamespace>
+    <AssemblyTitle>EnterpriseLibrary.Data.BVT</AssemblyTitle>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.3.0-beta2" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.3.0-beta2" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <EntLibCommon>..\..\..\Common\source\Src\Common\Common.csproj</EntLibCommon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)')" />
+    <PackageReference Include="EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)')" />
+
+    <ProjectReference Include="..\..\source\Src\Data\Data.csproj" />
+    <ProjectReference Include="..\..\source\Src\SqlCe\Data.SqlCe.csproj" />
+
+    <Reference Include="System.Configuration" />
+
+    <Reference Include="System.Data.SqlServerCe">
+      <HintPath>..\..\lib\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Management.Instrumentation" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <PackageReference Include="Moq" Version="4.0.10827" />
+    <PackageReference Include="Oracle.ManagedDataAccess" Version="12.2.1100" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ConfigFiles\Database.config" />
+    <EmbeddedResource Include="ConfigFiles\ConnectionStringsOnly.config" />
+    <EmbeddedResource Include="ConfigFiles\SqlProviderMappedToGenericDatabase.config" />
+    <EmbeddedResource Include="Database.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigFiles\GenericDatabase.config" />
+    <EmbeddedResource Include="ConfigFiles\ModifiedDatabase.config" />
+    <EmbeddedResource Include="ConfigFiles\DatabaseSPAccessor.config" />
+    <EmbeddedResource Include="ConfigFiles\DatabaseFixture.config">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigFiles\DatabaseSqlAccessor.config" />
+    <EmbeddedResource Include="ConfigFiles\DatabaseMarsFixture.config" />
+    <EmbeddedResource Include="ConfigFiles\DatabaseValidFixture.config" />
+    <EmbeddedResource Include="ConfigFiles\AsyncExecuteNonQueryFixture.config" />
+    <EmbeddedResource Include="ConfigFiles\AsyncExecuteReaderFixture.config" />
+    <EmbeddedResource Include="ConfigFiles\AsyncExecuteScalarFixture.config" />
+    <EmbeddedResource Include="ConfigFiles\AsyncExecuteXmlReaderFixture.config" />
+    <EmbeddedResource Include="ConfigFiles\OlderTestsConfiguration.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigFiles\GivenMachineConfiguration.config" />
+    <EmbeddedResource Include="ConfigFiles\DatabaseFactoryFixture.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="ConfigFiles\DAABAcceptanceTest1.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <EmbeddedResource Update="ConfigFiles\OracleDatabaseFixture.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="DatabaseSetupScripts\2.instnwnd.sql" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\2.Packages\ENTLIBTEST.pkb" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\2.Packages\ENTLIBTEST.pks" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\ADDCOUNTRY.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\ADDCOUNTRYLISTALL.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\ADDEMPLOYEEGETCOUNT.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\ADDEMPLOYEES.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\ADDSIMPLEDATATYPE.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\DELETECOUNTRY.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\DELETECOUNTRYLISTALL.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\DELETEEMPLOYEES.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\GETCUSTOMERBYID.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\GETCUSTOMEROUT.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\GETCUSTOMERSANDPRODUCTSVIEW.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\GETCUSTOMERSVIEW.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\GETPRODUCTNAME.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\GETPRODUCTSVIEW.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\UPDATECOUNTRY.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\UPDATECOUNTRYLISTALL.prc" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\UPDATEEMPLOYEES.prc" />
+    <None Include="DatabaseSetupScripts\3.TestSchemaAdditionsForNorthWind.sql" />
+    <None Include="DatabaseSetupScripts\4.TestDatabase.sql" />
+    <EmbeddedResource Include="ConfigFiles\OracleDatabaseFixture.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Readme.txt" />
+    <Content Include="DatabaseSetupScripts\1.DataAccessQuickStarts.sql" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\4.Data\alldata.sql" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\4.Data\Country.sql" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\4.Data\Customers.sql" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\4.Data\Debits.sql" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\4.Data\Employees.sql" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\4.Data\Products.sql" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\4.Data\truncate.sql" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\3.SP\1.cursor.sql" />
+    <None Include="DatabaseSetupScripts\OracleDBScripts\3.SP\sp_GUIDTEST.prc" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\1.Table\alldb.sql" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\1.Table\Country.sql" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\1.Table\Customers.sql" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\1.Table\Debits.sql" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\1.Table\Employees.sql" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\1.Table\Products.sql" />
+    <Content Include="DatabaseSetupScripts\OracleDBScripts\1.Table\SimpleDataType.sql" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TestFiles\Customers.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="TestFiles\Employees.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\executexml.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\Itemqty.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\itemqty2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\Products.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\ProductsOra.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\updateitems2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sample2.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestDb.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\CustomersOrders.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\CustomersOrders0.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\Items.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\LDSctspparam.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\LDSspparam.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\updateitems.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+
+</Project>
