@@ -1,5 +1,4 @@
 # DATA ACCESS APPLICATION BLOCK (DAAB) PRE-RELEASE
-https://github.com/MicrosoftArchive/enterprise-library
 
 Summary: The Data Access Application Block abstracts the actual database you are using, and exposes a collection of methods that make it easy to access that database and to perform common tasks. The block is designed to simplify the task of calling stored procedures, but it also provides full support for the use of parameterized SQL statements.
 
