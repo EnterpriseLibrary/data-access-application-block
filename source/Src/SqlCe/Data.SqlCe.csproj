@@ -20,7 +20,7 @@
     <PackageTags>entlib entlib6 Enterprise Library data daab dab sql ce compact LOB futures OSS</PackageTags>
 
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Data.SqlCe.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\Data\Data.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
   </PropertyGroup>
 
