@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.BVT", "Data.BVT.csproj", "{FA79AA63-2EDF-4833-A1F6-581EAA5E3573}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.BVT", "Data.BVT.csproj", "{FA79AA63-2EDF-4833-A1F6-581EAA5E3573}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "..\..\source\Src\Data\Data.csproj", "{D349B6D8-992F-443F-BB57-57E50DD98794}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.SqlCe", "..\..\source\Src\SqlCe\Data.SqlCe.csproj", "{14DD9908-BB61-4402-810A-4C8A999163A9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "..\..\..\Common\source\Src\Common\Common.csproj", "{A0AAFE1A-F368-472E-8E0D-8EC6B5BDEF25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common Infrastructure", "Common Infrastructure", "{374D85C0-B582-40B1-ADAE-2423C454199E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Application Block", "Data Application Block", "{9B44D94C-8C94-4A1F-838E-545257D91ACD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +40,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D349B6D8-992F-443F-BB57-57E50DD98794} = {9B44D94C-8C94-4A1F-838E-545257D91ACD}
+		{14DD9908-BB61-4402-810A-4C8A999163A9} = {9B44D94C-8C94-4A1F-838E-545257D91ACD}
+		{A0AAFE1A-F368-472E-8E0D-8EC6B5BDEF25} = {374D85C0-B582-40B1-ADAE-2423C454199E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {282998F6-D867-4489-8305-DC53AF83674D}
