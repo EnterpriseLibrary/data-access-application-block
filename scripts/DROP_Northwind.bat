@@ -1,1 +1,1 @@
-OSQL -S (local)\SQL2016 -E -i %~dp0\DROP_Northwind.sql
+sqlcmd -S (local)\SQL2016 -i %~dp0\DROP_Northwind.sql

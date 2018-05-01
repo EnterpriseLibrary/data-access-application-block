@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace EnterpriseLibrary.Data.Tests
 
         protected override void Arrange()
         {
-            ConnectionString = @"server=(localdb)\v11.0;database=Northwind;Integrated Security=true; Async=True";
+            ConnectionString = String.Format(@"server={0};database=Northwind;Integrated Security=true; Async=True", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]);
             Database = new TestableSqlDatabase(ConnectionString, this);
         }
 

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -19,7 +20,7 @@ namespace EnterpriseLibrary.Data.Sql.Tests
         [TestMethod]
         public void ThenSupportsAsyncIsTrue()
         {
-            var db = new SqlDatabase(@"server=(localdb)\v11.0;database=Northwind;Integrated Security=true");
+            var db = new SqlDatabase(String.Format(@"server={0};database=Northwind;Integrated Security=true", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]));
             Assert.IsTrue(db.SupportsAsync);
         }
     }
@@ -32,7 +33,7 @@ namespace EnterpriseLibrary.Data.Sql.Tests
 
         protected override void Arrange()
         {
-            database = new SqlDatabase(@"server=(localdb)\v11.0;database=Northwind;Integrated Security=true");
+            database = new SqlDatabase(String.Format(@"server={0};database=Northwind;Integrated Security=true", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]));
         }
 
         [TestMethod]
@@ -46,7 +47,7 @@ namespace EnterpriseLibrary.Data.Sql.Tests
     [TestClass]
     public class WhenUsingAnySqlDatabase : ArrangeActAssert
     {
-        protected string connectionstring = @"server=(localdb)\v11.0;database=Northwind;Integrated Security=true;Async=True";
+        protected string connectionstring = String.Format(@"server={0};database=Northwind;Integrated Security=true;Async=True", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]);
         protected SqlDatabase database;
 
         protected override void Arrange()
@@ -74,7 +75,7 @@ namespace EnterpriseLibrary.Data.Sql.Tests
     {
         protected int numberOfConnectionsCreated;
         protected ConnectionState lastConnectionStateChange;
-        protected string connectionstring = @"server=(localdb)\v11.0;database=Northwind;Integrated Security=true;Async=True";
+        protected string connectionstring = String.Format(@"server={0};database=Northwind;Integrated Security=true;Async=True", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]);
         protected SqlDatabase database;
 
         protected override void Arrange()
@@ -1127,7 +1128,7 @@ namespace EnterpriseLibrary.Data.Sql.Tests
     {
         protected override void Arrange()
         {
-            this.connectionstring = @"server=(localdb)\v11.0;database=Northwind;Integrated Security=true";
+            this.connectionstring = String.Format(@"server={0};database=Northwind;Integrated Security=true", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]);
             base.Arrange();
         }
     }
@@ -1137,7 +1138,7 @@ namespace EnterpriseLibrary.Data.Sql.Tests
     {
         protected override void Arrange()
         {
-            this.connectionstring = @"server=(localdb)\v11.0;database=Northwind;Integrated Security=true";
+            this.connectionstring = String.Format(@"server={0};database=Northwind;Integrated Security=true", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]);
             base.Arrange();
         }
     }

@@ -21,7 +21,7 @@ namespace EnterpriseLibrary.Data.Tests.Configuration
 
             Assert.IsNotNull(createdObject);
             Assert.IsInstanceOfType(createdObject, typeof(SqlDatabase));
-            Assert.AreEqual(@"server=(localdb)\v11.0;database=northwind;integrated security=true;",
+            Assert.AreEqual(String.Format(@"server={0};database=northwind;integrated security=true;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]),
                             createdObject.ConnectionStringWithoutCredentials);
         }
 
@@ -33,7 +33,7 @@ namespace EnterpriseLibrary.Data.Tests.Configuration
 
             Assert.IsNotNull(createdObject);
             Assert.IsInstanceOfType(createdObject, typeof(SqlDatabase));
-            Assert.AreEqual(@"server=(localdb)\v11.0;database=northwind;integrated security=true;",
+            Assert.AreEqual(String.Format(@"server={0};database=northwind;integrated security=true;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]),
                             createdObject.ConnectionStringWithoutCredentials);
         }
 
@@ -44,7 +44,7 @@ namespace EnterpriseLibrary.Data.Tests.Configuration
             Database createdObject = factory.Create("Service_Dflt");
 
             Assert.IsNotNull(createdObject);
-            Assert.AreEqual(@"server=(localdb)\v11.0;database=northwind;integrated security=true;",
+            Assert.AreEqual(String.Format(@"server={0};database=northwind;integrated security=true;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]),
                             createdObject.ConnectionStringWithoutCredentials);
         }
 

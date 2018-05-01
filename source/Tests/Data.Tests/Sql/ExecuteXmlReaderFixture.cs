@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
+using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.Odbc;
@@ -161,7 +162,7 @@ namespace EnterpriseLibrary.Data.Sql.Tests
         [TestMethod]
         public void ClosingAnXmlReaderClosesTheUnderlyingConnection_Bug2751()
         {
-            var database = new SqlDatabase(@"server=(localdb)\v11.0;database=Northwind;Integrated Security=true");
+            var database = new SqlDatabase(String.Format(@"server={0};database=Northwind;Integrated Security=true", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]));
 
             var command = new SqlCommand { CommandText = "Select * from Region for xml auto", CommandType = CommandType.Text };
 
@@ -175,7 +176,7 @@ namespace EnterpriseLibrary.Data.Sql.Tests
         [TestMethod]
         public void ClosingAnXmlReaderExecutedWithATrasactionDoesNotCloseTheUnderlyingConnection_Bug2751()
         {
-            var database = new SqlDatabase(@"server=(localdb)\v11.0;database=Northwind;Integrated Security=true");
+            var database = new SqlDatabase(String.Format(@"server={0};database=Northwind;Integrated Security=true", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]));
 
             using (var connection = database.CreateConnection())
             {
@@ -195,7 +196,7 @@ namespace EnterpriseLibrary.Data.Sql.Tests
         [TestMethod]
         public void ClosingAnXmlReaderExecutedWhileInATrasactionScopeDoesNotCloseTheUnderlyingConnection_Bug2751()
         {
-            var database = new SqlDatabase(@"server=(localdb)\v11.0;database=Northwind;Integrated Security=true");
+            var database = new SqlDatabase(String.Format(@"server={0};database=Northwind;Integrated Security=true", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]));
 
             var command = new SqlCommand { CommandText = "Select * from Region for xml auto", CommandType = CommandType.Text };
 

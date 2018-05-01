@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
+using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.Odbc;
@@ -47,7 +48,7 @@ namespace EnterpriseLibrary.Data.Tests
         [TestMethod]
         public void CanDoExecuteDataReaderForGenericDatabaseForSqlProviderBug1836()
         {
-            Database db = new GenericDatabase(@"server=(localdb)\v11.0;database=Northwind;Integrated Security=true", SqlClientFactory.Instance);
+            Database db = new GenericDatabase(String.Format(@"server={0};database=Northwind;Integrated Security=true", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]), SqlClientFactory.Instance);
 
             using (DbConnection connection = db.CreateConnection())
             {
@@ -64,7 +65,7 @@ namespace EnterpriseLibrary.Data.Tests
         [TestMethod]
         public void DSDBWrapperTransSqlNoCommitTestBug1857()
         {
-            Database db = new GenericDatabase(@"server=(localdb)\v11.0;database=Northwind;Integrated Security=true", SqlClientFactory.Instance);
+            Database db = new GenericDatabase(String.Format(@"server={0};database=Northwind;Integrated Security=true", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]), SqlClientFactory.Instance);
 
             using (DbConnection connection = db.CreateConnection())
             {
@@ -83,7 +84,7 @@ namespace EnterpriseLibrary.Data.Tests
         [ExpectedException(typeof(NotSupportedException))]
         public void GenericDatabaseThrowsWhenAskedToDeriveParameters()
         {
-            Database db = new GenericDatabase(@"server=(localdb)\v11.0;database=Northwind;Integrated Security=true", SqlClientFactory.Instance);
+            Database db = new GenericDatabase(String.Format(@"server={0};database=Northwind;Integrated Security=true", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]), SqlClientFactory.Instance);
             DbCommand storedProcedure = db.GetStoredProcCommand("CustOrdersOrders");
             db.DiscoverParameters(storedProcedure);
         }

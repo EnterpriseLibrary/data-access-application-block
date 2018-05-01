@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Reflection;
 using EnterpriseLibrary.Common.TestSupport.ContextBase;
@@ -39,7 +40,7 @@ namespace EnterpriseLibrary.Data.Tests
         protected ReflectionRowMapper<T> defaultMapper;
         protected IEnumerable<PropertyMapping> propertyMappings;
         protected string CommandText = "SELECT 'ALKI' as CustomerID, 'Violet street 23' as ShipAddress, 12.6 as freight, null SqlNull";
-        protected string ConnectionString = @"server=(localdb)\v11.0;database=Northwind;Integrated Security=true";
+        protected string ConnectionString = String.Format(@"server={0};database=Northwind;Integrated Security=true", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]);
         protected IDataReader reader;
 
         protected override void Arrange()

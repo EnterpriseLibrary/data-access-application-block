@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
+using System.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EnterpriseLibrary.Data.Tests
@@ -35,7 +36,7 @@ namespace EnterpriseLibrary.Data.Tests
         [TestMethod]
         public void CanGetCredentialsFromRealSqlDataClass()
         {
-            string initialConnectionString = String.Format(@"server=(localdb)\v11.0; database=JoeRandom; uid={0}; pwd={1}; ;", userName, password);
+            string initialConnectionString = String.Format(@"server={0}; database=JoeRandom; uid={1}; pwd={2}; ;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"], userName, password);
             connectionString = new ConnectionString(initialConnectionString, userIdTokens, passwordTokens);
             Assert.AreEqual(userName, connectionString.UserName);
             Assert.AreEqual(password, connectionString.Password);
@@ -44,7 +45,7 @@ namespace EnterpriseLibrary.Data.Tests
         [TestMethod]
         public void NoUserOrPasswordDefinedReturnsAnEmptyString()
         {
-            string initialConnectionString = @"server=(localdb)\v11.0; database=JoeRandom; Integrated Security=true";
+            string initialConnectionString = String.Format(@"server={0}; database=JoeRandom; Integrated Security=true", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]);
             connectionString = new ConnectionString(initialConnectionString, userIdTokens, passwordTokens);
             Assert.AreEqual(string.Empty, connectionString.UserName);
             Assert.AreEqual(string.Empty, connectionString.Password);
@@ -53,7 +54,7 @@ namespace EnterpriseLibrary.Data.Tests
         [TestMethod]
         public void CreateNewConnectionStringTest()
         {
-            string initialConnectionString = String.Format(@"server=(localdb)\v11.0; database=JoeRandom; uid={0}; pwd={1}; ;", userName, password);
+            string initialConnectionString = String.Format(@"server={0}; database=JoeRandom; uid={1}; pwd={2}; ;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"], userName, password);
             connectionString = new ConnectionString(initialConnectionString, userIdTokens, passwordTokens).CreateNewConnectionString(initialConnectionString);
             Assert.AreEqual(userName, connectionString.UserName);
             Assert.AreEqual(password, connectionString.Password);
@@ -62,7 +63,7 @@ namespace EnterpriseLibrary.Data.Tests
         [TestMethod]
         public void CanGetCredentialsUsingAlternatePatternsForUidAndPwd()
         {
-            string initialConnectionString = String.Format(@"server=(localdb)\v11.0; database=JoeRandom; user id={0}; password={1}; ;", userName, password);
+            string initialConnectionString = String.Format(@"server={0}; database=JoeRandom; user id={1}; password={2}; ;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"], userName, password);
             connectionString = new ConnectionString(initialConnectionString, userIdTokens, passwordTokens);
             Assert.AreEqual(userName, connectionString.UserName);
             Assert.AreEqual(password, connectionString.Password);
@@ -71,23 +72,23 @@ namespace EnterpriseLibrary.Data.Tests
         [TestMethod]
         public void CanAddCredentialsToConnectionStringThatDoesNotHaveThem()
         {
-            string initialConnectionString = @"server=(localdb)\v11.0; database=RandomData; ; ;";
+            string initialConnectionString = String.Format(@"server={0}; database=RandomData; ; ;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]);
             connectionString = new ConnectionString(initialConnectionString, userIdTokens, passwordTokens);
             connectionString.UserName = userName;
             connectionString.Password = password;
-            string actualConnectionString = String.Format(@"server=(localdb)\v11.0; database=RandomData; ; ;user id={0};password={1};",
-                                                          userName, password);
+            string actualConnectionString = String.Format(@"server={0}; database=RandomData; ; ;user id={1};password={2};",
+                                                          ConfigurationManager.AppSettings["SqlServerDatabaseInstance"], userName, password);
             Assert.AreEqual(actualConnectionString, connectionString.ToString());
         }
 
         [TestMethod]
         public void CanSetUserIdAndPasswordInConnectionStringThatAlreadyHasOne()
         {
-            string initialConnectionString = String.Format(@"server=(localdb)\v11.0; database=JoeRandom; user id={0}; password={1}; ;", "Kill", "Bill");
+            string initialConnectionString = String.Format(@"server={0}; database=JoeRandom; user id={1}; password={2}; ;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"], "Kill", "Bill");
             ConnectionString newConnectionString = new ConnectionString(initialConnectionString, userIdTokens, passwordTokens);
             newConnectionString.UserName = userName;
             newConnectionString.Password = password;
-            string actualConnectionString = String.Format(@"server=(localdb)\v11.0; database=JoeRandom; user id={0}; password={1}; ;", userName, password);
+            string actualConnectionString = String.Format(@"server={0}; database=JoeRandom; user id={1}; password={2}; ;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"], userName, password);
             Assert.AreEqual(actualConnectionString, newConnectionString.ToString());
         }
 
@@ -98,9 +99,9 @@ namespace EnterpriseLibrary.Data.Tests
         [TestMethod]
         public void RemovingCredentialsFromConnectionStringWithoutThemIsOk()
         {
-            string initialConnectionString = @"server=(localdb)\v11.0;database=RandomData;";
+            string initialConnectionString = String.Format(@"server={0};database=RandomData;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]);
             ConnectionString newConnectionString = new ConnectionString(initialConnectionString, userIdTokens, passwordTokens);
-            string expectedConnectionString = @"server=(localdb)\v11.0;database=randomdata;";
+            string expectedConnectionString = String.Format(@"server={0};database=randomdata;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]);
             string strippedConnectionString = newConnectionString.ToStringNoCredentials();
             Assert.AreEqual(expectedConnectionString, strippedConnectionString);
         }
@@ -108,10 +109,10 @@ namespace EnterpriseLibrary.Data.Tests
         [TestMethod]
         public void WillRemoveCredentialsFromConnectionString()
         {
-            string initialConnectionString = @"server=(localdb)\v11.0;database=RandomData;user id=Bill;pwd=goodPassword";
+            string initialConnectionString = String.Format(@"server={0};database=RandomData;user id=Bill;pwd=goodPassword", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]);
             ConnectionString newConnectionString = new ConnectionString(initialConnectionString,
                                                                         userIdTokens, passwordTokens);
-            string expectedConnectionString = @"server=(localdb)\v11.0;database=randomdata;";
+            string expectedConnectionString = String.Format(@"server={0};database=randomdata;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]);
             string strippedConnectionString = newConnectionString.ToStringNoCredentials();
             Assert.AreEqual(expectedConnectionString, strippedConnectionString);
         }
@@ -120,7 +121,7 @@ namespace EnterpriseLibrary.Data.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void ConstructConnectionStrigWithNullUserIdTokensThrows()
         {
-            string initialConnectionString = @"server=(localdb)\v11.0;database=RandomData;user id=Bill;pwd=goodPassword";
+            string initialConnectionString = String.Format(@"server={0};database=RandomData;user id=Bill;pwd=goodPassword", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]);
             ConnectionString newConnectionString = new ConnectionString(initialConnectionString, null, passwordTokens);
         }
 
@@ -128,7 +129,7 @@ namespace EnterpriseLibrary.Data.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void ConstructConnectionStrigNullPasswordTokensThrows()
         {
-            string initialConnectionString = @"server=(localdb)\v11.0;database=RandomData;user id=Bill;pwd=goodPassword";
+            string initialConnectionString = String.Format(@"server={0};database=RandomData;user id=Bill;pwd=goodPassword", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]);
             ConnectionString newConnectionString = new ConnectionString(initialConnectionString, userIdTokens, null);
         }
     }
