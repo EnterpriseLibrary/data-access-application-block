@@ -1,1 +1,1 @@
-OSQL -S (localdb)\v11.0 -E -i %~dp0\CREATE_Northwind.sql
+OSQL -S (local)\SQL2016 -E -i %~dp0\CREATE_Northwind.sql
