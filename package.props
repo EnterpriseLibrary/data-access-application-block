@@ -17,6 +17,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <!--In order to debug the EntLib dependencies open 'Data (With Dependencies).sln' and change 'EntLibDependencyType' value to Project -->
+    <EntLibDependencyType>Package</EntLibDependencyType>
     <EntLibCommonVersion>6.1.*</EntLibCommonVersion>
   </PropertyGroup>
 

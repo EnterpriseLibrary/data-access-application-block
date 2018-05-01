@@ -24,8 +24,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)')" />
-    <PackageReference Include="EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)')" />
+    <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
+    <PackageReference Include="EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
 
     <ProjectReference Include="..\..\Src\Data\Data.csproj" />
     <ProjectReference Include="..\Data.TestSupport\Data.TestSupport.csproj" />
