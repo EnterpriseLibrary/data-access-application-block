@@ -66,19 +66,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\NuGet\Readme.txt">
+    <Content Include="..\..\NuGet\Readme.txt">
       <Pack>true</Pack>
       <Visible>False</Visible>
       <PackagePath></PackagePath>
     </Content>
 
-    <Content Include="..\NuGet\tools\SharedCommon\install.ps1">
+    <Content Include="..\..\NuGet\tools\SharedCommon\install.ps1">
       <Pack>true</Pack>
       <Visible>False</Visible>
       <PackagePath>tools</PackagePath>
     </Content>
 
-    <Content Include="..\NuGet\tools\SharedCommon\Utils.psm1">
+    <Content Include="..\..\NuGet\tools\SharedCommon\Utils.psm1">
       <Pack>true</Pack>
       <Visible>False</Visible>
       <PackagePath>tools</PackagePath>
