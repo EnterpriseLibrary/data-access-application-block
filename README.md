@@ -1,3 +1,7 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva/branch/master?svg=true)](https://ci.appveyor.com/project/EnterpriseLibrary/data-access-application-block/branch/master)
+[![License](https://img.shields.io/badge/license-apache%202.0-60C060.svg)](https://github.com/EnterpriseLibrary/data-access-application-block/blob/master/LICENSE)
+
+
 # DATA ACCESS APPLICATION BLOCK (DAAB) PRE-RELEASE
 
 Summary: The Data Access Application Block abstracts the actual database you are using, and exposes a collection of methods that make it easy to access that database and to perform common tasks. The block is designed to simplify the task of calling stored procedures, but it also provides full support for the use of parameterized SQL statements.
