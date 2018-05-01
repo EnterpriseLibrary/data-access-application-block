@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva/branch/master?svg=true)](https://ci.appveyor.com/project/EnterpriseLibrary/data-access-application-block/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/2yn8u67mpbnjfyvt/branch/master?svg=true)](https://ci.appveyor.com/project/EnterpriseLibrary/data-access-application-block/branch/master)
 [![License](https://img.shields.io/badge/license-apache%202.0-60C060.svg)](https://github.com/EnterpriseLibrary/data-access-application-block/blob/master/LICENSE)
 
 
