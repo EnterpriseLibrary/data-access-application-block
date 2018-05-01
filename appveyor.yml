@@ -25,7 +25,7 @@ dotnet_csproj:
   patch: false
 
 before_build:
-- cmd: dotnet restore "source\Data.sln" --source "https://api.nuget.org/v3/index.json" --source "https://ci.appveyor.com/nuget/enterprise-library-common-infrastructure"
+- cmd: dotnet restore "source\Data.sln"
 
 build:
   project: source\Data.sln
