@@ -32,11 +32,6 @@ build:
   parallel: true
   verbosity: minimal
 
-test:
-  assemblies:
-    except:
-    - '*\EnterpriseLibrary.Data.Oracle.Tests.dll'
-
 after_build:
   - cmd: scripts\CREATE_Northwind.bat
 

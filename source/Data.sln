@@ -28,8 +28,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.SqlCe.Tests.VSTS", "Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.TestSupport", "Tests\Data.TestSupport\Data.TestSupport.csproj", "{5D9A30BB-5CC0-46F3-BD4B-828FC6270323}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oracle.Tests.VSTS", "Tests\Oracle.Tests.VSTS\Oracle.Tests.VSTS.csproj", "{8258FB05-E92F-428E-AB48-86D7E3F5FE43}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Application Block", "Data Application Block", "{EC27CB28-3D15-4C74-A1E6-6A2E60BCE31E}"
 EndProject
 Global
@@ -58,10 +56,6 @@ Global
 		{5D9A30BB-5CC0-46F3-BD4B-828FC6270323}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D9A30BB-5CC0-46F3-BD4B-828FC6270323}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D9A30BB-5CC0-46F3-BD4B-828FC6270323}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8258FB05-E92F-428E-AB48-86D7E3F5FE43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8258FB05-E92F-428E-AB48-86D7E3F5FE43}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8258FB05-E92F-428E-AB48-86D7E3F5FE43}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8258FB05-E92F-428E-AB48-86D7E3F5FE43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,11 +67,10 @@ Global
 		{C10AAE86-F79E-430E-A5A4-FCDB9BB54AB0} = {E3FD426C-F9D4-490A-A334-183DCE5D2C5C}
 		{16D47884-153E-4A57-84F4-54115558CEEC} = {E3FD426C-F9D4-490A-A334-183DCE5D2C5C}
 		{5D9A30BB-5CC0-46F3-BD4B-828FC6270323} = {E3FD426C-F9D4-490A-A334-183DCE5D2C5C}
-		{8258FB05-E92F-428E-AB48-86D7E3F5FE43} = {E3FD426C-F9D4-490A-A334-183DCE5D2C5C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {65EF901E-961B-48A6-9A64-1680F2624732}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
+		SolutionGuid = {65EF901E-961B-48A6-9A64-1680F2624732}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Data.vsmdi
