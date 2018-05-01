@@ -18,7 +18,7 @@
 
   <PropertyGroup>
     <RestoreSources>
-      $(RestoreSources);https://ci.appveyor.com/nuget/enterprise-library-common-infrastructure
+      https://api.nuget.org/v3/index.json;https://ci.appveyor.com/nuget/enterprise-library-common-infrastructure
     </RestoreSources>
   </PropertyGroup>
   
