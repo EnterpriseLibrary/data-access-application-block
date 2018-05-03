@@ -23,6 +23,7 @@ install:
 
 nuget:
   account_feed: true
+  project_feed: true
 
 dotnet_csproj:
   patch: false
