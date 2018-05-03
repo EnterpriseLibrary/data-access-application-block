@@ -15,12 +15,6 @@
     <RepositoryUrl>https://github.com/EnterpriseLibrary/data-access-application-block</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
-
-  <PropertyGroup>
-    <RestoreSources>
-      https://api.nuget.org/v3/index.json;https://ci.appveyor.com/nuget/enterprise-library-common-infrastructure
-    </RestoreSources>
-  </PropertyGroup>
   
   <PropertyGroup>
     <!--In order to debug the EntLib dependencies open 'Data (With Dependencies).sln' and change 'EntLibDependencyType' value to Project -->

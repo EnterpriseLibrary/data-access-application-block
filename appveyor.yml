@@ -21,6 +21,9 @@ install:
   - ps: $xRevision.Node.InnerText = $env:revision
   - ps: $xRevision.Node.OwnerDocument.Save($xRevision.Path)
 
+nuget:
+  account_feed: true
+
 dotnet_csproj:
   patch: false
 
