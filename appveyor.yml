@@ -21,14 +21,12 @@ install:
   - ps: $xRevision.Node.InnerText = $env:revision
   - ps: $xRevision.Node.OwnerDocument.Save($xRevision.Path)
 
-nuget:
-  account_feed: true
-
 dotnet_csproj:
   patch: false
 
 before_build:
-- cmd: nuget restore "source\Data.sln"
+- cmd: nuget sources add -Name "Enterprise Library" -Source "https://ci.appveyor.com/nuget/enterprise-library" -UserName %nuget_user% -Password %nuget_password%
+- cmd: dotnet restore "source\Data.sln"
 
 build:
   project: source\Data.sln
