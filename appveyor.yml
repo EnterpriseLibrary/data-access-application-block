@@ -23,13 +23,12 @@ install:
 
 nuget:
   account_feed: true
-  project_feed: true
 
 dotnet_csproj:
   patch: false
 
 before_build:
-- cmd: dotnet restore "source\Data.sln"
+- cmd: nuget restore "source\Data.sln"
 
 build:
   project: source\Data.sln
