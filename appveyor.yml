@@ -48,5 +48,6 @@ on_success:
   - ps: Add-Content "$HOME\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
   - ps: git config --global user.email "$env:github_email"
   - ps: git config --global user.name "$env:github_name"
+  - ps: git pull
   - git commit -m "Revision update by AppVeyor [ci skip]" -- version.props
   - git push
