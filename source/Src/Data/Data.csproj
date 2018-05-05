@@ -20,7 +20,7 @@
     <PackageTags>entlib entlib6 Enterprise Library data daab dab LOB futures OSS</PackageTags>
 
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Data.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\EntepriseLibrary.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
   </PropertyGroup>
 
