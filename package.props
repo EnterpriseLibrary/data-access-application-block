@@ -1,6 +1,6 @@
 <Project>
   <Import Project="version.props" />
-  
+
   <PropertyGroup>
     <Version>$(MajorVersion).$(MinorVersion).$(ReleaseVersion)</Version>
     <PackageReleaseNotes>This package is distributed as .NET Standard 2.0, .NET Core 2.0, .NET 4.0, 4.5, 4.6, 4.7 package.</PackageReleaseNotes>
@@ -15,7 +15,14 @@
     <RepositoryUrl>https://github.com/EnterpriseLibrary/data-access-application-block</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
-  
+
+  <PropertyGroup>
+    <OracleManagedDataAccessCore>2.12.0-beta2</OracleManagedDataAccessCore>
+    <SystemConfigurationConfigurationManagerVersion>4.5.0-preview2-26406-04</SystemConfigurationConfigurationManagerVersion>
+    <SystemDataOdbcVersion>4.5.0-preview2-26406-04</SystemDataOdbcVersion>
+    <SystemDataSqlClientVersion>4.5.0-preview2-26406-04</SystemDataSqlClientVersion>
+  </PropertyGroup>
+
   <PropertyGroup>
     <!--In order to debug the EntLib dependencies open 'Data (With Dependencies).sln' and change 'EntLibDependencyType' value to Project -->
     <EntLibDependencyType>Package</EntLibDependencyType>
