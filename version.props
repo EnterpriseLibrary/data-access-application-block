@@ -2,7 +2,7 @@
   <PropertyGroup>
     <MajorVersion>6</MajorVersion>
     <MinorVersion>1</MinorVersion>
-    <ReleaseVersion>7</ReleaseVersion>
-    <Revision>38</Revision>
+    <ReleaseVersion>8</ReleaseVersion>
+    <Revision>40</Revision>
   </PropertyGroup>
 </Project>
