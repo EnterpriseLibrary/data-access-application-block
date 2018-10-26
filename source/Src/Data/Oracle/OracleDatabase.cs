@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
@@ -6,11 +6,11 @@ using System.Data;
 using System.Data.Common;
 using Oracle.ManagedDataAccess.Client;
 using System.Globalization;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Data.Oracle.Configuration;
-using EnterpriseLibrary.Data.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
 
-namespace EnterpriseLibrary.Data.Oracle
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
 {
     /// <summary>
     /// <para>Represents an Oracle database.</para>

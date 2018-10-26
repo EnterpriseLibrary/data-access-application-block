@@ -1,10 +1,10 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.Configuration;
 using System.Data.Common;
-using EnterpriseLibrary.Common;
+using Microsoft.Practices.EnterpriseLibrary.Common;
 
-namespace EnterpriseLibrary.Data.Configuration.Fluent
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
 {
     /// <summary>
     /// Defines default connection string settings for fluent-style interface.

@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections;
@@ -6,7 +6,7 @@ using System.Data;
 using Oracle.ManagedDataAccess.Client;
 using System.Globalization;
 
-namespace EnterpriseLibrary.Data.Oracle
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
 {
     /// <summary>
     /// A wrapper to convert data for Oracle for the reader.

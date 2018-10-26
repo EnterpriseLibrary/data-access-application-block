@@ -4,10 +4,10 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
-using EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT.SqlDatabaseFixtures
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlDatabaseFixtures
 {
     [TestClass]
     public class GetDataAdapterFixture : EntLibFixtureBase

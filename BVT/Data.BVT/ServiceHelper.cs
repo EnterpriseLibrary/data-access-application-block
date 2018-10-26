@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 
-namespace EnterpriseLibrary.Data.BVT
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
 {
     public static class ServiceHelper
     {

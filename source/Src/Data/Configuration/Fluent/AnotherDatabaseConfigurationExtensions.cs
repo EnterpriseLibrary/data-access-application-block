@@ -1,11 +1,11 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Data.Common;
-using EnterpriseLibrary.Common.Properties;
-using EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 
-namespace EnterpriseLibrary.Data.Configuration.Fluent
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
 {
     /// <summary>
     /// Configuration extensions for database types specified via the <see cref="DatabaseProviderExtensions.AnotherDatabaseType" />.

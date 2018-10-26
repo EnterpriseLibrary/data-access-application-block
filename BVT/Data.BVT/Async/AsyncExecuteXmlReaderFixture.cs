@@ -4,10 +4,10 @@ using System;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
-using EnterpriseLibrary.Data.Sql;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
 {
     [TestClass]
     public class AsyncExecuteXmlReaderFixture : AsyncFixtureBase

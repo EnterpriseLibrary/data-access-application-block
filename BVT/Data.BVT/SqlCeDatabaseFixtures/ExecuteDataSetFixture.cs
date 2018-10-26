@@ -6,9 +6,9 @@ using System.Data;
 using System.Data.SqlServerCe;
 using System.Transactions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EnterpriseLibrary.Data.SqlCe;
+using Microsoft.Practices.EnterpriseLibrary.Data.SqlCe;
 
-namespace EnterpriseLibrary.Data.BVT.SqlCeDatabaseFixtures
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlCeDatabaseFixtures
 {
     /// <summary>
     /// Tests the dataset execution capabilities of the sql ce provider for the data application block.

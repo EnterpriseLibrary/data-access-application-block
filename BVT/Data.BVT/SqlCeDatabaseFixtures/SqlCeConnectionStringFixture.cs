@@ -3,9 +3,9 @@
 using System;
 using System.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EnterpriseLibrary.Data.SqlCe;
+using Microsoft.Practices.EnterpriseLibrary.Data.SqlCe;
 
-namespace EnterpriseLibrary.Data.BVT.SqlCeDatabaseFixtures
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlCeDatabaseFixtures
 {
     [TestClass]
     public class SqlCeConnectionStringFixture

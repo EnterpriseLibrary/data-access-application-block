@@ -1,13 +1,13 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Globalization;
-using EnterpriseLibrary.Data.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
 
-namespace EnterpriseLibrary.Data
+namespace Microsoft.Practices.EnterpriseLibrary.Data
 {
     /// <summary>
     /// Base class for Data Accessors that execute a <see cref="DbCommand"/>.

@@ -1,10 +1,10 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Data.Common;
 using System.Threading;
 
-namespace EnterpriseLibrary.Data
+namespace Microsoft.Practices.EnterpriseLibrary.Data
 {
     /// <summary>
     /// This is a small helper class used to manage closing a connection 

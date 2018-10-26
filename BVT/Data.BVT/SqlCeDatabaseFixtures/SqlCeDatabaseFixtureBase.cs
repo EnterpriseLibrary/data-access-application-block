@@ -7,9 +7,9 @@ using System.Data.SqlServerCe;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EnterpriseLibrary.Data.SqlCe;
+using Microsoft.Practices.EnterpriseLibrary.Data.SqlCe;
 
-namespace EnterpriseLibrary.Data.BVT.SqlCeDatabaseFixtures
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlCeDatabaseFixtures
 {
     public class SqlCeDatabaseFixtureBase : EntLibFixtureBase
     {

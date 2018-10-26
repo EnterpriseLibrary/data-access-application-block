@@ -1,16 +1,16 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Configuration;
 using System.Linq;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Data.Configuration;
-using EnterpriseLibrary.Data.Oracle.Configuration;
-using EnterpriseLibrary.Data.Sql;
-using EnterpriseLibrary.Data.Sql.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.Tests.Configuration
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 {
     [TestClass]
     public class GivenAConfigurationSourceWithAnEmptyConnectionStringsSection

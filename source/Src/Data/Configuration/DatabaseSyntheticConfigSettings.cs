@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
@@ -7,13 +7,13 @@ using System.Data.Common;
 using Oracle.ManagedDataAccess.Client;
 using System.Data.SqlClient;
 using System.Globalization;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Common.Utility;
-using EnterpriseLibrary.Data.Oracle;
-using EnterpriseLibrary.Data.Properties;
-using EnterpriseLibrary.Data.Sql;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Utility;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle;
+using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 
-namespace EnterpriseLibrary.Data.Configuration
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
 {
     /// <summary>
     /// Provides a configuration-like view over the Data Access Application Block sections

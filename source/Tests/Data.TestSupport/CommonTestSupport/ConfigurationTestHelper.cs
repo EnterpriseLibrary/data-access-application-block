@@ -1,11 +1,11 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 
-namespace EnterpriseLibrary.Common.TestSupport.Configuration
+namespace Microsoft.Practices.EnterpriseLibrary.Common.TestSupport.Configuration
 {
     public static class ConfigurationTestHelper
     {

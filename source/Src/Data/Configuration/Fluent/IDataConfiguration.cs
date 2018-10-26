@@ -1,16 +1,16 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
-using EnterpriseLibrary.Common;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Data.Oracle;
-using EnterpriseLibrary.Data.Sql;
+using Microsoft.Practices.EnterpriseLibrary.Common;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 
-namespace EnterpriseLibrary.Data.Configuration.Fluent
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
 {
     ///<summary>
     /// Starting point for data configuration.

@@ -1,11 +1,11 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Configuration;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 
-namespace EnterpriseLibrary.Data.SqlCe
+namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
 {
     /// <summary>
     /// Describes a <see cref="SqlCeDatabase"/> instance, aggregating information from a

@@ -6,10 +6,10 @@ using System.Data;
 using System.Data.Common;
 using System.Data.Odbc;
 using System.Data.SqlClient;
-using EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT.GenericDatabaseODBC
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseODBC
 {
     /// <summary>
     /// Tests the LoadDataSet of the Database class

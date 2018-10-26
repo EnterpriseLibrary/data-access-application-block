@@ -6,7 +6,7 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
 {
     [TestClass]
     public class AsyncExecuteReaderFixture : AsyncFixtureBase

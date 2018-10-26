@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EnterpriseLibrary.Data.BVT.Accessor
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.Accessor
 {
     public class TopTenProductWithSalePrice
     {

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
 {
     public class AsyncFixtureBase : EntLibFixtureBase
     {

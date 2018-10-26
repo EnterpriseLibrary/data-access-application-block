@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EnterpriseLibrary.Data.BVT.Accessor
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.Accessor
 {
     //This class is defined as private in the SProcAcessor.cs
     public class CustomParameterMapper : IParameterMapper

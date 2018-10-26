@@ -1,10 +1,10 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Xml;
 using System.Xml.Schema;
 
-namespace EnterpriseLibrary.Data.Sql
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
 {
     /// <summary>
     /// Wrapper around <see cref="XmlReader"/> that ties into our

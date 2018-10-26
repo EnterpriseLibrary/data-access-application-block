@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
@@ -85,7 +85,7 @@ Global
 		{90308E4D-4878-4E70-B314-65E20ECF9E00} = {11557CFA-CA0E-4389-84D8-F67F81FFA23F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
+		Microsoft.Practices.EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\Microsoft.Practices.EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
 		SolutionGuid = {65EF901E-961B-48A6-9A64-1680F2624732}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution

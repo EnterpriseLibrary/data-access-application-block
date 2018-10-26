@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections;
@@ -6,7 +6,7 @@ using System.Data;
 using System.Data.SqlServerCe;
 using System.Data.SqlTypes;
 
-namespace EnterpriseLibrary.Data.SqlCe
+namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
 {
     /// <summary>
     /// A wrapper around <see cref="SqlCeResultSet"/> which also manages

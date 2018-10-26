@@ -1,10 +1,10 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlServerCe;
 
-namespace EnterpriseLibrary.Data.SqlCe
+namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
 {
     /// <summary>
     ///        This class provides a primitive connection pool for <see cref="SqlCeDatabase"/>.

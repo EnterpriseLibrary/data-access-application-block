@@ -1,15 +1,15 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Concurrent;
 using System.Configuration;
 using System.Globalization;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Common.Utility;
-using EnterpriseLibrary.Data.Configuration;
-using EnterpriseLibrary.Data.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Utility;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
 
-namespace EnterpriseLibrary.Data
+namespace Microsoft.Practices.EnterpriseLibrary.Data
 {
     /// <summary>
     /// <para>Represents a factory for creating named instances of <see cref="Database"/> objects.</para>

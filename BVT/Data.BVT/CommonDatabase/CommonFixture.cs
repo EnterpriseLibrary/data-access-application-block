@@ -6,14 +6,14 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Text;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Data;
-using EnterpriseLibrary.Data.Configuration;
-using EnterpriseLibrary.Data.Sql;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
-namespace EnterpriseLibrary.Data.BVT.CommonDatabase
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.CommonDatabase
 {
     [TestClass()]
     public class CommonFixture : EntLibFixtureBase

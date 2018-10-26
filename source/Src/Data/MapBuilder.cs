@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections;
@@ -7,11 +7,11 @@ using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using EnterpriseLibrary.Common;
-using EnterpriseLibrary.Common.Utility;
-using EnterpriseLibrary.Data.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Common;
+using Microsoft.Practices.EnterpriseLibrary.Common.Utility;
+using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
 
-namespace EnterpriseLibrary.Data
+namespace Microsoft.Practices.EnterpriseLibrary.Data
 {
     /// <summary>
     /// Static entry point for the <see cref="IMapBuilderContext&lt;TResult&gt;"/> interface, which allows to build reflection-based <see cref="IRowMapper&lt;TResult&gt;"/>s.

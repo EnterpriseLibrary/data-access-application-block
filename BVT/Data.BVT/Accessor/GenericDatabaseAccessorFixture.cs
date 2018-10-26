@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
-using EnterpriseLibrary.Data.Sql;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data.Common;
 using System.Data;
@@ -10,9 +10,9 @@ using System.Linq;
 using System.Reflection;
 using System.Linq.Expressions;
 using System.Data.SqlClient;
-using EnterpriseLibrary.Data.BVT.Accessor.TestObjects;
+using Microsoft.Practices.EnterpriseLibrary.Data.BVT.Accessor.TestObjects;
 
-namespace EnterpriseLibrary.Data.BVT.Accessor
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.Accessor
 {
     [TestClass]
     public class GenericDatabaseAccessorFixture : EntLibFixtureBase

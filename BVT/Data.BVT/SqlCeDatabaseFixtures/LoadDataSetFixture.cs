@@ -5,10 +5,10 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlServerCe;
-using EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT.SqlCeDatabaseFixtures
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlCeDatabaseFixtures
 {
     /// <summary>
     /// Tests the LoadDataSet of the Database class

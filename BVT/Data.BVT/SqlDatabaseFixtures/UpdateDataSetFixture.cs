@@ -6,10 +6,10 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Text;
-using EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT.SqlDatabaseFixtures
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlDatabaseFixtures
 {
     /// <summary>
     /// Tests the UpdatesetMethod of the Database class

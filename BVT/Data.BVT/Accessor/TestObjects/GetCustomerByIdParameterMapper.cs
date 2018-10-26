@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EnterpriseLibrary.Data.BVT.Accessor.TestObjects
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.Accessor.TestObjects
 {
     public class GetCustomerByIdParameterMapper : IParameterMapper
     {

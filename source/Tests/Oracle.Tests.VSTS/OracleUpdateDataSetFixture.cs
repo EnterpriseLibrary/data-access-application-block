@@ -1,11 +1,11 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
-using EnterpriseLibrary.Data.Oracle.Tests.TestSupport;
-using EnterpriseLibrary.Data.TestSupport;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests.TestSupport;
+using Microsoft.Practices.EnterpriseLibrary.Data.TestSupport;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.Oracle.Tests
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
 {
     /// <summary>
     /// Tests executing a batch of commands with insert, delete and update 

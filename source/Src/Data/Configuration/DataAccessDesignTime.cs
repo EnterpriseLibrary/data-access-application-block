@@ -1,14 +1,14 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
-using EnterpriseLibrary.Common.Configuration.Design;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.Design;
 using System.ComponentModel;
 
-namespace EnterpriseLibrary.Data.Configuration
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
 {
     /// <summary>
     /// This class supports the Enterprise Library infrastructure and is not intended to be used directly from your code.
@@ -22,22 +22,22 @@ namespace EnterpriseLibrary.Data.Configuration
 
         internal static class ConverterTypeNames
         {
-            public const string SystemDataConverter = "EnterpriseLibrary.Configuration.Design.ComponentModel.Converters.SystemDataProviderConverter, EnterpriseLibrary.Configuration.DesignTime";
+            public const string SystemDataConverter = "Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentModel.Converters.SystemDataProviderConverter, Microsoft.Practices.EnterpriseLibrary.Configuration.DesignTime";
         }
 
         internal static class ViewModelTypeNames
         {
-            public const string ConnectionStringPropertyViewModel = "EnterpriseLibrary.Configuration.Design.ViewModel.BlockSpecifics.ConnectionStringPropertyViewModel, EnterpriseLibrary.Configuration.DesignTime";
+            public const string ConnectionStringPropertyViewModel = "Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ViewModel.BlockSpecifics.ConnectionStringPropertyViewModel, Microsoft.Practices.EnterpriseLibrary.Configuration.DesignTime";
             
-            public const string DataSectionViewModel = "EnterpriseLibrary.Configuration.Design.ViewModel.BlockSpecifics.DataSectionViewModel, EnterpriseLibrary.Configuration.DesignTime";
+            public const string DataSectionViewModel = "Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ViewModel.BlockSpecifics.DataSectionViewModel, Microsoft.Practices.EnterpriseLibrary.Configuration.DesignTime";
 
-            public const string OraclePackageDataViewModel = "EnterpriseLibrary.Configuration.Design.ViewModel.BlockSpecifics.OraclePackageDataViewModel, EnterpriseLibrary.Configuration.DesignTime";
+            public const string OraclePackageDataViewModel = "Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ViewModel.BlockSpecifics.OraclePackageDataViewModel, Microsoft.Practices.EnterpriseLibrary.Configuration.DesignTime";
             
         }
 
         internal static class CommandTypeNames
         {
-            public const string AddDataAccessBlockCommand = "EnterpriseLibrary.Configuration.Design.ViewModel.BlockSpecifics.AddDatabaseBlockCommand, EnterpriseLibrary.Configuration.DesignTime";
+            public const string AddDataAccessBlockCommand = "Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ViewModel.BlockSpecifics.AddDatabaseBlockCommand, Microsoft.Practices.EnterpriseLibrary.Configuration.DesignTime";
         }
 
         /// <summary>

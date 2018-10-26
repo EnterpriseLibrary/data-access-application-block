@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 
-namespace EnterpriseLibrary.Data.BVT
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
 {
     public class DbAsyncState
     {

@@ -6,10 +6,10 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Text;
-using EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT.GenericDatabaseOLEDB
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseOLEDB
 {
     /// <summary>
     /// Tests the UpdatesetMethod of the Database class

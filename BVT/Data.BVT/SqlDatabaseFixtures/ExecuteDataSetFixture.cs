@@ -7,13 +7,13 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.IO;
 using System.Text;
-using EnterpriseLibrary.Data;
-using EnterpriseLibrary.Data.Sql;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Common;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common;
 
-namespace EnterpriseLibrary.Data.BVT.SqlDatabaseFixtures
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlDatabaseFixtures
 {
     /// <summary>
     /// Tests ExecuteDataSet Method of the DataSet Object

@@ -7,10 +7,10 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EnterpriseLibrary.Data.Sql;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT.DatabaseFixtures
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.DatabaseFixtures
 {
     [TestClass]
     public class DatabaseWithMarsActiveFixture : EntLibFixtureBase

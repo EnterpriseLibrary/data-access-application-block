@@ -1,9 +1,9 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.Oracle.Tests.TestSupport
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests.TestSupport
 {
     internal class EnvironmentHelper
     {

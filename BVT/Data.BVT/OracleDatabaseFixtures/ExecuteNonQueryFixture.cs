@@ -3,11 +3,11 @@
 using System;
 using System.Data;
 using System.Data.Common;
-using EnterpriseLibrary.Data;
-using EnterpriseLibrary.Data.BVT;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data.BVT;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT.OracleDatabaseFixtures
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.OracleDatabaseFixtures
 {
     [TestClass]
     public class ExecuteNonQueryFixture : EntLibFixtureBase

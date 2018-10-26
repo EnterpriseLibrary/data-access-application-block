@@ -1,12 +1,12 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.Configuration;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Data.Oracle;
-using EnterpriseLibrary.Common.Configuration.Design;
-using EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.Design;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 
-namespace EnterpriseLibrary.Data.Oracle.Configuration
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration
 {
     /// <summary>
     /// <para>Represents the package information to use when calling a stored procedure for Oracle.</para>

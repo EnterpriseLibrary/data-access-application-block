@@ -1,9 +1,9 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Data.Common;
 
-namespace EnterpriseLibrary.Data.TestSupport
+namespace Microsoft.Practices.EnterpriseLibrary.Data.TestSupport
 {
     /// <summary>
     /// Used by a few test fixtures to simplify the code to rollback a transaction

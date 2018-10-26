@@ -4,13 +4,13 @@ using System;
 using System.Data;
 using System.Data.Common;
 using System.IO;
-using EnterpriseLibrary.Data;
-using EnterpriseLibrary.Data.BVT;
-using EnterpriseLibrary.Data.Oracle;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data.BVT;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Oracle.ManagedDataAccess.Client;
 
-namespace EnterpriseLibrary.Data.BVT.OracleDatabaseFixtures
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.OracleDatabaseFixtures
 {
     [TestClass]
     public class LoadDataSetFixture : EntLibFixtureBase

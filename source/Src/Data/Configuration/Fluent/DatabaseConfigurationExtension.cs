@@ -1,13 +1,13 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Configuration;
 using System.Data.Common;
 using System.Diagnostics;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Common.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Properties;
 
-namespace EnterpriseLibrary.Data.Configuration.Fluent
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
 {
     ///<summary>
     /// Base class to help build database-specific configurations extensions for <see cref="DataConfigurationSourceBuilderExtensions"/>.

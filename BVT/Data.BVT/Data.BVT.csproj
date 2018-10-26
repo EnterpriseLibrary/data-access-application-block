@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\package.props" />
 
   <PropertyGroup>
@@ -8,9 +8,9 @@
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
     <FileVersion>$(Version).$(Revision)</FileVersion>
 
-    <AssemblyName>EnterpriseLibrary.Data.BVT</AssemblyName>
-    <RootNamespace>EnterpriseLibrary.Data.BVT</RootNamespace>
-    <AssemblyTitle>EnterpriseLibrary.Data.BVT</AssemblyTitle>
+    <AssemblyName>Microsoft.Practices.EnterpriseLibrary.Data.BVT</AssemblyName>
+    <RootNamespace>Microsoft.Practices.EnterpriseLibrary.Data.BVT</RootNamespace>
+    <AssemblyTitle>Microsoft.Practices.EnterpriseLibrary.Data.BVT</AssemblyTitle>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)')" />
-    <PackageReference Include="EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)')" />
+    <PackageReference Include="Microsoft.Practices.EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)')" />
 
     <ProjectReference Include="..\..\source\Src\Data\Data.csproj" />
     <ProjectReference Include="..\..\source\Src\SqlCe\Data.SqlCe.csproj" />

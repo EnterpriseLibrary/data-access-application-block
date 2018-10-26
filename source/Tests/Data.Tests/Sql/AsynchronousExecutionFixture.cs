@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
@@ -8,11 +8,11 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Transactions;
 using System.Xml;
-using EnterpriseLibrary.Common.TestSupport;
-using EnterpriseLibrary.Common.TestSupport.ContextBase;
+using Microsoft.Practices.EnterpriseLibrary.Common.TestSupport;
+using Microsoft.Practices.EnterpriseLibrary.Common.TestSupport.ContextBase;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.Sql.Tests
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql.Tests
 {
     [TestClass]
     public class WhenUsingASqlDatabase

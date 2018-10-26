@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Configuration;
@@ -6,10 +6,10 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlServerCe;
 using System.IO;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Data;
-using EnterpriseLibrary.Data.Configuration;
-using EnterpriseLibrary.Data.SqlCe;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.SqlCe;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Data.SqlCe.Tests.VSTS

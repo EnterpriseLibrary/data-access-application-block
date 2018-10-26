@@ -1,9 +1,9 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.Data;
 using System.Data.Common;
 
-namespace EnterpriseLibrary.Data.Sql.Tests
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql.Tests
 {
     internal sealed class SqlDataSetHelper
     {

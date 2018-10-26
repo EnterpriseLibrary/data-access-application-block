@@ -7,14 +7,14 @@ using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Reflection;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Data.Configuration;
-using EnterpriseLibrary.Data.Configuration.Fluent;
-using EnterpriseLibrary.Data.Oracle.Configuration;
-using EnterpriseLibrary.Data.Sql;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
 {
     [TestClass]
     public class InvalidFluentConfigurationFixture : FluentConfigurationFixtureBase

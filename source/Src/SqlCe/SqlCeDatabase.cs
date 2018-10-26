@@ -1,14 +1,14 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlServerCe;
 using System.Globalization;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Data.SqlCe.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.Properties;
 
-namespace EnterpriseLibrary.Data.SqlCe
+namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
 {
     /// <summary>
     ///        Provides helper methods to make working with a Sql Server Compact Edition database

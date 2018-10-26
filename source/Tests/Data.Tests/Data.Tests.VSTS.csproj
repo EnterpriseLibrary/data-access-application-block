@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\..\package.props" />
 
   <PropertyGroup>
@@ -8,8 +8,8 @@
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
     <FileVersion>$(Version).$(Revision)</FileVersion>
 
-    <AssemblyName>EnterpriseLibrary.Data.Tests</AssemblyName>
-    <RootNamespace>EnterpriseLibrary.Data.Tests</RootNamespace>
+    <AssemblyName>Microsoft.Practices.EnterpriseLibrary.Data.Tests</AssemblyName>
+    <RootNamespace>Microsoft.Practices.EnterpriseLibrary.Data.Tests</RootNamespace>
     <AssemblyTitle>Enterprise Library Data Access Application Block Tests</AssemblyTitle>
   </PropertyGroup>
 
@@ -18,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="1.3.0-beta2" />
-    <PackageReference Include="MSTest.TestFramework" Version="1.3.0-beta2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.3.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.3.2" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -29,7 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
-    <PackageReference Include="EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
+    <PackageReference Include="Microsoft.Practices.EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
 
     <ProjectReference Include="..\..\Src\Data\Data.csproj" />
     <ProjectReference Include="..\Data.TestSupport\Data.TestSupport.csproj" />
@@ -47,7 +47,7 @@
 
     <ProjectReference Include="..\..\Src\SqlCe\Data.SqlCe.csproj" />
 
-    <PackageReference Include="Moq" Version="4.0.10827" />
+    <PackageReference Include="Moq" Version="4.10.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -70,7 +70,7 @@
     </None>
     <None Include="Configuration\Fluent\Given_ConfigureDataEntryPoint.Desktop.cs" />
 
-    <None Include="EnterpriseLibrary.Data.Tests.dll.config">
+    <None Include="Microsoft.Practices.EnterpriseLibrary.Data.Tests.dll.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
 

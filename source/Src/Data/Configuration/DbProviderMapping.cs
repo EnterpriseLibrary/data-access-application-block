@@ -1,13 +1,13 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Configuration;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Common.Configuration.Design;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.Design;
 using System.ComponentModel;
 using Oracle.ManagedDataAccess.Client;
 
-namespace EnterpriseLibrary.Data.Configuration
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
 {
     /// <summary>
     /// Represents the mapping from an ADO.NET provider to an Enterprise Library <see cref="Database"/>.
@@ -21,9 +21,9 @@ namespace EnterpriseLibrary.Data.Configuration
     /// If a mapping is not present for a given provider type, sensible defaults will be used:
     /// <list type="bullet">
     /// <item>For provider name "System.Data.SqlClient", or for a provider of type <see cref="System.Data.SqlClient.SqlClientFactory"/>, the 
-    /// <see cref="EnterpriseLibrary.Data.Sql.SqlDatabase"/> will be used.</item>
+    /// <see cref="Microsoft.Practices.EnterpriseLibrary.Data.Sql.SqlDatabase"/> will be used.</item>
     /// <item>For provider name "Oracle.ManagedDataAccess.Client", or for a provider of type <see cref="OracleClientFactory"/>, the 
-    /// <see cref="EnterpriseLibrary.Data.Oracle.OracleDatabase"/> will be used.</item>
+    /// <see cref="Microsoft.Practices.EnterpriseLibrary.Data.Oracle.OracleDatabase"/> will be used.</item>
     /// <item>In any other case, the <see cref="GenericDatabase"/> will be used.</item>
     /// </list>
     /// </para>
@@ -110,7 +110,7 @@ namespace EnterpriseLibrary.Data.Configuration
 
         /// <summary/>
         // TODO : make this a designtime converter. normal converter gets in the wat of system.configuration
-        //[TypeConverter("EnterpriseLibrary.Configuration.Design.ComponentModel.Converters.SystemDataProviderConverter,  EnterpriseLibrary.Configuration.Design")]
+        //[TypeConverter("Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentModel.Converters.SystemDataProviderConverter,  Microsoft.Practices.EnterpriseLibrary.Configuration.Design")]
         public override string Name
         {
             get{ return base.Name; }

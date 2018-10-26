@@ -1,11 +1,11 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.Data;
 using System.Data.Common;
 using Data.SqlCe.Tests.VSTS;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.SqlCe.Tests
+namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.Tests
 {
     [TestClass]
     public class SqlCeParameterFixture

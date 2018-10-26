@@ -8,10 +8,10 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT.CommonDatabase
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.CommonDatabase
 {
     [TestClass]
     public class MultiThreadFixture : EntLibFixtureBase

@@ -6,10 +6,10 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Transactions;
-using EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT.CommonDatabase
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.CommonDatabase
 {
     [TestClass]
     public class DTCFixture : EntLibFixtureBase

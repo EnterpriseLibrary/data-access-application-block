@@ -1,14 +1,14 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Configuration;
 using System.Data.Common;
 using System.Data.SqlClient;
-using EnterpriseLibrary.Data.TestSupport;
+using Microsoft.Practices.EnterpriseLibrary.Data.TestSupport;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 
-namespace EnterpriseLibrary.Data.Sql.Tests
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql.Tests
 {
     [TestClass]
     public class SqlDatabaseFixture

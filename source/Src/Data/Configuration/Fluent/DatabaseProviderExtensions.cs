@@ -1,10 +1,10 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Data.Common;
-using EnterpriseLibrary.Data.Configuration.Fluent;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
 
-namespace EnterpriseLibrary.Common.Configuration
+namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
 {
     ///<summary>
     /// Provides extensions for common database providers.

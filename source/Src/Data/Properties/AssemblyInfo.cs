@@ -6,8 +6,8 @@ using System.Runtime.CompilerServices;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Security;
-using EnterpriseLibrary.Common.Configuration.Design;
-using EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.Design;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 
 [assembly: ReliabilityContract(Consistency.WillNotCorruptState, Cer.None)]
 [assembly: SecurityTransparent]

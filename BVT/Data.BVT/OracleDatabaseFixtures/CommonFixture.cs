@@ -5,16 +5,16 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Reflection;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Data;
-using EnterpriseLibrary.Data.BVT;
-using EnterpriseLibrary.Data.Configuration;
-using EnterpriseLibrary.Data.Oracle;
-using EnterpriseLibrary.Data.Oracle.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data.BVT;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Oracle.ManagedDataAccess.Client;
 
-namespace EnterpriseLibrary.Data.BVT.OracleDatabaseFixtures
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.OracleDatabaseFixtures
 {
     [TestClass]
     public class CommonFixture : EntLibFixtureBase

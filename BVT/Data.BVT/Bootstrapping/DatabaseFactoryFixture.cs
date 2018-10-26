@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT.Bootstrapping
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.Bootstrapping
 {
     [TestClass]
     public class DatabaseFactoryFixture : EntLibFixtureBase

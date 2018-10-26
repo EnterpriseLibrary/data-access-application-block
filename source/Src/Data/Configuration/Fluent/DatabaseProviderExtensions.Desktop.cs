@@ -1,7 +1,7 @@
-﻿using System.Data.OleDb;
-using EnterpriseLibrary.Data.Configuration.Fluent;
+using System.Data.OleDb;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
 
-namespace EnterpriseLibrary.Common.Configuration
+namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
 {
     public static partial class DatabaseProviderExtensions
     {

@@ -6,12 +6,12 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlServerCe;
 using System.Text;
-using EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using EnterpriseLibrary.Data.SqlCe;
+using Microsoft.Practices.EnterpriseLibrary.Data.SqlCe;
 
-namespace EnterpriseLibrary.Data.BVT.SqlCeDatabaseFixtures
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlCeDatabaseFixtures
 {
     /// <summary>
     /// Tests ExecuteNonQuery of the Database class

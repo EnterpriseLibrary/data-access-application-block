@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyName>EnterpriseLibrary.Data.SqlCe</AssemblyName>
-    <RootNamespace>EnterpriseLibrary.Data.SqlCe</RootNamespace>
+    <AssemblyName>Microsoft.Practices.EnterpriseLibrary.Data.SqlCe</AssemblyName>
+    <RootNamespace>Microsoft.Practices.EnterpriseLibrary.Data.SqlCe</RootNamespace>
     <AssemblyTitle>Enterprise Library Data Access Application Block</AssemblyTitle>
 
-    <PackageId>EnterpriseLibrary.Data.SqlCe</PackageId>
+    <PackageId>Microsoft.Practices.EnterpriseLibrary.Data.SqlCe</PackageId>
     <Title>Data Access Application Block SQL CE Data Provider</Title>
     <Description>The Data Access Application Block SQL CE Data Provider let developers use SQL CE databases in conjunction with the Data Access Application Block.</Description>
     <Summary>The Data Access Application Block SQL CE Data Provider let developers use SQL CE databases in conjunction with the Data Access Application Block.</Summary>
@@ -30,7 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
-    <PackageReference Include="EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
+    <PackageReference Include="Microsoft.Practices.EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
 
     <ProjectReference Include="..\Data\Data.csproj" />
 
@@ -97,7 +97,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DocumentationFile>$(SolutionDir)..\bin\Debug\$(AssemblyName).xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
-    <CodeAnalysisRuleSet>..\..\EnterpriseLibrary.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\Microsoft.Practices.EnterpriseLibrary.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">

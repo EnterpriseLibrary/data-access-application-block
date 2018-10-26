@@ -10,7 +10,7 @@ using System.Diagnostics.PerformanceData;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Data.BVT
+namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
 {
     [TestClass]
     public class AsyncExecuteNonQueryFixture : AsyncFixtureBase

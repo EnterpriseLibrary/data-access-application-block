@@ -1,10 +1,10 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Configuration;
-using EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 
-namespace EnterpriseLibrary.Data.Configuration
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
 {
     /// <summary>
     /// Describes a <see cref="Database"/> instance, aggregating information from a <see cref="ConnectionStringSettings"/>

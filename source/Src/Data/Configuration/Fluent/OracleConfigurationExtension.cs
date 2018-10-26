@@ -1,12 +1,12 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using Oracle.ManagedDataAccess.Client;
-using EnterpriseLibrary.Common;
-using EnterpriseLibrary.Common.Properties;
-using EnterpriseLibrary.Data.Oracle.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common;
+using Microsoft.Practices.EnterpriseLibrary.Common.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
 
-namespace EnterpriseLibrary.Data.Configuration.Fluent
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
 {
     /// <summary>
     /// Oracle configuration options
