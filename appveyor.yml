@@ -25,7 +25,6 @@ dotnet_csproj:
   patch: false
 
 before_build:
-- cmd: nuget sources add -Name "Enterprise Library" -Source "https://ci.appveyor.com/nuget/enterprise-library" -UserName %nuget_user% -Password %nuget_password%
 - cmd: dotnet restore "source\Data.sln"
 
 build:
