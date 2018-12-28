@@ -11,7 +11,7 @@
     <RootNamespace>$(PreAssemblyName).Data.SqlCe</RootNamespace>
     <AssemblyTitle>Enterprise Library Data Access Application Block</AssemblyTitle>
 
-    <PackageId>$(PrePackageName).Data.SqlServerCe$(PostPackageName)</PackageId>
+    <PackageId>$(PrePackageName).Data.SqlCe$(PostPackageName)</PackageId>
     <Title>Data Access Application Block SQL CE Data Provider</Title>
     <Description>The Data Access Application Block SQL CE Data Provider let developers use SQL CE databases in conjunction with the Data Access Application Block.</Description>
     <Summary>The Data Access Application Block SQL CE Data Provider let developers use SQL CE databases in conjunction with the Data Access Application Block.</Summary>
