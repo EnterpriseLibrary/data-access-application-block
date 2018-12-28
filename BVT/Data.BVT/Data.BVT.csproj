@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\package.props" />
 
   <PropertyGroup>
@@ -8,15 +8,15 @@
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
     <FileVersion>$(Version).$(Revision)</FileVersion>
 
-    <AssemblyName>Microsoft.Practices.EnterpriseLibrary.Data.BVT</AssemblyName>
-    <RootNamespace>Microsoft.Practices.EnterpriseLibrary.Data.BVT</RootNamespace>
-    <AssemblyTitle>Microsoft.Practices.EnterpriseLibrary.Data.BVT</AssemblyTitle>
+    <AssemblyName>$(PreAssemblyName).Data.BVT</AssemblyName>
+    <RootNamespace>$(PreAssemblyName).Data.BVT</RootNamespace>
+    <AssemblyTitle>$(PreAssemblyName).Data.BVT</AssemblyTitle>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="1.3.0-beta2" />
-    <PackageReference Include="MSTest.TestFramework" Version="1.3.0-beta2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -24,8 +24,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)')" />
-    <PackageReference Include="Microsoft.Practices.EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)')" />
+    <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
+    <PackageReference Include="$(PrePackageName).Common$(PostPackageName)" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
 
     <ProjectReference Include="..\..\source\Src\Data\Data.csproj" />
     <ProjectReference Include="..\..\source\Src\SqlCe\Data.SqlCe.csproj" />
@@ -41,7 +41,7 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Extensions" />
     <PackageReference Include="Moq" Version="4.0.10827" />
-    <PackageReference Include="Oracle.ManagedDataAccess" Version="12.2.1100" />
+    <PackageReference Include="Oracle.ManagedDataAccess" Version="18.3.0" />
   </ItemGroup>
 
   <ItemGroup>

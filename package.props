@@ -3,12 +3,17 @@
 
   <PropertyGroup>
     <Version>$(MajorVersion).$(MinorVersion).$(ReleaseVersion)</Version>
+    <PreAssemblyName>Microsoft.Practices.EnterpriseLibrary</PreAssemblyName>
+    <PrePackageName>EnterpriseLibrary</PrePackageName>
+    <PostPackageName>.NetCore</PostPackageName>
     <PackageReleaseNotes>This package is distributed as .NET Standard 2.0, .NET Core 2.0, .NET 4.0, 4.5, 4.6, 4.7 package.</PackageReleaseNotes>
 
+    <SemanticVersionSuffix>-rc</SemanticVersionSuffix>
+    <PackageVersion>$(Version)$(SemanticVersionSuffix)</PackageVersion>
     <Authors>Enterprise Library Open Source Project</Authors>
     <Copyright>Copyright © Microsoft 2008</Copyright>
     <PackageIconUrl>https://nuget.org/Media/Default/Packages/Unity/2.0/entlib_new_icon_100x100.png</PackageIconUrl>
-    <PackageLicenseUrl>http://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/EnterpriseLibrary/data-access-application-block</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 
@@ -25,8 +30,8 @@
 
   <PropertyGroup>
     <!--In order to debug the EntLib dependencies open 'Data (With Dependencies).sln' and change 'EntLibDependencyType' value to Project -->
-    <EntLibDependencyType>Project</EntLibDependencyType>
-    <EntLibCommonVersion>6.1.*</EntLibCommonVersion>
+    <EntLibDependencyType>Package</EntLibDependencyType>
+    <EntLibCommonVersion>6.1.15-rc</EntLibCommonVersion>
   </PropertyGroup>
 
 </Project>

@@ -84,7 +84,7 @@
     <PropertyGroup>
       <OpenCoverCommand>&quot;%(OpenCoverConsole.Fullpath)&quot;</OpenCoverCommand>
       <OpenCoverCommand>$(OpenCoverCommand) -register:user -mergebyhash -returntargetcode</OpenCoverCommand>
-      <OpenCoverCommand>$(OpenCoverCommand) -filter:&quot;+[EnterpriseLibrary.*]* -[EnterpriseLibrary.*Tests]* -[EnterpriseLibrary.*TestSupport]*&quot;</OpenCoverCommand>
+      <OpenCoverCommand>$(OpenCoverCommand) -filter:&quot;+[Microsoft.Practices.EnterpriseLibrary.*]* -[Microsoft.Practices.EnterpriseLibrary.*Tests]* -[Microsoft.Practices.EnterpriseLibrary.*TestSupport]*&quot;</OpenCoverCommand>
       <OpenCoverCommand>$(OpenCoverCommand) -output:&quot;$(CoverageOutputDir)OpenCoverResults.xml&quot;</OpenCoverCommand>
       <OpenCoverCommand>$(OpenCoverCommand) -target:&quot;$(TestRunner)&quot;</OpenCoverCommand>
       <OpenCoverCommand>$(OpenCoverCommand) -targetargs:&quot;@(TestAssemblies->'\&quot;%(Identity)\&quot;', ' ') /logger:trx&quot;</OpenCoverCommand>

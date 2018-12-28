@@ -6,14 +6,12 @@
 
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
     <FileVersion>$(Version).$(Revision)</FileVersion>
-  </PropertyGroup>
 
-  <PropertyGroup>
-    <AssemblyName>Microsoft.Practices.EnterpriseLibrary.Data.SqlCe</AssemblyName>
-    <RootNamespace>Microsoft.Practices.EnterpriseLibrary.Data.SqlCe</RootNamespace>
+    <AssemblyName>$(PreAssemblyName).Data.SqlCe</AssemblyName>
+    <RootNamespace>$(PreAssemblyName).Data.SqlCe</RootNamespace>
     <AssemblyTitle>Enterprise Library Data Access Application Block</AssemblyTitle>
 
-    <PackageId>Microsoft.Practices.EnterpriseLibrary.Data.SqlCe</PackageId>
+    <PackageId>$(PrePackageName).Data.SqlCe$(PostPackageName)</PackageId>
     <Title>Data Access Application Block SQL CE Data Provider</Title>
     <Description>The Data Access Application Block SQL CE Data Provider let developers use SQL CE databases in conjunction with the Data Access Application Block.</Description>
     <Summary>The Data Access Application Block SQL CE Data Provider let developers use SQL CE databases in conjunction with the Data Access Application Block.</Summary>
@@ -30,7 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
-    <PackageReference Include="Microsoft.Practices.EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
+    <PackageReference Include="$(PrePackageName).Common$(PostPackageName)" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
 
     <ProjectReference Include="..\Data\Data.csproj" />
 
@@ -39,7 +37,10 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' AND '$(TargetFramework)' != 'netcoreapp2.0'">
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
+  </ItemGroup>
+
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
     <Reference Include="System.Configuration" />
   </ItemGroup>
 
