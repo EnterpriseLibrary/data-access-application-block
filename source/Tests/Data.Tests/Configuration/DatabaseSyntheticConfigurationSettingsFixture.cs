@@ -522,6 +522,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
         [TestInitialize]
         public void Setup()
         {
+            NetCoreHelpers.RegisterDbProviderFactories();
             configSource = new DictionaryConfigurationSource();
             configSettings = new DatabaseSyntheticConfigSettings(configSource.GetSection);
         }

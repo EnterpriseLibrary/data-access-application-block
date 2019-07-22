@@ -2,7 +2,7 @@
   <Import Project="..\..\..\package.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net47</TargetFrameworks>
+    <TargetFrameworks>net47;netcoreapp3.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
 
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
@@ -12,10 +12,6 @@
     <RootNamespace>$(PreAssemblyName).Data.Tests</RootNamespace>
     <AssemblyTitle>Enterprise Library Data Access Application Block Tests</AssemblyTitle>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Configuration\Fluent\Given_ConfigureDataEntryPoint.Desktop.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
@@ -36,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
-
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.19.31" />
   </ItemGroup>
 
   <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
@@ -68,9 +64,8 @@
     <None Include="..\..\DataAccess.licenseheader">
       <Link>DataAccess.licenseheader</Link>
     </None>
-    <None Include="Configuration\Fluent\Given_ConfigureDataEntryPoint.Desktop.cs" />
 
-    <None Include="Microsoft.Practices.EnterpriseLibrary.Data.Tests.dll.config">
+    <None Include="*.dll.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
 
@@ -85,7 +80,8 @@
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
-    <Compile Remove="**\*.Desktop.cs" />
+    <!-- Asynchronous Programming Model is not supported by .NET Core (use Task-based Asynchronous Pattern instead) -->
+    <Compile Remove="**\AsynchronousExecutionFixture.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">

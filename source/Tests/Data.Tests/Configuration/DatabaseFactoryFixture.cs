@@ -20,6 +20,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
         [TestInitialize]
         public void Initialize()
         {
+            NetCoreHelpers.RegisterDbProviderFactories();
             this.factory = new DatabaseProviderFactory(new SystemConfigurationSource(false).GetSection);
         }
 

@@ -18,6 +18,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
         [TestInitialize]
         public void Setup()
         {
+            NetCoreHelpers.RegisterDbProviderFactories();
+
             var factory = new DatabaseProviderFactory(TestConfigurationSource.CreateConfigurationSource());
             var db = factory.CreateDefault();
             connection = db.CreateConnection();

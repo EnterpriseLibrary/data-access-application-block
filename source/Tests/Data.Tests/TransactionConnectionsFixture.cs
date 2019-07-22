@@ -19,6 +19,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Sql
         [TestInitialize]
         public void SetUp()
         {
+            NetCoreHelpers.RegisterDbProviderFactories();
             DatabaseProviderFactory factory = new DatabaseProviderFactory(TestConfigurationSource.CreateConfigurationSource());
             db = factory.CreateDefault();
         }
@@ -149,6 +150,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Sql
             }
         }
 
+#if !NETCOREAPP // .NET Core does not support distributed transactions
         [TestMethod]
         public void GetConnection_ShouldReturnDifferentConnectionForDifferentConnectionStrings()
         {
@@ -173,6 +175,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Sql
                 throw;
             }
         }
+#endif
 
         [TestMethod]
         public void Current_ShouldBeDifferentTransactionInOtherThread()

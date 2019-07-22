@@ -13,6 +13,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
     [TestClass]
     public class DatabaseFactoryOldFixture
     {
+        [TestInitialize]
+        public void SetUp()
+        {
+            NetCoreHelpers.RegisterDbProviderFactories();
+        }
+
 #pragma warning disable 612, 618
         private static readonly Database[] databases = new Database[]
         {
