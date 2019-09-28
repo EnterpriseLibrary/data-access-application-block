@@ -2,7 +2,7 @@
   <Import Project="..\..\..\package.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net46;net47;netstandard2.0;netcoreapp2.0</TargetFrameworks>
+    <TargetFrameworks>net45;net46;net47;netstandard2.0;netcoreapp2.0;netcoreapp3.0</TargetFrameworks>
 
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
     <FileVersion>$(Version).$(Revision)</FileVersion>
@@ -44,6 +44,10 @@
     <PackageReference Include="Oracle.ManagedDataAccess" Version="18.3.0" />
   </ItemGroup>
 
+  <ItemGroup Condition="('$(TargetFramework)' == 'netcoreapp3.0')">
+    <PackageReference Include="System.Data.OleDb" Version="4.6.0-preview6.19303.8" />
+  </ItemGroup>
+  
   <ItemGroup>
     <Compile Include="..\..\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
@@ -120,12 +124,14 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
+  <!-- .NET Core 2.0 and .NET Standard 2.0 don't have OleDb support (.NET Core 3+ does) -->
+  <ItemGroup Condition="('$(TargetFramework)' == 'netstandard2.0') OR ('$(TargetFramework)' == 'netcoreapp2.0')">
     <Compile Remove="**\OleDb*.cs" />
     <Compile Remove="**\*.Desktop.cs" />
   </ItemGroup>
 
-  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
+  <!-- .NET Core 2.0 and .NET Standard 2.0 have incomplete System.Data.Common implementations, so they need these helpers -->
+  <ItemGroup Condition="!('$(TargetFramework)' == 'netstandard2.0') AND !('$(TargetFramework)' == 'netcoreapp2.0')">
     <Compile Remove="System.Data.Common\*.cs" />
   </ItemGroup>
 
@@ -152,7 +158,7 @@
     <RunFxCop>false</RunFxCop>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <Prefer32Bit>false</Prefer32Bit>
-    <CodeAnalysisRuleSet>..\..\Microsoft.Practices.EnterpriseLibrary.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\EnterpriseLibrary.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">

@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using Microsoft.Practices.EnterpriseLibrary.Data.Tests;
 using Microsoft.Practices.EnterpriseLibrary.Data.TestSupport;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -18,6 +19,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql.Tests
         [TestInitialize]
         public void SetUp()
         {
+            NetCoreHelpers.RegisterDbProviderFactories();
             DatabaseProviderFactory factory = new DatabaseProviderFactory(TestConfigurationSource.CreateConfigurationSource());
             db = factory.CreateDefault();
             baseFixture = new DataAccessTestsFixture(db);

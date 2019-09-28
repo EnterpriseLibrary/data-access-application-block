@@ -6,7 +6,7 @@
     <PreAssemblyName>Microsoft.Practices.EnterpriseLibrary</PreAssemblyName>
     <PrePackageName>EnterpriseLibrary</PrePackageName>
     <PostPackageName>.NetCore</PostPackageName>
-    <PackageReleaseNotes>This package is distributed as .NET Standard 2.0, .NET Core 2.0, .NET 4.0, 4.5, 4.6, 4.7 package.</PackageReleaseNotes>
+    <PackageReleaseNotes>This package is distributed as .NET Standard 2.0, .NET Core 2.0, .NET Core 3.0, .NET 4.0, 4.5, 4.6, 4.7 package.</PackageReleaseNotes>
 
     <SemanticVersionSuffix>-rc</SemanticVersionSuffix>
     <PackageVersion>$(Version)$(SemanticVersionSuffix)</PackageVersion>
@@ -23,9 +23,9 @@
 
   <PropertyGroup>
     <OracleManagedDataAccessCore>2.18.3</OracleManagedDataAccessCore>
-    <SystemConfigurationConfigurationManagerVersion>4.5.0</SystemConfigurationConfigurationManagerVersion>
+    <SystemConfigurationConfigurationManagerVersion>4.6.0-preview6.19303.8</SystemConfigurationConfigurationManagerVersion>
     <SystemDataOdbcVersion>4.5.0</SystemDataOdbcVersion>
-    <SystemDataSqlClientVersion>4.5.1</SystemDataSqlClientVersion>
+    <SystemDataSqlClientVersion>4.7.0-preview6.19303.8</SystemDataSqlClientVersion>
   </PropertyGroup>
 
   <PropertyGroup>

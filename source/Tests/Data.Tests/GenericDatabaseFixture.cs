@@ -16,6 +16,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
     {
         const string connectionString = "some connection string;";
 
+        [TestInitialize]
+        public void Setup()
+        {
+            NetCoreHelpers.RegisterDbProviderFactories();
+        }
+
         [TestMethod]
         public void CanCreateGenericDatabaseFromSysConfiguration()
         {
