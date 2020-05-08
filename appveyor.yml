@@ -7,7 +7,28 @@ services:
   - mssql2017
 
 install:
-  - ps: .\build\install.ps1
+  - ps: $exePath = "$env:USERPROFILE\SSCERuntime-ENU.exe"
+  - ps: (New-Object Net.WebClient).DownloadFile('https://download.microsoft.com/download/E/C/1/EC1B2340-67A0-4B87-85F0-74D987A27160/SSCERuntime-ENU.exe', $exePath)
+  
+  - ps: Write-Host "Installing..."
+  - ps: cmd /c start /wait $exePath /Q
+  - ps: Write-Host "SQL Server Compact installed" -foregroundcolor Green
+  
+  - ps: $zipPath = "$env:TEMP\SSCERuntime-ENU.exe"
+  - ps: Write-Host "Doanloading..."
+  - ps: (New-Object Net.WebClient).DownloadFile('https://download.microsoft.com/download/E/C/1/EC1B2340-67A0-4B87-85F0-74D987A27160/SSCERuntime-ENU.exe', $zipPath )
+  
+  - ps: $destPath = "$env:TEMP\SSCERuntime"
+  - ps: Write-Host "Unpacking..."
+  - ps: 7z x $zipPath -o"$destPath" | Out-Null
+  
+  - ps: Write-Host "Installing..."
+  - ps: # according to install.txt It is mandatory to install both the 32-bit and the 64-bit 
+  - ps: # version of SQL Server Compact MSI files on a 64-bit Computer
+  - ps: cmd /c start /wait $destPath\SSCERuntime_x86-ENU.msi /quiet /norestart
+  - ps: cmd /c start /wait $destPath\SSCERuntime_x64-ENU.msi /quiet /norestart
+  
+  - ps: Write-Host "SQL Server Compact installed" -foregroundcolor Green
   - ps: $env:version_file_path = ".\version.props"
   - ps: gitversion /output buildserver
   - ps: $env:major_version = (Select-Xml -Path $env:version_file_path -XPath "/Project/PropertyGroup/MajorVersion" | Select-Object -ExpandProperty Node).InnerText
