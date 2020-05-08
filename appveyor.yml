@@ -7,7 +7,7 @@ services:
   - mssql2017
 
 install:
-  - cmd: powershell _File build\install-sql-compact.ps1
+  - cmd: powershell -File build\install-sql-compact.ps1
   - ps: $env:version_file_path = ".\version.props"
   - ps: gitversion /output buildserver
   - ps: $env:major_version = (Select-Xml -Path $env:version_file_path -XPath "/Project/PropertyGroup/MajorVersion" | Select-Object -ExpandProperty Node).InnerText
