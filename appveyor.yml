@@ -4,7 +4,7 @@ platform: Any CPU
 skip_tags: true
 
 services:
-  - mssql2016
+  - mssql2017
 
 install:
   - ps: $env:version_file_path = ".\version.props"
