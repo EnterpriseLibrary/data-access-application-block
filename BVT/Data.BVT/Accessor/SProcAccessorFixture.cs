@@ -46,7 +46,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.Accessor
 
             var first = rowMapper.First();
 
-            Assert.AreEqual("C�te de Blaye", first.TenMostExpensiveProducts);
+            Assert.AreEqual("Côte de Blaye", first.TenMostExpensiveProducts);
         }
 
         [TestMethod]
@@ -59,7 +59,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.Accessor
 
             var first = rowMapper.First();
 
-            Assert.AreEqual("C�te de Blaye", first.TenMostExpensiveProducts);
+            Assert.AreEqual("Côte de Blaye", first.TenMostExpensiveProducts);
             Assert.AreEqual(default(decimal), first.UnitPrice);
         }
 
@@ -143,7 +143,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.Accessor
 
             var topTenProduct = results.First();
 
-            Assert.AreEqual("C�te de Blaye", topTenProduct.TenMostExpensiveProducts);
+            Assert.AreEqual("Côte de Blaye", topTenProduct.TenMostExpensiveProducts);
             Assert.AreEqual(263.50M, topTenProduct.UnitPrice);
         }
 
@@ -157,7 +157,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.Accessor
             var results = accessor.Execute().ToList();
 
             Assert.AreEqual(2, results.Count);
-            Assert.AreEqual("C�te de Blaye", results[0].TenMostExpensiveProducts);
+            Assert.AreEqual("Côte de Blaye", results[0].TenMostExpensiveProducts);
             Assert.AreEqual(263.50M, results[0].UnitPrice);
         }
 
@@ -571,7 +571,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.Accessor
             if (state.Exception != null)
                 Console.WriteLine(state.Exception);
             Assert.IsNull(state.Exception);
-            Assert.AreEqual("C�te de Blaye", first.TenMostExpensiveProducts);
+            Assert.AreEqual("Côte de Blaye", first.TenMostExpensiveProducts);
             Assert.AreEqual(263, (int)first.UnitPrice);
         }
 
@@ -663,7 +663,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.Accessor
 
             var first = resultSet.First();
 
-            Assert.AreEqual("C�te de Blaye", first.TenMostExpensiveProducts);
+            Assert.AreEqual("Côte de Blaye", first.TenMostExpensiveProducts);
             Assert.AreEqual(default(decimal), first.UnitPrice);
         }
 
