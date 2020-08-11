@@ -1,4 +1,4 @@
-﻿use "Northwind"
+ï»¿use "Northwind"
 
 
 if exists (select * from sysobjects where id = object_id('dbo.GetTestData') and sysstat & 0xf = 4)
