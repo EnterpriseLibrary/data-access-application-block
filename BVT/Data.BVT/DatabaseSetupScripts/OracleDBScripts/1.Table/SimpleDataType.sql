@@ -30,5 +30,4 @@ STORAGE    (
             PCTINCREASE      0
             BUFFER_POOL      DEFAULT
            );
-
-
+/
