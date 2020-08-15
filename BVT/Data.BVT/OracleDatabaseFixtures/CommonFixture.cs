@@ -69,9 +69,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.OracleDatabaseFixtures
             Database db = factory.Create("OracleTest");
             DbCommand dbCommand = db.GetStoredProcCommand("GetProductName");
             db.AddInParameter(dbCommand, "vProductId", DbType.Int32, 1);
-            db.AddOutParameter(dbCommand, "vResult", DbType.String, 100);
+            db.AddOutParameter(dbCommand, "vResult", DbType.StringFixedLength, 100);
             db.ExecuteScalar(dbCommand);
-            Assert.AreEqual("Product1", db.GetParameterValue(dbCommand, "vResult"));
+            Assert.AreEqual("Product1", db.GetParameterValue(dbCommand, "vResult").ToString().Trim());
         }
 
         [TestMethod]
@@ -191,9 +191,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.OracleDatabaseFixtures
             Database db = DatabaseFactory.CreateDatabase("OracleDefaultPackageTest");
             DbCommand dbCommand = db.GetStoredProcCommand("GetProductName");
             db.AddInParameter(dbCommand, "vProductId", DbType.Int32, 1);
-            db.AddOutParameter(dbCommand, "vResult", DbType.String, 100);
+            db.AddOutParameter(dbCommand, "vResult", DbType.StringFixedLength, 100);
             db.ExecuteScalar(dbCommand);
-            Assert.AreEqual("Product1", db.GetParameterValue(dbCommand, "vResult"));
+            Assert.AreEqual("Product1", db.GetParameterValue(dbCommand, "vResult").ToString().Trim());
         }
 
         [TestMethod]
