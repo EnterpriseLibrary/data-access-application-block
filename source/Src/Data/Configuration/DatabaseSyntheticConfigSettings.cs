@@ -47,7 +47,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DatabaseSyntheticConfigSettings"/> class
-        /// with the given configuraiton access function.
+        /// with the given configuration access function.
         /// </summary>
         public DatabaseSyntheticConfigSettings(Func<string, ConfigurationSection> configurationSource)
         {
