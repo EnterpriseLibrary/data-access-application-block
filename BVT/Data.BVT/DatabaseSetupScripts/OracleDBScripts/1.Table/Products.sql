@@ -51,5 +51,4 @@ ALTER TABLE PRODUCTS ADD (
                 MAXEXTENTS       2147483645
                 PCTINCREASE      0
                ));
-
-
+/

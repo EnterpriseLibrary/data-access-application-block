@@ -48,5 +48,4 @@ ALTER TABLE COUNTRY ADD (
                 MAXEXTENTS       2147483645
                 PCTINCREASE      0
                ));
-
-
+/
