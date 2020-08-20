@@ -4,10 +4,7 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
-using System.Reflection;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
-using Microsoft.Practices.EnterpriseLibrary.Data;
-using Microsoft.Practices.EnterpriseLibrary.Data.BVT;
 using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Oracle;
 using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
@@ -69,9 +66,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.OracleDatabaseFixtures
             Database db = factory.Create("OracleTest");
             DbCommand dbCommand = db.GetStoredProcCommand("GetProductName");
             db.AddInParameter(dbCommand, "vProductId", DbType.Int32, 1);
-            db.AddOutParameter(dbCommand, "vResult", DbType.String, 100);
+            db.AddOutParameter(dbCommand, "vResult", DbType.StringFixedLength, 100);
             db.ExecuteScalar(dbCommand);
-            Assert.AreEqual("Product1", db.GetParameterValue(dbCommand, "vResult"));
+            Assert.AreEqual("Product1", db.GetParameterValue(dbCommand, "vResult").ToString().Trim());
         }
 
         [TestMethod]
@@ -191,9 +188,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.OracleDatabaseFixtures
             Database db = DatabaseFactory.CreateDatabase("OracleDefaultPackageTest");
             DbCommand dbCommand = db.GetStoredProcCommand("GetProductName");
             db.AddInParameter(dbCommand, "vProductId", DbType.Int32, 1);
-            db.AddOutParameter(dbCommand, "vResult", DbType.String, 100);
+            db.AddOutParameter(dbCommand, "vResult", DbType.StringFixedLength, 100);
             db.ExecuteScalar(dbCommand);
-            Assert.AreEqual("Product1", db.GetParameterValue(dbCommand, "vResult"));
+            Assert.AreEqual("Product1", db.GetParameterValue(dbCommand, "vResult").ToString().Trim());
         }
 
         [TestMethod]
@@ -249,8 +246,13 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.OracleDatabaseFixtures
             db.ExecuteNonQuery(dbCommand);
         }
 
+        /// <summary>
+        /// Tests that an exception is thrown when the connection string is invalid.
+        /// </summary>
+        /// <exception cref="ArgumentException">An invalid syntax is specified for the connection string.</exception>
+        /// <seealso cref="https://docs.oracle.com/en/database/oracle/oracle-database/18/odpnt/ConnectionConnectionString.html#GUID-DF4ED9A3-1AAF-445D-AEEF-016E6CD5A0C0"/>
         [TestMethod]
-        [ExpectedException(typeof(OracleException))]
+        [ExpectedException(typeof(ArgumentException))]
         public void ExceptionIsThrownWhenInvalidConnectionString()
         {
             Database db = DatabaseFactory.CreateDatabase("InvalidConnectionString");

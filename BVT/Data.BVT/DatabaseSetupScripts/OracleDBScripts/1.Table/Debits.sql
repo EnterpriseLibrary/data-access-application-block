@@ -49,5 +49,4 @@ ALTER TABLE DEBITS ADD (
                 MAXEXTENTS       2147483645
                 PCTINCREASE      0
                ));
-
-
+/

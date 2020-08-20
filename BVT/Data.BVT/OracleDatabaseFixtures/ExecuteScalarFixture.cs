@@ -149,10 +149,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.OracleDatabaseFixtures
                     db.ExecuteScalar(transaction, "DeleteCountry", new object[] { "SA" });
                     transaction.Commit();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     transaction.Rollback();
-                    Assert.Fail("Transaction Rolled back");
+                    Assert.Fail("Transaction Rolled back: " + ex.Message);
                 }
                 finally
                 {
