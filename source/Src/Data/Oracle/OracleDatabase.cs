@@ -9,6 +9,7 @@ using System.Globalization;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
+using Oracle.ManagedDataAccess.Types;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
 {
@@ -354,6 +355,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
 
         private static object ConvertByteArrayToGuid(object value)
         {
+            if (value is OracleBinary oracleBinary)
+            {
+                try
+                {
+                    return new Guid(oracleBinary.Value);
+                }
+                catch (OracleNullValueException)
+                {
+                    return DBNull.Value;
+                }
+            }
             byte[] buffer = (byte[])value;
             if (buffer.Length == 0)
             {

@@ -430,7 +430,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlCeDatabaseFixtures
         }
 
         /// <summary>
-        /// To test that a dataset that is returned from the sql ce database is rolledback by the executing the command through the sql ce provider when the transaction is rolled back.
+        /// To test that a dataset that is returned from the sql ce database is rolled back by the executing the command through the sql ce provider when the transaction is rolled back.
         /// </summary>
         /// <expectedoutput>
         /// Proper dataset containing the expected data rows.

@@ -8,10 +8,10 @@ VALUES
  ('BLAUS', 'Blauer See Delikatessen', 'Hanna Moos', 'Sales Representative','Forsterstr. 57', 'Mannheim', NULL, '68306', 'Germany','0621-08460', '0621-08924');
 Insert into Customers    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
 VALUES
-('BLONP', 'Blondesddsl père et fils', 'Frédérique Citeaux', 'Marketing Manager','24, place Kléber', 'Strasbourg', NULL, '67000', 'France', '88.60.15.31', '88.60.15.32');
+('BLONP', 'Blondesddsl pÃ¨re et fils', 'FrÃ©dÃ©rique Citeaux', 'Marketing Manager','24, place KlÃ©ber', 'Strasbourg', NULL, '67000', 'France', '88.60.15.31', '88.60.15.32');
 Insert into Customers    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
 VALUES
-('BOLID', 'Bólido Comidas preparadas', 'Martín Sommer', 'Owner','C/ Araquil, 67', 'Madrid', NULL, '28023', 'Spain','(91) 555 22 82', '(91) 555 91 99');
+('BOLID', 'BÃ³lido Comidas preparadas', 'MartÃ­n Sommer', 'Owner','C/ Araquil, 67', 'Madrid', NULL, '28023', 'Spain','(91) 555 22 82', '(91) 555 91 99');
 Insert into Customers    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
 VALUES
 ('BONAP', 'Bon app', 'Laurence Lebihan', 'Owner','12, rue des Bouchers', 'Marseille', NULL, '13008', 'France','91.24.45.40', '91.24.45.41');
@@ -26,13 +26,13 @@ VALUES
 ('CACTU', 'Cactus Comidas para llevar', 'Patricio Simpson', 'Sales Agent','Cerrito 333', 'Buenos Aires', NULL, '1010', 'Argentina','(1) 135-5555', '(1) 135-4892');
 Insert into Customers    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
 VALUES
-('CENTC', 'Centro comercial Moctezuma', 'Francisco Chang', 'Marketing Manager','Sierras de Granada 9993','México D.F.', NULL, '05022', 'Mexico','(5) 555-3392', '(5) 555-7293');
+('CENTC', 'Centro comercial Moctezuma', 'Francisco Chang', 'Marketing Manager','Sierras de Granada 9993','MÃ©xico D.F.', NULL, '05022', 'Mexico','(5) 555-3392', '(5) 555-7293');
 Insert into Customers    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
 VALUES
 ('CHOPS', 'Chop-suey Chinese', 'Yang Wang', 'Owner','Hauptstr. 29', 'Bern', NULL, '3012', 'Switzerland','0452-076545', NULL);
 Insert into Customers    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
 VALUES
-('COMMI', 'Comércio Mineiro', 'Pedro Afonso', 'Sales Associate','Av. dos Lusíadas, 23', 'Sao Paulo', 'SP', '05432-043', 'Brazil','(11) 555-7647', NULL);
+('COMMI', 'ComÃ©rcio Mineiro', 'Pedro Afonso', 'Sales Associate','Av. dos LusÃ­adas, 23', 'Sao Paulo', 'SP', '05432-043', 'Brazil','(11) 555-7647', NULL);
 Insert into Customers    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
 VALUES
 ('CONSH', 'Consolidated Holdings', 'Elizabeth Brown', 'Sales Representative','Berkeley Gardens 12  Brewery', 'London', NULL, 'WX1 6LT', 'UK', '(171) 555-2282', '(171) 555-9199');
@@ -58,7 +58,7 @@ Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
    ('FAMIA', 'Familia Arquibaldo', 'Aria Cruz', 'Marketing Assistant', 
-    'Rua Orós, 92', 'Sao Paulo', 'SP', '05442-030', 'Brazil', 
+    'Rua OrÃ³s, 92', 'Sao Paulo', 'SP', '05442-030', 'Brazil', 
     '(11) 555-9857', NULL);
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
@@ -69,20 +69,20 @@ Insert into Customers
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('FOLIG', 'Folies gourmandes', 'Martine Rancé', 'Assistant Sales Agent', 
-    '184, chaussée de Tournai', 'Lille', NULL, '59000', 'France', 
+   ('FOLIG', 'Folies gourmandes', 'Martine RancÃ©', 'Assistant Sales Agent', 
+    '184, chaussÃ©e de Tournai', 'Lille', NULL, '59000', 'France', 
     '20.16.10.16', '20.16.10.17');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('FOLKO', 'Folk och fä HB', 'Maria Larsson', 'Owner', 
-    'Åkergatan 24', 'Bräcke', NULL, 'S-844 67', 'Sweden', 
+   ('FOLKO', 'Folk och fÃ¤ HB', 'Maria Larsson', 'Owner', 
+    'Ã…kergatan 24', 'BrÃ¤cke', NULL, 'S-844 67', 'Sweden', 
     '0695-34 67 21', NULL);
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
    ('FRANK', 'Frankenversand', 'Peter Franken', 'Marketing Manager', 
-    'Berliner Platz 43', 'München', NULL, '80805', 'Germany', 
+    'Berliner Platz 43', 'MÃ¼nchen', NULL, '80805', 'Germany', 
     '089-0877310', '089-0877451');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
@@ -105,19 +105,19 @@ Insert into Customers
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('GALED', 'Galería del gastrónomo', 'Eduardo Saavedra', 'Marketing Manager', 
-    'Rambla de Cataluña, 23', 'Barcelona', NULL, '08022', 'Spain', 
+   ('GALED', 'GalerÃ­a del gastrÃ³nomo', 'Eduardo Saavedra', 'Marketing Manager', 
+    'Rambla de CataluÃ±a, 23', 'Barcelona', NULL, '08022', 'Spain', 
     '(93) 203 4560', '(93) 203 4561');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('GODOS', 'Godos Cocina Típica', 'José Pedro Freyre', 'Sales Manager', 
+   ('GODOS', 'Godos Cocina TÃ­pica', 'JosÃ© Pedro Freyre', 'Sales Manager', 
     'C/ Romero, 33', 'Sevilla', NULL, '41101', 'Spain', 
     '(95) 555 82 82', NULL);
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('GOURL', 'Gourmet Lanchonetes', 'André Fonseca', 'Sales Associate', 
+   ('GOURL', 'Gourmet Lanchonetes', 'AndrÃ© Fonseca', 'Sales Associate', 
     'Av. Brasil, 442', 'Campinas', 'SP', '04876-786', 'Brazil', 
     '(11) 555-9482', NULL);
 Insert into Customers
@@ -130,19 +130,19 @@ Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
    ('GROSR', 'GROSELLA-Restaurante', 'Manuel Pereira', 'Owner', 
-    '5ª Ave. Los Palos Grandes', 'Caracas', 'DF', '1081', 'Venezuela', 
+    '5Âª Ave. Los Palos Grandes', 'Caracas', 'DF', '1081', 'Venezuela', 
     '(2) 283-2951', '(2) 283-3397');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
    ('HANAR', 'Hanari Carnes', 'Mario Pontes', 'Accounting Manager', 
-    'Rua do Paço, 67', 'Rio de Janeiro', 'RJ', '05454-876', 'Brazil', 
+    'Rua do PaÃ§o, 67', 'Rio de Janeiro', 'RJ', '05454-876', 'Brazil', 
     '(21) 555-0091', '(21) 555-8765');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('HILAA', 'HILARION-Abastos', 'Carlos Hernández', 'Sales Representative', 
-    'Carrera 22 con Ave. Carlos Soublette #8-35', 'San Cristóbal', 'Táchira', '5022', 'Venezuela', 
+   ('HILAA', 'HILARION-Abastos', 'Carlos HernÃ¡ndez', 'Sales Representative', 
+    'Carrera 22 con Ave. Carlos Soublette #8-35', 'San CristÃ³bal', 'TÃ¡chira', '5022', 'Venezuela', 
     '(5) 555-1340', '(5) 555-1948');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
@@ -165,7 +165,7 @@ Insert into Customers
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('KOENE', 'Königlich Essen', 'Philip Cramer', 'Sales Associate', 
+   ('KOENE', 'KÃ¶niglich Essen', 'Philip Cramer', 'Sales Associate', 
     'Maubelstr. 90', 'Brandenburg', NULL, '14776', 'Germany', 
     '0555-09876', NULL);
 Insert into Customers
@@ -207,8 +207,8 @@ Insert into Customers
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('LILAS', 'LILA-Supermercado', 'Carlos González', 'Accounting Manager', 
-    'Carrera 52 con Ave. Bolívar #65-98 Llano Largo', 'Barquisimeto', 'Lara', '3508', 'Venezuela', 
+   ('LILAS', 'LILA-Supermercado', 'Carlos GonzÃ¡lez', 'Accounting Manager', 
+    'Carrera 52 con Ave. BolÃ­var #65-98 Llano Largo', 'Barquisimeto', 'Lara', '3508', 'Venezuela', 
     '(9) 331-6954', '(9) 331-7256');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
@@ -237,8 +237,8 @@ Insert into Customers
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('MEREP', 'Mère Paillarde', 'Jean Fresnière', 'Marketing Assistant', 
-    '43 rue St. Laurent', 'Montréal', 'Québec', 'H1J 1C3', 'Canada', 
+   ('MEREP', 'MÃ¨re Paillarde', 'Jean FresniÃ¨re', 'Marketing Assistant', 
+    '43 rue St. Laurent', 'MontrÃ©al', 'QuÃ©bec', 'H1J 1C3', 'Canada', 
     '(514) 555-8054', '(514) 555-8055');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
@@ -255,7 +255,7 @@ Insert into Customers
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('OCEAN', 'Océano Atlántico Ltda.', 'Yvonne Moncada', 'Sales Agent', 
+   ('OCEAN', 'OcÃ©ano AtlÃ¡ntico Ltda.', 'Yvonne Moncada', 'Sales Agent', 
     'Ing. Gustavo Moncada 8585 Piso 20-A', 'Buenos Aires', NULL, '1010', 'Argentina', 
     '(1) 135-5333', '(1) 135-5535');
 Insert into Customers
@@ -267,20 +267,20 @@ Insert into Customers
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('OTTIK', 'Ottilies Käseladen', 'Henriette Pfalzheim', 'Owner', 
-    'Mehrheimerstr. 369', 'Köln', NULL, '50739', 'Germany', 
+   ('OTTIK', 'Ottilies KÃ¤seladen', 'Henriette Pfalzheim', 'Owner', 
+    'Mehrheimerstr. 369', 'KÃ¶ln', NULL, '50739', 'Germany', 
     '0221-0644327', '0221-0765721');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('PARIS', 'Paris spécialités', 'Marie Bertrand', 'Owner', 
+   ('PARIS', 'Paris spÃ©cialitÃ©s', 'Marie Bertrand', 'Owner', 
     '265, boulevard Charonne', 'Paris', NULL, '75012', 'France', 
     '(1) 42.34.22.66', '(1) 42.34.22.77');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('PERIC', 'Pericles Comidas clásicas', 'Guillermo Fernández', 'Sales Representative', 
-    'Calle Dr. Jorge Cash 321', 'México D.F.', NULL, '05033', 'Mexico', 
+   ('PERIC', 'Pericles Comidas clÃ¡sicas', 'Guillermo FernÃ¡ndez', 'Sales Representative', 
+    'Calle Dr. Jorge Cash 321', 'MÃ©xico D.F.', NULL, '05033', 'Mexico', 
     '(5) 552-3745', '(5) 545-3745');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
@@ -292,7 +292,7 @@ Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
    ('PRINI', 'Princesa Isabel Vinhos', 'Isabel de Castro', 'Sales Representative', 
-    'Estrada da saúde n. 58', 'Lisboa', NULL, '1756', 'Portugal', 
+    'Estrada da saÃºde n. 58', 'Lisboa', NULL, '1756', 'Portugal', 
     '(1) 356-5634', NULL);
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
@@ -304,13 +304,13 @@ Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
    ('ANATR', 'Ana Trujillo Emparedados y helados', 'Ana Trujillo', 'Owner', 
-    'Avda. de la Constitución 2222', 'México D.F.', NULL, '05021', 'Mexico', 
+    'Avda. de la ConstituciÃ³n 2222', 'MÃ©xico D.F.', NULL, '05021', 'Mexico', 
     '(5) 555-4729', '(5) 555-3745');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('ANTON', 'Antonio Moreno Taquería', 'Antonio Moreno', 'Owner', 
-    'Mataderos  2312', 'México D.F.', NULL, '05023', 'Mexico', 
+   ('ANTON', 'Antonio Moreno TaquerÃ­a', 'Antonio Moreno', 'Owner', 
+    'Mataderos  2312', 'MÃ©xico D.F.', NULL, '05023', 'Mexico', 
     '(5) 555-3932', NULL);
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
@@ -321,31 +321,31 @@ Insert into Customers
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('BERGS', 'Berglunds snabbköp', 'Christina Berglund', 'Order Administrator', 
-    'Berguvsvägen  8', 'Luleå', NULL, 'S-958 22', 'Sweden', 
+   ('BERGS', 'Berglunds snabbkÃ¶p', 'Christina Berglund', 'Order Administrator', 
+    'BerguvsvÃ¤gen  8', 'LuleÃ¥', NULL, 'S-958 22', 'Sweden', 
     '0921-12 34 65', '0921-12 34 67');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('QUEDE', 'Que Delícia', 'Bernardo Batista', 'Accounting Manager', 
+   ('QUEDE', 'Que DelÃ­cia', 'Bernardo Batista', 'Accounting Manager', 
     'Rua da Panificadora, 12', 'Rio de Janeiro', 'RJ', '02389-673', 'Brazil', 
     '(21) 555-4252', '(21) 555-4545');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('QUEEN', 'Queen Cozinha', 'Lúcia Carvalho', 'Marketing Assistant', 
-    'Alameda dos Canàrios, 891', 'Sao Paulo', 'SP', '05487-020', 'Brazil', 
+   ('QUEEN', 'Queen Cozinha', 'LÃºcia Carvalho', 'Marketing Assistant', 
+    'Alameda dos CanÃ rios, 891', 'Sao Paulo', 'SP', '05487-020', 'Brazil', 
     '(11) 555-1189', NULL);
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
    ('QUICK', 'QUICK-Stop', 'Horst Kloss', 'Accounting Manager', 
-    'Taucherstraße 10', 'Cunewalde', NULL, '01307', 'Germany', 
+    'TaucherstraÃŸe 10', 'Cunewalde', NULL, '01307', 'Germany', 
     '0372-035188', NULL);
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('RANCH', 'Rancho grande', 'Sergio Gutiérrez', 'Sales Representative', 
+   ('RANCH', 'Rancho grande', 'Sergio GutiÃ©rrez', 'Sales Representative', 
     'Av. del Libertador 900', 'Buenos Aires', NULL, '1010', 'Argentina', 
     '(1) 123-5555', '(1) 123-5556');
 Insert into Customers
@@ -370,18 +370,18 @@ Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
    ('RICSU', 'Richter Supermarkt', 'Michael Holz', 'Sales Manager', 
-    'Grenzacherweg 237', 'Genève', NULL, '1203', 'Switzerland', 
+    'Grenzacherweg 237', 'GenÃ¨ve', NULL, '1203', 'Switzerland', 
     '0897-034214', NULL);
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
    ('ROMEY', 'Romero y tomillo', 'Alejandra Camino', 'Accounting Manager', 
-    'Gran Vía, 1', 'Madrid', NULL, '28001', 'Spain', 
+    'Gran VÃ­a, 1', 'Madrid', NULL, '28001', 'Spain', 
     '(91) 745 6200', '(91) 745 6210');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('SANTG', 'Santé Gourmet', 'Jonas Bergulfsen', 'Owner', 
+   ('SANTG', 'SantÃ© Gourmet', 'Jonas Bergulfsen', 'Owner', 
     'Erling Skakkes gate 78', 'Stavern', NULL, '4110', 'Norway', 
     '07-98 92 35', '07-98 92 47');
 Insert into Customers
@@ -400,12 +400,12 @@ Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
    ('SIMOB', 'Simons bistro', 'Jytte Petersen', 'Owner', 
-    'Vinbæltet 34', 'Kobenhavn', NULL, '1734', 'Denmark', 
+    'VinbÃ¦ltet 34', 'Kobenhavn', NULL, '1734', 'Denmark', 
     '31 12 34 56', '31 13 35 57');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('SPECD', 'Spécialités du monde', 'Dominique Perrier', 'Marketing Manager', 
+   ('SPECD', 'SpÃ©cialitÃ©s du monde', 'Dominique Perrier', 'Marketing Manager', 
     '25, rue Lauriston', 'Paris', NULL, '75016', 'France', 
     '(1) 47.55.60.10', '(1) 47.55.60.20');
 Insert into Customers
@@ -417,7 +417,7 @@ Insert into Customers
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('SUPRD', 'Suprêmes délices', 'Pascale Cartrain', 'Accounting Manager', 
+   ('SUPRD', 'SuprÃªmes dÃ©lices', 'Pascale Cartrain', 'Accounting Manager', 
     'Boulevard Tirou, 255', 'Charleroi', NULL, 'B-6000', 'Belgium', 
     '(071) 23 67 22 20', '(071) 23 67 22 21');
 Insert into Customers
@@ -435,20 +435,20 @@ Insert into Customers
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('TOMSP', 'Toms Spezialitäten', 'Karin Josephs', 'Marketing Manager', 
-    'Luisenstr. 48', 'Münster', NULL, '44087', 'Germany', 
+   ('TOMSP', 'Toms SpezialitÃ¤ten', 'Karin Josephs', 'Marketing Manager', 
+    'Luisenstr. 48', 'MÃ¼nster', NULL, '44087', 'Germany', 
     '0251-031259', '0251-035695');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
    ('TORTU', 'Tortuga Restaurante', 'Miguel Angel Paolino', 'Owner', 
-    'Avda. Azteca 123', 'México D.F.', NULL, '05033', 'Mexico', 
+    'Avda. Azteca 123', 'MÃ©xico D.F.', NULL, '05033', 'Mexico', 
     '(5) 555-2933', NULL);
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('TRADH', 'Tradição Hipermercados', 'Anabela Domingues', 'Sales Representative', 
-    'Av. Inês de Castro, 414', 'Sao Paulo', 'SP', '05634-030', 'Brazil', 
+   ('TRADH', 'TradiÃ§Ã£o Hipermercados', 'Anabela Domingues', 'Sales Representative', 
+    'Av. InÃªs de Castro, 414', 'Sao Paulo', 'SP', '05634-030', 'Brazil', 
     '(11) 555-2167', '(11) 555-2168');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
@@ -460,7 +460,7 @@ Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
    ('VAFFE', 'Vaffeljernet', 'Palle Ibsen', 'Sales Manager', 
-    'Smagsloget 45', 'Århus', NULL, '8200', 'Denmark', 
+    'Smagsloget 45', 'Ã…rhus', NULL, '8200', 'Denmark', 
     '86 21 32 43', '86 22 33 44');
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
@@ -477,7 +477,7 @@ Insert into Customers
 Insert into Customers
    (CUSTOMERID, COMPANYNAME, CONTACTNAME, CONTACTTITLE, ADDRESS, CITY, REGION, POSTALCODE, COUNTRY, PHONE, FAX)
  Values
-   ('WANDK', 'Die Wandernde Kuh', 'Rita Müller', 'Sales Representative', 
+   ('WANDK', 'Die Wandernde Kuh', 'Rita MÃ¼ller', 'Sales Representative', 
     'Adenauerallee 900', 'Stuttgart', NULL, '70563', 'Germany', 
     '0711-020361', '0711-035428');
 Insert into Customers
