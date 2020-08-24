@@ -1,7 +1,6 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2015
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{E3FD426C-F9D4-490A-A334-183DCE5D2C5C}"
 	ProjectSection(FolderStartupServices) = postProject
@@ -30,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.TestSupport", "Tests\D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Application Block", "Data Application Block", "{EC27CB28-3D15-4C74-A1E6-6A2E60BCE31E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oracle.Tests.VSTS", "Tests\Oracle.Tests.VSTS\Oracle.Tests.VSTS.csproj", "{4C027888-9F17-4692-ACBB-A58AC97A14FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +57,10 @@ Global
 		{5D9A30BB-5CC0-46F3-BD4B-828FC6270323}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D9A30BB-5CC0-46F3-BD4B-828FC6270323}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D9A30BB-5CC0-46F3-BD4B-828FC6270323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C027888-9F17-4692-ACBB-A58AC97A14FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C027888-9F17-4692-ACBB-A58AC97A14FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C027888-9F17-4692-ACBB-A58AC97A14FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C027888-9F17-4692-ACBB-A58AC97A14FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,9 +72,9 @@ Global
 		{C10AAE86-F79E-430E-A5A4-FCDB9BB54AB0} = {E3FD426C-F9D4-490A-A334-183DCE5D2C5C}
 		{16D47884-153E-4A57-84F4-54115558CEEC} = {E3FD426C-F9D4-490A-A334-183DCE5D2C5C}
 		{5D9A30BB-5CC0-46F3-BD4B-828FC6270323} = {E3FD426C-F9D4-490A-A334-183DCE5D2C5C}
+		{4C027888-9F17-4692-ACBB-A58AC97A14FA} = {E3FD426C-F9D4-490A-A334-183DCE5D2C5C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		Microsoft.Practices.EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\Microsoft.Practices.EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
 		SolutionGuid = {65EF901E-961B-48A6-9A64-1680F2624732}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
