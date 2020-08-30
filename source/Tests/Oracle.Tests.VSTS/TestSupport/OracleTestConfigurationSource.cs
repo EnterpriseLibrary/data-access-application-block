@@ -8,9 +8,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests.TestSupport
 {
     public static class OracleTestConfigurationSource
     {
-        public const string OracleConnectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.235)(PORT=1522)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=DEPOSIT_CLONE_SITDB.localdomain)));user id=CBDB_DEPOSIT_ADMIN;password=Password1";
+        public static readonly string OracleConnectionString;
         public const string OracleConnectionStringName = "OracleTest";
         public const string OracleProviderName = "Oracle.ManagedDataAccess.Client";
+
+        static OracleTestConfigurationSource()
+        {
+            OracleConnectionString = ConfigurationManager.ConnectionStrings[OracleConnectionStringName].ConnectionString;
+        }
 
         public static DictionaryConfigurationSource CreateConfigurationSource()
         {

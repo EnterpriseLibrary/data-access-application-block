@@ -2,6 +2,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -57,8 +59,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Common.TestSupport.ContextBase
                 Arrange();
                 Act();
             }
-            catch
+            catch (SqlException ex)
             {
+                Trace.TraceError(ex.GetType().Name + ": " + ex.Message);
                 this.MainTeardown();
                 throw;
             }
