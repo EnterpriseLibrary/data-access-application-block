@@ -20,10 +20,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
     {
         /// <summary>
         /// Specify a custom provider name or alias to use.  This must
-        /// map to the name of the invarient name specified by <see cref="DbProviderFactories"/>
+        /// map to the name of the invariant name specified by <see cref="DbProviderFactories"/>
         /// </summary>
         /// <remarks>If the provider is not mapped to a specific Enterprise Library <see cref="Database"/> class, then the <see cref="GenericDatabase"/> will be used.</remarks>
-        /// <param name="providerName">The name of the database provider's invarient.</param>
+        /// <param name="providerName">The name of the database provider's invariant.</param>
         /// <returns></returns>
         IDatabaseProviderConfiguration WithProviderNamed(string providerName);
     }

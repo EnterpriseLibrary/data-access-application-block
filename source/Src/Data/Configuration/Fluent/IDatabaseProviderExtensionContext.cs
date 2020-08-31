@@ -6,12 +6,12 @@ using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
 {
     /// <summary>
-    /// Provides extenson context for database provider extensions.
+    /// Provides extension context for database provider extensions.
     /// </summary>
     public interface IDatabaseProviderExtensionContext
     {
         ///<summary>
-        /// The current connetion string under construction in the fluent interface.
+        /// The current connection string under construction in the fluent interface.
         ///</summary>
         ConnectionStringSettings ConnectionString { get; }
 

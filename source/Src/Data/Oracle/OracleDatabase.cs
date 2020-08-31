@@ -307,7 +307,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         /// This is a private method that will build the Oracle package name if your stored procedure
         /// has proper prefix and postfix. 
         /// This functionality is include for
-        /// the portability of the architecture between SQL and Oracle datbase.
+        /// the portability of the architecture between SQL and Oracle database.
         /// This method also adds the reference cursor to the command writer if not already added. This
         /// is required for Oracle .NET managed data provider.
         /// </devdoc>        
@@ -447,7 +447,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         /// <summary>
         /// <para>Discovers parameters on the <paramref name="command"/> and assigns the values from <paramref name="parameterValues"/> to the <paramref name="command"/>s Parameters list.</para>
         /// </summary>
-        /// <param name="command">The command the parameeter values will be assigned to</param>
+        /// <param name="command">The command the parameter values will be assigned to</param>
         /// <param name="parameterValues">The parameter values that will be assigned to the command.</param>
         public override void AssignParameters(DbCommand command, object[] parameterValues)
         {
