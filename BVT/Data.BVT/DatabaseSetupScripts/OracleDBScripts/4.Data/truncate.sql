@@ -10,3 +10,5 @@ truncate table simpledatatype;
 commit;
 truncate table debits;
 commit;
+TRUNCATE TABLE Region;
+COMMIT;

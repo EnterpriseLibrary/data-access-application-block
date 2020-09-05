@@ -102,7 +102,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <summary>
         /// Adds a new In <see cref="DbParameter"/> object to the given <paramref name="command"/>.
         /// </summary>
-        /// <param name="command">The commmand to add the parameter.</param>
+        /// <param name="command">The command to add the parameter.</param>
         /// <param name="name"><para>The name of the parameter.</para></param>
         /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>                
         /// <param name="value"><para>The value of the parameter.</para></param>      
@@ -154,7 +154,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>
         /// <param name="size"><para>The maximum size of the data within the column.</para></param>
         /// <param name="direction"><para>One of the <see cref="ParameterDirection"/> values.</para></param>
-        /// <param name="nullable"><para>Avalue indicating whether the parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual Basic) values.</para></param>
+        /// <param name="nullable"><para>A value indicating whether the parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual Basic) values.</para></param>
         /// <param name="precision"><para>The maximum number of digits used to represent the <paramref name="value"/>.</para></param>
         /// <param name="scale"><para>The number of decimal places to which <paramref name="value"/> is resolved.</para></param>
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
@@ -255,7 +255,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>
         /// <param name="size"><para>The maximum size of the data within the column.</para></param>
         /// <param name="direction"><para>One of the <see cref="ParameterDirection"/> values.</para></param>
-        /// <param name="nullable"><para>Avalue indicating whether the parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual Basic) values.</para></param>
+        /// <param name="nullable"><para>A value indicating whether the parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual Basic) values.</para></param>
         /// <param name="precision"><para>The maximum number of digits used to represent the <paramref name="value"/>.</para></param>
         /// <param name="scale"><para>The number of decimal places to which <paramref name="value"/> is resolved.</para></param>
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
@@ -315,7 +315,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>
         /// <param name="size"><para>The maximum size of the data within the column.</para></param>
         /// <param name="direction"><para>One of the <see cref="ParameterDirection"/> values.</para></param>
-        /// <param name="nullable"><para>Avalue indicating whether the parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual Basic) values.</para></param>
+        /// <param name="nullable"><para>A value indicating whether the parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual Basic) values.</para></param>
         /// <param name="precision"><para>The maximum number of digits used to represent the <paramref name="value"/>.</para></param>
         /// <param name="scale"><para>The number of decimal places to which <paramref name="value"/> is resolved.</para></param>
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
@@ -536,7 +536,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The stored procedure to execute.</para>
         /// </param>
         /// <param name="parameterValues">
-        /// <para>An array of paramters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
+        /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
         /// <para>A <see cref="DataSet"/> with the results of the <paramref name="storedProcedureName"/>.</para>
@@ -560,7 +560,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The stored procedure to execute.</para>
         /// </param>
         /// <param name="parameterValues">
-        /// <para>An array of paramters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
+        /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
         /// <para>A <see cref="DataSet"/> with the results of the <paramref name="storedProcedureName"/>.</para>
@@ -661,7 +661,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The name of the stored procedure to execute.</para>
         /// </param>
         /// <param name="parameterValues">
-        /// <para>An array of paramters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
+        /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
         /// <para>The number of rows affected</para>
@@ -811,7 +811,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The command that contains the query to execute.</para>
         /// </param>
         /// <param name="parameterValues">
-        /// <para>An array of paramters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
+        /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
         /// <para>An <see cref="IDataReader"/> object.</para>
@@ -836,7 +836,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The command that contains the query to execute.</para>
         /// </param>
         /// <param name="parameterValues">
-        /// <para>An array of paramters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
+        /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
         /// <para>An <see cref="IDataReader"/> object.</para>
@@ -948,7 +948,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The stored procedure to execute.</para>
         /// </param>
         /// <param name="parameterValues">
-        /// <para>An array of paramters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
+        /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
         /// <para>The first column of the first row in the result set.</para>
@@ -974,7 +974,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The stored procedure to execute.</para>
         /// </param>
         /// <param name="parameterValues">
-        /// <para>An array of paramters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
+        /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
         /// <para>The first column of the first row in the result set.</para>
@@ -1174,7 +1174,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <summary>
         /// <para>Discovers parameters on the <paramref name="command"/> and assigns the values from <paramref name="parameterValues"/> to the <paramref name="command"/>s Parameters list.</para>
         /// </summary>
-        /// <param name="command">The command the parameeter values will be assigned to</param>
+        /// <param name="command">The command the parameter values will be assigned to</param>
         /// <param name="parameterValues">The parameter values that will be assigned to the command.</param>
         public virtual void AssignParameters(DbCommand command, object[] parameterValues)
         {
@@ -1333,7 +1333,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>An array of table name mappings for the <see cref="DataSet"/>.</para>
         /// </param>
         /// <param name="parameterValues">
-        /// <para>An array of paramters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
+        /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         public virtual void LoadDataSet(string storedProcedureName,
                                         DataSet dataSet,
@@ -1362,7 +1362,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>An array of table name mappings for the <see cref="DataSet"/>.</para>
         /// </param>
         /// <param name="parameterValues">
-        /// <para>An array of paramters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
+        /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         public virtual void LoadDataSet(DbTransaction transaction,
                                         string storedProcedureName,
@@ -1700,7 +1700,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The name of the stored procedure to execute.</para>
         /// </param>
         /// <param name="parameterValues">
-        /// <para>An array of paramters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
+        /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <param name="callback">The async callback to execute when the result of the operation is available. Pass <langword>null</langword>
         /// if you don't want to use a callback.</param>
@@ -1732,7 +1732,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <param name="parameterValues">
-        /// <para>An array of paramters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
+        /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
         /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
@@ -1780,7 +1780,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> inside a tranasaction which will return the number of rows affected.</para>
+        /// <para>Initiates the asynchronous execution of the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> inside a transaction which will return the number of rows affected.</para>
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>

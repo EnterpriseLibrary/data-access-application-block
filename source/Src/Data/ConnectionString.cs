@@ -24,7 +24,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="connectionString">The connection string.</param>
         /// <param name="userIdTokens">The user id tokens that can be parsed out of the connection string.</param>
-        /// <param name="passwordTokens">The password tokens that can be parsed out of the conection string.</param>
+        /// <param name="passwordTokens">The password tokens that can be parsed out of the connection string.</param>
         public ConnectionString(string connectionString, string userIdTokens, string passwordTokens)
         {
             if (string.IsNullOrEmpty(connectionString)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, "connectionString");
@@ -173,7 +173,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             int previousPos = -1;
             string lowConnString = connectionString.ToLowerInvariant();
 
-            //initialze output parameter
+            //initialize output parameter
             tokenPos = -1;
             tokenMPos = -1;
             foreach (string token in tokens)

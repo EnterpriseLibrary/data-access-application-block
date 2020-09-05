@@ -11,7 +11,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
 namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
 {
     ///<summary>
-    /// Data configuration fluent interface extions to <see cref="IConfigurationSourceBuilder"/>
+    /// Data configuration fluent interface extensions to <see cref="IConfigurationSourceBuilder"/>
     ///</summary>
     /// <seealso cref="ConfigurationSourceBuilder"/>
     public static class DataConfigurationSourceBuilderExtensions
