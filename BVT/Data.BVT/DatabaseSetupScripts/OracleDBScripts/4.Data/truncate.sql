@@ -12,3 +12,5 @@ truncate table debits;
 commit;
 TRUNCATE TABLE Region;
 COMMIT;
+TRUNCATE TABLE Orders;
+COMMIT;
