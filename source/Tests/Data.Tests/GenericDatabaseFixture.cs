@@ -29,9 +29,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
                 new DatabaseProviderFactory(new SystemConfigurationSource(false)).Create("OdbcDatabase");
 
             Assert.IsNotNull(database);
-            Assert.AreEqual(database.GetType(), typeof(GenericDatabase));
-            Assert.AreEqual(database.DbProviderFactory.GetType(), typeof(OdbcFactory));
-            Assert.AreEqual(connectionString, database.ConnectionStringWithoutCredentials);
+            Assert.AreEqual(typeof(GenericDatabase), database.GetType());
+            Assert.AreEqual(typeof(OdbcFactory), database.DbProviderFactory.GetType());
+            Assert.AreEqual(database.ConnectionStringWithoutCredentials, connectionString);
         }
 
         [TestMethod]
