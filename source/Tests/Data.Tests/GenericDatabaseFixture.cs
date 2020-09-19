@@ -6,6 +6,8 @@ using System.Data;
 using System.Data.Common;
 using System.Data.Odbc;
 using System.Data.SqlClient;
+using System.IO;
+using System.Reflection;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -37,8 +39,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
         [TestMethod]
         public void CanDoExecuteDataReaderForGenericDatabaseBug1836()
         {
-            Database db = new GenericDatabase(@"Driver={Microsoft Access Driver (*.mdb)};Dbq=northwind.mdb;Uid=sa;Pwd=sa;", OdbcFactory.Instance);
-
+            Database db = new GenericDatabase($@"Driver={{Microsoft Access Driver (*.mdb, *.accdb)}};Dbq={Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\Northwind.mdb;Uid=sa;Pwd=sa;", OdbcFactory.Instance);
+            
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
