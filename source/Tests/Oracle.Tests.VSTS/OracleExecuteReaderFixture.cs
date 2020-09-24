@@ -48,12 +48,13 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
             paramarray[0] = "BLAUS";
             paramarray[1] = null;
 
-            using (IDataReader dataReader = db.ExecuteReader("GetCustomersTest", paramarray))
+            using (IDataReader dataReader = db.ExecuteReader("GetCustomerByID", paramarray))
             {
                 while (dataReader.Read())
                 {
                     // Get the value of the 'Name' column in the DataReader
                     Assert.IsNotNull(dataReader["ContactName"]);
+                    Assert.AreEqual(dataReader["ContactName"], "Hanna Moos");
                 }
                 dataReader.Close();
             }

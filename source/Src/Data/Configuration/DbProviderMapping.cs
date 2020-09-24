@@ -109,7 +109,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
         }
 
         /// <summary/>
-        // TODO : make this a designtime converter. normal converter gets in the wat of system.configuration
+        // TODO : make this a designtime converter. normal converter gets in the way of system.configuration
         //[TypeConverter("Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentModel.Converters.SystemDataProviderConverter,  Microsoft.Practices.EnterpriseLibrary.Configuration.Design")]
         public override string Name
         {

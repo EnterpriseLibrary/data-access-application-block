@@ -19,7 +19,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// When implemented by a class, returns an enumerable of <typeparamref name="TResult"/> based on <paramref name="reader"/>.
         /// </summary>
         /// <param name="reader">The <see cref="IDataReader"/> to map.</param>
-        /// <returns>The enurable of <typeparamref name="TResult"/> that is based on <paramref name="reader"/>.</returns>
+        /// <returns>The enumerable of <typeparamref name="TResult"/> that is based on <paramref name="reader"/>.</returns>
         IEnumerable<TResult> MapSet(IDataReader reader);
     
     }
