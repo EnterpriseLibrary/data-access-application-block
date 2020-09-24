@@ -59,7 +59,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(OracleException))]
         public void ExecuteSqlStringWithoutParametersButWithValues()
         {
             string sql = "select * from Region";

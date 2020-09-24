@@ -233,7 +233,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         }
 
         /// <devdoc>
-        /// Listens for the RowUpdate event on a dataadapter to support UpdateBehavior.Continue
+        /// Listens for the RowUpdate event on a data adapter to support UpdateBehavior.Continue
         /// </devdoc>
         private void OnSqlRowUpdated(object sender, SqlRowUpdatedEventArgs rowThatCouldNotBeWritten)
         {
@@ -380,7 +380,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         /// <summary>
         /// Adds a new In <see cref="DbParameter"/> object to the given <paramref name="command"/>.
         /// </summary>
-        /// <param name="command">The commmand to add the parameter.</param>
+        /// <param name="command">The command to add the parameter.</param>
         /// <param name="name"><para>The name of the parameter.</para></param>
         /// <param name="dbType"><para>One of the <see cref="SqlDbType"/> values.</para></param>                
         /// <param name="value"><para>The value of the parameter.</para></param>      
@@ -533,7 +533,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         /// <para>The name of the stored procedure to execute.</para>
         /// </param>
         /// <param name="parameterValues">
-        /// <para>An array of paramters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
+        /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <param name="callback">The async callback to execute when the result of the operation is available. Pass <langword>null</langword>
         /// if you don't want to use a callback.</param>
@@ -575,7 +575,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <param name="parameterValues">
-        /// <para>An array of paramters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
+        /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
         /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
@@ -631,7 +631,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> inside a tranasaction which will return the number of rows affected.</para>
+        /// <para>Initiates the asynchronous execution of the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> inside a transaction which will return the number of rows affected.</para>
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>

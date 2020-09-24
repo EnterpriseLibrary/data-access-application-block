@@ -14,7 +14,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration
     /// <remarks>
     /// <para>
     /// A package name can be appended to the stored procedure name of a command if the prefix of the stored procedure
-    /// matchs the prefix defined. This allows the caller of the stored procedure to use stored procedures
+    /// matches the prefix defined. This allows the caller of the stored procedure to use stored procedures
     /// in a more database independent fashion.
     /// </para>
     /// </remarks>
@@ -74,7 +74,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration
         /// The name of the element.
         /// </value>
         /// <remarks>
-        /// Overriden in order to annotate with designtime attribute.
+        /// Overridden in order to annotate with design-time attribute.
         /// </remarks>
         [ViewModel(CommonDesignTime.ViewModelTypeNames.CollectionEditorContainedElementProperty)]
         public override string Name
