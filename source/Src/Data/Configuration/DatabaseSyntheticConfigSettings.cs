@@ -157,12 +157,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
 
         private static bool IsValidProviderName(string providerName)
         {
-#if NETCOREAPP3_0
-            if (!String.IsNullOrEmpty(providerName))
-            {
-                DbProviderFactories.RegisterFactory(providerName, typeof(SqlClientFactory));
-            }
-#endif
             return DbProviderFactories.GetFactoryClasses().Rows.Find(providerName) != null;
         }
 
