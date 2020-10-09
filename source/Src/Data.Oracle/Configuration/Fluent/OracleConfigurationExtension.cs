@@ -4,9 +4,10 @@ using System;
 using Oracle.ManagedDataAccess.Client;
 using Microsoft.Practices.EnterpriseLibrary.Common;
 using Microsoft.Practices.EnterpriseLibrary.Common.Properties;
-using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 
-namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration.Fluent
 {
     /// <summary>
     /// Oracle configuration options

@@ -23,7 +23,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
     /// <item>For provider name "System.Data.SqlClient", or for a provider of type <see cref="System.Data.SqlClient.SqlClientFactory"/>, the 
     /// <see cref="Microsoft.Practices.EnterpriseLibrary.Data.Sql.SqlDatabase"/> will be used.</item>
     /// <item>For provider name "Oracle.ManagedDataAccess.Client", or for a provider of type <see cref="OracleClientFactory"/>, the 
-    /// <see cref="Microsoft.Practices.EnterpriseLibrary.Data.Oracle.OracleDatabase"/> will be used.</item>
+    /// <c>Microsoft.Practices.EnterpriseLibrary.Data.Oracle.OracleDatabase"</c> will be used.</item>
     /// <item>In any other case, the <see cref="GenericDatabase"/> will be used.</item>
     /// </list>
     /// </para>

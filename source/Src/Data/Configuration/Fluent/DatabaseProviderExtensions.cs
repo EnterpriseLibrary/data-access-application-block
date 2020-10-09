@@ -42,16 +42,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
         }
 
         ///<summary>
-        /// An Oracle database for use with the Oracle.ManagedDataAccess.Client namespace.
-        ///</summary>
-        ///<returns></returns>
-        ///<seealso cref="Oracle.ManagedDataAccess.Client"/>
-        public static IDatabaseOracleConfiguration AnOracleDatabase(this IDatabaseConfigurationProviders context)
-        {
-            return new OracleConfigurationExtension(context);
-        }
-
-        ///<summary>
         /// A database with the specified database provider name.
         ///</summary>
         /// <param name="context">Extension context for fluent-interface</param>

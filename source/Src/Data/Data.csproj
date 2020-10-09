@@ -63,12 +63,6 @@
       <DependentUpon>DesignResources.resx</DependentUpon>
     </Compile>
 
-    <Compile Update="Oracle\Configuration\DesignResources.Designer.cs">
-      <DependentUpon>DesignResources.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-
     <Compile Update="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -86,13 +80,8 @@
       <LastGenOutput>DesignResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     
-    <EmbeddedResource Update="Oracle\Configuration\DesignResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>DesignResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    
     <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>

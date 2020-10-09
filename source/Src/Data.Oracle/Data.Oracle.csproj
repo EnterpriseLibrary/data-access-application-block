@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\package.props" />
+  
+  <PropertyGroup>
+    <TargetFrameworks>net45;net46;net47;netstandard2.0;netcoreapp2.0;netcoreapp3.0</TargetFrameworks>
+    <RootNamespace>Microsoft.Practices.EnterpriseLibrary.Data.Oracle</RootNamespace>
+    <AssemblyName>Microsoft.Practices.EnterpriseLibrary.Data.Oracle</AssemblyName>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="$(OracleManagedDataAccessCore)" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
+    <PackageReference Include="Oracle.ManagedDataAccess" Version="18.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+
+    <None Include="..\..\DataAccess.licenseheader">
+      <Link>DataAccess.licenseheader</Link>
+    </None>
+    
+    <Compile Update="Configuration\DesignResources.Designer.cs">
+      <DependentUpon>DesignResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  
+    <EmbeddedResource Update="Configuration\DesignResources.resx">
+      <LastGenOutput>DesignResources.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>
