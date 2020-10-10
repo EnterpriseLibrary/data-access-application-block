@@ -1,11 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
-using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.Design;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration
@@ -13,8 +10,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration
     /// <summary>
     /// Oracle-specific configuration section.
     /// </summary>
-    [ResourceDescription(typeof(DesignResources), "OracleConnectionSettingsDescription")]
-    [ResourceDisplayName(typeof(DesignResources), "OracleConnectionSettingsDisplayName")]
+    [ResourceDescription(typeof(DesignResources),nameof(DesignResources.OracleConnectionSettingsDescription))]
+    [ResourceDisplayName(typeof(DesignResources), nameof(DesignResources.OracleConnectionSettingsDisplayName))]
     public class OracleConnectionSettings : SerializableConfigurationSection
     {
         private const string oracleConnectionDataCollectionProperty = "";
@@ -39,7 +36,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration
         /// if not present in the configuration source.</returns>
         public static OracleConnectionSettings GetSettings(IConfigurationSource configurationSource)
         {
-            if (configurationSource == null) throw new ArgumentNullException("configurationSource");
+            if (configurationSource == null) throw new ArgumentNullException(nameof(configurationSource));
 
             return configurationSource.GetSection(SectionName) as OracleConnectionSettings;
         }
@@ -49,8 +46,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration
         /// </summary>
         [ConfigurationProperty(oracleConnectionDataCollectionProperty, IsRequired=false, IsDefaultCollection=true)]
         [ConfigurationCollection(typeof(OracleConnectionData))]
-        [ResourceDescription(typeof(DesignResources), "OracleConnectionSettingsOracleConnectionsDataDescription")]
-        [ResourceDisplayName(typeof(DesignResources), "OracleConnectionSettingsOracleConnectionsDataDisplayName")]
+        [ResourceDescription(typeof(DesignResources), nameof(DesignResources.OracleConnectionSettingsOracleConnectionsDataDescription))]
+        [ResourceDisplayName(typeof(DesignResources), nameof(DesignResources.OracleConnectionSettingsOracleConnectionsDataDisplayName))]
         public NamedElementCollection<OracleConnectionData> OracleConnectionsData
         {
             get { return (NamedElementCollection<OracleConnectionData>)base[oracleConnectionDataCollectionProperty]; }
