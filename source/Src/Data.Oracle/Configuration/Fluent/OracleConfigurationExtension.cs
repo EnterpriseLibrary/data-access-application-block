@@ -9,48 +9,6 @@ using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration.Fluent
 {
-    /// <summary>
-    /// Oracle configuration options
-    /// </summary>
-    public interface IDatabaseOracleConfiguration : IDatabaseConfigurationProperties
-    {
-        /// <summary>
-        /// Define an Oracle connection with a connection string.
-        /// </summary>
-        /// <param name="connectionString"></param>
-        /// <returns></returns>
-        IDatabaseOracleConfiguration WithConnectionString(string connectionString);
-
-        /// <summary>
-        /// Define an Oracle connection with the <see cref="OracleConnectionStringBuilder"/>
-        /// </summary>
-        /// <param name="builder"></param>
-        /// <returns></returns>
-#pragma warning disable 612, 618
-        IDatabaseOracleConfiguration WithConnectionString(OracleConnectionStringBuilder builder);
-#pragma warning restore 612, 618
-
-        /// <summary>
-        /// Define an Oracle package with the specified name.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        IDatabaseOraclePackageConfiguration WithPackageNamed(string name);
-
-    }
-
-    /// <summary>
-    /// Oracle package configuration options.
-    /// </summary>
-    public interface IDatabaseOraclePackageConfiguration : IFluentInterface
-    {
-        /// <summary>
-        /// Define the prefix for the Oracle package.
-        /// </summary>
-        /// <param name="prefix"></param>
-        /// <returns></returns>
-        IDatabaseConfigurationProperties AndPrefix(string prefix);
-    }
 
 
     internal class OracleConfigurationExtension : DatabaseConfigurationExtension,
