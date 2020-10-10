@@ -1,11 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
+using System.ComponentModel;
 using System.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.Design;
-using System.ComponentModel;
-using Oracle.ManagedDataAccess.Client;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
 {
@@ -22,7 +21,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
     /// <list type="bullet">
     /// <item>For provider name "System.Data.SqlClient", or for a provider of type <see cref="System.Data.SqlClient.SqlClientFactory"/>, the 
     /// <see cref="Microsoft.Practices.EnterpriseLibrary.Data.Sql.SqlDatabase"/> will be used.</item>
-    /// <item>For provider name "Oracle.ManagedDataAccess.Client", or for a provider of type <see cref="OracleClientFactory"/>, the 
+    /// <item>For provider name "Oracle.ManagedDataAccess.Client", or for a provider of type <c>OracleClientFactory"</c>, the 
     /// <c>Microsoft.Practices.EnterpriseLibrary.Data.Oracle.OracleDatabase"</c> will be used.</item>
     /// <item>In any other case, the <see cref="GenericDatabase"/> will be used.</item>
     /// </list>

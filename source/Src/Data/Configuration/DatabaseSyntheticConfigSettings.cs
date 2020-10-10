@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Common;
-using Oracle.ManagedDataAccess.Client;
 using System.Data.SqlClient;
 using System.Globalization;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;

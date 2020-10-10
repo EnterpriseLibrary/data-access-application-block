@@ -41,7 +41,6 @@
   <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
     <Reference Include="System.Transactions" />
     <Reference Include="System.Configuration" />
-    <PackageReference Include="Oracle.ManagedDataAccess" Version="18.3.0" />
   </ItemGroup>
 
   <ItemGroup Condition="('$(TargetFramework)' == 'netcoreapp3.0')">
