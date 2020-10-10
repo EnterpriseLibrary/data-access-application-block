@@ -2,7 +2,6 @@
 
 using System;
 using Oracle.ManagedDataAccess.Client;
-using Microsoft.Practices.EnterpriseLibrary.Common;
 using Microsoft.Practices.EnterpriseLibrary.Common.Properties;
 using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
 using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
