@@ -2,9 +2,12 @@
 
 using System;
 using System.Configuration;
+using System.Data.Common;
 using System.Linq;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle;
 using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql.Configuration;
@@ -416,6 +419,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
                 new ConnectionStringSettings("someSetting", "someConnectionString", "Oracle.ManagedDataAccess.Client"));
 
             configSource.Add("connectionStrings", connectionStrings);
+
+            var dbSettings = new DatabaseSettings();
+            DbProviderMapping mapping = new DbProviderMapping(DbProviderMapping.DefaultOracleProviderName, typeof(OracleDatabase));
+            dbSettings.ProviderMappings.Add(mapping);
+            configSource.Add(DatabaseSettings.SectionName, dbSettings);
 
             configSettings = new DatabaseSyntheticConfigSettings(configSource.GetSection);
         }
