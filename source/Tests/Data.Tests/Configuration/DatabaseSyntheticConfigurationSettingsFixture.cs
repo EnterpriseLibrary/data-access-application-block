@@ -459,6 +459,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
             var oracleSettings = new OracleConnectionSettings();
             configSource.Add(OracleConnectionSettings.SectionName, oracleSettings);
 
+            var dbSettings = new DatabaseSettings();
+            DbProviderMapping mapping = new DbProviderMapping(DbProviderMapping.DefaultOracleProviderName, typeof(OracleDatabase));
+            dbSettings.ProviderMappings.Add(mapping);
+            configSource.Add(DatabaseSettings.SectionName, dbSettings);
+
             configSettings = new DatabaseSyntheticConfigSettings(configSource.GetSection);
         }
 
@@ -495,6 +500,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
             var oracleSettings = new OracleConnectionSettings();
             oracleSettings.OracleConnectionsData.Add(oracleConnectionData);
             configSource.Add(OracleConnectionSettings.SectionName, oracleSettings);
+
+            var dbSettings = new DatabaseSettings();
+            DbProviderMapping mapping = new DbProviderMapping(DbProviderMapping.DefaultOracleProviderName, typeof(OracleDatabase));
+            dbSettings.ProviderMappings.Add(mapping);
+            configSource.Add(DatabaseSettings.SectionName, dbSettings);
 
             configSettings = new DatabaseSyntheticConfigSettings(configSource.GetSection);
         }
