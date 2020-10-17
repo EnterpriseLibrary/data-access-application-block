@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
     <PackageReference Include="$(PrePackageName).Common$(PostPackageName)" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
+    <ProjectReference Include="..\..\source\Src\Data.Oracle\Data.Oracle.csproj" />
 
     <ProjectReference Include="..\..\source\Src\Data\Data.csproj" />
     <ProjectReference Include="..\..\source\Src\SqlCe\Data.SqlCe.csproj" />
