@@ -420,10 +420,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 
             configSource.Add("connectionStrings", connectionStrings);
 
-            var dbSettings = new DatabaseSettings();
-            DbProviderMapping mapping = new DbProviderMapping(DbProviderMapping.DefaultOracleProviderName, typeof(OracleDatabase));
-            dbSettings.ProviderMappings.Add(mapping);
-            configSource.Add(DatabaseSettings.SectionName, dbSettings);
+            configSource.AddOracleDatabaseProviderMapping();
 
             configSettings = new DatabaseSyntheticConfigSettings(configSource.GetSection);
         }
@@ -459,10 +456,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
             var oracleSettings = new OracleConnectionSettings();
             configSource.Add(OracleConnectionSettings.SectionName, oracleSettings);
 
-            var dbSettings = new DatabaseSettings();
-            DbProviderMapping mapping = new DbProviderMapping(DbProviderMapping.DefaultOracleProviderName, typeof(OracleDatabase));
-            dbSettings.ProviderMappings.Add(mapping);
-            configSource.Add(DatabaseSettings.SectionName, dbSettings);
+            configSource.AddOracleDatabaseProviderMapping();
 
             configSettings = new DatabaseSyntheticConfigSettings(configSource.GetSection);
         }
@@ -501,10 +495,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
             oracleSettings.OracleConnectionsData.Add(oracleConnectionData);
             configSource.Add(OracleConnectionSettings.SectionName, oracleSettings);
 
-            var dbSettings = new DatabaseSettings();
-            DbProviderMapping mapping = new DbProviderMapping(DbProviderMapping.DefaultOracleProviderName, typeof(OracleDatabase));
-            dbSettings.ProviderMappings.Add(mapping);
-            configSource.Add(DatabaseSettings.SectionName, dbSettings);
+            configSource.AddOracleDatabaseProviderMapping();
 
             configSettings = new DatabaseSyntheticConfigSettings(configSource.GetSection);
         }
