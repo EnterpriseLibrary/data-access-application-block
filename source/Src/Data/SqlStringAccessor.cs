@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
 
@@ -18,8 +17,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         readonly string sqlString;
 
         /// <summary>
-        /// Creates a new instance of <see cref="SqlStringAccessor&lt;TResult&gt;"/> that works for a specific <paramref name="database"/>
-        /// and uses <paramref name="rowMapper"/> to convert the returned rows to clr type <typeparamref name="TResult"/>.
+        /// Creates a new instance of <see cref="SqlStringAccessor{TResult}"/> that works for a specific <paramref name="database"/>
+        /// and uses <paramref name="rowMapper"/> to convert the returned rows to CLR type <typeparamref name="TResult"/>.
         /// </summary>
         /// <param name="database">The <see cref="Database"/> used to execute the SQL.</param>
         /// <param name="sqlString">The SQL that will be executed.</param>
@@ -30,8 +29,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="SqlStringAccessor&lt;TResult&gt;"/> that works for a specific <paramref name="database"/>
-        /// and uses <paramref name="resultSetMapper"/> to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.
+        /// Creates a new instance of <see cref="SqlStringAccessor{TResult}"/> that works for a specific <paramref name="database"/>
+        /// and uses <paramref name="resultSetMapper"/> to convert the returned set to an enumerable of CLR type <typeparamref name="TResult"/>.
         /// </summary>
         /// <param name="database">The <see cref="Database"/> used to execute the SQL.</param>
         /// <param name="sqlString">The SQL that will be executed.</param>
@@ -42,8 +41,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
         
         /// <summary>
-        /// Creates a new instance of <see cref="SqlStringAccessor&lt;TResult&gt;"/> that works for a specific <paramref name="database"/>
-        /// and uses <paramref name="rowMapper"/> to convert the returned rows to clr type <typeparamref name="TResult"/>.
+        /// Creates a new instance of <see cref="SqlStringAccessor{TResult}"/> that works for a specific <paramref name="database"/>
+        /// and uses <paramref name="rowMapper"/> to convert the returned rows to CLR type <typeparamref name="TResult"/>.
         /// The <paramref name="parameterMapper"/> will be used to interpret the parameters passed to the Execute method.
         /// </summary>
         /// <param name="database">The <see cref="Database"/> used to execute the SQL.</param>
@@ -54,15 +53,15 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             : base(database, rowMapper)
         {
             if (string.IsNullOrEmpty(sqlString)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString);
-            if (parameterMapper == null) throw new ArgumentNullException("parameterMapper");
+            if (parameterMapper == null) throw new ArgumentNullException(nameof(parameterMapper));
 
             this.parameterMapper = parameterMapper;
             this.sqlString = sqlString;
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="SqlStringAccessor&lt;TResult&gt;"/> that works for a specific <paramref name="database"/>
-        /// and uses <paramref name="resultSetMapper"/> to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.
+        /// Creates a new instance of <see cref="SqlStringAccessor{TResult}"/> that works for a specific <paramref name="database"/>
+        /// and uses <paramref name="resultSetMapper"/> to convert the returned set to an enumerable of CLR type <typeparamref name="TResult"/>.
         /// The <paramref name="parameterMapper"/> will be used to interpret the parameters passed to the Execute method.
         /// </summary>
         /// <param name="database">The <see cref="Database"/> used to execute the SQL.</param>
@@ -73,7 +72,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             : base(database, resultSetMapper)
         {
             if (string.IsNullOrEmpty(sqlString)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString);
-            if (parameterMapper == null) throw new ArgumentNullException("parameterMapper");
+            if (parameterMapper == null) throw new ArgumentNullException(nameof(parameterMapper));
 
             this.parameterMapper = parameterMapper;
             this.sqlString = sqlString;

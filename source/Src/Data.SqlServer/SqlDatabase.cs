@@ -123,7 +123,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         {
             SqlCommand sqlCommand = CheckIfSqlCommand(command);
 
-            DbConnection connection = this.GetNewOpenConnection();
+            DbConnection connection = GetNewOpenConnection();
             try
             {
                 PrepareCommand(command, connection);

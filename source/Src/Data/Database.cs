@@ -1072,7 +1072,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             return adapter;
         }
 
-        internal DbConnection GetNewOpenConnection()
+        /// <summary>
+        /// Gets a new <see cref="DbConnection"/> in an open state.
+        /// </summary>
+        /// <returns>An open <see cref="DbConnection"/>.</returns>
+        protected internal DbConnection GetNewOpenConnection()
         {
             DbConnection connection = null;
             try
