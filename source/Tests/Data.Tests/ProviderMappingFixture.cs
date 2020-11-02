@@ -54,6 +54,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
         }
 
         [TestMethod]
+        [Ignore("We don't support this scenario now. Provider must be mapped to be used.")]
         public void WillGetDefaultMappingIfProviderTypeIsNotMappedAndDefaultExistsForSql()
         {
             DatabaseSettings databaseSettings = new DatabaseSettings();
@@ -104,6 +105,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
         }
 
         [TestMethod]
+        [Ignore("We don't support this scenario now. Provider must be mapped to be used.")]
         public void WillGetDefaultMappingIfDatabaseSettingsSectionDoesNotExistForSql()
         {
             DictionaryConfigurationSource source = new DictionaryConfigurationSource();

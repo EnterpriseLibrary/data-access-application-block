@@ -29,7 +29,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
         {
             Database database = this.factory.Create("Service_Dflt");
             Assert.IsNotNull(database);
-            Assert.AreSame(typeof(SqlDatabase), database.GetType());
+            Assert.AreSame(typeof(SqlDatabase), database.GetType(), $"{nameof(SqlDatabase)} is different than {database.GetType().Name}");
         }
 
         [TestMethod]
