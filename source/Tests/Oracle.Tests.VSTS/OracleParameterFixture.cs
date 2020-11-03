@@ -99,7 +99,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
         }
 
         [TestMethod]
-        public void CaGetValueForDiscoveredGuidParameters()
+        public void CanGetValueForDiscoveredGuidParameters()
         {
             Guid guid = new Guid(new byte[16]);
             string name = "ENTLIB";

@@ -32,7 +32,6 @@
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
-    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="$(OracleManagedDataAccessCore)" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="$(SystemConfigurationConfigurationManagerVersion)" />
     <PackageReference Include="System.Data.Odbc" Version="$(SystemDataOdbcVersion)" />
     <PackageReference Include="System.Data.SqlClient" Version="$(SystemDataSqlClientVersion)" />
@@ -41,7 +40,6 @@
   <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
     <Reference Include="System.Transactions" />
     <Reference Include="System.Configuration" />
-    <PackageReference Include="Oracle.ManagedDataAccess" Version="18.3.0" />
   </ItemGroup>
 
   <ItemGroup Condition="('$(TargetFramework)' == 'netcoreapp3.0')">
@@ -63,12 +61,6 @@
       <DependentUpon>DesignResources.resx</DependentUpon>
     </Compile>
 
-    <Compile Update="Oracle\Configuration\DesignResources.Designer.cs">
-      <DependentUpon>DesignResources.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-
     <Compile Update="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -86,13 +78,8 @@
       <LastGenOutput>DesignResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     
-    <EmbeddedResource Update="Oracle\Configuration\DesignResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>DesignResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    
     <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>

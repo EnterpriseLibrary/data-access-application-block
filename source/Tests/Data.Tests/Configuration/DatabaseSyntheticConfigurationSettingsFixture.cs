@@ -2,9 +2,12 @@
 
 using System;
 using System.Configuration;
+using System.Data.Common;
 using System.Linq;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle;
 using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql.Configuration;
@@ -417,6 +420,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 
             configSource.Add("connectionStrings", connectionStrings);
 
+            configSource.AddOracleDatabaseProviderMapping();
+
             configSettings = new DatabaseSyntheticConfigSettings(configSource.GetSection);
         }
 
@@ -450,6 +455,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 
             var oracleSettings = new OracleConnectionSettings();
             configSource.Add(OracleConnectionSettings.SectionName, oracleSettings);
+
+            configSource.AddOracleDatabaseProviderMapping();
 
             configSettings = new DatabaseSyntheticConfigSettings(configSource.GetSection);
         }
@@ -487,6 +494,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
             var oracleSettings = new OracleConnectionSettings();
             oracleSettings.OracleConnectionsData.Add(oracleConnectionData);
             configSource.Add(OracleConnectionSettings.SectionName, oracleSettings);
+
+            configSource.AddOracleDatabaseProviderMapping();
 
             configSettings = new DatabaseSyntheticConfigSettings(configSource.GetSection);
         }

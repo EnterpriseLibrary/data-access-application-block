@@ -108,6 +108,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
             oracleSettings.OracleConnectionsData.Add(oracleConnectionData);
             configurationSource.Add(OracleConnectionSettings.SectionName, oracleSettings);
 
+            configurationSource.AddOracleDatabaseProviderMapping();
 
             settings = new DatabaseSyntheticConfigSettings(configurationSource.GetSection);
         }

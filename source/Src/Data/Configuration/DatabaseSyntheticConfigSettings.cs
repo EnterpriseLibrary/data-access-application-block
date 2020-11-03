@@ -4,12 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Common;
-using Oracle.ManagedDataAccess.Client;
 using System.Data.SqlClient;
 using System.Globalization;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Common.Utility;
-using Microsoft.Practices.EnterpriseLibrary.Data.Oracle;
 using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 
@@ -26,10 +24,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
     {
         private static readonly DbProviderMapping defaultSqlMapping =
             new DbProviderMapping(DbProviderMapping.DefaultSqlProviderName, typeof(SqlDatabase));
-#pragma warning disable 612, 618
-        private static readonly DbProviderMapping defaultOracleMapping =
-            new DbProviderMapping(DbProviderMapping.DefaultOracleProviderName, typeof(OracleDatabase));
-#pragma warning restore 612, 618
         private static readonly DbProviderMapping defaultGenericMapping =
             new DbProviderMapping(DbProviderMapping.DefaultGenericProviderName, typeof(GenericDatabase));
 
@@ -259,19 +253,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
             if (DbProviderMapping.DefaultSqlProviderName.Equals(dbProviderName))
                 return defaultSqlMapping;
 
-            if (DbProviderMapping.DefaultOracleProviderName.Equals(dbProviderName))
-                return defaultOracleMapping;
-
             // get the default based on type
             var providerFactory = DbProviderFactories.GetFactory(dbProviderName);
 
             if (SqlClientFactory.Instance == providerFactory)
                 return defaultSqlMapping;
-
-#pragma warning disable 612, 618
-            if (OracleClientFactory.Instance == providerFactory)
-                return defaultOracleMapping;
-#pragma warning restore 612, 618
 
             return null;
         }
