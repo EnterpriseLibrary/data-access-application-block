@@ -606,7 +606,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlDatabaseFixtures
         public void DataIsUpdatedWhenUsingStoredProcAndCommitted()
         {
             Database db = DatabaseFactory.CreateDatabase("DataSQLTest");
-            StringBuilder readerData = new StringBuilder();
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
