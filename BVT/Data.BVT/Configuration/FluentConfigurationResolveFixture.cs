@@ -33,7 +33,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
 
             Assert.IsNotNull(database);
             Assert.AreEqual(DefaultConnectionString, database.ConnectionString);
-            Assert.IsInstanceOfType(database, typeof(SqlDatabase));
+            Assert.IsInstanceOfType(database, typeof(GenericDatabase));
         }
 
         [TestMethod]
@@ -44,6 +44,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
                                .ThatIs
                                    .ASqlDatabase()
                                    .WithConnectionString(new SqlConnectionStringBuilder() { DataSource = DataSource, InitialCatalog = InitialCatalog, IntegratedSecurity = IntegratedSecurity });
+            configurationStart.WithProviderNamed(DbProviderMapping.DefaultSqlProviderName)
+                .MappedToDatabase<SqlDatabase>();
             DictionaryConfigurationSource source = new DictionaryConfigurationSource();
             builder.UpdateConfigurationWithReplace(source);
             base.ConfigurationSource = source;
