@@ -76,7 +76,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
                                 .ThatIs
                                     .AnotherDatabaseType(DbProviderMapping.DefaultSqlProviderName)
                                     .WithConnectionString(dbConnectionBuilder);
-
+            configurationStart.WithProviderNamed(DbProviderMapping.DefaultSqlProviderName)
+                .MappedToDatabase<SqlDatabase>();
             DictionaryConfigurationSource source = new DictionaryConfigurationSource();
             builder.UpdateConfigurationWithReplace(source);
             base.ConfigurationSource = source;
