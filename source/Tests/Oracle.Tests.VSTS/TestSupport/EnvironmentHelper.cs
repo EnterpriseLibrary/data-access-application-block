@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests.TestSupport
@@ -22,18 +23,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests.TestSupport
                     conn.Open();
                     conn.Close();
                 }
-                catch (Exception ex)
+                catch (Exception ex) when (ex.Message != null
+                    && ex.Message.Contains(DbProviderMapping.DefaultOracleProviderName)
+                    && ex.Message.Contains("8.1.7"))
                 {
-                    if (ex.Message != null && ex.Message.Contains("Oracle.ManagedDataAccess.Client")
-                        && ex.Message.Contains("8.1.7"))
-                    {
-                        oracleClientIsInstalled = false;
-                        oracleClientNotInstalledErrorMessage = ex.Message;
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    oracleClientIsInstalled = false;
+                    oracleClientNotInstalledErrorMessage = ex.Message;
                 }
             }
 

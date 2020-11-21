@@ -13,6 +13,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
     [TestClass]
     public class DatabaseProviderFactoryFixture
     {
+        [TestInitialize]
+        public void Initialize()
+        {
+            NetCoreHelpers.RegisterDbProviderFactories();
+        }
+
         [TestMethod]
         public void CanCreateDatabaseFromFactory()
         {

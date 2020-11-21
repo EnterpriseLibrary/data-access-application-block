@@ -16,6 +16,7 @@ using Microsoft.Practices.EnterpriseLibrary.Common.TestSupport.ContextBase;
 using System.Configuration;
 using System.Data.Common;
 using System;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration.Fluent;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 {
