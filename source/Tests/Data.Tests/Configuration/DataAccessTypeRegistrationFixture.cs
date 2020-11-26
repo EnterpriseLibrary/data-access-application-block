@@ -12,6 +12,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 {
     [TestClass]
+    [Ignore("We don't support this scenario now. Provider must be mapped to be used.")]
     public class GivenConnectionStringForSqlServer
     {
         private DictionaryConfigurationSource configurationSource;

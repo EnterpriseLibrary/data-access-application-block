@@ -1,17 +1,11 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
-using System;
-using System.Configuration;
 using System.Data.Common;
-using System.Data.Odbc;
-using System.Data.OleDb;
 using System.Data.SqlClient;
-using System.Reflection;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
-using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
-using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql.Configuration.Fluent;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
@@ -39,7 +33,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
 
             Assert.IsNotNull(database);
             Assert.AreEqual(DefaultConnectionString, database.ConnectionString);
-            Assert.IsInstanceOfType(database, typeof(SqlDatabase));
+            Assert.IsInstanceOfType(database, typeof(GenericDatabase));
         }
 
         [TestMethod]
@@ -50,6 +44,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
                                .ThatIs
                                    .ASqlDatabase()
                                    .WithConnectionString(new SqlConnectionStringBuilder() { DataSource = DataSource, InitialCatalog = InitialCatalog, IntegratedSecurity = IntegratedSecurity });
+            configurationStart.WithProviderNamed(DbProviderMapping.DefaultSqlProviderName)
+                .MappedToDatabase<SqlDatabase>();
             DictionaryConfigurationSource source = new DictionaryConfigurationSource();
             builder.UpdateConfigurationWithReplace(source);
             base.ConfigurationSource = source;
@@ -80,7 +76,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
                                 .ThatIs
                                     .AnotherDatabaseType(DbProviderMapping.DefaultSqlProviderName)
                                     .WithConnectionString(dbConnectionBuilder);
-
+            configurationStart.WithProviderNamed(DbProviderMapping.DefaultSqlProviderName)
+                .MappedToDatabase<SqlDatabase>();
             DictionaryConfigurationSource source = new DictionaryConfigurationSource();
             builder.UpdateConfigurationWithReplace(source);
             base.ConfigurationSource = source;

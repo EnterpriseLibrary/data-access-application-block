@@ -5,10 +5,6 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
-using System.Text;
-using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
-using Microsoft.Practices.EnterpriseLibrary.Data;
-using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -27,7 +23,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.CommonDatabase
         /// Initialize() is called once during test execution before
         /// test methods in this test class are executed.
         /// </summary>
-        [TestInitialize()]
+        [TestInitialize]
         public override void Initialize()
         {
             ConnectionStringsSection section = (ConnectionStringsSection)base.ConfigurationSource.GetSection("connectionStrings");

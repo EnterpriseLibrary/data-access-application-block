@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oracle.Tests.VSTS", "Tests\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Oracle", "Src\Data.Oracle\Data.Oracle.csproj", "{B5A822F0-965F-4959-80E6-F30A8E178B34}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.SqlServer", "Src\Data.SqlServer\Data.SqlServer.csproj", "{6FB0152C-0089-4E28-B400-A20BEABCA936}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{B5A822F0-965F-4959-80E6-F30A8E178B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5A822F0-965F-4959-80E6-F30A8E178B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5A822F0-965F-4959-80E6-F30A8E178B34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FB0152C-0089-4E28-B400-A20BEABCA936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FB0152C-0089-4E28-B400-A20BEABCA936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FB0152C-0089-4E28-B400-A20BEABCA936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FB0152C-0089-4E28-B400-A20BEABCA936}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +86,7 @@ Global
 		{5D9A30BB-5CC0-46F3-BD4B-828FC6270323} = {E3FD426C-F9D4-490A-A334-183DCE5D2C5C}
 		{4C027888-9F17-4692-ACBB-A58AC97A14FA} = {E3FD426C-F9D4-490A-A334-183DCE5D2C5C}
 		{B5A822F0-965F-4959-80E6-F30A8E178B34} = {EC27CB28-3D15-4C74-A1E6-6A2E60BCE31E}
+		{6FB0152C-0089-4E28-B400-A20BEABCA936} = {EC27CB28-3D15-4C74-A1E6-6A2E60BCE31E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {65EF901E-961B-48A6-9A64-1680F2624732}

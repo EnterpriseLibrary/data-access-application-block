@@ -140,6 +140,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
     }
 
     [TestClass]
+    [Ignore("We don't support this scenario now. Provider must be mapped to be used.")]
     public class GivenAConfigurationSourceWithASqlProviderConnectionString
     {
         private DatabaseSyntheticConfigSettings configSettings;

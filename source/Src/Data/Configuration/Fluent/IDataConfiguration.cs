@@ -3,7 +3,6 @@
 using System;
 using System.Data.Common;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
-using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
 {
@@ -34,7 +33,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
         /// <param name="databaseType">The <see cref="Database"/> type.</param>
         /// <returns></returns>
         /// <seealso cref="GenericDatabase"/>
-        /// <seealso cref="SqlDatabase" />
         IDataConfiguration MappedToDatabase(Type databaseType);
 
         /// <summary>
@@ -43,7 +41,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
         /// <typeparam name="T">Database type to map to</typeparam>
         /// <returns></returns>
         /// <seealso cref="GenericDatabase"/>
-        /// <seealso cref="SqlDatabase" />
         IDataConfiguration MappedToDatabase<T>() where T : Database;
     }
 }
