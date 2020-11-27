@@ -4,6 +4,7 @@ using System;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.TestSupport
 {
@@ -18,6 +19,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.TestSupport
 
             DatabaseSettings settings = new DatabaseSettings();
             settings.DefaultDatabase = "Service_Dflt";
+            DbProviderMapping mapping = new DbProviderMapping(DbProviderMapping.DefaultSqlProviderName, typeof(SqlDatabase));
+            settings.ProviderMappings.Add(mapping);
 
             OracleConnectionSettings oracleConnectionSettings = new OracleConnectionSettings();
             OracleConnectionData data = new OracleConnectionData();

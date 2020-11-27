@@ -30,7 +30,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.DatabaseFixtures
         {
             var database = new DatabaseProviderFactory(base.ConfigurationSource).Create("DefaultSql");
 
-            Assert.IsInstanceOfType(database, typeof(SqlDatabase));
+            Assert.IsInstanceOfType(database, typeof(GenericDatabase));
         }
     }
 }

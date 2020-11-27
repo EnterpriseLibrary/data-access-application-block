@@ -4,12 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Common;
-using System.Data.SqlClient;
 using System.Globalization;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Common.Utility;
 using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
-using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
 {
@@ -22,8 +20,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
     /// </remarks>
     public class DatabaseSyntheticConfigSettings
     {
-        private static readonly DbProviderMapping defaultSqlMapping =
-            new DbProviderMapping(DbProviderMapping.DefaultSqlProviderName, typeof(SqlDatabase));
         private static readonly DbProviderMapping defaultGenericMapping =
             new DbProviderMapping(DbProviderMapping.DefaultGenericProviderName, typeof(GenericDatabase));
 
@@ -243,23 +239,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
                 }
             }
 
-            var defaultMapping = GetDefaultMapping(dbProviderName);
-            return defaultMapping ?? GetGenericMapping();
-        }
-
-        private static DbProviderMapping GetDefaultMapping(string dbProviderName)
-        {
-            // try to short circuit by default name
-            if (DbProviderMapping.DefaultSqlProviderName.Equals(dbProviderName))
-                return defaultSqlMapping;
-
-            // get the default based on type
-            var providerFactory = DbProviderFactories.GetFactory(dbProviderName);
-
-            if (SqlClientFactory.Instance == providerFactory)
-                return defaultSqlMapping;
-
-            return null;
+            return GetGenericMapping();
         }
 
         private static DbProviderMapping GetGenericMapping()

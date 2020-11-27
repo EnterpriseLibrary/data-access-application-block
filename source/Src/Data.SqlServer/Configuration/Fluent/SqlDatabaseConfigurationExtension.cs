@@ -1,8 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.Data.SqlClient;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
 
-namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
+namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql.Configuration.Fluent
 {
 
     /// <summary>
@@ -24,7 +26,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
         public SqlDatabaseConfigurationExtension(IDatabaseConfigurationProviders context)
             : base(context)
         {
-            base.ConnectionString.ProviderName = DbProviderMapping.DefaultSqlProviderName;
+            ConnectionString.ProviderName = DbProviderMapping.DefaultSqlProviderName;
         }
 
         public IDatabaseConfigurationProperties WithConnectionString(SqlConnectionStringBuilder builder)
