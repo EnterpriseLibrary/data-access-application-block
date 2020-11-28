@@ -3,8 +3,17 @@
   
   <PropertyGroup>
     <TargetFrameworks>net45;net46;net47;netstandard2.0;netcoreapp2.0;netcoreapp3.0</TargetFrameworks>
-    <RootNamespace>Microsoft.Practices.EnterpriseLibrary.Data.Oracle</RootNamespace>
-    <AssemblyName>Microsoft.Practices.EnterpriseLibrary.Data.Oracle</AssemblyName>
+    <AssemblyName>$(PreAssemblyName).Data.Oracle</AssemblyName>
+    <RootNamespace>$(PreAssemblyName).Data.Oracle</RootNamespace>
+    <PackageId>$(PrePackageName).Data.Oracle$(PostPackageName)</PackageId>
+    <Description>Oracle support for Enterprise Library Data Access Application Block. The Data Access Application Block simplifies the development of tasks that implement common data access functionality. Applications can use this application block in a variety of situations, such as reading data for display, passing data through application layers, and submitting changed data back to the database system.</Description>
+    <PackageTags>entlib entlib6 Enterprise Library data daab dab LOB oracle</PackageTags>
+    <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
+    <FileVersion>$(Version).$(Revision)</FileVersion>
+
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\EnterpriseLibrary.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

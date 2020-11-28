@@ -6,18 +6,18 @@
     <PreAssemblyName>Microsoft.Practices.EnterpriseLibrary</PreAssemblyName>
     <PrePackageName>EnterpriseLibrary</PrePackageName>
     <PostPackageName>.NetCore</PostPackageName>
-    <PackageReleaseNotes>This package is distributed as .NET Standard 2.0, .NET Core 2.0, .NET Core 3.0, .NET 4.0, 4.5, 4.6, 4.7 package.</PackageReleaseNotes>
+    <PackageReleaseNotes>This package is distributed as .NET Standard 2.0, .NET Core 2.0, .NET Core 3.0, .NET 4.0, 4.5, 4.6, 4.7 package. See project wiki for migration from previous versions instructions.</PackageReleaseNotes>
 
     <SemanticVersionSuffix></SemanticVersionSuffix>
     <PackageVersion>$(Version)$(SemanticVersionSuffix)</PackageVersion>
     <Authors>Enterprise Library Open Source Project</Authors>
     <Copyright>Copyright © Microsoft 2008</Copyright>
-    <PackageIconUrl>https://nuget.org/Media/Default/Packages/Unity/2.0/entlib_new_icon_100x100.png</PackageIconUrl>
+    <PackageIcon>https://nuget.org/Media/Default/Packages/Unity/2.0/entlib_new_icon_100x100.png</PackageIcon>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/EnterpriseLibrary/data-access-application-block</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 
-    <RepositoryUrl>https://github.com/EnterpriseLibrary/data-access-application-block</RepositoryUrl>
+    <RepositoryUrl>https://github.com/EnterpriseLibrary/data-access-application-block.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
