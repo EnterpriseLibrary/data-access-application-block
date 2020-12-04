@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="Microsoft.SqlServer.Compact" Version="4.0.8876.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
     <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
   </ItemGroup>
@@ -32,10 +33,6 @@
     <ProjectReference Include="..\Data.TestSupport\Data.TestSupport.csproj" />
 
     <Reference Include="System.Configuration" />
-    
-    <Reference Include="System.Data.SqlServerCe">
-      <HintPath>..\..\..\lib\System.Data.SqlServerCe.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>

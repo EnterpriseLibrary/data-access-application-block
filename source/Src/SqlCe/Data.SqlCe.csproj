@@ -29,12 +29,8 @@
   <ItemGroup>
     <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
     <PackageReference Include="$(PrePackageName).Common$(PostPackageName)" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
-
+    <PackageReference Include="Microsoft.SqlServer.Compact" Version="4.0.8876.1" />
     <ProjectReference Include="..\Data\Data.csproj" />
-
-    <Reference Include="System.Data.SqlServerCe">
-      <HintPath>..\..\..\lib\System.Data.SqlServerCe.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
