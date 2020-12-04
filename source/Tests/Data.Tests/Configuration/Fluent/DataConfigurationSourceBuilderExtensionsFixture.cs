@@ -15,6 +15,9 @@ using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration.Fluent;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql.Configuration.Fluent;
+#if NET47
+using Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.Configuration.Fluent;
+#endif
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Oracle.ManagedDataAccess.Client;
 
@@ -298,7 +301,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
             Assert.AreEqual(builder.ConnectionString, GetConnectionStringSettings().ConnectionString);
         }
     }
-
+#if NET47
     [TestClass]
     public class When_PassingNullConnectionStringToSqlCeDatabase : Given_NamedDatabase
     {
@@ -335,7 +338,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
             Assert.AreEqual("someConnection", GetConnectionStringSettings().ConnectionString);
         }
     }
-
+#endif
     [TestClass]
     public class When_ConfiguringForOdbcProviderWithoutBuilder : Given_NamedDatabase
     {

@@ -11,15 +11,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
     ///</summary>
     public static partial class DatabaseProviderExtensions
     {
-        /// <summary>
-        /// A Sql CE database for use with the System.Data.SqlServerCe namespace.
-        /// </summary>
-        /// <param name="context">Configuration context</param>
-        /// <returns></returns>   
-        public static IDatabaseSqlCeDatabaseConfiguration ASqlCeDatabase(this IDatabaseConfigurationProviders context)
-        {
-            return new SqlCeDatabaseConfigurationExtension(context);
-        }
 
         /// <summary>
         /// An Odbc database for use with the <see cref="System.Data.Odbc"/> namespace.

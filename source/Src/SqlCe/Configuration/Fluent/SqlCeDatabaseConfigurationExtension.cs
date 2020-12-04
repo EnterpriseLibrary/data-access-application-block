@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
-namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
+
+namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.Configuration.Fluent
 {
 
     /// <summary>
@@ -15,7 +17,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
         public SqlCeDatabaseConfigurationExtension(IDatabaseConfigurationProviders context)
             : base(context)
         {
-            base.ConnectionString.ProviderName = "System.Data.SqlServerCe";
+            ConnectionString.ProviderName = "System.Data.SqlServerCe";
         }
     }
 }

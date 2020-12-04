@@ -6,17 +6,17 @@ using System.Data;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data
 {
-    /// <devdoc>
-    /// CachingMechanism provides caching support for stored procedure 
+    /// <summary>
+    /// CachingMechanism provides caching support for stored procedure
     /// parameter discovery and caching
-    /// </devdoc>
+    /// </summary>
     internal class CachingMechanism
     {
         private Hashtable paramCache = Hashtable.Synchronized(new Hashtable());
 
-        /// <devdoc>
+        /// <summary>
         /// Create and return a copy of the IDataParameter array.
-        /// </devdoc>        
+        /// </summary>
         public static IDataParameter[] CloneParameters(IDataParameter[] originalParameters)
         {
             IDataParameter[] clonedParameters = new IDataParameter[originalParameters.Length];
@@ -29,17 +29,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             return clonedParameters;
         }
 
-        /// <devdoc>
+        /// <summary>
         /// Empties all items from the cache
-        /// </devdoc>
+        /// </summary>
         public void Clear()
         {
             this.paramCache.Clear();
         }
 
-        /// <devdoc>
+        /// <summary>
         /// Add a parameter array to the cache for the command.
-        /// </devdoc>        
+        /// </summary>
         public void AddParameterSetToCache(string connectionString, IDbCommand command, IDataParameter[] parameters)
         {
             string storedProcedure = command.CommandText;
@@ -47,9 +47,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             this.paramCache[key] = parameters;
         }
 
-        /// <devdoc>
+        /// <summary>
         /// Gets a parameter array from the cache for the command. Returns null if no parameters are found.
-        /// </devdoc>        
+        /// </summary>
         public IDataParameter[] GetCachedParameterSet(string connectionString, IDbCommand command)
         {
             string storedProcedure = command.CommandText;
@@ -58,9 +58,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             return CloneParameters(cachedParameters);
         }
 
-        /// <devdoc>
+        /// <summary>
         /// Gets if a given stored procedure on a specific connection string has a cached parameter set
-        /// </devdoc>        
+        /// </summary>
         public bool IsParameterSetCached(string connectionString, IDbCommand command)
         {
             string hashKey = CreateHashKey(

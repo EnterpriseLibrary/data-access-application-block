@@ -225,13 +225,13 @@ namespace System.Data.Common
                     bool flagIncludeToTable = false;
 
                     // OracleClient Provider: Include only if it installed
-                    if (configDataTable.Rows[i][AssemblyQualifiedName].ToString().ToLowerInvariant().Contains(DbProviderFactoriesConfigurationHandler.oracleclientProviderNamespace.ToString().ToLowerInvariant()))
+                    if (configDataTable.Rows[i][AssemblyQualifiedName].ToString().ToLowerInvariant().Contains(DbProviderFactoriesConfigurationHandler.oracleclientProviderNamespace.ToLowerInvariant()))
                     {
                         Type providerType = Type.GetType(configDataTable.Rows[i][AssemblyQualifiedName].ToString());
                         if (providerType != null)
                         {
                             // NOTES: Try and create a instance; If it fails, it will throw a System.NullReferenceException exception;
-                            System.Reflection.FieldInfo providerInstance = providerType.GetField(Instance, System.Reflection.BindingFlags.DeclaredOnly | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+                            Reflection.FieldInfo providerInstance = providerType.GetField(Instance, Reflection.BindingFlags.DeclaredOnly | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
                             if ((null != providerInstance) && (providerInstance.FieldType.IsSubclassOf(typeof(DbProviderFactory))))
                             {
                                 Debug.Assert(providerInstance.IsPublic, "field not public");
