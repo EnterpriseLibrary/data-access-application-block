@@ -5,7 +5,7 @@ using System.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 
-namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
+namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.Configuration
 {
     /// <summary>
     /// Describes a <see cref="SqlCeDatabase"/> instance, aggregating information from a

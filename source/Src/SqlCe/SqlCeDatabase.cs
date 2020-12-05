@@ -6,6 +6,7 @@ using System.Data.Common;
 using System.Data.SqlServerCe;
 using System.Globalization;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.Properties;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
