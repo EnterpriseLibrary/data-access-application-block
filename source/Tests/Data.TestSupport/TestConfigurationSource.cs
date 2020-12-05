@@ -8,7 +8,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.TestSupport
 {
-    public class TestConfigurationSource
+    public static class TestConfigurationSource
     {
         public const string NorthwindDummyUser = "entlib";
         public const string NorthwindDummyPassword = "hdf7&834k(*KA";

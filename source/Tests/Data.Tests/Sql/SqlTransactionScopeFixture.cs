@@ -22,6 +22,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Sql
         [TestInitialize]
         public void SetUp()
         {
+            NetCoreHelpers.RegisterDbProviderFactories();
             DatabaseProviderFactory factory = new DatabaseProviderFactory(TestConfigurationSource.CreateConfigurationSource());
             db = factory.CreateDefault();
 
