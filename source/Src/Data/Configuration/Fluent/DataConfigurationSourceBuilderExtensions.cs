@@ -77,7 +77,13 @@ namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
                 get { return this; }
             }
 
-            /// <summary />
+            /// <summary>
+            /// Adds a mapping of the specified <paramref name="providerName"/> to the GenericDatabase.
+            /// </summary>
+            /// <param name="providerName">The provider name</param>
+            /// <returns>This <see cref="DataConfigurationBuilder"/> instance</returns>
+            /// <exception cref="ArgumentException"><paramref name="providerName"/> is empty.</exception>
+            /// <exception cref="ArgumentNullException"><paramref name="providerName"/> is <b>null</b>.</exception>
             public IDatabaseProviderConfiguration WithProviderNamed(string providerName)
             {
                 Guard.ArgumentNotNullOrEmpty(providerName, "providerName");
@@ -94,7 +100,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
             /// Map the provider alias to the specified database type.
             /// </summary>
             /// <param name="databaseType">Maps the provider to a type that derives from <see cref="Database"/></param>
-            /// <returns></returns>
+            /// <returns>This <see cref="DataConfigurationBuilder"/> instance</returns>
+            /// <exception cref="ArgumentException"><paramref name="databaseType"/> doesn't inherit
+            /// from <see cref="Database"/>.</exception>
             public IDataConfiguration MappedToDatabase(Type databaseType)
             {
                 if (!typeof(Database).IsAssignableFrom(databaseType))
@@ -106,7 +114,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
                 return this;
             }
 
-            /// <summary />
+            /// <summary>
+            /// Map the provider alias to the specified database type.
+            /// </summary>
+            /// <typeparam name="T">The type to map to the provider</typeparam>
+            /// <returns>This <see cref="DataConfigurationBuilder"/> instance</returns>
             public IDataConfiguration MappedToDatabase<T>() where T : Database
             {
                 return MappedToDatabase(typeof(T));
