@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Oracle", "..\..\source
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.SqlServer", "..\..\source\Src\Data.SqlServer\Data.SqlServer.csproj", "{2D0FB68C-61FC-4BE2-8788-7976CF6ADF8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.OleDb", "..\..\source\Src\Data.OleDb\Data.OleDb.csproj", "{A786A2DF-F8BE-433D-99CC-E100376F3F91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{2D0FB68C-61FC-4BE2-8788-7976CF6ADF8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D0FB68C-61FC-4BE2-8788-7976CF6ADF8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D0FB68C-61FC-4BE2-8788-7976CF6ADF8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A786A2DF-F8BE-433D-99CC-E100376F3F91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A786A2DF-F8BE-433D-99CC-E100376F3F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A786A2DF-F8BE-433D-99CC-E100376F3F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A786A2DF-F8BE-433D-99CC-E100376F3F91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

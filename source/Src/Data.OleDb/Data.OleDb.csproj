@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\package.props" />
+  
+  <PropertyGroup>
+    <TargetFrameworks>net45;net46;net47;netcoreapp3.0</TargetFrameworks>
+
+    <AssemblyName>$(PreAssemblyName).Data.OleDb</AssemblyName>
+    <RootNamespace>$(PreAssemblyName).Data.OleDb</RootNamespace>
+    <PackageId>$(PrePackageName).Data.OleDb$(PostPackageName)</PackageId>
+    <Description>OLE DB support for Enterprise Library Data Access Application Block. The Data Access Application Block simplifies the development of tasks that implement common data access functionality. Applications can use this application block in a variety of situations, such as reading data for display, passing data through application layers, and submitting changed data back to the database system.</Description>
+    <PackageTags>entlib entlib6 Enterprise Library data daab dab LOB oledb OLE</PackageTags>
+
+    <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
+    <FileVersion>$(Version).$(Revision)</FileVersion>
+
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\EnterpriseLibrary.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+
+    <None Include="..\..\DataAccess.licenseheader">
+      <Link>DataAccess.licenseheader</Link>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup Condition="('$(TargetFramework)' == 'netcoreapp3.0')">
+    <PackageReference Include="System.Data.OleDb" Version="4.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>
