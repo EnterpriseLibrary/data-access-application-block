@@ -30,7 +30,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
         ///<param name="context"></param>
         protected DatabaseConfigurationExtension(IDatabaseConfigurationProviders context)
         {
-            if (context == null) throw new ArgumentNullException("context");
+            if (context == null) throw new ArgumentNullException(nameof(context));
 
             this.context = (IDatabaseConfigurationProperties)context;
             Debug.Assert(typeof (IDatabaseProviderExtensionContext).IsAssignableFrom(context.GetType()));
@@ -88,7 +88,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
         /// <seealso cref="DbConnectionStringBuilder"/>
         public IDatabaseConfigurationProperties WithConnectionString(string connectionString)
         {
-            if (string.IsNullOrEmpty(connectionString)) throw new ArgumentException(Resources.ExceptionStringNullOrEmpty, "connectionString");
+            if (string.IsNullOrEmpty(connectionString)) throw new ArgumentException(Resources.ExceptionStringNullOrEmpty, nameof(connectionString));
             ConnectionString.ConnectionString = connectionString;
             return this;
         }
@@ -100,7 +100,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
         ///<returns></returns>
         public IDatabaseConfigurationProperties WithConnectionString(DbConnectionStringBuilder builder)
         {
-            if (builder == null) throw new ArgumentNullException("builder");
+            if (builder == null) throw new ArgumentNullException(nameof(builder));
 
             return WithConnectionString(builder.ConnectionString);
         }

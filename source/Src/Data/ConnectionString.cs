@@ -27,9 +27,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="passwordTokens">The password tokens that can be parsed out of the connection string.</param>
         public ConnectionString(string connectionString, string userIdTokens, string passwordTokens)
         {
-            if (string.IsNullOrEmpty(connectionString)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, "connectionString");
-            if (string.IsNullOrEmpty(userIdTokens)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, "userIdTokens");
-            if (string.IsNullOrEmpty(passwordTokens)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, "passwordTokens");
+            if (string.IsNullOrEmpty(connectionString)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, nameof(connectionString));
+            if (string.IsNullOrEmpty(userIdTokens)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, nameof(userIdTokens));
+            if (string.IsNullOrEmpty(passwordTokens)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, nameof(passwordTokens));
 
             this.connectionString = connectionString;
             this.userIdTokens = userIdTokens;

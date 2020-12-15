@@ -54,7 +54,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             : base(database, rowMapper)
         {
             if (string.IsNullOrEmpty(procedureName)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString);
-            if (parameterMapper == null) throw new ArgumentNullException("parameterMapper");
+            if (parameterMapper == null) throw new ArgumentNullException(nameof(parameterMapper));
 
             this.procedureName = procedureName;
             this.parameterMapper = parameterMapper;
@@ -73,7 +73,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             : base(database, resultSetMapper)
         {
             if (string.IsNullOrEmpty(procedureName)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString);
-            if (parameterMapper == null) throw new ArgumentNullException("parameterMapper");
+            if (parameterMapper == null) throw new ArgumentNullException(nameof(parameterMapper));
 
             this.procedureName = procedureName;
             this.parameterMapper = parameterMapper;

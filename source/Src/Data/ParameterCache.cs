@@ -31,8 +31,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </param>
         public void SetParameters(DbCommand command, Database database)
         {
-            if (command == null) throw new ArgumentNullException("command");
-            if (database == null) throw new ArgumentNullException("database");
+            if (command == null) throw new ArgumentNullException(nameof(command));
+            if (database == null) throw new ArgumentNullException(nameof(database));
 
 
             if (AlreadyCached(command, database))

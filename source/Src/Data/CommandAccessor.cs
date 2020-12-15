@@ -26,7 +26,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         protected CommandAccessor(Database database, IRowMapper<TResult> rowMapper)
             : this(database, new DefaultResultSetMapper(rowMapper))
         {
-            if (rowMapper == null) throw new ArgumentNullException("rowMapper");
+            if (rowMapper == null) throw new ArgumentNullException(nameof(rowMapper));
         }
 
         /// <summary>
@@ -36,8 +36,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="resultSetMapper">The <see cref="IResultSetMapper{TResult}"/> that will be used to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.</param>
         protected CommandAccessor(Database database, IResultSetMapper<TResult> resultSetMapper)
         {
-            if (database == null) throw new ArgumentNullException("database");
-            if (resultSetMapper == null) throw new ArgumentNullException("resultSetMapper");
+            if (database == null) throw new ArgumentNullException(nameof(database));
+            if (resultSetMapper == null) throw new ArgumentNullException(nameof(resultSetMapper));
 
             this.database = database;
             this.resultSetMapper = resultSetMapper;

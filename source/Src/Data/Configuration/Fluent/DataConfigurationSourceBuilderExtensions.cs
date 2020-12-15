@@ -50,7 +50,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
             ///<returns></returns>
             public IDatabaseConfigurationProperties ForDatabaseNamed(string databaseName)
             {
-                if (string.IsNullOrEmpty(databaseName)) throw new ArgumentException(Properties.Resources.ExceptionStringNullOrEmpty, "databaseName");
+                if (string.IsNullOrEmpty(databaseName)) throw new ArgumentException(Properties.Resources.ExceptionStringNullOrEmpty, nameof(databaseName));
 
                 ResetForNewDatabase(databaseName);
                 connectionStringSection.ConnectionStrings.Add(currentDatabaseConnectionInfo);
@@ -107,7 +107,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
             {
                 if (!typeof(Database).IsAssignableFrom(databaseType))
                 {
-                    throw new ArgumentException(Resources.ExceptionArgumentMustInheritFromDatabase, "databaseType");
+                    throw new ArgumentException(Resources.ExceptionArgumentMustInheritFromDatabase, nameof(databaseType));
                 }
 
                 currentProviderMapping.DatabaseType = databaseType;

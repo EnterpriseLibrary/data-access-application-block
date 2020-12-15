@@ -474,9 +474,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
 
         #endregion
 
-        /// <devdoc>
-        /// Listens for the RowUpdate event on a dataa dapter to support UpdateBehavior.Continue.
-        /// </devdoc>
+        /// <summary>
+        /// Listens for the RowUpdate event on a data adapter to support UpdateBehavior.Continue.
+        /// </summary>
         private void OnSqlRowUpdated(object sender, SqlCeRowUpdatedEventArgs rowThatCouldNotBeWritten)
         {
             if (rowThatCouldNotBeWritten.RecordsAffected == 0)

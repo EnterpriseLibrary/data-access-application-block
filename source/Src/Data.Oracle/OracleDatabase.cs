@@ -389,9 +389,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
             return true;
         }
 
-        /// <devdoc>
+        /// <summary>
         /// Listens for the RowUpdate event on a data adapter to support UpdateBehavior.Continue
-        /// </devdoc>
+        /// </summary>
         private void OnOracleRowUpdated(object sender, OracleRowUpdatedEventArgs args)
         {
             if (args.RecordsAffected == 0)

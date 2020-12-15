@@ -42,7 +42,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
         /// configuration source does not contain database settings.</returns>
         public static DatabaseSettings GetDatabaseSettings(IConfigurationSource configurationSource)
         {
-            if (configurationSource == null) throw new ArgumentNullException("configurationSource");
+            if (configurationSource == null) throw new ArgumentNullException(nameof(configurationSource));
 
             return (DatabaseSettings)configurationSource.GetSection(SectionName);
         }

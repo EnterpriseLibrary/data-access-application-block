@@ -153,17 +153,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             private static PropertyInfo ExtractPropertyInfo<TMember>(Expression<Func<TResult, TMember>> propertySelector)
             {
                 MemberExpression memberExpression = propertySelector.Body as MemberExpression;
-                if (memberExpression == null) throw new ArgumentException(Resources.ExceptionArgumentMustBePropertyExpression, "propertySelector");
+                if (memberExpression == null) throw new ArgumentException(Resources.ExceptionArgumentMustBePropertyExpression, nameof(propertySelector));
 
                 PropertyInfo property = memberExpression.Member as PropertyInfo;
-                if (property == null) throw new ArgumentException(Resources.ExceptionArgumentMustBePropertyExpression, "propertySelector");
+                if (property == null) throw new ArgumentException(Resources.ExceptionArgumentMustBePropertyExpression, nameof(propertySelector));
 
                 return NormalizePropertyInfo(property);
             }
 
             private static PropertyInfo NormalizePropertyInfo(PropertyInfo property)
             {
-                if (property == null) throw new ArgumentNullException("property");
+                if (property == null) throw new ArgumentNullException(nameof(property));
                 return typeof(TResult).GetProperty(property.Name);
             }
 

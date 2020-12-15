@@ -228,7 +228,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         private static SqlCommand CheckIfSqlCommand(DbCommand command)
         {
             SqlCommand sqlCommand = command as SqlCommand;
-            if (sqlCommand == null) throw new ArgumentException(Resources.ExceptionCommandNotSqlCommand, "command");
+            if (sqlCommand == null) throw new ArgumentException(Resources.ExceptionCommandNotSqlCommand, nameof(command));
             return sqlCommand;
         }
 
@@ -282,7 +282,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         /// <returns>A correctly formated parameter name.</returns>
         public override string BuildParameterName(string name)
         {
-            if (name == null) throw new ArgumentNullException("name");
+            if (name == null) throw new ArgumentNullException(nameof(name));
 
             if (name[0] != ParameterToken)
             {
@@ -330,7 +330,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         /// <param name="value"><para>The value of the parameter.</para></param>
         public virtual void AddParameter(DbCommand command, string name, SqlDbType dbType, int size, ParameterDirection direction, bool nullable, byte precision, byte scale, string sourceColumn, DataRowVersion sourceVersion, object value)
         {
-            if (command == null) throw new ArgumentNullException("command");
+            if (command == null) throw new ArgumentNullException(nameof(command));
 
             DbParameter parameter = CreateParameter(name, dbType, size, direction, nullable, precision, scale, sourceColumn, sourceVersion, value);
             command.Parameters.Add(parameter);

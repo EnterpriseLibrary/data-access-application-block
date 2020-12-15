@@ -37,7 +37,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="propertyMappings">The <see cref="PropertyMapping"/>'s that specify how each property should be mapped.</param>
         public ReflectionRowMapper(IDictionary<PropertyInfo, PropertyMapping> propertyMappings)
         {
-            if (propertyMappings == null) throw new ArgumentNullException("propertyMappings");
+            if (propertyMappings == null) throw new ArgumentNullException(nameof(propertyMappings));
 
             try
             {
@@ -215,7 +215,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>The value for the corresponding column converted to the type of the mapped property.</returns>
         public override object GetPropertyValue(IDataRecord row)
         {
-            if (row == null) throw new ArgumentNullException("row");
+            if (row == null) throw new ArgumentNullException(nameof(row));
 
             object value;
             try

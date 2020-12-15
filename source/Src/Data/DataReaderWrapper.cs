@@ -12,7 +12,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
     /// </summary>
     public abstract class DataReaderWrapper : MarshalByRefObject, IDataReader
     {
-        private readonly IDataReader innerReader;
 
         /// <summary>
         /// Construct a new <see cref='DataReaderWrapper'/> that delegates all methods
@@ -21,13 +20,13 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="innerReader"><see cref="IDataReader"/> to wrap.</param>
         protected DataReaderWrapper(IDataReader innerReader)
         {
-            this.innerReader = innerReader;
+            this.InnerReader = innerReader;
         }
 
         /// <summary>
         /// The actual raw <see cref="IDataReader"/> we're wrapping.
         /// </summary>
-        public IDataReader InnerReader { get { return innerReader; } }
+        public IDataReader InnerReader { get; }
 
         /// <summary>
         /// Gets the number of columns in the current row.
@@ -38,7 +37,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <filterpriority>2</filterpriority>
         public virtual int FieldCount
         {
-            get { return innerReader.FieldCount; }
+            get { return InnerReader.FieldCount; }
         }
 
         /// <summary>
@@ -50,7 +49,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <filterpriority>2</filterpriority>
         public virtual int Depth
         {
-            get { return innerReader.Depth; }
+            get { return InnerReader.Depth; }
         }
 
         /// <summary>
@@ -62,7 +61,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <filterpriority>2</filterpriority>
         public virtual bool IsClosed
         {
-            get { return innerReader.IsClosed; }
+            get { return InnerReader.IsClosed; }
         }
 
         /// <summary>
@@ -74,7 +73,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <filterpriority>2</filterpriority>
         public virtual int RecordsAffected
         {
-            get { return innerReader.RecordsAffected; }
+            get { return InnerReader.RecordsAffected; }
         }
 
         /// <summary>
@@ -83,9 +82,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <filterpriority>2</filterpriority>
         public virtual void Close()
         {
-            if(!innerReader.IsClosed)
+            if(!InnerReader.IsClosed)
             {
-                innerReader.Close();
+                InnerReader.Close();
             }
         }
 
@@ -108,9 +107,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         {
             if(disposing)
             {
-                if(!innerReader.IsClosed)
+                if(!InnerReader.IsClosed)
                 {
-                    innerReader.Dispose();
+                    InnerReader.Dispose();
                 }
             }
         }
@@ -126,7 +125,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual string GetName(int i)
         {
-            return innerReader.GetName(i);
+            return InnerReader.GetName(i);
         }
 
         /// <summary>
@@ -140,7 +139,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual string GetDataTypeName(int i)
         {
-            return innerReader.GetDataTypeName(i);
+            return InnerReader.GetDataTypeName(i);
         }
 
         /// <summary>
@@ -154,7 +153,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual Type GetFieldType(int i)
         {
-            return innerReader.GetFieldType(i);
+            return InnerReader.GetFieldType(i);
         }
 
         /// <summary>
@@ -168,7 +167,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual object GetValue(int i)
         {
-            return innerReader.GetValue(i);
+            return InnerReader.GetValue(i);
         }
 
         /// <summary>
@@ -181,7 +180,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </param><filterpriority>2</filterpriority>
         public virtual int GetValues(object[] values)
         {
-            return innerReader.GetValues(values);
+            return InnerReader.GetValues(values);
         }
 
         /// <summary>
@@ -194,7 +193,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </param><filterpriority>2</filterpriority>
         public virtual int GetOrdinal(string name)
         {
-            return innerReader.GetOrdinal(name);
+            return InnerReader.GetOrdinal(name);
         }
 
         /// <summary>
@@ -208,7 +207,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual bool GetBoolean(int i)
         {
-            return innerReader.GetBoolean(i);
+            return InnerReader.GetBoolean(i);
         }
 
         /// <summary>
@@ -222,7 +221,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual byte GetByte(int i)
         {
-            return innerReader.GetByte(i);
+            return InnerReader.GetByte(i);
         }
 
         /// <summary>
@@ -240,7 +239,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual long GetBytes(int i, long fieldOffset, byte[] buffer, int bufferoffset, int length)
         {
-            return innerReader.GetBytes(i, fieldOffset, buffer, bufferoffset, length);
+            return InnerReader.GetBytes(i, fieldOffset, buffer, bufferoffset, length);
         }
 
         /// <summary>
@@ -254,7 +253,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual char GetChar(int i)
         {
-            return innerReader.GetChar(i);
+            return InnerReader.GetChar(i);
         }
 
         /// <summary>
@@ -272,7 +271,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual long GetChars(int i, long fieldoffset, char[] buffer, int bufferoffset, int length)
         {
-            return innerReader.GetChars(i, fieldoffset, buffer, bufferoffset, length);
+            return InnerReader.GetChars(i, fieldoffset, buffer, bufferoffset, length);
         }
 
         /// <summary>
@@ -286,7 +285,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual Guid GetGuid(int i)
         {
-            return innerReader.GetGuid(i);
+            return InnerReader.GetGuid(i);
         }
 
         /// <summary>
@@ -300,7 +299,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual short GetInt16(int i)
         {
-            return innerReader.GetInt16(i);
+            return InnerReader.GetInt16(i);
         }
 
         /// <summary>
@@ -314,7 +313,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual int GetInt32(int i)
         {
-            return innerReader.GetInt32(i);
+            return InnerReader.GetInt32(i);
         }
 
         /// <summary>
@@ -328,7 +327,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual long GetInt64(int i)
         {
-            return innerReader.GetInt64(i);
+            return InnerReader.GetInt64(i);
         }
 
         /// <summary>
@@ -342,7 +341,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual float GetFloat(int i)
         {
-            return innerReader.GetFloat(i);
+            return InnerReader.GetFloat(i);
         }
 
         /// <summary>
@@ -356,7 +355,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual double GetDouble(int i)
         {
-            return innerReader.GetDouble(i);
+            return InnerReader.GetDouble(i);
         }
 
         /// <summary>
@@ -370,7 +369,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual string GetString(int i)
         {
-            return innerReader.GetString(i);
+            return InnerReader.GetString(i);
         }
 
         /// <summary>
@@ -384,7 +383,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual decimal GetDecimal(int i)
         {
-            return innerReader.GetDecimal(i);
+            return InnerReader.GetDecimal(i);
         }
 
         /// <summary>
@@ -398,7 +397,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual DateTime GetDateTime(int i)
         {
-            return innerReader.GetDateTime(i);
+            return InnerReader.GetDateTime(i);
         }
 
         /// <summary>
@@ -412,7 +411,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual IDataReader GetData(int i)
         {
-            return innerReader.GetData(i);
+            return InnerReader.GetData(i);
         }
 
         /// <summary>
@@ -426,7 +425,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual bool IsDBNull(int i)
         {
-            return innerReader.IsDBNull(i);
+            return InnerReader.IsDBNull(i);
         }
 
         /// <summary>
@@ -440,7 +439,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         object IDataRecord.this[int i]
         {
-            get { return innerReader[i]; }
+            get { return InnerReader[i]; }
         }
 
         /// <summary>
@@ -454,7 +453,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         object IDataRecord.this[string name]
         {
-            get { return innerReader[name]; }
+            get { return InnerReader[name]; }
         }
 
         /// <summary>
@@ -467,7 +466,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         ///                 </exception><filterpriority>2</filterpriority>
         public virtual DataTable GetSchemaTable()
         {
-            return innerReader.GetSchemaTable();
+            return InnerReader.GetSchemaTable();
         }
 
         /// <summary>
@@ -479,7 +478,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <filterpriority>2</filterpriority>
         public virtual bool NextResult()
         {
-            return innerReader.NextResult();
+            return InnerReader.NextResult();
         }
 
         /// <summary>
@@ -491,7 +490,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <filterpriority>2</filterpriority>
         public virtual bool Read()
         {
-            return innerReader.Read();
+            return InnerReader.Read();
         }
     }
 }

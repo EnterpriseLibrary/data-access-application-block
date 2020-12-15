@@ -20,7 +20,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
     {
         public AnotherDatabaseConfigurationExtensions(IDatabaseConfigurationProviders context, string providerName) : base(context)
         {
-            if (String.IsNullOrEmpty(providerName)) throw new ArgumentException(Resources.ExceptionStringNullOrEmpty, "providerName");
+            if (String.IsNullOrEmpty(providerName)) throw new ArgumentException(Resources.ExceptionStringNullOrEmpty, nameof(providerName));
             ConnectionString.ProviderName = providerName;
         }
 

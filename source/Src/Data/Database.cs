@@ -10,10 +10,10 @@ using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
 namespace Microsoft.Practices.EnterpriseLibrary.Data
 {
     /// <summary>
-    /// Represents an abstract database that commands can be run against. 
+    /// Represents an abstract database that commands can be run against.
     /// </summary>
     /// <remarks>
-    /// The <see cref="Database"/> class leverages the provider factory model from ADO.NET. A database instance holds 
+    /// The <see cref="Database"/> class leverages the provider factory model from ADO.NET. A database instance holds
     /// a reference to a concrete <see cref="DbProviderFactory"/> object to which it forwards the creation of ADO.NET objects.
     /// </remarks>
     public abstract class Database
@@ -23,7 +23,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         static readonly string VALID_USER_ID_TOKENS = Resources.UserName;
 
         readonly ConnectionString connectionString;
-        readonly DbProviderFactory dbProviderFactory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Database"/> class with a connection string and a <see cref="DbProviderFactory"/>.
@@ -32,11 +31,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="dbProviderFactory">A <see cref="DbProviderFactory"/> object.</param>
         protected Database(string connectionString, DbProviderFactory dbProviderFactory)
         {
-            if (string.IsNullOrEmpty(connectionString)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, "connectionString");
-            if (dbProviderFactory == null) throw new ArgumentNullException("dbProviderFactory");
+            if (string.IsNullOrEmpty(connectionString)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, nameof(connectionString));
+            if (dbProviderFactory == null) throw new ArgumentNullException(nameof(dbProviderFactory));
 
             this.connectionString = new ConnectionString(connectionString, VALID_USER_ID_TOKENS, VALID_PASSWORD_TOKENS);
-            this.dbProviderFactory = dbProviderFactory;
+            DbProviderFactory = dbProviderFactory;
         }
 
         /// <summary>
@@ -78,20 +77,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>Gets the DbProviderFactory used by the database instance.</para>
         /// </summary>
         /// <seealso cref="DbProviderFactory"/>
-        public DbProviderFactory DbProviderFactory
-        {
-            get { return dbProviderFactory; }
-        }
+        public DbProviderFactory DbProviderFactory { get; }
 
         /// <summary>
         /// Adds a new In <see cref="DbParameter"/> object to the given <paramref name="command"/>.
         /// </summary>
         /// <param name="command">The command to add the in parameter.</param>
         /// <param name="name"><para>The name of the parameter.</para></param>
-        /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>                
+        /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>
         /// <remarks>
         /// <para>This version of the method is used when you can have the same parameter object multiple times with different values.</para>
-        /// </remarks>        
+        /// </remarks>
         public void AddInParameter(DbCommand command,
                                    string name,
                                    DbType dbType)
@@ -104,8 +100,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="command">The command to add the parameter.</param>
         /// <param name="name"><para>The name of the parameter.</para></param>
-        /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>                
-        /// <param name="value"><para>The value of the parameter.</para></param>      
+        /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>
+        /// <param name="value"><para>The value of the parameter.</para></param>
         public void AddInParameter(DbCommand command,
                                    string name,
                                    DbType dbType,
@@ -119,7 +115,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="command">The command to add the parameter.</param>
         /// <param name="name"><para>The name of the parameter.</para></param>
-        /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>                
+        /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the value.</para></param>
         /// <param name="sourceVersion"><para>One of the <see cref="DataRowVersion"/> values.</para></param>
         public void AddInParameter(DbCommand command,
@@ -136,8 +132,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="command">The command to add the out parameter.</param>
         /// <param name="name"><para>The name of the parameter.</para></param>
-        /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>        
-        /// <param name="size"><para>The maximum size of the data within the column.</para></param>        
+        /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>
+        /// <param name="size"><para>The maximum size of the data within the column.</para></param>
         public void AddOutParameter(DbCommand command,
                                     string name,
                                     DbType dbType,
@@ -159,7 +155,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="scale"><para>The number of decimal places to which <paramref name="value"/> is resolved.</para></param>
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
         /// <param name="sourceVersion"><para>One of the <see cref="DataRowVersion"/> values.</para></param>
-        /// <param name="value"><para>The value of the parameter.</para></param>       
+        /// <param name="value"><para>The value of the parameter.</para></param>
         public virtual void AddParameter(DbCommand command,
                                          string name,
                                          DbType dbType,
@@ -172,7 +168,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
                                          DataRowVersion sourceVersion,
                                          object value)
         {
-            if (command == null) throw new ArgumentNullException("command");
+            if (command == null) throw new ArgumentNullException(nameof(command));
 
             DbParameter parameter = CreateParameter(name, dbType, size, direction, nullable, precision, scale, sourceColumn, sourceVersion, value);
             command.Parameters.Add(parameter);
@@ -183,11 +179,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="command">The command to add the parameter.</param>
         /// <param name="name"><para>The name of the parameter.</para></param>
-        /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>        
-        /// <param name="direction"><para>One of the <see cref="ParameterDirection"/> values.</para></param>                
+        /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>
+        /// <param name="direction"><para>One of the <see cref="ParameterDirection"/> values.</para></param>
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
         /// <param name="sourceVersion"><para>One of the <see cref="DataRowVersion"/> values.</para></param>
-        /// <param name="value"><para>The value of the parameter.</para></param>    
+        /// <param name="value"><para>The value of the parameter.</para></param>
         public void AddParameter(DbCommand command,
                                  string name,
                                  DbType dbType,
@@ -199,8 +195,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             AddParameter(command, name, dbType, 0, direction, false, 0, 0, sourceColumn, sourceVersion, value);
         }
 
-        void AssignParameterValues(DbCommand command,
-                                   object[] values)
+        void AssignParameterValues(DbCommand command, object[] values)
         {
             int parameterIndexShift = UserParametersStartIndex(); // DONE magic number, depends on the database
             for (int i = 0; i < values.Length; i++)
@@ -260,7 +255,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="scale"><para>The number of decimal places to which <paramref name="value"/> is resolved.</para></param>
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
         /// <param name="sourceVersion"><para>One of the <see cref="DataRowVersion"/> values.</para></param>
-        /// <param name="value"><para>The value of the parameter.</para></param>  
+        /// <param name="value"><para>The value of the parameter.</para></param>
         protected virtual void ConfigureParameter(DbParameter param,
                                                   string name,
                                                   DbType dbType,
@@ -286,7 +281,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         DbCommand CreateCommandByCommandType(CommandType commandType,
                                              string commandText)
         {
-            DbCommand command = dbProviderFactory.CreateCommand();
+            DbCommand command = DbProviderFactory.CreateCommand();
             command.CommandType = commandType;
             command.CommandText = commandText;
 
@@ -299,10 +294,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// <para>The <see cref="DbConnection"/> for this database.</para>
         /// </returns>
-        /// <seealso cref="DbConnection"/>        
+        /// <seealso cref="DbConnection"/>
         public virtual DbConnection CreateConnection()
         {
-            DbConnection newConnection = dbProviderFactory.CreateConnection();
+            DbConnection newConnection = DbProviderFactory.CreateConnection();
             newConnection.ConnectionString = ConnectionString;
 
             return newConnection;
@@ -320,7 +315,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="scale"><para>The number of decimal places to which <paramref name="value"/> is resolved.</para></param>
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
         /// <param name="sourceVersion"><para>One of the <see cref="DataRowVersion"/> values.</para></param>
-        /// <param name="value"><para>The value of the parameter.</para></param>  
+        /// <param name="value"><para>The value of the parameter.</para></param>
         /// <returns>A newly created <see cref="DbParameter"/> fully initialized with given parameters.</returns>
         protected DbParameter CreateParameter(string name,
                                               DbType dbType,
@@ -339,13 +334,13 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Adds a new instance of a <see cref="DbParameter"/> object.</para>
+        /// <para>Creates a new instance of a <see cref="DbParameter"/> object.</para>
         /// </summary>
         /// <param name="name"><para>The name of the parameter.</para></param>
         /// <returns><para>An unconfigured parameter.</para></returns>
         protected DbParameter CreateParameter(string name)
         {
-            DbParameter param = dbProviderFactory.CreateParameter();
+            DbParameter param = DbProviderFactory.CreateParameter();
             param.ParameterName = BuildParameterName(name);
 
             return param;
@@ -357,13 +352,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// Does this <see cref='Database'/> object support parameter discovery?
         /// </summary>
         /// <value>Base class always returns false.</value>
-        public virtual bool SupportsParemeterDiscovery
-        {
-            get { return false; }
-        }
+        public virtual bool SupportsParemeterDiscovery => false;
 
         /// <summary>
-        /// Retrieves parameter information from the stored procedure specified in the <see cref="DbCommand"/> and populates the Parameters collection of the specified <see cref="DbCommand"/> object. 
+        /// Retrieves parameter information from the stored procedure specified in the <see cref="DbCommand"/> and populates the
+        /// Parameters collection of the specified <see cref="DbCommand"/> object.
         /// </summary>
         /// <param name="discoveryCommand">The <see cref="DbCommand"/> to do the discovery.</param>
         protected abstract void DeriveParameters(DbCommand discoveryCommand);
@@ -374,7 +367,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="command">The <see cref="DbCommand"/> to discover the parameters.</param>
         public void DiscoverParameters(DbCommand command)
         {
-            if (command == null) throw new ArgumentNullException("command");
+            if (command == null) throw new ArgumentNullException(nameof(command));
 
             using (var wrapper = GetOpenConnection())
             {
@@ -399,14 +392,13 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>The quantity of rows affected.</returns>
         protected int DoExecuteNonQuery(DbCommand command)
         {
-            if (command == null) throw new ArgumentNullException("command");
+            if (command == null) throw new ArgumentNullException(nameof(command));
 
             int rowsAffected = command.ExecuteNonQuery();
             return rowsAffected;
         }
 
-        IDataReader DoExecuteReader(DbCommand command,
-                                    CommandBehavior cmdBehavior)
+        IDataReader DoExecuteReader(DbCommand command, CommandBehavior cmdBehavior)
         {
             IDataReader reader = command.ExecuteReader(cmdBehavior);
 
@@ -423,10 +415,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
                            DataSet dataSet,
                            string[] tableNames)
         {
-            if (tableNames == null) throw new ArgumentNullException("tableNames");
+            if (tableNames == null) throw new ArgumentNullException(nameof(tableNames));
             if (tableNames.Length == 0)
             {
-                throw new ArgumentException(Resources.ExceptionTableNameArrayEmpty, "tableNames");
+                throw new ArgumentException(Resources.ExceptionTableNameArrayEmpty, nameof(tableNames));
             }
             for (int i = 0; i < tableNames.Length; i++)
             {
@@ -459,8 +451,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
                             IDbCommand deleteCommand,
                             int? updateBatchSize)
         {
-            if (string.IsNullOrEmpty(tableName)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, "tableName");
-            if (dataSet == null) throw new ArgumentNullException("dataSet");
+            if (string.IsNullOrEmpty(tableName)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, nameof(tableName));
+            if (dataSet == null) throw new ArgumentNullException(nameof(dataSet));
 
             if (insertCommand == null && updateCommand == null && deleteCommand == null)
             {
@@ -503,7 +495,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>Executes the <paramref name="command"/> and returns the results in a new <see cref="DataSet"/>.</para>
         /// </summary>
         /// <param name="command"><para>The <see cref="DbCommand"/> to execute.</para></param>
-        /// <returns>A <see cref="DataSet"/> with the results of the <paramref name="command"/>.</returns>        
+        /// <returns>A <see cref="DataSet"/> with the results of the <paramref name="command"/>.</returns>
         public virtual DataSet ExecuteDataSet(DbCommand command)
         {
             DataSet dataSet = new DataSet();
@@ -519,7 +511,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="transaction">
         /// <para>The <see cref="IDbTransaction"/> to execute the command within.</para>
         /// </param>
-        /// <returns>A <see cref="DataSet"/> with the results of the <paramref name="command"/>.</returns>        
+        /// <returns>A <see cref="DataSet"/> with the results of the <paramref name="command"/>.</returns>
         public virtual DataSet ExecuteDataSet(DbCommand command,
                                               DbTransaction transaction)
         {
@@ -587,8 +579,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// <para>A <see cref="DataSet"/> with the results of the <paramref name="commandText"/>.</para>
         /// </returns>
-        public virtual DataSet ExecuteDataSet(CommandType commandType,
-                                              string commandText)
+        public virtual DataSet ExecuteDataSet(CommandType commandType, string commandText)
         {
             using (DbCommand command = CreateCommandByCommandType(commandType, commandText))
             {
@@ -626,7 +617,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="command">
         /// <para>The command that contains the query to execute.</para>
-        /// </param>       
+        /// </param>
         /// <seealso cref="IDbCommand.ExecuteScalar"/>
         public virtual int ExecuteNonQuery(DbCommand command)
         {
@@ -647,8 +638,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The <see cref="IDbTransaction"/> to execute the command within.</para>
         /// </param>
         /// <seealso cref="IDbCommand.ExecuteScalar"/>
-        public virtual int ExecuteNonQuery(DbCommand command,
-                                           DbTransaction transaction)
+        public virtual int ExecuteNonQuery(DbCommand command, DbTransaction transaction)
         {
             PrepareCommand(command, transaction);
             return DoExecuteNonQuery(command);
@@ -667,8 +657,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The number of rows affected</para>
         /// </returns>
         /// <seealso cref="IDbCommand.ExecuteScalar"/>
-        public virtual int ExecuteNonQuery(string storedProcedureName,
-                                           params object[] parameterValues)
+        public virtual int ExecuteNonQuery(string storedProcedureName, params object[] parameterValues)
         {
             using (DbCommand command = GetStoredProcCommand(storedProcedureName, parameterValues))
             {
@@ -715,8 +704,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The number of rows affected.</para>
         /// </returns>
         /// <seealso cref="IDbCommand.ExecuteScalar"/>
-        public virtual int ExecuteNonQuery(CommandType commandType,
-                                           string commandText)
+        public virtual int ExecuteNonQuery(CommandType commandType, string commandText)
         {
             using (DbCommand command = CreateCommandByCommandType(commandType, commandText))
             {
@@ -759,7 +747,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </param>
         /// <returns>
         /// <para>An <see cref="IDataReader"/> object.</para>
-        /// </returns>        
+        /// </returns>
         public virtual IDataReader ExecuteReader(DbCommand command)
         {
             using (DatabaseConnectionWrapper wrapper = GetOpenConnection())
@@ -795,9 +783,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </param>
         /// <returns>
         /// <para>An <see cref="IDataReader"/> object.</para>
-        /// </returns>        
-        public virtual IDataReader ExecuteReader(DbCommand command,
-                                                 DbTransaction transaction)
+        /// </returns>
+        public virtual IDataReader ExecuteReader(DbCommand command, DbTransaction transaction)
         {
             PrepareCommand(command, transaction);
             return DoExecuteReader(command, CommandBehavior.Default);
@@ -806,7 +793,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <summary>
         /// <para>Executes the <paramref name="storedProcedureName"/> with the given <paramref name="parameterValues" /> and returns an <see cref="IDataReader"></see> through which the result can be read.
         /// It is the responsibility of the caller to close the connection and reader when finished.</para>
-        /// </summary>        
+        /// </summary>
         /// <param name="storedProcedureName">
         /// <para>The command that contains the query to execute.</para>
         /// </param>
@@ -815,9 +802,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </param>
         /// <returns>
         /// <para>An <see cref="IDataReader"/> object.</para>
-        /// </returns>        
-        public IDataReader ExecuteReader(string storedProcedureName,
-                                         params object[] parameterValues)
+        /// </returns>
+        public IDataReader ExecuteReader(string storedProcedureName, params object[] parameterValues)
         {
             using (DbCommand command = GetStoredProcCommand(storedProcedureName, parameterValues))
             {
@@ -840,7 +826,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </param>
         /// <returns>
         /// <para>An <see cref="IDataReader"/> object.</para>
-        /// </returns>        
+        /// </returns>
         public IDataReader ExecuteReader(DbTransaction transaction,
                                          string storedProcedureName,
                                          params object[] parameterValues)
@@ -863,9 +849,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </param>
         /// <returns>
         /// <para>An <see cref="IDataReader"/> object.</para>
-        /// </returns>        
-        public IDataReader ExecuteReader(CommandType commandType,
-                                         string commandText)
+        /// </returns>
+        public IDataReader ExecuteReader(CommandType commandType, string commandText)
         {
             using (DbCommand command = CreateCommandByCommandType(commandType, commandText))
             {
@@ -874,8 +859,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> within the given 
-        /// <paramref name="transaction" /> and returns an <see cref="IDataReader"></see> through which the result can be read.
+        /// <para>Executes the <paramref name="commandText"/> interpreted as specified by
+        /// <paramref name="commandType" /> within the given <paramref name="transaction" /> and returns an
+        /// <see cref="IDataReader"></see> through which the result can be read.
         /// It is the responsibility of the caller to close the connection and reader when finished.</para>
         /// </summary>
         /// <param name="transaction">
@@ -889,7 +875,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </param>
         /// <returns>
         /// <para>An <see cref="IDataReader"/> object.</para>
-        /// </returns>        
+        /// </returns>
         public IDataReader ExecuteReader(DbTransaction transaction,
                                          CommandType commandType,
                                          string commandText)
@@ -912,7 +898,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <seealso cref="IDbCommand.ExecuteScalar"/>
         public virtual object ExecuteScalar(DbCommand command)
         {
-            if (command == null) throw new ArgumentNullException("command");
+            if (command == null) throw new ArgumentNullException(nameof(command));
 
             using (var wrapper = GetOpenConnection())
             {
@@ -934,8 +920,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The first column of the first row in the result set.</para>
         /// </returns>
         /// <seealso cref="IDbCommand.ExecuteScalar"/>
-        public virtual object ExecuteScalar(DbCommand command,
-                                            DbTransaction transaction)
+        public virtual object ExecuteScalar(DbCommand command, DbTransaction transaction)
         {
             PrepareCommand(command, transaction);
             return DoExecuteScalar(command);
@@ -954,8 +939,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The first column of the first row in the result set.</para>
         /// </returns>
         /// <seealso cref="IDbCommand.ExecuteScalar"/>
-        public virtual object ExecuteScalar(string storedProcedureName,
-                                            params object[] parameterValues)
+        public virtual object ExecuteScalar(string storedProcedureName, params object[] parameterValues)
         {
             using (DbCommand command = GetStoredProcCommand(storedProcedureName, parameterValues))
             {
@@ -964,7 +948,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="storedProcedureName"/> with the given <paramref name="parameterValues" /> within a 
+        /// <para>Executes the <paramref name="storedProcedureName"/> with the given <paramref name="parameterValues" /> within a
         /// <paramref name="transaction" /> and returns the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.</para>
         /// </summary>
         /// <param name="transaction">
@@ -1003,8 +987,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The first column of the first row in the result set.</para>
         /// </returns>
         /// <seealso cref="IDbCommand.ExecuteScalar"/>
-        public virtual object ExecuteScalar(CommandType commandType,
-                                            string commandText)
+        public virtual object ExecuteScalar(CommandType commandType, string commandText)
         {
             using (DbCommand command = CreateCommandByCommandType(commandType, commandText))
             {
@@ -1013,7 +996,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> 
+        /// <para>Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" />
         /// within the given <paramref name="transaction" /> and returns the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.</para>
         /// </summary>
         /// <param name="transaction">
@@ -1058,12 +1041,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="updateBehavior">
         /// <para>One of the <see cref="UpdateBehavior"/> values.</para>
-        /// </param>        
+        /// </param>
         /// <returns>A <see cref="DbDataAdapter"/>.</returns>
         /// <seealso cref="DbDataAdapter"/>
         protected DbDataAdapter GetDataAdapter(UpdateBehavior updateBehavior)
         {
-            DbDataAdapter adapter = dbProviderFactory.CreateDataAdapter();
+            DbDataAdapter adapter = DbProviderFactory.CreateDataAdapter();
 
             if (updateBehavior == UpdateBehavior.Continue)
             {
@@ -1096,9 +1079,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        ///        Gets a "wrapped" connection that will be not be disposed if a transaction is
-        ///        active (created by creating a <see cref="TransactionScope"/> instance). The
-        ///        connection will be disposed when no transaction is active.
+        /// Gets a "wrapped" connection that will be not be disposed if a transaction is
+        /// active (created by creating a <see cref="TransactionScope"/> instance). The
+        /// connection will be disposed when no transaction is active.
         /// </summary>
         /// <returns></returns>
         protected DatabaseConnectionWrapper GetOpenConnection()
@@ -1122,10 +1105,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="command">The command that contains the parameter.</param>
         /// <param name="name">The name of the parameter.</param>
         /// <returns>The value of the parameter.</returns>
-        public virtual object GetParameterValue(DbCommand command,
-                                                string name)
+        public virtual object GetParameterValue(DbCommand command, string name)
         {
-            if (command == null) throw new ArgumentNullException("command");
+            if (command == null) throw new ArgumentNullException(nameof(command));
 
             return command.Parameters[BuildParameterName(name)].Value;
         }
@@ -1133,11 +1115,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <summary>
         /// <para>Creates a <see cref="DbCommand"/> for a SQL query.</para>
         /// </summary>
-        /// <param name="query"><para>The text of the query.</para></param>        
-        /// <returns><para>The <see cref="DbCommand"/> for the SQL query.</para></returns>        
+        /// <param name="query"><para>The text of the query.</para></param>
+        /// <returns><para>The <see cref="DbCommand"/> for the SQL query.</para></returns>
         public DbCommand GetSqlStringCommand(string query)
         {
-            if (string.IsNullOrEmpty(query)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, "query");
+            if (string.IsNullOrEmpty(query)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, nameof(query));
 
             return CreateCommandByCommandType(CommandType.Text, query);
         }
@@ -1146,10 +1128,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>Creates a <see cref="DbCommand"/> for a stored procedure.</para>
         /// </summary>
         /// <param name="storedProcedureName"><para>The name of the stored procedure.</para></param>
-        /// <returns><para>The <see cref="DbCommand"/> for the stored procedure.</para></returns>       
+        /// <returns><para>The <see cref="DbCommand"/> for the stored procedure.</para></returns>
         public virtual DbCommand GetStoredProcCommand(string storedProcedureName)
         {
-            if (string.IsNullOrEmpty(storedProcedureName)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, "storedProcedureName");
+            if (string.IsNullOrEmpty(storedProcedureName)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, nameof(storedProcedureName));
 
             return CreateCommandByCommandType(CommandType.StoredProcedure, storedProcedureName);
         }
@@ -1161,12 +1143,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="parameterValues"><para>The list of parameters for the procedure.</para></param>
         /// <returns><para>The <see cref="DbCommand"/> for the stored procedure.</para></returns>
         /// <remarks>
-        /// <para>The parameters for the stored procedure will be discovered and the values are assigned in positional order.</para>
-        /// </remarks>        
-        public virtual DbCommand GetStoredProcCommand(string storedProcedureName,
-                                                      params object[] parameterValues)
+        /// <para>The parameters for the stored procedure will be discovered and the values are assigned in
+        /// positional order.</para>
+        /// </remarks>
+        public virtual DbCommand GetStoredProcCommand(string storedProcedureName, params object[] parameterValues)
         {
-            if (string.IsNullOrEmpty(storedProcedureName)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, "storedProcedureName");
+            if (string.IsNullOrEmpty(storedProcedureName)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, nameof(storedProcedureName));
 
             DbCommand command = CreateCommandByCommandType(CommandType.StoredProcedure, storedProcedureName);
 
@@ -1194,10 +1176,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
 
         /// <summary>
         /// Wraps around a derived class's implementation of the GetStoredProcCommandWrapper method and adds functionality for
-        /// using this method with UpdateDataSet.  The GetStoredProcCommandWrapper method (above) that takes a params array 
-        /// expects the array to be filled with VALUES for the parameters. This method differs from the GetStoredProcCommandWrapper 
-        /// method in that it allows a user to pass in a string array. It will also dynamically discover the parameters for the 
-        /// stored procedure and set the parameter's SourceColumns to the strings that are passed in. It does this by mapping 
+        /// using this method with UpdateDataSet. The GetStoredProcCommandWrapper method (above) that takes a params array
+        /// expects the array to be filled with VALUES for the parameters. This method differs from the GetStoredProcCommandWrapper
+        /// method in that it allows a user to pass in a string array. It will also dynamically discover the parameters for the
+        /// stored procedure and set the parameter's SourceColumns to the strings that are passed in. It does this by mapping
         /// the parameters to the strings IN ORDER. Thus, order is very important.
         /// </summary>
         /// <param name="storedProcedureName"><para>The name of the stored procedure.</para></param>
@@ -1206,8 +1188,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         public DbCommand GetStoredProcCommandWithSourceColumns(string storedProcedureName,
                                                                params string[] sourceColumns)
         {
-            if (string.IsNullOrEmpty(storedProcedureName)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, "storedProcedureName");
-            if (sourceColumns == null) throw new ArgumentNullException("sourceColumns");
+            if (string.IsNullOrEmpty(storedProcedureName)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, nameof(storedProcedureName));
+            if (sourceColumns == null) throw new ArgumentNullException(nameof(sourceColumns));
 
             DbCommand dbCommand = GetStoredProcCommand(storedProcedureName);
 
@@ -1221,6 +1203,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             int iSourceIndex = 0;
             foreach (IDataParameter dbParam in dbCommand.Parameters)
             {
+                //BUG: should probably be ||. needs testing.
                 if ((dbParam.Direction == ParameterDirection.Input) | (dbParam.Direction == ParameterDirection.InputOutput))
                 {
                     dbParam.SourceColumn = sourceColumns[iSourceIndex];
@@ -1242,7 +1225,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </param>
         /// <param name="tableName">
         /// <para>The name for the new <see cref="DataTable"/> to add to the <see cref="DataSet"/>.</para>
-        /// </param>        
+        /// </param>
         /// <exception cref="System.ArgumentNullException">Any input parameter was <see langword="null"/> (<b>Nothing</b> in Visual Basic)</exception>
         /// <exception cref="System.ArgumentException">tableName was an empty string</exception>
         public virtual void LoadDataSet(DbCommand command,
@@ -1266,7 +1249,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </param>
         /// <param name="transaction">
         /// <para>The <see cref="IDbTransaction"/> to execute the command within.</para>
-        /// </param>        
+        /// </param>
         /// <exception cref="System.ArgumentNullException">Any input parameter was <see langword="null"/> (<b>Nothing</b> in Visual Basic).</exception>
         /// <exception cref="System.ArgumentException">tableName was an empty string.</exception>
         public virtual void LoadDataSet(DbCommand command,
@@ -1444,8 +1427,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         protected static void PrepareCommand(DbCommand command,
                                              DbConnection connection)
         {
-            if (command == null) throw new ArgumentNullException("command");
-            if (connection == null) throw new ArgumentNullException("connection");
+            if (command == null) throw new ArgumentNullException(nameof(command));
+            if (connection == null) throw new ArgumentNullException(nameof(connection));
 
             command.Connection = connection;
         }
@@ -1458,8 +1441,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         protected static void PrepareCommand(DbCommand command,
                                              DbTransaction transaction)
         {
-            if (command == null) throw new ArgumentNullException("command");
-            if (transaction == null) throw new ArgumentNullException("transaction");
+            if (command == null) throw new ArgumentNullException(nameof(command));
+            if (transaction == null) throw new ArgumentNullException(nameof(transaction));
 
             PrepareCommand(command, transaction.Connection);
             command.Transaction = transaction;
@@ -1476,8 +1459,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="command">The <see cref="DbCommand"/> containing the parameters.</param>
         /// <param name="values">The array of parameter values.</param>
         /// <returns><see langword="true"/> if the number of parameters and values match; otherwise, <see langword="false"/>.</returns>
-        protected virtual bool SameNumberOfParametersAndValues(DbCommand command,
-                                                               object[] values)
+        protected virtual bool SameNumberOfParametersAndValues(DbCommand command, object[] values)
         {
             int numberOfParametersToStoredProcedure = command.Parameters.Count;
             int numberOfValuesProvidedForStoredProcedure = values.Length;
@@ -1494,7 +1476,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
                                               string parameterName,
                                               object value)
         {
-            if (command == null) throw new ArgumentNullException("command");
+            if (command == null) throw new ArgumentNullException(nameof(command));
 
             command.Parameters[BuildParameterName(parameterName)].Value = value ?? DBNull.Value;
         }
@@ -1507,15 +1489,15 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
 
         /// <summary>
         /// <para>Calls the respective INSERT, UPDATE, or DELETE statements for each inserted, updated, or deleted row in the <see cref="DataSet"/>.</para>
-        /// </summary>        
+        /// </summary>
         /// <param name="dataSet"><para>The <see cref="DataSet"/> used to update the data source.</para></param>
         /// <param name="tableName"><para>The name of the source table to use for table mapping.</para></param>
         /// <param name="insertCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Added"/></para></param>
-        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Modified"/></para></param>        
-        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Deleted"/></para></param>        
+        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Modified"/></para></param>
+        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Deleted"/></para></param>
         /// <param name="updateBehavior"><para>One of the <see cref="UpdateBehavior"/> values.</para></param>
         /// <param name="updateBatchSize">The number of database commands to execute in a batch.</param>
-        /// <returns>number of records affected</returns>        
+        /// <returns>number of records affected</returns>
         public int UpdateDataSet(DataSet dataSet,
                                  string tableName,
                                  DbCommand insertCommand,
@@ -1562,14 +1544,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
 
         /// <summary>
         /// <para>Calls the respective INSERT, UPDATE, or DELETE statements for each inserted, updated, or deleted row in the <see cref="DataSet"/>.</para>
-        /// </summary>        
+        /// </summary>
         /// <param name="dataSet"><para>The <see cref="DataSet"/> used to update the data source.</para></param>
         /// <param name="tableName"><para>The name of the source table to use for table mapping.</para></param>
         /// <param name="insertCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Added"/></para></param>
-        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Modified"/></para></param>        
-        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Deleted"/></para></param>        
+        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Modified"/></para></param>
+        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Deleted"/></para></param>
         /// <param name="updateBehavior"><para>One of the <see cref="UpdateBehavior"/> values.</para></param>
-        /// <returns>number of records affected</returns>        
+        /// <returns>number of records affected</returns>
         public int UpdateDataSet(DataSet dataSet,
                                  string tableName,
                                  DbCommand insertCommand,
@@ -1582,17 +1564,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
 
         /// <summary>
         /// <para>Calls the respective INSERT, UPDATE, or DELETE statements for each inserted, updated, or deleted row in the <see cref="DataSet"/> within a transaction.</para>
-        /// </summary>        
+        /// </summary>
         /// <param name="dataSet"><para>The <see cref="DataSet"/> used to update the data source.</para></param>
         /// <param name="tableName"><para>The name of the source table to use for table mapping.</para></param>
         /// <param name="insertCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Added"/>.</para></param>
-        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Modified"/>.</para></param>        
-        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Deleted"/>.</para></param>        
+        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Modified"/>.</para></param>
+        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Deleted"/>.</para></param>
         /// <param name="transaction"><para>The <see cref="IDbTransaction"/> to use.</para></param>
         /// <param name="updateBatchSize">The number of commands that can be executed in a single call to the database. Set to 0 to
         /// use the largest size the server can handle, 1 to disable batch updates, and anything else to set the number of rows.
         /// </param>
-        /// <returns>Number of records affected.</returns>        
+        /// <returns>Number of records affected.</returns>
         public int UpdateDataSet(DataSet dataSet,
                                  string tableName,
                                  DbCommand insertCommand,
@@ -1620,14 +1602,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
 
         /// <summary>
         /// <para>Calls the respective INSERT, UPDATE, or DELETE statements for each inserted, updated, or deleted row in the <see cref="DataSet"/> within a transaction.</para>
-        /// </summary>        
+        /// </summary>
         /// <param name="dataSet"><para>The <see cref="DataSet"/> used to update the data source.</para></param>
         /// <param name="tableName"><para>The name of the source table to use for table mapping.</para></param>
         /// <param name="insertCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Added"/>.</para></param>
-        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Modified"/>.</para></param>        
-        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Deleted"/>.</para></param>        
+        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Modified"/>.</para></param>
+        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Deleted"/>.</para></param>
         /// <param name="transaction"><para>The <see cref="IDbTransaction"/> to use.</para></param>
-        /// <returns>Number of records affected.</returns>        
+        /// <returns>Number of records affected.</returns>
         public int UpdateDataSet(DataSet dataSet,
                                  string tableName,
                                  DbCommand insertCommand,
@@ -1644,10 +1626,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// Does this <see cref='Database'/> object support asynchronous execution?
         /// </summary>
         /// <value>Base class always returns false.</value>
-        public virtual bool SupportsAsync
-        {
-            get { return false; }
-        }
+        public virtual bool SupportsAsync => false;
 
         /// <summary>
         /// <para>Initiates the asynchronous execution of the <see cref="DbCommand"/> which will return the number of affected records.</para>
@@ -1661,8 +1640,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <seealso cref="Database.ExecuteNonQuery(DbCommand)"/>
         /// <seealso cref="EndExecuteNonQuery(IAsyncResult)"/>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteNonQuery"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteNonQuery"/>,
         /// which returns the number of affected records.</para>
         /// </returns>
         public virtual IAsyncResult BeginExecuteNonQuery(DbCommand command, AsyncCallback callback, object state)
@@ -1686,12 +1665,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <seealso cref="Database.ExecuteNonQuery(DbCommand)"/>
         /// <seealso cref="EndExecuteNonQuery(IAsyncResult)"/>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteNonQuery"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteNonQuery"/>,
         /// which returns the number of affected records.</para>
         /// </returns>
-        public virtual IAsyncResult BeginExecuteNonQuery(DbCommand command, DbTransaction transaction, AsyncCallback callback,
-                                          object state)
+        public virtual IAsyncResult BeginExecuteNonQuery(DbCommand command,
+                                                         DbTransaction transaction,
+                                                         AsyncCallback callback,
+                                                         object state)
         {
             AsyncNotSupported();
             return null;
@@ -1710,14 +1691,16 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteNonQuery"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteNonQuery"/>,
         /// which returns the number of affected records.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteNonQuery(string,object[])"/>
         /// <seealso cref="EndExecuteNonQuery(IAsyncResult)"/>
-        public virtual IAsyncResult BeginExecuteNonQuery(string storedProcedureName, AsyncCallback callback, object state,
-                                          params object[] parameterValues)
+        public virtual IAsyncResult BeginExecuteNonQuery(string storedProcedureName,
+                                                         AsyncCallback callback,
+                                                         object state,
+                                                         params object[] parameterValues)
         {
             AsyncNotSupported();
             return null;
@@ -1739,8 +1722,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteNonQuery"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteNonQuery"/>,
         /// which returns the number of affected records.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteNonQuery(string,object[])"/>
@@ -1768,16 +1751,16 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteNonQuery"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteNonQuery"/>,
         /// which returns the number of affected records.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteNonQuery(CommandType,string)"/>
         /// <seealso cref="EndExecuteNonQuery(IAsyncResult)"/>
         public virtual IAsyncResult BeginExecuteNonQuery(CommandType commandType,
-            string commandText,
-            AsyncCallback callback,
-            object state)
+                                                         string commandText,
+                                                         AsyncCallback callback,
+                                                         object state)
         {
             AsyncNotSupported();
             return null;
@@ -1799,14 +1782,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteNonQuery"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteNonQuery"/>,
         /// which returns the number of affected records.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteNonQuery(CommandType,string)"/>
         /// <seealso cref="EndExecuteNonQuery(IAsyncResult)"/>
-        public virtual IAsyncResult BeginExecuteNonQuery(DbTransaction transaction, CommandType commandType, string commandText,
-                                          AsyncCallback callback, object state)
+        public virtual IAsyncResult BeginExecuteNonQuery(DbTransaction transaction,
+                                                         CommandType commandType,
+                                                         string commandText,
+                                                         AsyncCallback callback,
+                                                         object state)
         {
             AsyncNotSupported();
             return null;
@@ -1840,8 +1826,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteReader"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteReader"/>,
         /// which returns the <see cref="IDataReader"/>.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteReader(DbCommand)"/>
@@ -1865,14 +1851,16 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteReader"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteReader"/>,
         /// which returns the <see cref="IDataReader"/>.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteReader(DbCommand)"/>
         /// <seealso cref="EndExecuteReader(IAsyncResult)"/>
-        public virtual IAsyncResult BeginExecuteReader(DbCommand command, DbTransaction transaction, AsyncCallback callback,
-                                        object state)
+        public virtual IAsyncResult BeginExecuteReader(DbCommand command,
+                                                       DbTransaction transaction,
+                                                       AsyncCallback callback,
+                                                       object state)
         {
             AsyncNotSupported();
             return null;
@@ -1891,14 +1879,16 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteReader"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteReader"/>,
         /// which returns the <see cref="IDataReader"/>.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteReader(string, object[])"/>
         /// <seealso cref="EndExecuteReader(IAsyncResult)"/>
-        public virtual IAsyncResult BeginExecuteReader(string storedProcedureName, AsyncCallback callback, object state,
-                                        params object[] parameterValues)
+        public virtual IAsyncResult BeginExecuteReader(string storedProcedureName,
+                                                       AsyncCallback callback,
+                                                       object state,
+                                                       params object[] parameterValues)
         {
             AsyncNotSupported();
             return null;
@@ -1920,22 +1910,25 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteReader"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteReader"/>,
         /// which returns the <see cref="IDataReader"/>.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteReader(DbTransaction, string, object[])"/>
         /// <seealso cref="EndExecuteReader(IAsyncResult)"/>
-        public virtual IAsyncResult BeginExecuteReader(DbTransaction transaction, string storedProcedureName, AsyncCallback callback,
-                                        object state, params object[] parameterValues)
+        public virtual IAsyncResult BeginExecuteReader(DbTransaction transaction,
+                                                       string storedProcedureName,
+                                                       AsyncCallback callback,
+                                                       object state,
+                                                       params object[] parameterValues)
         {
             AsyncNotSupported();
             return null;
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the <paramref name="commandText"/> 
-        /// interpreted as specified by the <paramref name="commandType" /> which will return 
+        /// <para>Initiates the asynchronous execution of the <paramref name="commandText"/>
+        /// interpreted as specified by the <paramref name="commandType" /> which will return
         /// a <see cref="IDataReader"/>. When the async operation completes, the
         /// <paramref name="callback"/> will be invoked on another thread to process the
         /// result.</para>
@@ -1950,14 +1943,16 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// completes.</param>
         /// <param name="state">State object passed to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteReader"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteReader"/>,
         /// which returns the <see cref="IDataReader"/>.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteReader(CommandType, string)"/>
         /// <seealso cref="EndExecuteReader(IAsyncResult)"/>
-        public virtual IAsyncResult BeginExecuteReader(CommandType commandType, string commandText, AsyncCallback callback,
-                                        object state)
+        public virtual IAsyncResult BeginExecuteReader(CommandType commandType,
+                                                       string commandText,
+                                                       AsyncCallback callback,
+                                                       object state)
         {
             AsyncNotSupported();
             return null;
@@ -1980,14 +1975,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteReader"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteReader"/>,
         /// which returns the <see cref="IDataReader"/>.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteReader(CommandType, string)"/>
         /// <seealso cref="EndExecuteReader(IAsyncResult)"/>
-        public virtual IAsyncResult BeginExecuteReader(DbTransaction transaction, CommandType commandType, string commandText,
-                                        AsyncCallback callback, object state)
+        public virtual IAsyncResult BeginExecuteReader(DbTransaction transaction,
+                                                       CommandType commandType,
+                                                       string commandText,
+                                                       AsyncCallback callback,
+                                                       object state)
         {
             AsyncNotSupported();
             return null;
@@ -2004,7 +2002,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <seealso cref="BeginExecuteReader(DbCommand, DbTransaction,AsyncCallback,object)"/>
         /// <returns>
         /// <para>An <see cref="IDataReader"/> object that can be used to consume the queried information.</para>
-        /// </returns>     
+        /// </returns>
         public virtual IDataReader EndExecuteReader(IAsyncResult asyncResult)
         {
             AsyncNotSupported();
@@ -2021,8 +2019,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteScalar"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteScalar"/>,
         /// which returns the actual result.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteScalar(DbCommand)"/>
@@ -2046,14 +2044,16 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteScalar"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteScalar"/>,
         /// which returns the actual result.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteScalar(DbCommand, DbTransaction)"/>
         /// <seealso cref="EndExecuteScalar(IAsyncResult)"/>
-        public virtual IAsyncResult BeginExecuteScalar(DbCommand command, DbTransaction transaction, AsyncCallback callback,
-                                        object state)
+        public virtual IAsyncResult BeginExecuteScalar(DbCommand command,
+                                                       DbTransaction transaction,
+                                                       AsyncCallback callback,
+                                                       object state)
         {
             AsyncNotSupported();
             return null;
@@ -2072,14 +2072,16 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteScalar"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteScalar"/>,
         /// which returns the actual result.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteScalar(string, object[])"/>
         /// <seealso cref="EndExecuteScalar(IAsyncResult)"/>
-        public virtual IAsyncResult BeginExecuteScalar(string storedProcedureName, AsyncCallback callback, object state,
-                                        params object[] parameterValues)
+        public virtual IAsyncResult BeginExecuteScalar(string storedProcedureName,
+                                                       AsyncCallback callback,
+                                                       object state,
+                                                       params object[] parameterValues)
         {
             AsyncNotSupported();
             return null;
@@ -2101,14 +2103,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteScalar"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteScalar"/>,
         /// which returns the actual result.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteScalar(DbTransaction, string, object[])"/>
         /// <seealso cref="EndExecuteScalar(IAsyncResult)"/>
-        public virtual IAsyncResult BeginExecuteScalar(DbTransaction transaction, string storedProcedureName, AsyncCallback callback,
-                                        object state, params object[] parameterValues)
+        public virtual IAsyncResult BeginExecuteScalar(DbTransaction transaction,
+                                                       string storedProcedureName,
+                                                       AsyncCallback callback,
+                                                       object state,
+                                                       params object[] parameterValues)
         {
             AsyncNotSupported();
             return null;
@@ -2127,14 +2132,16 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteScalar"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteScalar"/>,
         /// which returns the actual result.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteScalar(CommandType, string)"/>
         /// <seealso cref="EndExecuteScalar(IAsyncResult)"/>
-        public virtual IAsyncResult BeginExecuteScalar(CommandType commandType, string commandText, AsyncCallback callback,
-                                        object state)
+        public virtual IAsyncResult BeginExecuteScalar(CommandType commandType,
+                                                       string commandText,
+                                                       AsyncCallback callback,
+                                                       object state)
         {
             AsyncNotSupported();
             return null;
@@ -2156,14 +2163,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteScalar"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteScalar"/>,
         /// which returns the actual result.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteScalar(DbTransaction, CommandType, string)"/>
         /// <seealso cref="EndExecuteScalar(IAsyncResult)"/>
-        public virtual IAsyncResult BeginExecuteScalar(DbTransaction transaction, CommandType commandType, string commandText,
-                                        AsyncCallback callback, object state)
+        public virtual IAsyncResult BeginExecuteScalar(DbTransaction transaction,
+                                                       CommandType commandType,
+                                                       string commandText,
+                                                       AsyncCallback callback,
+                                                       object state)
         {
             AsyncNotSupported();
             return null;
@@ -2181,7 +2191,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// <para>The value of the first column of the first row in the result set returned by the query.
         /// If the result didn't have any columns or rows <see langword="null"/> (<b>Nothing</b> in Visual Basic).</para>
-        /// </returns>     
+        /// </returns>
         public virtual object EndExecuteScalar(IAsyncResult asyncResult)
         {
             AsyncNotSupported();
@@ -2190,11 +2200,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
 
         private void AsyncNotSupported()
         {
-            throw new InvalidOperationException(
-                string.Format(
-                CultureInfo.CurrentCulture,
-                Resources.AsyncOperationsNotSupported,
-                GetType().Name));
+            throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
+                                                              Resources.AsyncOperationsNotSupported,
+                                                              GetType().Name));
         }
 
         #endregion
@@ -2209,47 +2217,42 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        ///        This is a helper class that is used to manage the lifetime of a connection for various
-        ///        Execute methods. We needed this class to support implicit transactions created with
-        ///        the <see cref="TransactionScope"/> class. In this case, the various Execute methods
-        ///        need to use a shared connection instead of a new connection for each request in order
-        ///        to prevent a distributed transaction.
+        /// This is a helper class that is used to manage the lifetime of a connection for various
+        /// Execute methods. We needed this class to support implicit transactions created with
+        /// the <see cref="TransactionScope"/> class. In this case, the various Execute methods
+        /// need to use a shared connection instead of a new connection for each request in order
+        /// to prevent a distributed transaction.
         /// </summary>
         protected sealed class OldConnectionWrapper : IDisposable
         {
-            readonly DbConnection connection;
             readonly bool disposeConnection;
 
             /// <summary>
-            ///        Create a new "lifetime" container for a <see cref="DbConnection"/> instance.
+            /// Create a new "lifetime" container for a <see cref="DbConnection"/> instance.
             /// </summary>
             /// <param name="connection">The connection</param>
             /// <param name="disposeConnection">
-            ///        Whether or not to dispose of the connection when this class is disposed.
-            ///    </param>
-            public OldConnectionWrapper(DbConnection connection,
-                                     bool disposeConnection)
+            /// Whether or not to dispose of the connection when this class is disposed.
+            /// </param>
+            public OldConnectionWrapper(DbConnection connection, bool disposeConnection)
             {
-                this.connection = connection;
+                Connection = connection;
                 this.disposeConnection = disposeConnection;
             }
 
             /// <summary>
-            ///        Gets the actual connection.
+            /// Gets the actual connection.
             /// </summary>
-            public DbConnection Connection
-            {
-                get { return connection; }
-            }
+            public DbConnection Connection { get; }
 
             /// <summary>
-            ///        Dispose the wrapped connection, if appropriate.
+            /// Dispose the wrapped connection, if appropriate.
             /// </summary>
             public void Dispose()
             {
                 if (disposeConnection)
                 {
-                    connection.Dispose();
+                    Connection.Dispose();
                 }
 
                 GC.SuppressFinalize(this);
