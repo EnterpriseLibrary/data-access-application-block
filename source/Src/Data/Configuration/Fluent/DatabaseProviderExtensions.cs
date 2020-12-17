@@ -9,7 +9,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
     ///<summary>
     /// Provides extensions for common database providers.
     ///</summary>
-    public static partial class DatabaseProviderExtensions
+    public static class DatabaseProviderExtensions
     {
 
         /// <summary>

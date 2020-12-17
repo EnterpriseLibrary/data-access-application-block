@@ -1,9 +1,10 @@
-using System.Data.OleDb;
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+
 using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
 
-namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
+namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb.Configuration.Fluent
 {
-    public static partial class DatabaseProviderExtensions
+    public static class DatabaseProviderExtensions
     {
         /// <summary>
         /// An OleDb database for use with the <see cref="System.Data.OleDb"/> namespace.
