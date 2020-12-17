@@ -37,7 +37,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration.Fluent
         }
 #pragma warning restore 612, 618
 
-        /// <summary />
+        /// <summary>
+        /// Adds the specified <paramref name="prefix"/> to the package
+        /// </summary>
+        /// <exception cref="ArgumentException"><paramref name="prefix"/> is <b>null</b> or empty.</exception>
         IDatabaseConfigurationProperties IDatabaseOraclePackageConfiguration.AndPrefix(string prefix)
         {
             if (String.IsNullOrEmpty(prefix))
@@ -47,7 +50,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration.Fluent
             return this;
         }
 
-        /// <summary />
+        /// <summary>
+        /// Adds a package with the specified <paramref name="name"/> to the configuration.
+        /// </summary>
         public IDatabaseOraclePackageConfiguration WithPackageNamed(string name)
         {
             if (String.IsNullOrEmpty(name))
