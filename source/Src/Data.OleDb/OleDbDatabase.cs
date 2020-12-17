@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Data;
 using System.Data.Common;
 using System.Data.OleDb;
+using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb
 {
@@ -27,6 +29,33 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb
         protected override void DeriveParameters(DbCommand discoveryCommand)
         {
             OleDbCommandBuilder.DeriveParameters((OleDbCommand)discoveryCommand);
+        }
+
+        /// <summary>
+        /// Determines whether the database provider supports parameter discovery. This depends on the underlying
+        /// OLE DB provider.
+        /// </summary>
+        /// <value>Returns <b>true</b>, but you should consult the documentation for the underlying OLE DB provider.</value>
+        /// <seealso cref="DeriveParameters(DbCommand)"/>
+        public override bool SupportsParemeterDiscovery => true;
+
+        protected override void SetUpRowUpdatedEvent(DbDataAdapter adapter)
+        {
+            ((OleDbDataAdapter)adapter).RowUpdated += OleDbDatabase_RowUpdated;
+        }
+
+        /// <summary>
+        /// Listens for the RowUpdate event on a data adapter to support UpdateBehavior.Continue
+        /// </summary>
+        /// <param name="sender">The <see cref="OleDbDataAdapter"/> which raised the event</param>
+        /// <param name="e">The event arguments.</param>
+        private void OleDbDatabase_RowUpdated(object sender, OleDbRowUpdatedEventArgs e)
+        {
+            if (e.RecordsAffected == 0 && e.Errors != null)
+            {
+                e.Row.RowError = Resources.ExceptionMessageUpdateDataSetRowFailure;
+                e.Status = UpdateStatus.SkipCurrentRow;
+            }
         }
     }
 }
