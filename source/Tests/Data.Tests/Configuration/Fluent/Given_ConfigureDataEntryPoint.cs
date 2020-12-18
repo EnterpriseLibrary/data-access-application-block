@@ -1,21 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
-using System.Data.Odbc;
-using System.Data.OleDb;
-using Oracle.ManagedDataAccess.Client;
-using System.Linq;
-using System.Reflection;
-using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
-using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
-using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
-using Microsoft.Practices.EnterpriseLibrary.Data.Oracle;
-using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
-using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Practices.EnterpriseLibrary.Common.TestSupport.ContextBase;
-using System.Configuration;
-using System.Data.Common;
 using System;
+using System.Data.OleDb;
+using Microsoft.Practices.EnterpriseLibrary.Data.OleDb.Configuration.Fluent;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 {
