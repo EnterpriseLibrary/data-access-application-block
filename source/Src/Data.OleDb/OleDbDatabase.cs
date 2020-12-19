@@ -2,10 +2,12 @@
 using System.Data;
 using System.Data.Common;
 using System.Data.OleDb;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb
 {
+    [ConfigurationElementType(typeof(OleDbDatabaseData))]
     public class OleDbDatabase : Database
     {
         /// <summary>
