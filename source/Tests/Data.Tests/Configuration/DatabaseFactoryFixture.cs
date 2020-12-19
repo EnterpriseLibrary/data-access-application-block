@@ -3,6 +3,7 @@
 using System.Data.Common;
 using System.Data.Odbc;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.OleDb;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -42,6 +43,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
             // provider factories aren't exposed
             DbCommand command = database.GetStoredProcCommand("ignore");
             Assert.AreSame(typeof(OdbcCommand), command.GetType());
+        }
+
+        [TestMethod]
+        public void CanCreateOleDbDatabase()
+        {
+            Database database = factory.Create("OleDbDatabase");
+            Assert.IsNotNull(database);
+            Assert.AreSame(typeof(OleDbDatabase), database.GetType());
         }
     }
 }
