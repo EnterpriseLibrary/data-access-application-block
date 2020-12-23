@@ -2,7 +2,7 @@
 using System.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 
-namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb
+namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb.Configuration
 {
     public class OleDbDatabaseData : DatabaseData
     {
