@@ -21,13 +21,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb
         }
 
         /// <summary>
-        /// Retrieves parameter information from the stored procedure specified in the <see cref="DbCommand"/> and populates the Parameters collection of the specified <see cref="DbCommand"/> object. 
+        /// Retrieves parameter information from the stored procedure specified in the <see cref="DbCommand"/> and
+        /// populates the Parameters collection of the specified <see cref="DbCommand"/> object.
         /// </summary>
         /// <param name="discoveryCommand">The <see cref="DbCommand"/> to do the discovery.</param>
         /// <exception cref="InvalidCastException"><paramref name="discoveryCommand"/> is not an <see cref="OleDbCommand"/>.</exception>
         /// <exception cref="InvalidOperationException">The underlying OLE DB provider does not support returning stored
         /// procedure parameter information, the command text is not a valid stored procedure name, or the CommandType
-        /// specified was not <see cref="CommandType.StoredProcedure" />".</exception>
+        /// specified was not <see cref="CommandType.StoredProcedure" />.</exception>
         protected override void DeriveParameters(DbCommand discoveryCommand)
         {
             OleDbCommandBuilder.DeriveParameters((OleDbCommand)discoveryCommand);
@@ -41,9 +42,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb
         /// <seealso cref="DeriveParameters(DbCommand)"/>
         public override bool SupportsParemeterDiscovery => true;
 
+        /// <inheritdoc/>
         protected override void SetUpRowUpdatedEvent(DbDataAdapter adapter)
         {
-            ((OleDbDataAdapter)adapter).RowUpdated += OleDbDatabase_RowUpdated;
+            ((OleDbDataAdapter)adapter).RowUpdated += OleDbDataAdapter_RowUpdated;
         }
 
         /// <summary>
@@ -51,7 +53,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb
         /// </summary>
         /// <param name="sender">The <see cref="OleDbDataAdapter"/> which raised the event</param>
         /// <param name="e">The event arguments.</param>
-        private void OleDbDatabase_RowUpdated(object sender, OleDbRowUpdatedEventArgs e)
+        private void OleDbDataAdapter_RowUpdated(object sender, OleDbRowUpdatedEventArgs e)
         {
             if (e.RecordsAffected == 0 && e.Errors != null)
             {

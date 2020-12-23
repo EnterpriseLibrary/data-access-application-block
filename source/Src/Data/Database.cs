@@ -365,6 +365,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// Discovers the parameters for a <see cref="DbCommand"/>.
         /// </summary>
         /// <param name="command">The <see cref="DbCommand"/> to discover the parameters.</param>
+        /// <remarks>You should get the value of <see cref="SupportsParemeterDiscovery"/> to detect
+        /// if parameter discovery is supported for your database provider type.</remarks>
         public void DiscoverParameters(DbCommand command)
         {
             if (command == null) throw new ArgumentNullException(nameof(command));
