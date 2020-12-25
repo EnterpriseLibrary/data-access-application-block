@@ -11,16 +11,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
     ///</summary>
     public static class DatabaseProviderExtensions
     {
-
-        /// <summary>
-        /// An Odbc database for use with the <see cref="System.Data.Odbc"/> namespace.
-        /// </summary>
-        /// <returns></returns>
-        public static IOdbcDatabaseConfiguration AnOdbcDatabase(this IDatabaseConfigurationProviders context)
-        {
-            return new OdbcConfigurationExtension(context);
-        }
-
         ///<summary>
         /// A database with the specified database provider name.
         ///</summary>
