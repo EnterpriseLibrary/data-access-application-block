@@ -56,5 +56,12 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
-
+  
+  <ItemGroup Label="NuGet">
+    <Content Include="..\..\NuGet\Readme.txt">
+      <Pack>true</Pack>
+      <Visible>False</Visible>
+      <PackagePath></PackagePath>
+    </Content>
+  </ItemGroup>
 </Project>

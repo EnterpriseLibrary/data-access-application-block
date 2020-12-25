@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="..\..\..\package.props" />
   <PropertyGroup>
-    <TargetFrameworks>net45;net46;net47;netcoreapp3.0;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net45;net46;net47;netcoreapp2.0;netcoreapp3.0;netstandard2.0</TargetFrameworks>
     <AssemblyName>$(PreAssemblyName).Data.Odbc</AssemblyName>
     <PackageId>$(PrePackageName).Data.Odbc$(PostPackageName)</PackageId>
     <RootNamespace>$(PreAssemblyName).Data.Odbc</RootNamespace>
@@ -20,5 +20,26 @@
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj" />
   </ItemGroup>
+  
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
+    <PackageReference Include="System.Data.Odbc" Version="$(SystemDataOdbcVersion)" />
+  </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="..\..\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+
+    <None Include="..\..\DataAccess.licenseheader">
+      <Link>DataAccess.licenseheader</Link>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup Label="NuGet">
+    <Content Include="..\..\NuGet\Readme.txt">
+      <Pack>true</Pack>
+      <Visible>False</Visible>
+      <PackagePath></PackagePath>
+    </Content>
+  </ItemGroup>
 </Project>

@@ -28,8 +28,16 @@
   <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
     <PackageReference Include="System.Data.SqlClient" Version="$(SystemDataSqlClientVersion)" />
   </ItemGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup Label="NuGet">
+    <Content Include="..\..\NuGet\Readme.txt">
+      <Pack>true</Pack>
+      <Visible>False</Visible>
+      <PackagePath></PackagePath>
+    </Content>
+  </ItemGroup>
 </Project>
