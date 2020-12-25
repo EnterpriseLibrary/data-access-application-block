@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
     <PackageReference Include="$(PrePackageName).Common$(PostPackageName)" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
+    <ProjectReference Include="..\..\Src\Data.Odbc\Data.Odbc.csproj" />
     <ProjectReference Include="..\..\Src\Data.OleDb\Data.OleDb.csproj" />
     <ProjectReference Include="..\..\Src\Data.SqlServer\Data.SqlServer.csproj" />
 
