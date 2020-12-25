@@ -1,13 +1,12 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
-using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.Odbc;
 using System.Data.SqlClient;
 using System.Text;
-using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data.Odbc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseODBC
@@ -64,6 +63,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseODBC
                 }
             }
             Assert.AreEqual(ConnectionState.Closed, dbCommandWrapper.Connection.State);
+            Assert.AreSame(typeof(OdbcDatabase), db.GetType());
         }
 
         [TestMethod]
@@ -419,7 +419,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseODBC
             dsExpectedResult = new DataSet();
             dsExpectedResult.ReadXml(itemsXMLfile);
             Database db = DatabaseFactory.CreateDatabase("GenericSQLTestODBC");
-            StringBuilder readerData = new StringBuilder();
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();

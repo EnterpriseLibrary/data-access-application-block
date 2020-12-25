@@ -27,7 +27,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Odbc.Configuration
         /// </summary>
         /// <param name="connectionStringSettings">The connection string configuration</param>
         /// <param name="configurationSource">A delegate to retrieve the configuration section</param>
-        protected OdbcDatabaseData(ConnectionStringSettings connectionStringSettings, Func<string, ConfigurationSection> configurationSource)
+        public OdbcDatabaseData(ConnectionStringSettings connectionStringSettings, Func<string, ConfigurationSection> configurationSource)
             : base(connectionStringSettings, configurationSource)
         {
         }
