@@ -42,22 +42,26 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Odbc
         /// the Parameters collection of the specified <see cref="DbCommand"/> object.
         /// </summary>
         /// <param name="discoveryCommand">The <see cref="DbCommand"/> to do the discovery.</param>
-        /// <exception cref="InvalidCastException"><paramref name="discoveryCommand"/> is not an <see cref="OdbcCommand"/>.</exception>
-        /// <exception cref="InvalidOperationException">The underlying ODBC provider does not support returning stored
-        /// procedure parameter information, the command text is not a valid stored procedure name, or the CommandType
-        /// specified was not <see cref="CommandType.StoredProcedure" />.</exception>
+        /// <exception cref="NotSupportedException">Always</exception>
+        /// <remarks>While <see cref="OdbcCommandBuilder"/> supports deriving parameters, we don't know
+        /// which specific database will be used, what are it's parameter discovery capabilities are,
+        /// and other differences. So we can't support deriving parameters automatically.</remarks>
         protected override void DeriveParameters(DbCommand discoveryCommand)
         {
-            OdbcCommandBuilder.DeriveParameters((OdbcCommand)discoveryCommand);
+            throw new NotSupportedException(Properties.Resources.ExceptionParameterDiscoveryNotSupportedOnOdbcDatabase);
+            //To execute a procedure in ODBC you have to name it as "{ Call procName(?,?,?,?) }"
+            //in the CommandText. But in this syntax, DeriveParameters doesn't work.
+            //to derive parameters, you have to give just the procedure name in CommandText, but then
+            //the ExecuteScalar (for example) doesn't work, complaining a parameter is missing.
         }
 
         /// <summary>
-        /// Determines whether the database provider supports parameter discovery. This depends on the underlying
-        /// ODBC provider.
+        /// Determines whether the database provider supports parameter discovery.
         /// </summary>
-        /// <value>Returns <b>true</b>, but you should consult the documentation for the underlying ODBC provider.</value>
+        /// <value>Returns <b>false</b></value>
+        /// <remarks>Parameter discovery is not supported for ODBC drivers.</remarks>
         /// <seealso cref="DeriveParameters(DbCommand)"/>
-        public override bool SupportsParemeterDiscovery => true;
+        public override bool SupportsParemeterDiscovery => false;
 
         /// <inheritdoc/>
         protected override void SetUpRowUpdatedEvent(DbDataAdapter adapter)
