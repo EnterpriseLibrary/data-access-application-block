@@ -17,6 +17,7 @@ using System;
 using System.Data;
 using System.Data.Common;
 using System.Data.OleDb;
+using System.Linq;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.OleDb.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
@@ -37,6 +38,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb
         }
 
         /// <summary>
+        /// Determines whether the database provider supports parameter discovery. This depends on the underlying
+        /// OLE DB provider.
+        /// </summary>
+        /// <value>Returns <b>true</b>, but you should consult the documentation for the underlying OLE DB provider.</value>
+        /// <seealso cref="DeriveParameters(DbCommand)"/>
+        public override bool SupportsParemeterDiscovery => true;
+
+        /// <summary>
         /// Retrieves parameter information from the stored procedure specified in the <see cref="DbCommand"/> and
         /// populates the Parameters collection of the specified <see cref="DbCommand"/> object.
         /// </summary>
@@ -50,13 +59,15 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb
             OleDbCommandBuilder.DeriveParameters((OleDbCommand)discoveryCommand);
         }
 
-        /// <summary>
-        /// Determines whether the database provider supports parameter discovery. This depends on the underlying
-        /// OLE DB provider.
-        /// </summary>
-        /// <value>Returns <b>true</b>, but you should consult the documentation for the underlying OLE DB provider.</value>
-        /// <seealso cref="DeriveParameters(DbCommand)"/>
-        public override bool SupportsParemeterDiscovery => true;
+        ///<inheritdoc/>
+        protected override bool SameNumberOfParametersAndValues(DbCommand command, object[] values)
+        {
+            OleDbParameter returnParam = command.Parameters.Cast<OleDbParameter>().FirstOrDefault(p => p.Direction == ParameterDirection.ReturnValue);
+            int returnParameterCount = returnParam == null ? 0 : 1;
+            int numberOfParametersToStoredProcedure = command.Parameters.Count - returnParameterCount;
+            int numberOfValuesProvidedForStoredProcedure = values.Length;
+            return numberOfParametersToStoredProcedure == numberOfValuesProvidedForStoredProcedure;
+        }
 
         /// <inheritdoc/>
         protected override void SetUpRowUpdatedEvent(DbDataAdapter adapter)
@@ -77,5 +88,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb
                 e.Status = UpdateStatus.SkipCurrentRow;
             }
         }
+
+        ///<inheritdoc/>
+        protected override int UserParametersStartIndex() => 1;
     }
 }

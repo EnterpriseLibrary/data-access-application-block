@@ -1,13 +1,11 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
-using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Text;
-using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseOLEDB
@@ -181,6 +179,21 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseOLEDB
                 conn.Close();
                 Assert.IsTrue(value);
             }
+        }
+
+        #endregion
+
+        #region "SP, Parm"
+
+        [TestMethod]
+        [DeploymentItem(@"TestFiles\Items.xml")]
+        //[ExpectedException(typeof(NotSupportedException))]
+        public void ExceptionIsThrownWhenParameterDiscoveryNotSupported()
+        {
+            Database db = DatabaseFactory.CreateDatabase("GenericSQLTest");
+            string spName = "CustomerOrdersAddwithParm";
+            object actualResult = db.ExecuteScalar(spName, new object[] { 22, "apple", 1, 800 });
+            Assert.AreEqual(Convert.ToInt32(actualResult.ToString().Trim()), 800);
         }
 
         #endregion
