@@ -187,8 +187,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseOLEDB
 
         [TestMethod]
         [DeploymentItem(@"TestFiles\Items.xml")]
-        //[ExpectedException(typeof(NotSupportedException))]
-        public void ExceptionIsThrownWhenParameterDiscoveryNotSupported()
+        public void ParameterDiscoverySupportedOnSqlServerOleDbProvider()
         {
             Database db = DatabaseFactory.CreateDatabase("GenericSQLTest");
             string spName = "CustomerOrdersAddwithParm";
@@ -196,6 +195,19 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseOLEDB
             Assert.AreEqual(Convert.ToInt32(actualResult.ToString().Trim()), 800);
         }
 
+        /// <summary>
+        /// The Oracle database instance should be started to run this test.
+        /// </summary>
+        [TestMethod]
+        [DeploymentItem(@"TestFiles\Items.xml")]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void ParametersDiscoveryNotSupportedOnOracleOleDbProvider()
+        {
+            Database db = DatabaseFactory.CreateDatabase("OracleOleTest");
+            string spName = "GetProductName";
+            object actualResult = db.ExecuteScalar(spName, 3);
+            Assert.AreEqual(Convert.ToString(actualResult), "Product3");
+        }
         #endregion
 
         #region "Transaction, CommandType, Command Text"
