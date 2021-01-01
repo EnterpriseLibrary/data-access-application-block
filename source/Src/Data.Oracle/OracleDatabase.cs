@@ -16,15 +16,15 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
     /// <summary>
     /// <para>Represents an Oracle database.</para>
     /// </summary>
-    /// <remarks> 
+    /// <remarks>
     /// <para>
     /// Internally uses Oracle .NET Managed Provider from Oracle to connect to a Oracle database.
-    /// </para>  
+    /// </para>
     /// <para>
     /// When retrieving a result set, it will build the package name. The package name should be set based
-    /// on the stored procedure prefix and this should be set via configuration. For 
+    /// on the stored procedure prefix and this should be set via configuration. For
     /// example, a package name should be set as prefix of "ENTLIB_" and package name of
-    /// "pkgENTLIB_ARCHITECTURE". For your applications, this is required only if you are defining your stored procedures returning 
+    /// "pkgENTLIB_ARCHITECTURE". For your applications, this is required only if you are defining your stored procedures returning
     /// ref cursors.
     /// </para>
     /// </remarks>
@@ -55,7 +55,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         public OracleDatabase(string connectionString, IEnumerable<IOraclePackage> packages)
             : base(connectionString, OracleClientFactory.Instance)
         {
-            if (packages == null) throw new ArgumentNullException("packages");
+            if (packages == null) throw new ArgumentNullException(nameof(packages));
 
             this.packages = packages;
         }
@@ -74,7 +74,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         /// <param name="scale"><para>The number of decimal places to which <paramref name="value"/> is resolved.</para></param>
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
         /// <param name="sourceVersion"><para>One of the <see cref="DataRowVersion"/> values.</para></param>
-        /// <param name="value"><para>The value of the parameter.</para></param>       
+        /// <param name="value"><para>The value of the parameter.</para></param>
         public override void AddParameter(DbCommand command, string name, DbType dbType, int size,
             ParameterDirection direction, bool nullable, byte precision, byte scale, string sourceColumn,
             DataRowVersion sourceVersion, object value)
@@ -110,13 +110,13 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         /// <param name="scale"><para>The number of decimal places to which <paramref name="value"/> is resolved.</para></param>
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
         /// <param name="sourceVersion"><para>One of the <see cref="DataRowVersion"/> values.</para></param>
-        /// <param name="value"><para>The value of the parameter.</para></param>      
+        /// <param name="value"><para>The value of the parameter.</para></param>
 #pragma warning disable 612, 618
         public void AddParameter(OracleCommand command, string name, OracleDbType oracleType, int size,
             ParameterDirection direction, bool nullable, byte precision, byte scale, string sourceColumn,
             DataRowVersion sourceVersion, object value)
         {
-            if (command == null) throw new ArgumentNullException("command");
+            if (command == null) throw new ArgumentNullException(nameof(command));
 
             OracleParameter param = CreateParameter(name, DbType.AnsiString, size, direction, nullable, precision, scale, sourceColumn, sourceVersion, value) as OracleParameter;
             param.OracleDbType = oracleType;
@@ -127,8 +127,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         /// <summary>
         /// Creates an <see cref="OracleDataReader"/> based on the <paramref name="command"/>.
         /// </summary>
-        /// <param name="command">The command wrapper to execute.</param>        
-        /// <returns>An <see cref="OracleDataReader"/> object.</returns>        
+        /// <param name="command">The command wrapper to execute.</param>
+        /// <returns>An <see cref="OracleDataReader"/> object.</returns>
         /// <exception cref="ArgumentNullException">
         /// <para><paramref name="command"/> can not be <see langword="null"/> (Nothing in Visual Basic).</para>
         /// </exception>
@@ -153,9 +153,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
 
         /// <summary>
         /// <para>Creates an <see cref="OracleDataReader"/> based on the <paramref name="command"/>.</para>
-        /// </summary>        
-        /// <param name="command"><para>The command wrapper to execute.</para></param>        
-        /// <param name="transaction"><para>The transaction to participate in when executing this reader.</para></param>        
+        /// </summary>
+        /// <param name="command"><para>The command wrapper to execute.</para></param>
+        /// <param name="transaction"><para>The transaction to participate in when executing this reader.</para></param>
         /// <returns><para>An <see cref="OracleDataReader"/> object.</para></returns>
         /// <exception cref="ArgumentNullException">
         /// <para><paramref name="command"/> can not be <see langword="null"/> (Nothing in Visual Basic).</para>
@@ -186,7 +186,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         /// <para>Executes a command and returns the result in a new <see cref="DataSet"/>.</para>
         /// </summary>
         /// <param name="command"><para>The command to execute to fill the <see cref="DataSet"/></para></param>
-        /// <param name="transaction"><para>The transaction to participate in when executing this reader.</para></param>        
+        /// <param name="transaction"><para>The transaction to participate in when executing this reader.</para></param>
         /// <returns><para>A <see cref="DataSet"/> filed with records and, if necessary, schema.</para></returns>
         /// <exception cref="ArgumentNullException">
         /// <para><paramref name="command"/> can not be <see langword="null"/> (<b>Nothing</b> in Visual Basic).</para>
@@ -249,7 +249,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         /// <returns>The value of the parameter.</returns>
         public override object GetParameterValue(DbCommand command, string parameterName)
         {
-            if (command == null) throw new ArgumentNullException("command");
+            if (command == null) throw new ArgumentNullException(nameof(command));
 
             object convertedValue = base.GetParameterValue(command, parameterName);
 
@@ -282,7 +282,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         /// <param name="value">The parameter value.</param>
         public override void SetParameterValue(DbCommand command, string parameterName, object value)
         {
-            if (command == null) throw new ArgumentNullException("command");
+            if (command == null) throw new ArgumentNullException(nameof(command));
 
             object convertedValue = value;
 
@@ -303,17 +303,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
             base.SetParameterValue(command, parameterName, convertedValue);
         }
 
-        /// <devdoc>
+        /// <summary>
         /// This is a private method that will build the Oracle package name if your stored procedure
-        /// has proper prefix and postfix. 
+        /// has proper prefix and postfix.
         /// This functionality is include for
         /// the portability of the architecture between SQL and Oracle database.
         /// This method also adds the reference cursor to the command writer if not already added. This
         /// is required for Oracle .NET managed data provider.
-        /// </devdoc>        
+        /// </summary>
         private void PrepareCWRefCursor(DbCommand command)
         {
-            if (command == null) throw new ArgumentNullException("command");
+            if (command == null) throw new ArgumentNullException(nameof(command));
 
             if (CommandType.StoredProcedure == command.CommandType)
             {
@@ -414,7 +414,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         }
 
         /// <summary>
-        /// Retrieves parameter information from the stored procedure specified in the <see cref="DbCommand"/> and populates the Parameters collection of the specified <see cref="DbCommand"/> object. 
+        /// Retrieves parameter information from the stored procedure specified in the <see cref="DbCommand"/> and populates the Parameters collection of the specified <see cref="DbCommand"/> object.
         /// </summary>
         /// <param name="discoveryCommand">The <see cref="DbCommand"/> to do the discovery.</param>
         /// <remarks>
@@ -435,7 +435,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         /// <returns><para>The <see cref="DbCommand"/> for the stored procedure.</para></returns>
         /// <remarks>
         /// <para>The parameters for the stored procedure will be discovered and the values are assigned in positional order.</para>
-        /// </remarks>        
+        /// </remarks>
         public override DbCommand GetStoredProcCommand(string storedProcedureName, params object[] parameterValues)
         {
             // need to do this before of eventual parameter discovery
@@ -451,7 +451,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         /// <param name="parameterValues">The parameter values that will be assigned to the command.</param>
         public override void AssignParameters(DbCommand command, object[] parameterValues)
         {
-            if (command == null) throw new ArgumentNullException("command");
+            if (command == null) throw new ArgumentNullException(nameof(command));
 
             // need to do this before of eventual parameter discovery
             string updatedStoredProcedureName = TranslatePackageSchema(command.CommandText);
@@ -461,11 +461,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         /// <summary>
         /// <para>Creates a <see cref="DbCommand"/> for a stored procedure.</para>
         /// </summary>
-        /// <param name="storedProcedureName"><para>The name of the stored procedure.</para></param>        
+        /// <param name="storedProcedureName"><para>The name of the stored procedure.</para></param>
         /// <returns><para>The <see cref="DbCommand"/> for the stored procedure.</para></returns>
         /// <remarks>
         /// <para>The parameters for the stored procedure will be discovered and the values are assigned in positional order.</para>
-        /// </remarks>        
+        /// </remarks>
         public override DbCommand GetStoredProcCommand(string storedProcedureName)
         {
             // need to do this before of eventual parameter discovery
@@ -474,10 +474,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
             return command;
         }
 
-        /// <devdoc>
+        /// <summary>
         /// Looks into configuration and gets the information on how the command wrapper should be updated if calling a package on this
         /// connection.
-        /// </devdoc>        
+        /// </summary>
         private string TranslatePackageSchema(string storedProcedureName)
         {
             const string allPrefix = "*";
