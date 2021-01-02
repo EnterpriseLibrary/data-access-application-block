@@ -2,7 +2,9 @@
 
 using System.Data.Common;
 using System.Data.Odbc;
+using System.Data.SqlClient;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Odbc;
 using Microsoft.Practices.EnterpriseLibrary.Data.OleDb;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -36,13 +38,13 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
         [TestMethod]
         public void CanCreateGenericDatabase()
         {
-            Database database = this.factory.Create("OdbcDatabase");
+            Database database = this.factory.Create("mapping2");
             Assert.IsNotNull(database);
             Assert.AreSame(typeof(GenericDatabase), database.GetType());
 
             // provider factories aren't exposed
             DbCommand command = database.GetStoredProcCommand("ignore");
-            Assert.AreSame(typeof(OdbcCommand), command.GetType());
+            Assert.AreSame(typeof(SqlCommand), command.GetType());
         }
 
         [TestMethod]
@@ -51,6 +53,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
             Database database = factory.Create("OleDbDatabase");
             Assert.IsNotNull(database);
             Assert.AreSame(typeof(OleDbDatabase), database.GetType());
+        }
+
+        [TestMethod]
+        public void CanCreateOdbcDatabase()
+        {
+            Database database = factory.Create("OdbcDatabase");
+            Assert.IsNotNull(database);
+            Assert.AreSame(typeof(OdbcDatabase), database.GetType());
         }
     }
 }
