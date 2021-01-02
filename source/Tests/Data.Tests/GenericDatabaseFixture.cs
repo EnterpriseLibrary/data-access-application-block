@@ -16,7 +16,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
     [TestClass]
     public class GenericDatabaseFixture
     {
-        const string connectionString = "some connection string;";
+        const string connectionString = "notexpectedtowork;";
 
         [TestInitialize]
         public void Setup()
@@ -28,12 +28,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
         public void CanCreateGenericDatabaseFromSysConfiguration()
         {
             Database database =
-                new DatabaseProviderFactory(new SystemConfigurationSource(false)).Create("OdbcDatabase");
+                new DatabaseProviderFactory(new SystemConfigurationSource(false)).Create("mapping2");
 
             Assert.IsNotNull(database);
             Assert.AreEqual(typeof(GenericDatabase), database.GetType());
-            Assert.AreEqual(typeof(OdbcFactory), database.DbProviderFactory.GetType());
-            Assert.AreEqual(database.ConnectionStringWithoutCredentials, connectionString);
+            Assert.AreEqual(typeof(SqlClientFactory), database.DbProviderFactory.GetType());
+            Assert.AreEqual(connectionString, database.ConnectionStringWithoutCredentials);
         }
 
         [TestMethod]
