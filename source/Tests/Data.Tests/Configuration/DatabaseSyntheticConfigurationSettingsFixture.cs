@@ -121,11 +121,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 
             var connectionStrings = new ConnectionStringsSection();
             connectionStrings.ConnectionStrings.Add(new ConnectionStringSettings
-                                                        {
-                                                            Name = "someSetting",
-                                                            ConnectionString = "someConnectionString",
-                                                            ProviderName = "non registered"
-                                                        });
+            {
+                Name = "someSetting",
+                ConnectionString = "someConnectionString",
+                ProviderName = "non registered"
+            });
 
             configSource.Add("connectionStrings", connectionStrings);
 
@@ -544,16 +544,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 
             Assert.IsTrue(databases.Count >= 8);
             CollectionAssert.AreEquivalent(
-                new[] 
+                new[]
                 {
                     "LocalSqlServer",
-                    "Service_Dflt", 
-                    "OracleTest", 
-                    "OdbcDatabase", 
-                    "mapping1", 
-                    "mapping2", 
-                    "NewDatabase", 
-                    "DbWithSqlServerAuthn", 
+                    "Service_Dflt",
+                    "OracleTest",
+                    "OdbcDatabase",
+                    "OleDbDatabase",
+                    "mapping1",
+                    "mapping2",
+                    "NewDatabase",
+                    "DbWithSqlServerAuthn",
                     "NorthwindPersistFalse"
                 },
                 databases.Keys);
