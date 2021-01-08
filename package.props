@@ -8,10 +8,10 @@
     <PostPackageName>.NetCore</PostPackageName>
     <PackageReleaseNotes>This package is distributed as .NET Standard 2.0, .NET Core 2.0, .NET Core 3.0, .NET 4.0, 4.5, 4.6, 4.7 package. See project wiki for migration from previous versions instructions.</PackageReleaseNotes>
 
-    <SemanticVersionSuffix></SemanticVersionSuffix>
+    <SemanticVersionSuffix>-rc1</SemanticVersionSuffix>
     <PackageVersion>$(Version)$(SemanticVersionSuffix)</PackageVersion>
     <Authors>Enterprise Library Open Source Project</Authors>
-    <Copyright>Copyright © Microsoft 2008</Copyright>
+    <Copyright>Copyright © Microsoft 2008, Enterprise Library Open Source Project 2017</Copyright>
     <PackageIcon>entlib_new_icon_100x100.png</PackageIcon>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/EnterpriseLibrary/data-access-application-block</PackageProjectUrl>
