@@ -30,9 +30,9 @@
   
   <PropertyGroup>
     <OracleManagedDataAccessCore>2.18.3</OracleManagedDataAccessCore>
-    <SystemConfigurationConfigurationManagerVersion>4.6.0-preview6.19303.8</SystemConfigurationConfigurationManagerVersion>
+    <SystemConfigurationConfigurationManagerVersion>4.6.0</SystemConfigurationConfigurationManagerVersion>
     <SystemDataOdbcVersion>4.5.0</SystemDataOdbcVersion>
-    <SystemDataSqlClientVersion>4.7.0-preview6.19303.8</SystemDataSqlClientVersion>
+    <SystemDataSqlClientVersion>4.7.0</SystemDataSqlClientVersion>
   </PropertyGroup>
 
   <PropertyGroup>
