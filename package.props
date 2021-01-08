@@ -22,7 +22,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\entlib_new_icon_100x100.png" Pack="true" PackagePath=""/>
+    <None Include="..\..\..\entlib_new_icon_100x100.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
   
   <PropertyGroup>
