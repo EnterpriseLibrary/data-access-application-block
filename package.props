@@ -29,6 +29,13 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
   
   <PropertyGroup>
     <OracleManagedDataAccessCore>2.18.3</OracleManagedDataAccessCore>
