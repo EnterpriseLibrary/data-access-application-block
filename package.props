@@ -19,6 +19,8 @@
 
     <RepositoryUrl>https://github.com/EnterpriseLibrary/data-access-application-block.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+
+    <OutputPath>$(SolutionDir)..\bin\$(MSBuildProjectName)\$(Configuration)\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
