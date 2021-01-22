@@ -135,6 +135,16 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlDatabaseFixtures
         }
 
         [TestMethod]
+        public void ResultIsReadWhenDbCmdWithSpInOutParam()
+        {
+            Database db = DatabaseFactory.CreateDatabase("DataSQLTest");
+            DbCommand command = db.GetStoredProcCommand("GetPrevProductName");
+            CreateCommandParameter(db, command, "@ProductName", DbType.String, ParameterDirection.InputOutput, "Tofu", 50);
+            db.ExecuteNonQuery(command);
+            Assert.AreEqual("Konbu", command.Parameters["@ProductName"].Value);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(SqlException))]
         public void ExceptionIsThrownWhenNonQueryDBCmdNoSPPresent()
         {

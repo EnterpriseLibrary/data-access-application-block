@@ -143,6 +143,31 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
+        /// Adds new In/Out <see cref="DbParameter"/> object to given <paramref name="command"/>
+        /// </summary>
+        /// <param name="command">The command to add the in/out parameter.</param>
+        /// <param name="name">The name of the parameter</param>
+        /// <param name="dbType">One of the <see cref="DbType"/> values.</param>
+        /// <param name="value">The value of the parameter for In direction.</param>
+        public void AddInOutParameter(DbCommand command, string name, DbType dbType, object value)
+        {
+            AddParameter(command, name, dbType, 0, ParameterDirection.InputOutput, true, 0, 0, String.Empty, DataRowVersion.Default, value);
+        }
+
+        /// <summary>
+        /// Adds new In/Out <see cref="DbParameter"/> object to given <paramref name="command"/>
+        /// </summary>
+        /// <param name="command">The command to add the in/out parameter.</param>
+        /// <param name="name">The name of the parameter</param>
+        /// <param name="dbType">One of the <see cref="DbType"/> values.</param>
+        /// <param name="size">The maximum size of the data within the column.</param>
+        /// <param name="value">The value of the parameter for In direction.</param>
+        public void AddInOutParameter(DbCommand command, string name, DbType dbType, int size, object value)
+        {
+            AddParameter(command, name, dbType, size, ParameterDirection.InputOutput, true, 0, 0, String.Empty, DataRowVersion.Default, value);
+        }
+
+        /// <summary>
         /// Adds a new In <see cref="DbParameter"/> object to the given <paramref name="command"/>.
         /// </summary>
         /// <param name="command">The command to add the parameter.</param>

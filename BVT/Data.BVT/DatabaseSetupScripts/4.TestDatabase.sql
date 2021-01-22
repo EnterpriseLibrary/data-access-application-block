@@ -694,6 +694,24 @@ WAITFOR DELAY '00:00:10'
 end
 GO
 
+--/////////////////////////////////////////////////////////////////////
+
+CREATE PROCEDURE GetPrevProductName
+    @ProductName nvarchar(50) OUTPUT
+AS
+BEGIN
+
+    SELECT @ProductName = LAG(ProductName) OVER (ORDER BY P.ProductID)
+    FROM Products AS P
+        INNER JOIN (
+            SELECT ProductID, ProductID - 1 AS PrevProductID
+            FROM Products
+            WHERE ProductName = @ProductName
+        ) AS A ON P.ProductID IN (A.ProductID, A.PrevProductID)
+    RETURN
+END
+
+
 
 -- =======================================================
 -- Populate database with intial data
