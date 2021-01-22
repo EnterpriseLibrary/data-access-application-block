@@ -23,8 +23,9 @@ C. The Oracle connection string is configured as follows:
 
    These values will need to be modified if the Oracle installation differs. Run this command on your Oracle XE database instance:
 
+```sql
     ALTER USER SYSTEM IDENTIFIED BY oracle;
-
+```
 
 D. Install Oracle XE and then run the SQL scripts located in DatabaseSetupScripts\OracleDBScripts, using the credentials above:
    1. 1.Table\alldb.sql
