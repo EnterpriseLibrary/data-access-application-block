@@ -96,7 +96,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseOLEDB
 
             DbCommand dbCommandWrapper = db.GetStoredProcCommand("ItemPriceGetById");
             CreateCommandParameter(db, dbCommandWrapper, "@ID", DbType.Int32, ParameterDirection.Input, 1);
-            CreateCommandParameter(db, dbCommandWrapper, "@Price", DbType.Currency, ParameterDirection.Output, 50);
+            CreateCommandParameter(db, dbCommandWrapper, "@Price", DbType.Currency, ParameterDirection.Output, size: 50);
             using (DataSet dsActualResult = db.ExecuteDataSet(dbCommandWrapper))
             {
                 int count = dsActualResult.Tables[0].Rows.Count;

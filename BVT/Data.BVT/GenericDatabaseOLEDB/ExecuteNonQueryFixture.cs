@@ -126,7 +126,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseOLEDB
             string sqlCommand = "CustomerOrdersAddwithOutParm";
             DbCommand dbCommandWrapper = db.GetStoredProcCommand(sqlCommand);
             CreateCommandParameter(db, dbCommandWrapper, "@CustomerId", DbType.Int16, ParameterDirection.Input, 3);
-            CreateCommandParameter(db, dbCommandWrapper, "@QtyOrdered", DbType.Int16, ParameterDirection.Output, 16);
+            CreateCommandParameter(db, dbCommandWrapper, "@QtyOrdered", DbType.Int16, ParameterDirection.Output, size: 16);
             db.ExecuteNonQuery(dbCommandWrapper);
             Assert.AreEqual(234, Convert.ToInt32(dbCommandWrapper.Parameters["@QtyOrdered"].Value));
         }

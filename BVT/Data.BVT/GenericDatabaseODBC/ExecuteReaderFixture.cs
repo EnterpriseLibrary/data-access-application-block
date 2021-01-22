@@ -115,7 +115,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseODBC
             string sqlCommand = "{ Call ItemPriceGetbyId(?,?) }";
             DbCommand dbCommandWrapper = db.GetStoredProcCommand(sqlCommand);
             CreateCommandParameter(db, dbCommandWrapper, "@Id", DbType.Int16, ParameterDirection.Input, 1);
-            CreateCommandParameter(db, dbCommandWrapper, "@Price", DbType.Double, ParameterDirection.Output, 32);
+            CreateCommandParameter(db, dbCommandWrapper, "@Price", DbType.Double, ParameterDirection.Output, size: 32);
             using (IDataReader dataReader = db.ExecuteReader(dbCommandWrapper)) { }
             Assert.AreEqual(Convert.ToDouble(38.95), Convert.ToDouble(dbCommandWrapper.Parameters["@Price"].Value));
             Assert.AreEqual(ConnectionState.Closed, dbCommandWrapper.Connection.State);

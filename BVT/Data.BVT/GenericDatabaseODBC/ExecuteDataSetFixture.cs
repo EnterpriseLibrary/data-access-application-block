@@ -100,7 +100,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseODBC
             DbCommand dbCommandWrapper = db.GetStoredProcCommand("{ Call ItemPriceGetById(?,?)}");
             CreateCommandParameter(db, dbCommandWrapper, "@Id", DbType.Int32, ParameterDirection.Input, 1);
             //  dbCommandWrapper.AddInParameter("@ID", DbType.Int32, 1);
-            CreateCommandParameter(db, dbCommandWrapper, "@Price", DbType.Currency, ParameterDirection.Output, 50);
+            CreateCommandParameter(db, dbCommandWrapper, "@Price", DbType.Currency, ParameterDirection.Output, size: 50);
             //  dbCommandWrapper.AddOutParameter("@Price", DbType.Currency,50);
 
             using (DataSet dsActualResult = db.ExecuteDataSet(dbCommandWrapper))
