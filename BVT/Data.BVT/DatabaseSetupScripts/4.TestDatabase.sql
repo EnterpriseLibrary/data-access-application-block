@@ -714,7 +714,7 @@ END
 
 
 -- =======================================================
--- Populate database with intial data
+-- Populate database with initial data
 -- =======================================================
 
 INSERT INTO [Customers] ([Name],[Address],[City],[PostalCode],[Country])VALUES('Maria Anders','Obere Str. 57','Berlin','12209','Germany')
