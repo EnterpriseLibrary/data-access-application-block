@@ -1,13 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
-using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.Odbc;
-using System.Data.SqlClient;
 using System.Text;
-using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseODBC
@@ -122,6 +119,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseODBC
             CreateCommandParameter(db, dbCommandWrapper, "@QtyOrdered", DbType.Int16, ParameterDirection.Output, size: 16);
             db.ExecuteNonQuery(dbCommandWrapper);
             Assert.AreEqual(234, Convert.ToInt32(dbCommandWrapper.Parameters["@QtyOrdered"].Value));
+        }
+
+        [TestMethod]
+        public void ResultIsReadwhenDbCmdWithSpInOutParam()
+        {
+            Database db = DatabaseFactory.CreateDatabase("GenericSQLTestODBC");
+            String sqlCommand = "{ Call GetPrevProductName(?) }";
+            DbCommand dbCommand = db.GetStoredProcCommand(sqlCommand);
+            CreateCommandParameter(db, dbCommand, "@ProductName", DbType.String, ParameterDirection.InputOutput, "Tofu", 50);
+            db.ExecuteNonQuery(dbCommand);
+            Assert.AreEqual("Konbu", dbCommand.Parameters["@ProductName"].Value);
         }
 
         [TestMethod]

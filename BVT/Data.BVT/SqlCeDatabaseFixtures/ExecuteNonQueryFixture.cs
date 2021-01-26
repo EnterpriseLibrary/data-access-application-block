@@ -1,14 +1,11 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
-using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlServerCe;
 using System.Text;
-using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 using Microsoft.Practices.EnterpriseLibrary.Data.SqlCe;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlCeDatabaseFixtures
@@ -64,6 +61,15 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlCeDatabaseFixtures
             Assert.AreEqual(true, isPresent);
         }
 
+        [TestMethod]
+        public void ResultIsReadWhenDbCmdWithSpInOutParam()
+        {
+            Database db = DatabaseFactory.CreateDatabase("DataSQLTest");
+            DbCommand command = db.GetStoredProcCommand("GetPrevProductName");
+            CreateCommandParameter(db, command, "@ProductName", DbType.String, ParameterDirection.InputOutput, "Tofu", 50);
+            db.ExecuteNonQuery(command);
+            Assert.AreEqual("Konbu", command.Parameters["@ProductName"].Value);
+        }
         #endregion
 
         #region "Db Command, Transaction"
