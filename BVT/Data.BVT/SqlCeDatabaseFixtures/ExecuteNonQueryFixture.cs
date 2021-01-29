@@ -61,15 +61,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlCeDatabaseFixtures
             Assert.AreEqual(true, isPresent);
         }
 
-        [TestMethod]
-        public void ResultIsReadWhenDbCmdWithSpInOutParam()
-        {
-            Database db = DatabaseFactory.CreateDatabase("DataSQLTest");
-            DbCommand command = db.GetStoredProcCommand("GetPrevProductName");
-            CreateCommandParameter(db, command, "@ProductName", DbType.String, ParameterDirection.InputOutput, "Tofu", 50);
-            db.ExecuteNonQuery(command);
-            Assert.AreEqual("Konbu", command.Parameters["@ProductName"].Value);
-        }
         #endregion
 
         #region "Db Command, Transaction"
