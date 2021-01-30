@@ -2,7 +2,7 @@
   <Import Project="..\..\..\package.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net452;net46;net47;netstandard2.0;netcoreapp2.0;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>net452;net46;net47;netstandard2.0;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
 
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
     <FileVersion>$(Version).$(Revision)</FileVersion>
@@ -33,7 +33,6 @@
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="$(SystemConfigurationConfigurationManagerVersion)" />
-    <PackageReference Include="System.Data.Odbc" Version="$(SystemDataOdbcVersion)" />
     <!-- required for System.Data.Common shim -->
     <PackageReference Include="System.Data.SqlClient" Version="$(SystemDataSqlClientVersion)" />
   </ItemGroup>
@@ -108,14 +107,8 @@
     </Content>
   </ItemGroup>
 
-  <!-- .NET Core 2.0 and .NET Standard 2.0 don't have OleDb support (.NET Core 3+ does) -->
-  <ItemGroup Condition="('$(TargetFramework)' == 'netstandard2.0') OR ('$(TargetFramework)' == 'netcoreapp2.0')">
-    <Compile Remove="**\OleDb*.cs" />
-    <Compile Remove="**\*.Desktop.cs" />
-  </ItemGroup>
-
   <!-- .NET Core 2.0 and .NET Standard 2.0 have incomplete System.Data.Common implementations, so they need these helpers -->
-  <ItemGroup Condition="!('$(TargetFramework)' == 'netstandard2.0') AND !('$(TargetFramework)' == 'netcoreapp2.0')">
+  <ItemGroup Condition="!('$(TargetFramework)' == 'netstandard2.0')">
     <Compile Remove="System.Data.Common\*.cs" />
   </ItemGroup>
 

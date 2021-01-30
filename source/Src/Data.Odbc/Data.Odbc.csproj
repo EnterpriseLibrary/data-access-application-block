@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\..\package.props" />
   <PropertyGroup>
-    <TargetFrameworks>net452;net46;net47;netcoreapp2.0;netcoreapp3.0;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net452;net46;net47;netcoreapp2.1;netcoreapp3.1;netstandard2.0</TargetFrameworks>
     <AssemblyName>$(PreAssemblyName).Data.Odbc</AssemblyName>
     <PackageId>$(PrePackageName).Data.Odbc$(PostPackageName)</PackageId>
     <RootNamespace>$(PreAssemblyName).Data.Odbc</RootNamespace>
