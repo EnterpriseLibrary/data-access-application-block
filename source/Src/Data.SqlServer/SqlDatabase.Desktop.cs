@@ -31,8 +31,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteReader"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteReader"/>,
         /// which returns the <see cref="IDataReader"/>.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteReader(DbCommand)"/>
@@ -41,7 +41,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         {
             SqlCommand sqlCommand = CheckIfSqlCommand(command);
 
-            DbConnection connection = this.GetNewOpenConnection();
+            DbConnection connection = GetNewOpenConnection();
             try
             {
                 PrepareCommand(sqlCommand, connection);
@@ -67,8 +67,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteReader"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteReader"/>,
         /// which returns the <see cref="IDataReader"/>.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteReader(DbCommand)"/>
@@ -94,8 +94,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteReader"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteReader"/>,
         /// which returns the <see cref="IDataReader"/>.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteReader(string, object[])"/>
@@ -104,7 +104,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         {
             SqlCommand sqlCommand = CheckIfSqlCommand(GetStoredProcCommand(storedProcedureName, parameterValues));
 
-            DbConnection connection = this.GetNewOpenConnection();
+            DbConnection connection = GetNewOpenConnection();
             try
             {
                 PrepareCommand(sqlCommand, connection);
@@ -133,8 +133,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         /// <para>An array of parameters to pass to the stored procedure. The parameter values must be in call order as they appear in the stored procedure.</para>
         /// </param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteReader"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteReader"/>,
         /// which returns the <see cref="IDataReader"/>.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteReader(DbTransaction, string, object[])"/>
@@ -148,8 +148,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the <paramref name="commandText"/> 
-        /// interpreted as specified by the <paramref name="commandType" /> which will return 
+        /// <para>Initiates the asynchronous execution of the <paramref name="commandText"/>
+        /// interpreted as specified by the <paramref name="commandType" /> which will return
         /// a <see cref="IDataReader"/>. When the async operation completes, the
         /// <paramref name="callback"/> will be invoked on another thread to process the
         /// result.</para>
@@ -164,8 +164,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         /// completes.</param>
         /// <param name="state">State object passed to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteReader"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteReader"/>,
         /// which returns the <see cref="IDataReader"/>.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteReader(CommandType, string)"/>
@@ -174,7 +174,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         {
             SqlCommand sqlCommand = CreateSqlCommandByCommandType(commandType, commandText);
 
-            DbConnection connection = this.GetNewOpenConnection();
+            DbConnection connection = GetNewOpenConnection();
             try
             {
                 PrepareCommand(sqlCommand, connection);
@@ -193,18 +193,18 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>
         /// </param>
-        /// <param name="commandText">
-        /// <para>The command text to execute.</para>
-        /// </param>
         /// <param name="transaction">
         /// <para>The <see cref="DbTransaction"/> to execute the command within.</para>
+        /// </param>
+        /// <param name="commandText">
+        /// <para>The command text to execute.</para>
         /// </param>
         /// <param name="callback">The async callback to execute when the result of the operation is available. Pass <langword>null</langword>
         /// if you don't want to use a callback.</param>
         /// <param name="state">Additional state object to pass to the callback.</param>
         /// <returns>
-        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both; 
-        /// this value is also needed when invoking <see cref="EndExecuteReader"/>, 
+        /// <para>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, or both;
+        /// this value is also needed when invoking <see cref="EndExecuteReader"/>,
         /// which returns the <see cref="IDataReader"/>.</para>
         /// </returns>
         /// <seealso cref="Database.ExecuteReader(CommandType, string)"/>
@@ -229,7 +229,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         /// <seealso cref="BeginExecuteReader(DbCommand, DbTransaction,AsyncCallback,object)"/>
         /// <returns>
         /// <para>An <see cref="IDataReader"/> object that can be used to consume the queried information.</para>
-        /// </returns>     
+        /// </returns>
         public override IDataReader EndExecuteReader(IAsyncResult asyncResult)
         {
             DaabAsyncResult daabAsyncResult = (DaabAsyncResult)asyncResult;
