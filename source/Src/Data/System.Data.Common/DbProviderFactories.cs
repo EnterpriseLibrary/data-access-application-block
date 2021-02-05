@@ -21,7 +21,7 @@ namespace System.Data.Common
 
         private static ConnectionState _initState; // closed, connecting, open
         private static DataTable _providerTable;
-        private static object _lockobj = new object();
+        private static readonly object _lockobj = new object();
 
         /// <summary>
         /// Gets the DbProviderFactory by the provider name  
@@ -30,7 +30,7 @@ namespace System.Data.Common
         /// <returns>The <see cref="DbProviderFactory"/>  with provided name</returns>
         static public DbProviderFactory GetFactory(string providerInvariantName)
         {
-            ADP.CheckArgumentLength(providerInvariantName, "providerInvariantName");
+            ADP.CheckArgumentLength(providerInvariantName, nameof(providerInvariantName));
 
             // NOTES: Include the Framework Providers and any other Providers listed in the config file.
             DataTable providerTable = GetProviderTable();
@@ -55,7 +55,7 @@ namespace System.Data.Common
 
         static internal DbProviderFactory GetFactory(DataRow providerRow)
         {
-            ADP.CheckArgumentNull(providerRow, "providerRow");
+            ADP.CheckArgumentNull(providerRow, nameof(providerRow));
 
             // fail with ConfigProviderMissing rather than ColumnNotInTheTable exception
             DataColumn column = providerRow.Table.Columns[AssemblyQualifiedName];
@@ -147,7 +147,7 @@ namespace System.Data.Common
                         case ConnectionState.Open:
                             break;
                         default:
-                            Debug.Assert(false, "unexpected state");
+                            Debug.Fail("unexpected state");
                             break;
                     }
                 }

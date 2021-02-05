@@ -13,27 +13,21 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
     /// </summary>
     /// <remarks>
     /// <para>
-    /// The Enterprise Library Data Access Application Block leverages the ADO.NET 2.0 provider factories. To determine what type of <see cref="Database"/> matches a given provider factory type, the optional 
-    /// <see cref="DbProviderMapping"/> configuration objects can be defined in the block's configuration section.
+    /// The Enterprise Library Data Access Application Block leverages the ADO.NET provider factories. To determine
+    /// what type of <see cref="Database"/> matches a given provider factory type, the
+    /// <see cref="DbProviderMapping"/> configuration objects should be defined in the block's configuration section.
     /// </para>
     /// <para>
-    /// If a mapping is not present for a given provider type, sensible defaults will be used:
-    /// <list type="bullet">
-    /// <item>For provider name "System.Data.SqlClient", or for a provider of type <see cref="System.Data.SqlClient.SqlClientFactory"/>, the 
-    /// <c>Data.Sql.SqlDatabase"</c> will be used.</item>
-    /// <item>For provider name "Oracle.ManagedDataAccess.Client", or for a provider of type <c>OracleClientFactory"</c>, the 
-    /// <c>Microsoft.Practices.EnterpriseLibrary.Data.Oracle.OracleDatabase"</c> will be used.</item>
-    /// <item>In any other case, the <see cref="GenericDatabase"/> will be used.</item>
-    /// </list>
+    /// If a mapping is not present for a given provider type, the <see cref="GenericDatabase"/> will be used.
     /// </para>
     /// </remarks>
     /// <seealso cref="DatabaseSyntheticConfigSettings.GetProviderMapping(string)"/>
     /// <seealso cref="System.Data.Common.DbProviderFactory"/>
-    [ResourceDescription(typeof(DesignResources), "DbProviderMappingDescription")]
-    [ResourceDisplayName(typeof(DesignResources), "DbProviderMappingDisplayName")]
+    [ResourceDescription(typeof(DesignResources), nameof(DesignResources.DbProviderMappingDescription))]
+    [ResourceDisplayName(typeof(DesignResources), nameof(DesignResources.DbProviderMappingDisplayName))]
     public class DbProviderMapping : NamedConfigurationElement
     {
-        private static AssemblyQualifiedTypeNameConverter typeConverter = new AssemblyQualifiedTypeNameConverter();
+        private static readonly AssemblyQualifiedTypeNameConverter typeConverter = new AssemblyQualifiedTypeNameConverter();
 
         /// <summary>
         /// Default name for the Sql managed provider.
@@ -60,7 +54,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
         public DbProviderMapping(string dbProviderName, Type databaseType)
             : this(dbProviderName, (string)typeConverter.ConvertTo(databaseType, typeof(string)))
         {
-
         }
 
         /// <summary>
