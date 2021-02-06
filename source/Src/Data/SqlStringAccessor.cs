@@ -22,7 +22,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="database">The <see cref="Database"/> used to execute the SQL.</param>
         /// <param name="sqlString">The SQL that will be executed.</param>
-        /// <param name="rowMapper">The <see cref="IRowMapper&lt;TResult&gt;"/> that will be used to convert the returned data to clr type <typeparamref name="TResult"/>.</param>
+        /// <param name="rowMapper">The <see cref="IRowMapper{TResult}"/> that will be used to convert the returned data to clr type <typeparamref name="TResult"/>.</param>
         public SqlStringAccessor(Database database, string sqlString, IRowMapper<TResult> rowMapper)
             : this(database, sqlString, new DefaultSqlStringParameterMapper(), rowMapper)
         {
@@ -34,7 +34,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="database">The <see cref="Database"/> used to execute the SQL.</param>
         /// <param name="sqlString">The SQL that will be executed.</param>
-        /// <param name="resultSetMapper">The <see cref="IResultSetMapper&lt;TResult&gt;"/> that will be used to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.</param>
+        /// <param name="resultSetMapper">The <see cref="IResultSetMapper{TResult}"/> that will be used to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.</param>
         public SqlStringAccessor(Database database, string sqlString, IResultSetMapper<TResult> resultSetMapper)
             : this(database, sqlString, new DefaultSqlStringParameterMapper(), resultSetMapper)
         {
@@ -48,7 +48,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="database">The <see cref="Database"/> used to execute the SQL.</param>
         /// <param name="sqlString">The SQL that will be executed.</param>
         /// <param name="parameterMapper">The <see cref="IParameterMapper"/> that will be used to interpret the parameters passed to the Execute method.</param>
-        /// <param name="rowMapper">The <see cref="IRowMapper&lt;TResult&gt;"/> that will be used to convert the returned data to clr type <typeparamref name="TResult"/>.</param>
+        /// <param name="rowMapper">The <see cref="IRowMapper{TResult}"/> that will be used to convert the returned data to clr type <typeparamref name="TResult"/>.</param>
         public SqlStringAccessor(Database database, string sqlString, IParameterMapper parameterMapper, IRowMapper<TResult> rowMapper)
             : base(database, rowMapper)
         {
@@ -67,7 +67,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="database">The <see cref="Database"/> used to execute the SQL.</param>
         /// <param name="sqlString">The SQL that will be executed.</param>
         /// <param name="parameterMapper">The <see cref="IParameterMapper"/> that will be used to interpret the parameters passed to the Execute method.</param>
-        /// <param name="resultSetMapper">The <see cref="IResultSetMapper&lt;TResult&gt;"/> that will be used to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.</param>
+        /// <param name="resultSetMapper">The <see cref="IResultSetMapper{TResult}"/> that will be used to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.</param>
         public SqlStringAccessor(Database database, string sqlString, IParameterMapper parameterMapper, IResultSetMapper<TResult> resultSetMapper)
             : base(database, resultSetMapper)
         {
