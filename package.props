@@ -6,7 +6,7 @@
     <PreAssemblyName>Microsoft.Practices.EnterpriseLibrary</PreAssemblyName>
     <PrePackageName>EnterpriseLibrary</PrePackageName>
     <PostPackageName>.NetCore</PostPackageName>
-    <PackageReleaseNotes>This package is distributed as .NET Standard 2.0, .NET Core 2.0, .NET Core 3.0, .NET 4.0, 4.5, 4.6, 4.7 package. See project wiki for migration from previous versions instructions.</PackageReleaseNotes>
+    <PackageReleaseNotes>This package is distributed as .NET Standard 2.0, .NET Core 2.1, .NET Core 3.1, 4.5.2, 4.6, 4.7 package. See project wiki for migration from previous versions instructions.</PackageReleaseNotes>
 
     <SemanticVersionSuffix>-rc1</SemanticVersionSuffix>
     <PackageVersion>$(Version)$(SemanticVersionSuffix)</PackageVersion>
