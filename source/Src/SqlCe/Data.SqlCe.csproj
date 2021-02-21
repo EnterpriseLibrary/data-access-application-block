@@ -16,6 +16,7 @@
     <Description>The Data Access Application Block SQL CE Data Provider let developers use SQL CE databases in conjunction with the Data Access Application Block.</Description>
     <Summary>The Data Access Application Block SQL CE Data Provider let developers use SQL CE databases in conjunction with the Data Access Application Block.</Summary>
     <PackageTags>entlib entlib6 Enterprise Library data daab dab sql ce compact LOB futures OSS</PackageTags>
+    <PackageReleaseNotes>This package is distributed as .NET 4.5.2, 4.6, 4.7 package. See project wiki for migration from previous versions instructions.</PackageReleaseNotes>
 
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\EnterpriseLibrary.snk</AssemblyOriginatorKeyFile>
