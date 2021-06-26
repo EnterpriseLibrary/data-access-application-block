@@ -6,9 +6,9 @@ using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
 {
-    ///<summary>
+    /// <summary>
     /// Starting point for data configuration.
-    ///</summary>
+    /// </summary>
     /// <seealso cref="DataConfigurationSourceBuilderExtensions"/>
     public interface IDataConfiguration : IDatabaseConfiguration
     {

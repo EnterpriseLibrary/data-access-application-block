@@ -51,6 +51,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
         /// <summary>
         /// Initializes a new instance of the <see cref="DbProviderMapping"/> class with name and <see cref="Database"/> type.
         /// </summary>
+        /// <param name="dbProviderName">The ADO.NET provider name</param>
+        /// <param name="databaseType">The type of the database to use for the mapped ADO.NET provider</param>
         public DbProviderMapping(string dbProviderName, Type databaseType)
             : this(dbProviderName, (string)typeConverter.ConvertTo(databaseType, typeof(string)))
         {
@@ -59,6 +61,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
         /// <summary>
         /// Initializes a new instance of the <see cref="DbProviderMapping"/> class with name and fully qualified type name of the <see cref="Database"/> type.
         /// </summary>
+        /// <param name="dbProviderName">The ADO.NET provider name</param>
+        /// <param name="databaseTypeName">The fully qualified type name of the database to use for the mapped ADO.NET provider</param>
         public DbProviderMapping(string dbProviderName, string databaseTypeName)
             : base(dbProviderName)
         {

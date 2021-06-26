@@ -8,10 +8,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
     /// <remarks>This interface is intended to support a fluent-style configuration interface.</remarks>
     public interface IDatabaseConfigurationProperties : IDatabaseConfigurationProviderEntry, IDatabaseConfiguration
     {
-        ///<summary>
+        /// <summary>
         /// Set this database as the default one in the configuration.
-        ///</summary>
-        ///<returns></returns>
+        /// </summary>
+        /// <returns>This instance</returns>
         IDatabaseConfigurationProperties AsDefault();
     }
 }

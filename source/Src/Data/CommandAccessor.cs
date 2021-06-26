@@ -15,14 +15,15 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
     /// <typeparam name="TResult">The element type this accessor will return.</typeparam>
     public abstract class CommandAccessor<TResult> : DataAccessor<TResult>
     {
-        readonly IResultSetMapper<TResult> resultSetMapper;
-        readonly Database database;
+        private readonly IResultSetMapper<TResult> resultSetMapper;
+        private readonly Database database;
 
         /// <summary>
         /// Initialized the <see cref="CommandAccessor{TResult}"/> with a database instance and a Row Mapper.
         /// </summary>
         /// <param name="database">The <see cref="Database"/> used to execute the <see cref="DbCommand"/>.</param>
         /// <param name="rowMapper">The <see cref="IRowMapper{TResult}"/> that will be used to convert the returned data to clr type <typeparamref name="TResult"/>.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="rowMapper"/> is <b>null</b>.</exception>
         protected CommandAccessor(Database database, IRowMapper<TResult> rowMapper)
             : this(database, new DefaultResultSetMapper(rowMapper))
         {
@@ -34,6 +35,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="database">The <see cref="Database"/> used to execute the <see cref="DbCommand"/>.</param>
         /// <param name="resultSetMapper">The <see cref="IResultSetMapper{TResult}"/> that will be used to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="database"/> or <paramref name="resultSetMapper"/> are <b>null</b>.</exception>
         protected CommandAccessor(Database database, IResultSetMapper<TResult> resultSetMapper)
         {
             if (database == null) throw new ArgumentNullException(nameof(database));
@@ -46,7 +48,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <summary>
         /// The database object this accessor is wrapped around.
         /// </summary>
-        protected Database Database { get { return database; } }
+        protected Database Database => database;
 
         /// <summary>
         /// Executes the <paramref name="command"/> and returns an enumerable of <typeparamref name="TResult"/>.

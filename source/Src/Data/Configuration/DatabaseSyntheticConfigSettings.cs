@@ -88,7 +88,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
         /// </remarks>
         /// <param name="name">The name for the desired connection string configuration.</param>
         /// <returns>The connection string configuration.</returns>
-        /// <exception cref="ArgumentException">if <paramref name="name"/> is <see langword="null"/> (<b>Nothing</b> in Visual Basic) or empty.</exception>
+        /// <exception cref="ArgumentException">if <paramref name="name"/> is <b>null</b> (<b>Nothing</b> in Visual Basic) or empty.</exception>
         /// <exception cref="System.Configuration.ConfigurationErrorsException">if the connection string object is not found, or if it does not specify a provider name.</exception>
         public ConnectionStringSettings GetConnectionStringSettings(string name)
         {

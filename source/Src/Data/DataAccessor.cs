@@ -8,7 +8,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
     /// <summary>
     /// An interface representing an object that wraps a database operation.
     /// An Accessor is executed, at which point it will go out to the database
-    /// and return a <see cref="IEnumerable{TResult}"/> of whatever type <typeparam name="TResult"/>
+    /// and return a <see cref="IEnumerable{TResult}"/> of whatever type <typeparamref name="TResult"/>
     /// is.
     /// </summary>
     public abstract class DataAccessor<TResult>

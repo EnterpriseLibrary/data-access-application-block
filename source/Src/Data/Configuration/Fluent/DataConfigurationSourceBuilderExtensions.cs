@@ -10,17 +10,17 @@ using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
 {
-    ///<summary>
+    /// <summary>
     /// Data configuration fluent interface extensions to <see cref="IConfigurationSourceBuilder"/>
-    ///</summary>
+    /// </summary>
     /// <seealso cref="ConfigurationSourceBuilder"/>
     public static class DataConfigurationSourceBuilderExtensions
     {
-        ///<summary>
+        /// <summary>
         /// Configure database connections for Enterprise Library.
-        ///</summary>
-        ///<param name="configurationSourceBuilderRoot">Source builder root that is extended.</param>
-        ///<returns></returns>
+        /// </summary>
+        /// <param name="configurationSourceBuilderRoot">Source builder root that is extended.</param>
+        /// <returns></returns>
         public static IDataConfiguration ConfigureData(this IConfigurationSourceBuilder configurationSourceBuilderRoot)
         {
             return new DataConfigurationBuilder(configurationSourceBuilderRoot);
@@ -43,11 +43,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
                 builder.AddSection("connectionStrings", connectionStringSection);
             }
 
-            ///<summary>
+            /// <summary>
             /// Configure a named database.
-            ///</summary>
-            ///<param name="databaseName">Name of database to configure</param>
-            ///<returns></returns>
+            /// </summary>
+            /// <param name="databaseName">Name of database to configure</param>
+            /// <returns></returns>
+            /// <exception cref="ArgumentException"><paramref name="databaseName"/> is <b>null</b> or empty.</exception>
             public IDatabaseConfigurationProperties ForDatabaseNamed(string databaseName)
             {
                 if (string.IsNullOrEmpty(databaseName)) throw new ArgumentException(Properties.Resources.ExceptionStringNullOrEmpty, nameof(databaseName));
@@ -58,10 +59,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
                 return this;
             }
 
-            ///<summary>
+            /// <summary>
             /// Set this database as the default one in the configuration.
-            ///</summary>
-            ///<returns></returns>
+            /// </summary>
+            /// <returns></returns>
             public IDatabaseConfigurationProperties AsDefault()
             {
                 EnsureDatabaseSettings();
@@ -69,9 +70,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Common.Configuration
                 return this;
             }
 
-            ///<summary>
+            /// <summary>
             /// Specify the type of database.
-            ///</summary>
+            /// </summary>
             public IDatabaseConfigurationProviders ThatIs
             {
                 get { return this; }

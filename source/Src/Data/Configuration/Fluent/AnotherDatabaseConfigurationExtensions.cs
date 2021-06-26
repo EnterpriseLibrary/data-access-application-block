@@ -12,8 +12,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
     /// </summary>
     public interface IDatabaseAnotherDatabaseConfiguration : IDatabaseDefaultConnectionString, IDatabaseConfigurationProperties
     {
-        /// <summary />
-        IDatabaseAnotherDatabaseConfiguration WithConnectionString(System.Data.Common.DbConnectionStringBuilder builder);
+        /// <summary>
+        /// Connection string to use for this data source.
+        /// </summary>
+        /// <param name="builder">The connection string builder for the database provider</param>
+        /// <returns>This instance</returns>
+        IDatabaseAnotherDatabaseConfiguration WithConnectionString(DbConnectionStringBuilder builder);
     }
 
     internal class AnotherDatabaseConfigurationExtensions : DatabaseConfigurationExtension, IDatabaseAnotherDatabaseConfiguration

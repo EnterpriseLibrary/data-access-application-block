@@ -4,7 +4,6 @@ using System;
 using System.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.Design;
-using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.Design.Validation;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
 {
@@ -38,8 +37,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
         /// Retrieves the <see cref="DatabaseSettings"/> from a configuration source.
         /// </summary>
         /// <param name="configurationSource">The <see cref="IConfigurationSource"/> to query for the database settings.</param>
-        /// <returns>The database settings from the configuration source, or <see langword="null"/> (<b>Nothing</b> in Visual Basic) if the 
+        /// <returns>The database settings from the configuration source, or <b>null</b> (<b>Nothing</b> in Visual Basic) if the
         /// configuration source does not contain database settings.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="configurationSource"/> is <b>null</b>.</exception>
         public static DatabaseSettings GetDatabaseSettings(IConfigurationSource configurationSource)
         {
             if (configurationSource == null) throw new ArgumentNullException(nameof(configurationSource));
@@ -62,14 +62,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
         [ResourceDisplayName(typeof(DesignResources), "DatabaseSettingsDefaultDatabaseDisplayName")]
         public string DefaultDatabase
         {
-            get
-            {
-                return (string)this[defaultDatabaseProperty];
-            }
-            set
-            {
-                this[defaultDatabaseProperty] = value;
-            }
+            get => (string)this[defaultDatabaseProperty];
+            set => this[defaultDatabaseProperty] = value;
         }
 
         /// <summary>
@@ -78,8 +72,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
         /// <seealso cref="DbProviderMapping"/>
         [ConfigurationProperty(dbProviderMappingsProperty, IsRequired = false)]
         [ConfigurationCollection(typeof(DbProviderMapping))]
-        [ResourceDescription(typeof(DesignResources), "DatabaseSettingsProviderMappingsDescription")]
-        [ResourceDisplayName(typeof(DesignResources), "DatabaseSettingsProviderMappingsDisplayName")]
+        [ResourceDescription(typeof(DesignResources), nameof(DesignResources.DatabaseSettingsProviderMappingsDescription))]
+        [ResourceDisplayName(typeof(DesignResources), nameof(DesignResources.DatabaseSettingsProviderMappingsDisplayName))]
         public NamedElementCollection<DbProviderMapping> ProviderMappings
         {
             get

@@ -10,7 +10,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
     {
         /// <summary>
         /// No interference with the DataAdapter's Update command. If Update encounters
-        /// an error, the update stops.  Additional rows in the Datatable are uneffected.
+        /// an error, the update stops. Additional rows in the Datatable are unaffected.
         /// </summary>
         Standard,
         /// <summary>

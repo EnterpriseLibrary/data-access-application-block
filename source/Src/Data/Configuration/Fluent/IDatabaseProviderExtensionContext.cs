@@ -10,14 +10,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
     /// </summary>
     public interface IDatabaseProviderExtensionContext
     {
-        ///<summary>
+        /// <summary>
         /// The current connection string under construction in the fluent interface.
-        ///</summary>
+        /// </summary>
         ConnectionStringSettings ConnectionString { get; }
 
-        ///<summary>
+        /// <summary>
         /// Context of the current builder for the extension
-        ///</summary>
+        /// </summary>
         IConfigurationSourceBuilder Builder { get;  }
     }
 }

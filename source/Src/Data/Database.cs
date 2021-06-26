@@ -175,7 +175,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>
         /// <param name="size"><para>The maximum size of the data within the column.</para></param>
         /// <param name="direction"><para>One of the <see cref="ParameterDirection"/> values.</para></param>
-        /// <param name="nullable"><para>A value indicating whether the parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual Basic) values.</para></param>
+        /// <param name="nullable"><para>A value indicating whether the parameter accepts <b>null</b> (<b>Nothing</b> in Visual Basic) values.</para></param>
         /// <param name="precision"><para>The maximum number of digits used to represent the <paramref name="value"/>.</para></param>
         /// <param name="scale"><para>The number of decimal places to which <paramref name="value"/> is resolved.</para></param>
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
@@ -275,7 +275,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>
         /// <param name="size"><para>The maximum size of the data within the column.</para></param>
         /// <param name="direction"><para>One of the <see cref="ParameterDirection"/> values.</para></param>
-        /// <param name="nullable"><para>A value indicating whether the parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual Basic) values.</para></param>
+        /// <param name="nullable"><para>A value indicating whether the parameter accepts <b>null</b> (<b>Nothing</b> in Visual Basic) values.</para></param>
         /// <param name="precision"><para>The maximum number of digits used to represent the <paramref name="value"/>.</para></param>
         /// <param name="scale"><para>The number of decimal places to which <paramref name="value"/> is resolved.</para></param>
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
@@ -335,7 +335,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>
         /// <param name="size"><para>The maximum size of the data within the column.</para></param>
         /// <param name="direction"><para>One of the <see cref="ParameterDirection"/> values.</para></param>
-        /// <param name="nullable"><para>A value indicating whether the parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual Basic) values.</para></param>
+        /// <param name="nullable"><para>A value indicating whether the parameter accepts <b>null</b> (<b>Nothing</b> in Visual Basic) values.</para></param>
         /// <param name="precision"><para>The maximum number of digits used to represent the <paramref name="value"/>.</para></param>
         /// <param name="scale"><para>The number of decimal places to which <paramref name="value"/> is resolved.</para></param>
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
@@ -1253,7 +1253,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="tableName">
         /// <para>The name for the new <see cref="DataTable"/> to add to the <see cref="DataSet"/>.</para>
         /// </param>
-        /// <exception cref="System.ArgumentNullException">Any input parameter was <see langword="null"/> (<b>Nothing</b> in Visual Basic)</exception>
+        /// <exception cref="System.ArgumentNullException">Any input parameter was <b>null</b> (<b>Nothing</b> in Visual Basic)</exception>
         /// <exception cref="System.ArgumentException">tableName was an empty string</exception>
         public virtual void LoadDataSet(DbCommand command,
                                         DataSet dataSet,
@@ -1277,7 +1277,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="transaction">
         /// <para>The <see cref="IDbTransaction"/> to execute the command within.</para>
         /// </param>
-        /// <exception cref="System.ArgumentNullException">Any input parameter was <see langword="null"/> (<b>Nothing</b> in Visual Basic).</exception>
+        /// <exception cref="System.ArgumentNullException">Any input parameter was <b>null</b> (<b>Nothing</b> in Visual Basic).</exception>
         /// <exception cref="System.ArgumentException">tableName was an empty string.</exception>
         public virtual void LoadDataSet(DbCommand command,
                                         DataSet dataSet,
@@ -2217,7 +2217,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <seealso cref="BeginExecuteScalar(DbCommand,DbTransaction,AsyncCallback,object)"/>
         /// <returns>
         /// <para>The value of the first column of the first row in the result set returned by the query.
-        /// If the result didn't have any columns or rows <see langword="null"/> (<b>Nothing</b> in Visual Basic).</para>
+        /// If the result didn't have any columns or rows <b>null</b> (<b>Nothing</b> in Visual Basic).</para>
         /// </returns>
         public virtual object EndExecuteScalar(IAsyncResult asyncResult)
         {
