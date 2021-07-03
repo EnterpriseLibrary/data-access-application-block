@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
+using System.ComponentModel;
 using System.Data;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data
@@ -34,11 +35,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// When not positioned in a valid recordset, 0; otherwise, the number of columns in the current record. The default is -1.
         /// </returns>
-        /// <filterpriority>2</filterpriority>
-        public virtual int FieldCount
-        {
-            get { return InnerReader.FieldCount; }
-        }
+        /// 
+        public virtual int FieldCount => InnerReader.FieldCount;
 
         /// <summary>
         /// Gets a value indicating the depth of nesting for the current row.
@@ -46,11 +44,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The level of nesting.
         /// </returns>
-        /// <filterpriority>2</filterpriority>
-        public virtual int Depth
-        {
-            get { return InnerReader.Depth; }
-        }
+        /// 
+        public virtual int Depth => InnerReader.Depth;
 
         /// <summary>
         /// Gets a value indicating whether the data reader is closed.
@@ -58,11 +53,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// true if the data reader is closed; otherwise, false.
         /// </returns>
-        /// <filterpriority>2</filterpriority>
-        public virtual bool IsClosed
-        {
-            get { return InnerReader.IsClosed; }
-        }
+        /// 
+        public virtual bool IsClosed => InnerReader.IsClosed;
 
         /// <summary>
         /// Gets the number of rows changed, inserted, or deleted by execution of the SQL statement.
@@ -70,19 +62,16 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The number of rows changed, inserted, or deleted; 0 if no rows were affected or the statement failed; and -1 for SELECT statements.
         /// </returns>
-        /// <filterpriority>2</filterpriority>
-        public virtual int RecordsAffected
-        {
-            get { return InnerReader.RecordsAffected; }
-        }
+        /// 
+        public virtual int RecordsAffected => InnerReader.RecordsAffected;
 
         /// <summary>
         /// Closes the <see cref="T:System.Data.IDataReader"/> Object.
         /// </summary>
-        /// <filterpriority>2</filterpriority>
+        /// 
         public virtual void Close()
         {
-            if(!InnerReader.IsClosed)
+            if (!InnerReader.IsClosed)
             {
                 InnerReader.Close();
             }
@@ -91,7 +80,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        /// <filterpriority>2</filterpriority>
+        /// 
         public void Dispose()
         {
             Dispose(true);
@@ -105,9 +94,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// this class doesn't have a finalizer, this will always be true.</param>
         protected virtual void Dispose(bool disposing)
         {
-            if(disposing)
+            if (disposing)
             {
-                if(!InnerReader.IsClosed)
+                if (!InnerReader.IsClosed)
                 {
                     InnerReader.Dispose();
                 }
@@ -120,9 +109,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The name of the field or the empty string (""), if there is no value to return.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual string GetName(int i)
         {
             return InnerReader.GetName(i);
@@ -134,9 +122,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The data type information for the specified field.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual string GetDataTypeName(int i)
         {
             return InnerReader.GetDataTypeName(i);
@@ -148,9 +135,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The <see cref="T:System.Type"/> information corresponding to the type of <see cref="T:System.Object"/> that would be returned from <see cref="M:System.Data.IDataRecord.GetValue(System.Int32)"/>.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual Type GetFieldType(int i)
         {
             return InnerReader.GetFieldType(i);
@@ -162,9 +148,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The <see cref="T:System.Object"/> which will contain the field value upon return.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual object GetValue(int i)
         {
             return InnerReader.GetValue(i);
@@ -176,8 +161,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The number of instances of <see cref="T:System.Object"/> in the array.
         /// </returns>
-        /// <param name="values">An array of <see cref="T:System.Object"/> to copy the attribute fields into. 
-        ///                 </param><filterpriority>2</filterpriority>
+        /// <param name="values">An array of <see cref="T:System.Object"/> to copy the attribute fields into.</param>
         public virtual int GetValues(object[] values)
         {
             return InnerReader.GetValues(values);
@@ -189,8 +173,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The index of the named field.
         /// </returns>
-        /// <param name="name">The name of the field to find. 
-        ///                 </param><filterpriority>2</filterpriority>
+        /// <param name="name">The name of the field to find.</param>
         public virtual int GetOrdinal(string name)
         {
             return InnerReader.GetOrdinal(name);
@@ -202,9 +185,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The value of the column.
         /// </returns>
-        /// <param name="i">The zero-based column ordinal. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The zero-based column ordinal.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual bool GetBoolean(int i)
         {
             return InnerReader.GetBoolean(i);
@@ -216,9 +198,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The 8-bit unsigned integer value of the specified column.
         /// </returns>
-        /// <param name="i">The zero-based column ordinal. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The zero-based column ordinal.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual byte GetByte(int i)
         {
             return InnerReader.GetByte(i);
@@ -230,13 +211,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The actual number of bytes read.
         /// </returns>
-        /// <param name="i">The zero-based column ordinal. 
-        ///                 </param><param name="fieldOffset">The index within the field from which to start the read operation. 
-        ///                 </param><param name="buffer">The buffer into which to read the stream of bytes. 
-        ///                 </param><param name="bufferoffset">The index for <paramref name="buffer"/> to start the read operation. 
-        ///                 </param><param name="length">The number of bytes to read. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The zero-based column ordinal.</param>
+        /// <param name="fieldOffset">The index within the field from which to start the read operation.</param>
+        /// <param name="buffer">The buffer into which to read the stream of bytes.</param>
+        /// <param name="bufferoffset">The index for <paramref name="buffer"/> to start the read operation.</param>
+        /// <param name="length">The number of bytes to read.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual long GetBytes(int i, long fieldOffset, byte[] buffer, int bufferoffset, int length)
         {
             return InnerReader.GetBytes(i, fieldOffset, buffer, bufferoffset, length);
@@ -248,9 +228,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The character value of the specified column.
         /// </returns>
-        /// <param name="i">The zero-based column ordinal. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The zero-based column ordinal.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual char GetChar(int i)
         {
             return InnerReader.GetChar(i);
@@ -262,13 +241,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The actual number of characters read.
         /// </returns>
-        /// <param name="i">The zero-based column ordinal. 
-        ///                 </param><param name="fieldoffset">The index within the row from which to start the read operation. 
-        ///                 </param><param name="buffer">The buffer into which to read the stream of bytes. 
-        ///                 </param><param name="bufferoffset">The index for <paramref name="buffer"/> to start the read operation. 
-        ///                 </param><param name="length">The number of bytes to read. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The zero-based column ordinal.</param>
+        /// <param name="fieldoffset">The index within the row from which to start the read operation.</param>
+        /// <param name="buffer">The buffer into which to read the stream of bytes.</param>
+        /// <param name="bufferoffset">The index for <paramref name="buffer"/> to start the read operation.</param>
+        /// <param name="length">The number of bytes to read.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual long GetChars(int i, long fieldoffset, char[] buffer, int bufferoffset, int length)
         {
             return InnerReader.GetChars(i, fieldoffset, buffer, bufferoffset, length);
@@ -280,9 +258,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The GUID value of the specified field.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual Guid GetGuid(int i)
         {
             return InnerReader.GetGuid(i);
@@ -294,9 +271,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The 16-bit signed integer value of the specified field.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual short GetInt16(int i)
         {
             return InnerReader.GetInt16(i);
@@ -308,9 +284,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The 32-bit signed integer value of the specified field.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual int GetInt32(int i)
         {
             return InnerReader.GetInt32(i);
@@ -322,9 +297,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The 64-bit signed integer value of the specified field.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual long GetInt64(int i)
         {
             return InnerReader.GetInt64(i);
@@ -336,9 +310,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The single-precision floating point number of the specified field.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual float GetFloat(int i)
         {
             return InnerReader.GetFloat(i);
@@ -350,9 +323,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The double-precision floating point number of the specified field.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual double GetDouble(int i)
         {
             return InnerReader.GetDouble(i);
@@ -364,9 +336,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The string value of the specified field.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual string GetString(int i)
         {
             return InnerReader.GetString(i);
@@ -378,9 +349,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The fixed-position numeric value of the specified field.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual decimal GetDecimal(int i)
         {
             return InnerReader.GetDecimal(i);
@@ -392,9 +362,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The date and time data value of the specified field.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual DateTime GetDateTime(int i)
         {
             return InnerReader.GetDateTime(i);
@@ -406,9 +375,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// An <see cref="T:System.Data.IDataReader"/>.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual IDataReader GetData(int i)
         {
             return InnerReader.GetData(i);
@@ -420,9 +388,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// true if the specified field is set to null; otherwise, false.
         /// </returns>
-        /// <param name="i">The index of the field to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The index of the field to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         public virtual bool IsDBNull(int i)
         {
             return InnerReader.IsDBNull(i);
@@ -434,9 +401,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The column located at the specified index as an <see cref="T:System.Object"/>.
         /// </returns>
-        /// <param name="i">The zero-based index of the column to get. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="i">The zero-based index of the column to get.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">The index passed was outside the range of 0 through <see cref="P:System.Data.IDataRecord.FieldCount"/>.</exception>
         object IDataRecord.this[int i]
         {
             get { return InnerReader[i]; }
@@ -448,9 +414,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// The column with the specified name as an <see cref="T:System.Object"/>.
         /// </returns>
-        /// <param name="name">The name of the column to find. 
-        ///                 </param><exception cref="T:System.IndexOutOfRangeException">No column with the specified name was found. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <param name="name">The name of the column to find.</param>
+        /// <exception cref="T:System.IndexOutOfRangeException">No column with the specified name was found.</exception>
         object IDataRecord.this[string name]
         {
             get { return InnerReader[name]; }
@@ -462,8 +427,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// A <see cref="T:System.Data.DataTable"/> that describes the column metadata.
         /// </returns>
-        /// <exception cref="T:System.InvalidOperationException">The <see cref="T:System.Data.IDataReader"/> is closed. 
-        ///                 </exception><filterpriority>2</filterpriority>
+        /// <exception cref="T:System.InvalidOperationException">The <see cref="T:System.Data.IDataReader"/> is closed.</exception>
         public virtual DataTable GetSchemaTable()
         {
             return InnerReader.GetSchemaTable();
@@ -475,7 +439,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// true if there are more rows; otherwise, false.
         /// </returns>
-        /// <filterpriority>2</filterpriority>
         public virtual bool NextResult()
         {
             return InnerReader.NextResult();
@@ -487,7 +450,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <returns>
         /// true if there are more rows; otherwise, false.
         /// </returns>
-        /// <filterpriority>2</filterpriority>
         public virtual bool Read()
         {
             return InnerReader.Read();
