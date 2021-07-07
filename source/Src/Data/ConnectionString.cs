@@ -25,6 +25,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="connectionString">The connection string.</param>
         /// <param name="userIdTokens">The user id tokens that can be parsed out of the connection string.</param>
         /// <param name="passwordTokens">The password tokens that can be parsed out of the connection string.</param>
+        /// <exception cref="ArgumentException">One of the parameters is <b>null</b> or empty.</exception>
         public ConnectionString(string connectionString, string userIdTokens, string passwordTokens)
         {
             if (string.IsNullOrEmpty(connectionString)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, nameof(connectionString));
@@ -41,10 +42,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <summary>
         /// Gets or sets the name of the user.
         /// </summary>
-        /// <value>The name of the user.</value>
-        /// <devdoc>
+        /// <value>
         /// Database username for the connection string.
-        /// </devdoc>
+        /// </value>
         public string UserName
         {
             get
@@ -89,9 +89,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             }
         }
 
-        /// <devdoc>
-        /// User password for the connection string.
-        /// </devdoc>
+        /// <summary>
+        /// Gets or sets the user password for the connection string.
+        /// </summary>
         public string Password
         {
             get
@@ -137,17 +137,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             }
         }
 
-        /// <devdoc>
+        /// <summary>
         /// Gets the formatted connection string.
-        /// </devdoc>        
+        /// </summary>        
         public override string ToString()
         {
             return connectionString;
         }
 
-        /// <devdoc>
+        /// <summary>
         /// Gets the formatted connection string without the username and password.
-        /// </devdoc>        
+        /// </summary>        
         public string ToStringNoCredentials()
         {
             if (connectionStringWithoutCredentials == null)
@@ -169,7 +169,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         private void GetTokenPositions(string tokenString, out int tokenPos, out int tokenMPos)
         {
             string[] tokens = tokenString.Split(',');
-            int currentPos = -1;
             int previousPos = -1;
             string lowConnString = connectionString.ToLowerInvariant();
 
@@ -178,7 +177,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             tokenMPos = -1;
             foreach (string token in tokens)
             {
-                currentPos = lowConnString.IndexOf(token, StringComparison.OrdinalIgnoreCase);
+                int currentPos = lowConnString.IndexOf(token, StringComparison.OrdinalIgnoreCase);
                 if (currentPos > previousPos)
                 {
                     tokenPos = currentPos;

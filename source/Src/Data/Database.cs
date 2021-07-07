@@ -39,7 +39,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Gets the string used to open a database.</para>
+        /// Gets the string used to open a database.
         /// </summary>
         /// <value>
         /// <para>The string used to open a database.</para>
@@ -51,7 +51,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Gets the connection string without the username and password.</para>
+        /// Gets the connection string without the username and password.
         /// </summary>
         /// <value>
         /// <para>The connection string without the username and password.</para>
@@ -74,7 +74,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Gets the DbProviderFactory used by the database instance.</para>
+        /// Gets the DbProviderFactory used by the database instance.
         /// </summary>
         /// <seealso cref="DbProviderFactory"/>
         public DbProviderFactory DbProviderFactory { get; }
@@ -181,6 +181,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
         /// <param name="sourceVersion"><para>One of the <see cref="DataRowVersion"/> values.</para></param>
         /// <param name="value"><para>The value of the parameter.</para></param>
+        /// <exception cref="ArgumentNullException"><paramref name="command"/> is <b>null</b>.</exception>
         public virtual void AddParameter(DbCommand command,
                                          string name,
                                          DbType dbType,
@@ -209,6 +210,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="sourceColumn"><para>The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</para></param>
         /// <param name="sourceVersion"><para>One of the <see cref="DataRowVersion"/> values.</para></param>
         /// <param name="value"><para>The value of the parameter.</para></param>
+        /// <exception cref="ArgumentNullException"><paramref name="command"/> is <b>null</b>.</exception>
         public void AddParameter(DbCommand command,
                                  string name,
                                  DbType dbType,
@@ -220,7 +222,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             AddParameter(command, name, dbType, 0, direction, false, 0, 0, sourceColumn, sourceVersion, value);
         }
 
-        void AssignParameterValues(DbCommand command, object[] values)
+        private void AssignParameterValues(DbCommand command, object[] values)
         {
             int parameterIndexShift = UserParametersStartIndex(); // DONE magic number, depends on the database
             for (int i = 0; i < values.Length; i++)
@@ -1052,12 +1054,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <summary>
         /// Gets a DbDataAdapter with Standard update behavior.
         /// </summary>
-        /// <returns>A <see cref="DbDataAdapter"/>.</returns>
-        /// <seealso cref="DbDataAdapter"/>
-        /// <devdoc>
+        /// <remarks>
         /// Created this new, public method instead of modifying the protected, abstract one so that there will be no
         /// breaking changes for any currently derived Database class.
-        /// </devdoc>
+        /// </remarks>
+        /// <returns>A <see cref="DbDataAdapter"/>.</returns>
+        /// <seealso cref="DbDataAdapter"/>
         public DbDataAdapter GetDataAdapter()
         {
             return GetDataAdapter(UpdateBehavior.Standard);
@@ -1144,6 +1146,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="query"><para>The text of the query.</para></param>
         /// <returns><para>The <see cref="DbCommand"/> for the SQL query.</para></returns>
+        /// <exception cref="ArgumentException"><paramref name="query"/> is <b>null</b> or empty.</exception>
         public DbCommand GetSqlStringCommand(string query)
         {
             if (string.IsNullOrEmpty(query)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, nameof(query));
@@ -1156,6 +1159,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="storedProcedureName"><para>The name of the stored procedure.</para></param>
         /// <returns><para>The <see cref="DbCommand"/> for the stored procedure.</para></returns>
+        /// <exception cref="ArgumentException"><paramref name="storedProcedureName"/>is <b>null</b> or empty.</exception>
         public virtual DbCommand GetStoredProcCommand(string storedProcedureName)
         {
             if (string.IsNullOrEmpty(storedProcedureName)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, nameof(storedProcedureName));
@@ -1173,6 +1177,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <para>The parameters for the stored procedure will be discovered and the values are assigned in
         /// positional order.</para>
         /// </remarks>
+        /// <exception cref="ArgumentException"><paramref name="storedProcedureName"/>is <b>null</b> or empty.</exception>
         public virtual DbCommand GetStoredProcCommand(string storedProcedureName, params object[] parameterValues)
         {
             if (string.IsNullOrEmpty(storedProcedureName)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString, nameof(storedProcedureName));
@@ -1189,6 +1194,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="command">The command the parameter values will be assigned to</param>
         /// <param name="parameterValues">The parameter values that will be assigned to the command.</param>
+        /// <exception cref="InvalidOperationException">The number of parameters in <paramref name="parameterValues"/>
+        /// does not match the number of parameters in <paramref name="command"/>.</exception>
         public virtual void AssignParameters(DbCommand command, object[] parameterValues)
         {
             parameterCache.SetParameters(command, this);

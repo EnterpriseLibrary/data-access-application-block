@@ -12,10 +12,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
     public class DaabAsyncResult : IAsyncResult
     {
         readonly IAsyncResult innerAsyncResult;
-        readonly DbCommand command;
-        readonly bool disposeCommand;
-        readonly bool closeConnection;
-        readonly DateTime startTime;
 
         /// <summary>
         /// Construct a new <see cref="DaabAsyncResult"/> instance.
@@ -34,90 +30,60 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             DateTime startTime)
         {
             this.innerAsyncResult = innerAsyncResult;
-            this.command = command;
-            this.disposeCommand = disposeCommand;
-            this.closeConnection = closeConnection;
-            this.startTime = startTime;
+            this.Command = command;
+            this.DisposeCommand = disposeCommand;
+            this.CloseConnection = closeConnection;
+            this.StartTime = startTime;
         }
 
         /// <summary>
         /// The state object passed to the callback.
         /// </summary>
-        public object AsyncState
-        {
-            get { return innerAsyncResult.AsyncState; }
-        }
+        public object AsyncState => innerAsyncResult.AsyncState;
 
         /// <summary>
         /// Wait handle to use to wait synchronously for completion.
         /// </summary>
-        public WaitHandle AsyncWaitHandle
-        {
-            get { return innerAsyncResult.AsyncWaitHandle; }
-        }
+        public WaitHandle AsyncWaitHandle => innerAsyncResult.AsyncWaitHandle;
 
         /// <summary>
-        /// True if begin operation completed synchronously.
+        /// <b>true</b> if begin operation completed synchronously.
         /// </summary>
-        public bool CompletedSynchronously
-        {
-            get { return innerAsyncResult.CompletedSynchronously; }
-        }
+        public bool CompletedSynchronously => innerAsyncResult.CompletedSynchronously;
 
         /// <summary>
         /// Has the operation finished?
         /// </summary>
-        public bool IsCompleted
-        {
-            get { return innerAsyncResult.IsCompleted; }
-        }
+        public bool IsCompleted => innerAsyncResult.IsCompleted;
 
         /// <summary>
         /// The underlying <see cref="IAsyncResult"/> object.
         /// </summary>
-        public IAsyncResult InnerAsyncResult
-        {
-            get { return innerAsyncResult; }
-        }
+        public IAsyncResult InnerAsyncResult => innerAsyncResult;
 
         /// <summary>
         /// Should the command be disposed by the End method?
         /// </summary>
-        public bool DisposeCommand
-        {
-            get { return disposeCommand; }
-        }
+        public bool DisposeCommand { get; }
 
         /// <summary>
         /// The command that was executed.
         /// </summary>
-        public DbCommand Command
-        {
-            get { return command; }
-        }
+        public DbCommand Command { get; }
 
         /// <summary>
         /// Should the connection be closed by the End method?
         /// </summary>
-        public bool CloseConnection
-        {
-            get { return closeConnection; }
-        }
+        public bool CloseConnection { get; }
 
         /// <summary>
         /// Connection the operation was invoked on.
         /// </summary>
-        public DbConnection Connection
-        {
-            get { return command.Connection; }
-        }
+        public DbConnection Connection => Command.Connection;
 
         /// <summary>
         /// Time the operation was started.
         /// </summary>
-        public DateTime StartTime
-        {
-            get { return startTime; }
-        }
+        public DateTime StartTime { get; }
     }
 }

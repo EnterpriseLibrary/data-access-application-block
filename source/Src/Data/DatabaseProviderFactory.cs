@@ -19,8 +19,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         private DatabaseConfigurationBuilder builder;
 
         /// <summary>
-        /// <para>Initializes a new instance of the <see cref="DatabaseProviderFactory"/> class 
-        /// with the default configuration source.</para>
+        /// Initializes a new instance of the <see cref="DatabaseProviderFactory"/> class
+        /// with the default configuration source.
         /// </summary>
         public DatabaseProviderFactory()
             : this(s => (ConfigurationSection)ConfigurationManager.GetSection(s))
@@ -28,8 +28,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initializes a new instance of the <see cref="DatabaseProviderFactory"/> class 
-        /// with the given configuration source.</para>
+        /// Initializes a new instance of the <see cref="DatabaseProviderFactory"/> class
+        /// with the given configuration source.
         /// </summary>
         /// <param name="configurationSource">The source for configuration information.</param>
         public DatabaseProviderFactory(IConfigurationSource configurationSource)
@@ -38,13 +38,13 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initializes a new instance of the <see cref="DatabaseProviderFactory"/> class 
-        /// with the given configuration accessor.</para>
+        /// Initializes a new instance of the <see cref="DatabaseProviderFactory"/> class 
+        /// with the given configuration accessor.
         /// </summary>
         /// <param name="configurationAccessor">The source for configuration information.</param>
         public DatabaseProviderFactory(Func<string, ConfigurationSection> configurationAccessor)
         {
-            Guard.ArgumentNotNull(configurationAccessor, "configurationAccessor");
+            Guard.ArgumentNotNull(configurationAccessor, nameof(configurationAccessor));
 
             this.builder = new DatabaseConfigurationBuilder(configurationAccessor);
         }
@@ -69,7 +69,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </returns>
         public Database Create(string name)
         {
-            Guard.ArgumentNotNullOrEmpty(name, "name");
+            Guard.ArgumentNotNullOrEmpty(name, nameof(name));
 
             return this.builder.Create(name);
         }
@@ -81,7 +81,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
 
             public DatabaseConfigurationBuilder(Func<string, ConfigurationSection> configurationAccessor)
             {
-                Guard.ArgumentNotNull(configurationAccessor, "configurationAccessor");
+                Guard.ArgumentNotNull(configurationAccessor, nameof(configurationAccessor));
 
                 this.settings = new DatabaseSyntheticConfigSettings(configurationAccessor);
                 this.databases = new ConcurrentDictionary<string, DatabaseData>();
@@ -118,7 +118,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
 
             public Database Create(string name)
             {
-                Guard.ArgumentNotNull(name, "name");
+                Guard.ArgumentNotNull(name, nameof(name));
 
                 var data =
                     this.databases.GetOrAdd(
