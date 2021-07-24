@@ -34,7 +34,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <summary>
         /// Closes the <see cref="T:System.Data.IDataReader"/> Object.
         /// </summary>
-        /// <filterpriority>2</filterpriority>
         public override void Close()
         {
             if (!IsClosed)

@@ -7,21 +7,17 @@ using System;
 namespace Microsoft.Practices.EnterpriseLibrary.Data
 {
     /// <summary>
-    /// <para>
     /// Provides parameter caching services for dynamic parameter discovery of stored procedures.
     /// Eliminates the round-trip to the database to derive the parameters and types when a command
     /// is executed more than once.
-    /// </para>
     /// </summary>
     public class ParameterCache
     {
         private CachingMechanism cache = new CachingMechanism();
 
         /// <summary>
-        /// <para>
         /// Populates the parameter collection for a command wrapper from the cache 
         /// or performs a round-trip to the database to query the parameters.
-        /// </para>
         /// </summary>
         /// <param name="command">
         /// <para>The command to add the parameters.</para>
@@ -29,6 +25,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="database">
         /// <para>The database to use to set the parameters.</para>
         /// </param>
+        /// <exception cref="ArgumentNullException">One of the arguments is <b>null</b>.</exception>
         public void SetParameters(DbCommand command, Database database)
         {
             if (command == null) throw new ArgumentNullException(nameof(command));
@@ -49,15 +46,15 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Empties the parameter cache.</para>
+        /// Empties the parameter cache.
         /// </summary>
         protected internal void Clear()
         {
             this.cache.Clear();
-        }       
+        }
 
         /// <summary>
-        /// <para>Adds parameters to a command using the cache.</para>
+        /// Adds parameters to a command using the cache.
         /// </summary>
         /// <param name="command">
         /// <para>The command to add the parameters.</para>
@@ -74,7 +71,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Checks to see if a cache entry exists for a specific command on a specific connection</para>
+        /// Checks to see if a cache entry exists for a specific command on a specific connection.
         /// </summary>
         /// <param name="command">
         /// <para>The command to check.</para>
