@@ -49,7 +49,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="database">The <see cref="Database"/> used to execute the Transact-SQL.</param>
         /// <param name="procedureName">The stored procedure that will be executed.</param>
         /// <param name="parameterMapper">The <see cref="IParameterMapper"/> that will be used to interpret the parameters passed to the Execute method.</param>
-        /// <param name="rowMapper">The <see cref="IRowMapper{TResult}"/> that will be used to convert the returned data to clr type <typeparamref name="TResult"/>.</param>
+        /// <param name="rowMapper">The <see cref="IRowMapper{TResult}"/> that will be used to convert the returned data to CLR type <typeparamref name="TResult"/>.</param>
+        /// <exception cref="ArgumentException"><paramref name="procedureName"/> is <b>null</b> or empty.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="parameterMapper"/> is <b>null</b>.</exception>
         public SprocAccessor(Database database, string procedureName, IParameterMapper parameterMapper, IRowMapper<TResult> rowMapper)
             : base(database, rowMapper)
         {
@@ -69,6 +71,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <param name="procedureName">The stored procedure that will be executed.</param>
         /// <param name="parameterMapper">The <see cref="IParameterMapper"/> that will be used to interpret the parameters passed to the Execute method.</param>
         /// <param name="resultSetMapper">The <see cref="IResultSetMapper{TResult}"/> that will be used to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.</param>
+        /// <exception cref="ArgumentException"><paramref name="procedureName"/> is <b>null</b> or empty.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="parameterMapper"/> is <b>null</b>.</exception>
         public SprocAccessor(Database database, string procedureName, IParameterMapper parameterMapper, IResultSetMapper<TResult> resultSetMapper)
             : base(database, resultSetMapper)
         {

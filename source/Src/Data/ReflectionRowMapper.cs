@@ -35,6 +35,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// Creates a new instance of <see cref="ReflectionRowMapper{TResult}"/>.
         /// </summary>
         /// <param name="propertyMappings">The <see cref="PropertyMapping"/>'s that specify how each property should be mapped.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="propertyMappings"/> is <b>null</b>.</exception>
         public ReflectionRowMapper(IDictionary<PropertyInfo, PropertyMapping> propertyMappings)
         {
             if (propertyMappings == null) throw new ArgumentNullException(nameof(propertyMappings));
@@ -96,7 +97,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <summary>
         /// Gets the property that will be mapped to.
         /// </summary>
-        public PropertyInfo Property { get; private set; }
+        public PropertyInfo Property { get; }
 
         /// <summary>
         /// When implemented by a class, extracts the value for the mapped property from <paramref name="row"/>.
@@ -205,7 +206,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <summary>
         /// Gets the name of the column that is used for mapping.
         /// </summary>
-        public string ColumnName { get; private set; }
+        public string ColumnName { get; }
 
         /// <summary>
         /// Converts the value for the column in the <paramref name="row"/> with a name matching that of the 
@@ -213,6 +214,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="row">The data record.</param>
         /// <returns>The value for the corresponding column converted to the type of the mapped property.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="row"/> is <b>null</b>.</exception>
         public override object GetPropertyValue(IDataRecord row)
         {
             if (row == null) throw new ArgumentNullException(nameof(row));
@@ -271,17 +273,18 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// </summary>
         /// <param name="func">The func that will be used to map the property.</param>
         /// <param name="property">The property that will be used to map to.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="func"/> is <b>null</b>.</exception>
         public FuncMapping(PropertyInfo property, Func<IDataRecord, object> func)
             : base(property)
         {
-            Guard.ArgumentNotNull(func, "func");
+            Guard.ArgumentNotNull(func, nameof(func));
             Func = func;
         }
 
         /// <summary>
         /// Gets the function that will be used to map the properties value.
         /// </summary>
-        public Func<IDataRecord, object> Func { get; private set; }
+        public Func<IDataRecord, object> Func { get; }
 
         /// <summary>
         /// Gets the value for the mapped property from the <paramref name="row"/>.
