@@ -19,6 +19,10 @@ using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Odbc.Configuration
 {
+    /// <summary>
+    /// Describes an <see cref="OdbcDatabase"/> instance, aggregating information from a <see cref="ConnectionStringSettings"/>
+    /// and potentially other sources of configuration.
+    /// </summary>
     public class OdbcDatabaseData : DatabaseData
     {
         /// <summary>

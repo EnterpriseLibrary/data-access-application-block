@@ -201,7 +201,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Adds a new instance of a <see cref="DbParameter"/> object to the command.</para>
+        /// Adds a new instance of a <see cref="DbParameter"/> object to the command.
         /// </summary>
         /// <param name="command">The command to add the parameter.</param>
         /// <param name="name"><para>The name of the parameter.</para></param>
@@ -316,7 +316,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Creates a connection for this database.</para>
+        /// Creates a connection for this database.
         /// </summary>
         /// <returns>
         /// <para>The <see cref="DbConnection"/> for this database.</para>
@@ -331,7 +331,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Adds a new instance of a <see cref="DbParameter"/> object.</para>
+        /// Adds a new instance of a <see cref="DbParameter"/> object.
         /// </summary>
         /// <param name="name"><para>The name of the parameter.</para></param>
         /// <param name="dbType"><para>One of the <see cref="DbType"/> values.</para></param>
@@ -361,7 +361,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Creates a new instance of a <see cref="DbParameter"/> object.</para>
+        /// Creates a new instance of a <see cref="DbParameter"/> object.
         /// </summary>
         /// <param name="name"><para>The name of the parameter.</para></param>
         /// <returns><para>An unconfigured parameter.</para></returns>
@@ -521,7 +521,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="command"/> and returns the results in a new <see cref="DataSet"/>.</para>
+        /// Executes the <paramref name="command"/> and returns the results in a new <see cref="DataSet"/>.
         /// </summary>
         /// <param name="command"><para>The <see cref="DbCommand"/> to execute.</para></param>
         /// <returns>A <see cref="DataSet"/> with the results of the <paramref name="command"/>.</returns>
@@ -534,7 +534,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="command"/> as part of the <paramref name="transaction" /> and returns the results in a new <see cref="DataSet"/>.</para>
+        /// Executes the <paramref name="command"/> as part of the <paramref name="transaction" /> and returns the results in a new <see cref="DataSet"/>.
         /// </summary>
         /// <param name="command"><para>The <see cref="DbCommand"/> to execute.</para></param>
         /// <param name="transaction">
@@ -551,7 +551,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="storedProcedureName"/> with <paramref name="parameterValues" /> and returns the results in a new <see cref="DataSet"/>.</para>
+        /// Executes the <paramref name="storedProcedureName"/> with <paramref name="parameterValues" /> and returns the results in a new <see cref="DataSet"/>.
         /// </summary>
         /// <param name="storedProcedureName">
         /// <para>The stored procedure to execute.</para>
@@ -572,7 +572,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="storedProcedureName"/> with <paramref name="parameterValues" /> as part of the <paramref name="transaction" /> and returns the results in a new <see cref="DataSet"/> within a transaction.</para>
+        /// Executes the <paramref name="storedProcedureName"/> with <paramref name="parameterValues" /> as part of the <paramref name="transaction" /> and returns the results in a new <see cref="DataSet"/> within a transaction.
         /// </summary>
         /// <param name="transaction">
         /// <para>The <see cref="IDbTransaction"/> to execute the command within.</para>
@@ -597,7 +597,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> and returns the results in a new <see cref="DataSet"/>.</para>
+        /// Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> and returns the results in a new <see cref="DataSet"/>.
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>
@@ -617,7 +617,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="commandText"/> as part of the given <paramref name="transaction" /> and returns the results in a new <see cref="DataSet"/>.</para>
+        /// Executes the <paramref name="commandText"/> as part of the given <paramref name="transaction" /> and returns the results in a new <see cref="DataSet"/>.
         /// </summary>
         /// <param name="transaction">
         /// <para>The <see cref="IDbTransaction"/> to execute the command within.</para>
@@ -642,7 +642,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="command"/> and returns the number of rows affected.</para>
+        /// Executes the <paramref name="command"/> and returns the number of rows affected.
         /// </summary>
         /// <param name="command">
         /// <para>The command that contains the query to execute.</para>
@@ -658,7 +658,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="command"/> within the given <paramref name="transaction" />, and returns the number of rows affected.</para>
+        /// Executes the <paramref name="command"/> within the given <paramref name="transaction" />, and returns the number of rows affected.
         /// </summary>
         /// <param name="command">
         /// <para>The command that contains the query to execute.</para>
@@ -674,7 +674,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> and returns the number of rows affected.</para>
+        /// Executes the <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> and returns the number of rows affected.
         /// </summary>
         /// <param name="storedProcedureName">
         /// <para>The name of the stored procedure to execute.</para>
@@ -695,7 +695,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> within a transaction and returns the number of rows affected.</para>
+        /// Executes the <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> within a transaction and returns the number of rows affected.
         /// </summary>
         /// <param name="transaction">
         /// <para>The <see cref="IDbTransaction"/> to execute the command within.</para>
@@ -721,7 +721,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> and returns the number of rows affected.</para>
+        /// Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> and returns the number of rows affected.
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>
@@ -742,7 +742,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> as part of the given <paramref name="transaction" /> and returns the number of rows affected.</para>
+        /// Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> as part of the given <paramref name="transaction" /> and returns the number of rows affected.
         /// </summary>
         /// <param name="transaction">
         /// <para>The <see cref="IDbTransaction"/> to execute the command within.</para>
@@ -768,8 +768,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="command"/> and returns an <see cref="IDataReader"></see> through which the result can be read.
-        /// It is the responsibility of the caller to close the reader when finished.</para>
+        /// Executes the <paramref name="command"/> and returns an <see cref="IDataReader"></see> through which the result can be read.
+        /// It is the responsibility of the caller to close the reader when finished.
         /// </summary>
         /// <param name="command">
         /// <para>The command that contains the query to execute.</para>
@@ -801,8 +801,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="command"/> within a transaction and returns an <see cref="IDataReader"></see> through which the result can be read.
-        /// It is the responsibility of the caller to close the connection and reader when finished.</para>
+        /// Executes the <paramref name="command"/> within a transaction and returns an <see cref="IDataReader"></see> through which the result can be read.
+        /// It is the responsibility of the caller to close the connection and reader when finished.
         /// </summary>
         /// <param name="command">
         /// <para>The command that contains the query to execute.</para>
@@ -820,8 +820,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="storedProcedureName"/> with the given <paramref name="parameterValues" /> and returns an <see cref="IDataReader"></see> through which the result can be read.
-        /// It is the responsibility of the caller to close the connection and reader when finished.</para>
+        /// Executes the <paramref name="storedProcedureName"/> with the given <paramref name="parameterValues" /> and returns an <see cref="IDataReader"></see> through which the result can be read.
+        /// It is the responsibility of the caller to close the connection and reader when finished.
         /// </summary>
         /// <param name="storedProcedureName">
         /// <para>The command that contains the query to execute.</para>
@@ -841,8 +841,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="storedProcedureName"/> with the given <paramref name="parameterValues" /> within the given <paramref name="transaction" /> and returns an <see cref="IDataReader"></see> through which the result can be read.
-        /// It is the responsibility of the caller to close the connection and reader when finished.</para>
+        /// Executes the <paramref name="storedProcedureName"/> with the given <paramref name="parameterValues" /> within the given <paramref name="transaction" /> and returns an <see cref="IDataReader"></see> through which the result can be read.
+        /// It is the responsibility of the caller to close the connection and reader when finished.
         /// </summary>
         /// <param name="transaction">
         /// <para>The <see cref="IDbTransaction"/> to execute the command within.</para>
@@ -867,8 +867,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> and returns an <see cref="IDataReader"></see> through which the result can be read.
-        /// It is the responsibility of the caller to close the connection and reader when finished.</para>
+        /// Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> and returns an <see cref="IDataReader"></see> through which the result can be read.
+        /// It is the responsibility of the caller to close the connection and reader when finished.
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>
@@ -888,10 +888,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="commandText"/> interpreted as specified by
+        /// Executes the <paramref name="commandText"/> interpreted as specified by
         /// <paramref name="commandType" /> within the given <paramref name="transaction" /> and returns an
         /// <see cref="IDataReader"></see> through which the result can be read.
-        /// It is the responsibility of the caller to close the connection and reader when finished.</para>
+        /// It is the responsibility of the caller to close the connection and reader when finished.
         /// </summary>
         /// <param name="transaction">
         /// <para>The <see cref="IDbTransaction"/> to execute the command within.</para>
@@ -916,7 +916,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="command"/> and returns the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.</para>
+        /// Executes the <paramref name="command"/> and returns the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.
         /// </summary>
         /// <param name="command">
         /// <para>The command that contains the query to execute.</para>
@@ -937,7 +937,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="command"/> within a <paramref name="transaction" />, and returns the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.</para>
+        /// Executes the <paramref name="command"/> within a <paramref name="transaction" />, and returns the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.
         /// </summary>
         /// <param name="command">
         /// <para>The command that contains the query to execute.</para>
@@ -956,7 +956,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="storedProcedureName"/> with the given <paramref name="parameterValues" /> and returns the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.</para>
+        /// Executes the <paramref name="storedProcedureName"/> with the given <paramref name="parameterValues" /> and returns the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.
         /// </summary>
         /// <param name="storedProcedureName">
         /// <para>The stored procedure to execute.</para>
@@ -977,8 +977,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="storedProcedureName"/> with the given <paramref name="parameterValues" /> within a
-        /// <paramref name="transaction" /> and returns the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.</para>
+        /// Executes the <paramref name="storedProcedureName"/> with the given <paramref name="parameterValues" /> within a
+        /// <paramref name="transaction" /> and returns the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.
         /// </summary>
         /// <param name="transaction">
         /// <para>The <see cref="IDbTransaction"/> to execute the command within.</para>
@@ -1004,7 +1004,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" />  and returns the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.</para>
+        /// Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" />  and returns the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>
@@ -1025,8 +1025,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" />
-        /// within the given <paramref name="transaction" /> and returns the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.</para>
+        /// Executes the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" />
+        /// within the given <paramref name="transaction" /> and returns the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.
         /// </summary>
         /// <param name="transaction">
         /// <para>The <see cref="IDbTransaction"/> to execute the command within.</para>
@@ -1142,7 +1142,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Creates a <see cref="DbCommand"/> for a SQL query.</para>
+        /// Creates a <see cref="DbCommand"/> for a SQL query.
         /// </summary>
         /// <param name="query"><para>The text of the query.</para></param>
         /// <returns><para>The <see cref="DbCommand"/> for the SQL query.</para></returns>
@@ -1155,7 +1155,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Creates a <see cref="DbCommand"/> for a stored procedure.</para>
+        /// Creates a <see cref="DbCommand"/> for a stored procedure.
         /// </summary>
         /// <param name="storedProcedureName"><para>The name of the stored procedure.</para></param>
         /// <returns><para>The <see cref="DbCommand"/> for the stored procedure.</para></returns>
@@ -1168,7 +1168,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Creates a <see cref="DbCommand"/> for a stored procedure.</para>
+        /// Creates a <see cref="DbCommand"/> for a stored procedure.
         /// </summary>
         /// <param name="storedProcedureName"><para>The name of the stored procedure.</para></param>
         /// <param name="parameterValues"><para>The list of parameters for the procedure.</para></param>
@@ -1190,7 +1190,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Discovers parameters on the <paramref name="command"/> and assigns the values from <paramref name="parameterValues"/> to the <paramref name="command"/>s Parameters list.</para>
+        /// Discovers parameters on the <paramref name="command"/> and assigns the values from <paramref name="parameterValues"/> to the <paramref name="command"/>s Parameters list.
         /// </summary>
         /// <param name="command">The command the parameter values will be assigned to</param>
         /// <param name="parameterValues">The parameter values that will be assigned to the command.</param>
@@ -1249,7 +1249,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="command"/> and adds a new <see cref="DataTable"></see> to the existing <see cref="DataSet"></see>.</para>
+        /// Executes the <paramref name="command"/> and adds a new <see cref="DataTable"></see> to the existing <see cref="DataSet"></see>.
         /// </summary>
         /// <param name="command">
         /// <para>The <see cref="DbCommand"/> to execute.</para>
@@ -1270,7 +1270,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Executes the <paramref name="command"/> within the given <paramref name="transaction" /> and adds a new <see cref="DataTable"></see> to the existing <see cref="DataSet"></see>.</para>
+        /// Executes the <paramref name="command"/> within the given <paramref name="transaction" /> and adds a new <see cref="DataTable"></see> to the existing <see cref="DataSet"></see>.
         /// </summary>
         /// <param name="command">
         /// <para>The <see cref="DbCommand"/> to execute.</para>
@@ -1295,7 +1295,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Loads a <see cref="DataSet"/> from a <see cref="DbCommand"/>.</para>
+        /// Loads a <see cref="DataSet"/> from a <see cref="DbCommand"/>.
         /// </summary>
         /// <param name="command">
         /// <para>The command to execute to fill the <see cref="DataSet"/>.</para>
@@ -1318,7 +1318,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Loads a <see cref="DataSet"/> from a <see cref="DbCommand"/> in  a transaction.</para>
+        /// Loads a <see cref="DataSet"/> from a <see cref="DbCommand"/> in  a transaction.
         /// </summary>
         /// <param name="command">
         /// <para>The command to execute to fill the <see cref="DataSet"/>.</para>
@@ -1342,7 +1342,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Loads a <see cref="DataSet"/> with the results returned from a stored procedure.</para>
+        /// Loads a <see cref="DataSet"/> with the results returned from a stored procedure.
         /// </summary>
         /// <param name="storedProcedureName">
         /// <para>The stored procedure name to execute.</para>
@@ -1368,7 +1368,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Loads a <see cref="DataSet"/> with the results returned from a stored procedure executed in a transaction.</para>
+        /// Loads a <see cref="DataSet"/> with the results returned from a stored procedure executed in a transaction.
         /// </summary>
         /// <param name="transaction">
         /// <para>The <see cref="IDbTransaction"/> to execute the stored procedure in.</para>
@@ -1398,7 +1398,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Loads a <see cref="DataSet"/> from command text.</para>
+        /// Loads a <see cref="DataSet"/> from command text.
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>
@@ -1424,7 +1424,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Loads a <see cref="DataSet"/> from command text in a transaction.</para>
+        /// Loads a <see cref="DataSet"/> from command text in a transaction.
         /// </summary>
         /// <param name="transaction">
         /// <para>The <see cref="IDbTransaction"/> to execute the command in.</para>
@@ -1454,7 +1454,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Assigns a <paramref name="connection"/> to the <paramref name="command"/> and discovers parameters if needed.</para>
+        /// Assigns a <paramref name="connection"/> to the <paramref name="command"/> and discovers parameters if needed.
         /// </summary>
         /// <param name="command"><para>The command that contains the query to prepare.</para></param>
         /// <param name="connection">The connection to assign to the command.</param>
@@ -1468,7 +1468,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Assigns a <paramref name="transaction"/> to the <paramref name="command"/> and discovers parameters if needed.</para>
+        /// Assigns a <paramref name="transaction"/> to the <paramref name="command"/> and discovers parameters if needed.
         /// </summary>
         /// <param name="command"><para>The command that contains the query to prepare.</para></param>
         /// <param name="transaction">The transaction to assign to the command.</param>
@@ -1522,13 +1522,13 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         protected virtual void SetUpRowUpdatedEvent(DbDataAdapter adapter) { }
 
         /// <summary>
-        /// <para>Calls the respective INSERT, UPDATE, or DELETE statements for each inserted, updated, or deleted row in the <see cref="DataSet"/>.</para>
+        /// Calls the respective INSERT, UPDATE, or DELETE statements for each inserted, updated, or deleted row in the <see cref="DataSet"/>.
         /// </summary>
         /// <param name="dataSet"><para>The <see cref="DataSet"/> used to update the data source.</para></param>
         /// <param name="tableName"><para>The name of the source table to use for table mapping.</para></param>
-        /// <param name="insertCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Added"/></para></param>
-        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Modified"/></para></param>
-        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Deleted"/></para></param>
+        /// <param name="insertCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <see cref="DataRowState.Added"/></para></param>
+        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <see cref="DataRowState.Modified"/></para></param>
+        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <see cref="DataRowState.Deleted"/></para></param>
         /// <param name="updateBehavior"><para>One of the <see cref="UpdateBehavior"/> values.</para></param>
         /// <param name="updateBatchSize">The number of database commands to execute in a batch.</param>
         /// <returns>number of records affected</returns>
@@ -1577,13 +1577,13 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Calls the respective INSERT, UPDATE, or DELETE statements for each inserted, updated, or deleted row in the <see cref="DataSet"/>.</para>
+        /// Calls the respective INSERT, UPDATE, or DELETE statements for each inserted, updated, or deleted row in the <see cref="DataSet"/>.
         /// </summary>
         /// <param name="dataSet"><para>The <see cref="DataSet"/> used to update the data source.</para></param>
         /// <param name="tableName"><para>The name of the source table to use for table mapping.</para></param>
-        /// <param name="insertCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Added"/></para></param>
-        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Modified"/></para></param>
-        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Deleted"/></para></param>
+        /// <param name="insertCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <see cref="DataRowState.Added"/></para></param>
+        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <see cref="DataRowState.Modified"/></para></param>
+        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <see cref="DataRowState.Deleted"/></para></param>
         /// <param name="updateBehavior"><para>One of the <see cref="UpdateBehavior"/> values.</para></param>
         /// <returns>number of records affected</returns>
         public int UpdateDataSet(DataSet dataSet,
@@ -1597,13 +1597,13 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Calls the respective INSERT, UPDATE, or DELETE statements for each inserted, updated, or deleted row in the <see cref="DataSet"/> within a transaction.</para>
+        /// Calls the respective INSERT, UPDATE, or DELETE statements for each inserted, updated, or deleted row in the <see cref="DataSet"/> within a transaction.
         /// </summary>
         /// <param name="dataSet"><para>The <see cref="DataSet"/> used to update the data source.</para></param>
         /// <param name="tableName"><para>The name of the source table to use for table mapping.</para></param>
-        /// <param name="insertCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Added"/>.</para></param>
-        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Modified"/>.</para></param>
-        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Deleted"/>.</para></param>
+        /// <param name="insertCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <see cref="DataRowState.Added"/>.</para></param>
+        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <see cref="DataRowState.Modified"/>.</para></param>
+        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <see cref="DataRowState.Deleted"/>.</para></param>
         /// <param name="transaction"><para>The <see cref="IDbTransaction"/> to use.</para></param>
         /// <param name="updateBatchSize">The number of commands that can be executed in a single call to the database. Set to 0 to
         /// use the largest size the server can handle, 1 to disable batch updates, and anything else to set the number of rows.
@@ -1635,13 +1635,13 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Calls the respective INSERT, UPDATE, or DELETE statements for each inserted, updated, or deleted row in the <see cref="DataSet"/> within a transaction.</para>
+        /// Calls the respective INSERT, UPDATE, or DELETE statements for each inserted, updated, or deleted row in the <see cref="DataSet"/> within a transaction.
         /// </summary>
         /// <param name="dataSet"><para>The <see cref="DataSet"/> used to update the data source.</para></param>
         /// <param name="tableName"><para>The name of the source table to use for table mapping.</para></param>
-        /// <param name="insertCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Added"/>.</para></param>
-        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Modified"/>.</para></param>
-        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <seealso cref="DataRowState.Deleted"/>.</para></param>
+        /// <param name="insertCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <see cref="DataRowState.Added"/>.</para></param>
+        /// <param name="updateCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <see cref="DataRowState.Modified"/>.</para></param>
+        /// <param name="deleteCommand"><para>The <see cref="DbCommand"/> executed when <see cref="DataRowState"/> is <see cref="DataRowState.Deleted"/>.</para></param>
         /// <param name="transaction"><para>The <see cref="IDbTransaction"/> to use.</para></param>
         /// <returns>Number of records affected.</returns>
         public int UpdateDataSet(DataSet dataSet,
@@ -1663,7 +1663,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         public virtual bool SupportsAsync => false;
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the <see cref="DbCommand"/> which will return the number of affected records.</para>
+        /// Initiates the asynchronous execution of the <see cref="DbCommand"/> which will return the number of affected records.
         /// </summary>
         /// <param name="command">
         /// <para>The <see cref="DbCommand"/> to execute.</para>
@@ -1685,7 +1685,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the <see cref="DbCommand"/> inside a transaction which will return the number of affected records.</para>
+        /// Initiates the asynchronous execution of the <see cref="DbCommand"/> inside a transaction which will return the number of affected records.
         /// </summary>
         /// <param name="command">
         /// <para>The <see cref="DbCommand"/> to execute.</para>
@@ -1713,7 +1713,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> which will return the number of rows affected.</para>
+        /// Initiates the asynchronous execution of the <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> which will return the number of rows affected.
         /// </summary>
         /// <param name="storedProcedureName">
         /// <para>The name of the stored procedure to execute.</para>
@@ -1741,7 +1741,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> inside a transaction which will return the number of rows affected.</para>
+        /// Initiates the asynchronous execution of the <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> inside a transaction which will return the number of rows affected.
         /// </summary>
         /// <param name="storedProcedureName">
         /// <para>The name of the stored procedure to execute.</para>
@@ -1773,7 +1773,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> which will return the number of rows affected.</para>
+        /// Initiates the asynchronous execution of the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> which will return the number of rows affected.
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>
@@ -1801,7 +1801,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> inside a transaction which will return the number of rows affected.</para>
+        /// Initiates the asynchronous execution of the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> inside a transaction which will return the number of rows affected.
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>
@@ -1851,7 +1851,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of a <paramref name="command"/> which will return a <see cref="IDataReader"/>.</para>
+        /// Initiates the asynchronous execution of a <paramref name="command"/> which will return a <see cref="IDataReader"/>.
         /// </summary>
         /// <param name="command">
         /// <para>The <see cref="DbCommand"/> to execute.</para>
@@ -1873,7 +1873,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of a <paramref name="command"/> inside a transaction which will return a <see cref="IDataReader"/>.</para>
+        /// Initiates the asynchronous execution of a <paramref name="command"/> inside a transaction which will return a <see cref="IDataReader"/>.
         /// </summary>
         /// <param name="command">
         /// <para>The <see cref="DbCommand"/> to execute.</para>
@@ -1901,7 +1901,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> which will return a <see cref="IDataReader"/>.</para>
+        /// Initiates the asynchronous execution of <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> which will return a <see cref="IDataReader"/>.
         /// </summary>
         /// <param name="storedProcedureName">
         /// <para>The name of the stored procedure to execute.</para>
@@ -1929,7 +1929,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> inside a transaction which will return a <see cref="IDataReader"/>.</para>
+        /// Initiates the asynchronous execution of <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> inside a transaction which will return a <see cref="IDataReader"/>.
         /// </summary>
         /// <param name="transaction">
         /// <para>The <see cref="DbTransaction"/> to execute the command within.</para>
@@ -1961,11 +1961,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the <paramref name="commandText"/>
+        /// Initiates the asynchronous execution of the <paramref name="commandText"/>
         /// interpreted as specified by the <paramref name="commandType" /> which will return
         /// a <see cref="IDataReader"/>. When the async operation completes, the
         /// <paramref name="callback"/> will be invoked on another thread to process the
-        /// result.</para>
+        /// result.
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>
@@ -1994,7 +1994,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
 
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> inside an transaction which will return a <see cref="IDataReader"/>.</para>
+        /// Initiates the asynchronous execution of the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> inside an transaction which will return a <see cref="IDataReader"/>.
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>
@@ -2044,7 +2044,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of a <paramref name="command"/> which will return a single value.</para>
+        /// Initiates the asynchronous execution of a <paramref name="command"/> which will return a single value.
         /// </summary>
         /// <param name="command">
         /// <para>The <see cref="DbCommand"/> to execute.</para>
@@ -2066,7 +2066,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of a <paramref name="command"/> inside a transaction which will return a single value.</para>
+        /// Initiates the asynchronous execution of a <paramref name="command"/> inside a transaction which will return a single value.
         /// </summary>
         /// <param name="command">
         /// <para>The <see cref="DbCommand"/> to execute.</para>
@@ -2094,7 +2094,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> which will return a single value.</para>
+        /// Initiates the asynchronous execution of <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> which will return a single value.
         /// </summary>
         /// <param name="storedProcedureName">
         /// <para>The name of the stored procedure to execute.</para>
@@ -2122,7 +2122,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> inside a transaction which will return a single value.</para>
+        /// Initiates the asynchronous execution of <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> inside a transaction which will return a single value.
         /// </summary>
         /// <param name="transaction">
         /// <para>The <see cref="DbTransaction"/> to execute the command within.</para>
@@ -2154,7 +2154,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> which will return a single value.</para>
+        /// Initiates the asynchronous execution of the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> which will return a single value.
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>
@@ -2182,7 +2182,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> inside an transaction which will return a single value.</para>
+        /// Initiates the asynchronous execution of the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> inside an transaction which will return a single value.
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>
@@ -2214,7 +2214,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// <para>Finishes asynchronous execution of a Transact-SQL statement, returning the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.</para>
+        /// Finishes asynchronous execution of a Transact-SQL statement, returning the first column of the first row in the result set returned by the query. Extra columns or rows are ignored.
         /// </summary>
         /// <param name="asyncResult">
         /// <para>The <see cref="IAsyncResult"/> returned by a call to any overload of BeginExecuteScalar.</para>
