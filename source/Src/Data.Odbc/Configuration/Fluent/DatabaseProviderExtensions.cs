@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Odbc.Configuration.Fluent
 {
+    ///<summary>
+    /// Provides extensions for ODBC database provider.
+    ///</summary>
     public static class DatabaseProviderExtensions
     {
         /// <summary>

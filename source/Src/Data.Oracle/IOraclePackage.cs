@@ -18,8 +18,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         /// <value>
         /// The name of the package.
         /// </value>
-        string Name
-        { get; }
+        string Name { get; }
 
         /// <summary>
         /// When implemented by a class, gets the prefix for the package.
@@ -27,7 +26,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         /// <value>
         /// The prefix for the package.
         /// </value>
-        string Prefix
-        { get; }
+        string Prefix { get; }
     }
 }

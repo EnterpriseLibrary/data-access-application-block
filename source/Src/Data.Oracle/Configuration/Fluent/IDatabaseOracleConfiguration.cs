@@ -13,14 +13,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration.Fluent
         /// <summary>
         /// Define an Oracle connection with a connection string.
         /// </summary>
-        /// <param name="connectionString"></param>
+        /// <param name="connectionString">The connection string</param>
         /// <returns></returns>
         IDatabaseOracleConfiguration WithConnectionString(string connectionString);
 
         /// <summary>
         /// Define an Oracle connection with the <see cref="OracleConnectionStringBuilder"/>
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">The connection string builder</param>
         /// <returns></returns>
 #pragma warning disable 612, 618
         IDatabaseOracleConfiguration WithConnectionString(OracleConnectionStringBuilder builder);
@@ -29,7 +29,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration.Fluent
         /// <summary>
         /// Define an Oracle package with the specified name.
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name">The package name</param>
         /// <returns></returns>
         IDatabaseOraclePackageConfiguration WithPackageNamed(string name);
 

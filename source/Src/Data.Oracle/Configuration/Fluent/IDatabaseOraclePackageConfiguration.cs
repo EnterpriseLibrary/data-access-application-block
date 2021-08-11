@@ -13,7 +13,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration.Fluent
         /// <summary>
         /// Define the prefix for the Oracle package.
         /// </summary>
-        /// <param name="prefix"></param>
+        /// <param name="prefix">The package prefix.</param>
         /// <returns></returns>
         IDatabaseConfigurationProperties AndPrefix(string prefix);
     }

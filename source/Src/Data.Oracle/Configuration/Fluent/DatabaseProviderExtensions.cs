@@ -6,9 +6,9 @@ using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration.Fluent
 {
     ///<summary>
-    /// Provides extensions for common database providers.
+    /// Provides extensions for Oracle database provider.
     ///</summary>
-    public static partial class DatabaseProviderExtensions
+    public static class DatabaseProviderExtensions
     {
 
         ///<summary>

@@ -34,6 +34,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration
         /// <param name="configurationSource">The configuration source to retrieve the configuration from.</param>
         /// <returns>The configuration section, or <see langword="null"/> (<b>Nothing</b> in Visual Basic) 
         /// if not present in the configuration source.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="configurationSource"/> is <b>null</b>.</exception>
         public static OracleConnectionSettings GetSettings(IConfigurationSource configurationSource)
         {
             if (configurationSource == null) throw new ArgumentNullException(nameof(configurationSource));

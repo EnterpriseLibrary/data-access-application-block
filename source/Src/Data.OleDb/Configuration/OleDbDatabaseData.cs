@@ -31,6 +31,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb.Configuration
         {
         }
 
+        /// <inheritdoc/>
         public override Database BuildDatabase() => new OleDbDatabase(ConnectionString);
     }
 }

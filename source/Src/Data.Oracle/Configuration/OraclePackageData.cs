@@ -9,7 +9,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration
 {
     /// <summary>
-    /// <para>Represents the package information to use when calling a stored procedure for Oracle.</para>
+    /// Represents the package information to use when calling a stored procedure for Oracle.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -25,7 +25,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration
         private const string prefixProperty = "prefix";
 
         /// <summary>
-        /// <para>Initializes a new instance of the <see cref="OraclePackageData"/> class.</para>
+        /// Initializes a new instance of the <see cref="OraclePackageData"/> class.
         /// </summary>
         public OraclePackageData() : base()
         {
@@ -33,7 +33,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration
         }
 
         /// <summary>
-        /// <para>Initializes a new instance of the <see cref="OraclePackageData"/> class, given the prefix to search for and the name of the package.</para>
+        /// Initializes a new instance of the <see cref="OraclePackageData"/> class, given the prefix to search for and the name of the package.
         /// </summary>
         /// <param name="name">
         /// <para>The name of the package to append to any found procedure that has the <paramref name="prefix"/>.</para>
@@ -47,7 +47,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration
         }
 
         /// <summary>
-        /// <para>Gets or sets the prefix of the stored procedures that are in the package in Oracle.</para>
+        /// Gets or sets the prefix of the stored procedures that are in the package in Oracle.
         /// </summary>
         /// <value>
         /// <para>The prefix of the stored procedures that are in the package in Oracle.</para>

@@ -13,7 +13,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb.Configuration.Fluent
         /// <summary>
         /// Define an OleDb connection with the <see cref="OleDbConnectionStringBuilder"/>
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">The connection string builder</param>
         /// <returns></returns>
         IDatabaseConfigurationProperties WithConnectionString(OleDbConnectionStringBuilder builder);
     }

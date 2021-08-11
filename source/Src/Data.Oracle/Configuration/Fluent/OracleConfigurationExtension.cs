@@ -44,7 +44,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration.Fluent
         IDatabaseConfigurationProperties IDatabaseOraclePackageConfiguration.AndPrefix(string prefix)
         {
             if (String.IsNullOrEmpty(prefix))
-                throw new ArgumentException(Resources.ExceptionStringNullOrEmpty, "prefix");
+                throw new ArgumentException(Resources.ExceptionStringNullOrEmpty, nameof(prefix));
 
             currentOraclePackageData.Prefix = prefix;
             return this;
@@ -56,7 +56,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration.Fluent
         public IDatabaseOraclePackageConfiguration WithPackageNamed(string name)
         {
             if (String.IsNullOrEmpty(name))
-                throw new ArgumentException(Resources.ExceptionStringNullOrEmpty, "name");
+                throw new ArgumentException(Resources.ExceptionStringNullOrEmpty, nameof(name));
 
 
             EnsureOracleSettings();

@@ -14,7 +14,7 @@ using Oracle.ManagedDataAccess.Types;
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
 {
     /// <summary>
-    /// <para>Represents an Oracle database.</para>
+    /// Represents an Oracle database.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -62,7 +62,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
 #pragma warning restore 612, 618
 
         /// <summary>
-        /// <para>Adds a new instance of a <see cref="DbParameter"/> object to the command.</para>
+        /// Adds a new instance of a <see cref="DbParameter"/> object to the command.
         /// </summary>
         /// <param name="command">The command to add the parameter.</param>
         /// <param name="name"><para>The name of the parameter.</para></param>
@@ -98,7 +98,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         }
 
         /// <summary>
-        /// <para>Adds a new instance of an <see cref="OracleParameter"/> object to the command.</para>
+        /// Adds a new instance of an <see cref="OracleParameter"/> object to the command.
         /// </summary>
         /// <param name="command">The <see cref="OracleCommand"/> to add the parameter.</param>
         /// <param name="name"><para>The name of the parameter.</para></param>
@@ -152,7 +152,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         }
 
         /// <summary>
-        /// <para>Creates an <see cref="OracleDataReader"/> based on the <paramref name="command"/>.</para>
+        /// Creates an <see cref="OracleDataReader"/> based on the <paramref name="command"/>.
         /// </summary>
         /// <param name="command"><para>The command wrapper to execute.</para></param>
         /// <param name="transaction"><para>The transaction to participate in when executing this reader.</para></param>
@@ -169,7 +169,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         }
 
         /// <summary>
-        /// <para>Executes a command and returns the results in a new <see cref="DataSet"/>.</para>
+        /// Executes a command and returns the results in a new <see cref="DataSet"/>.
         /// </summary>
         /// <param name="command"><para>The command to execute to fill the <see cref="DataSet"/></para></param>
         /// <returns><para>A <see cref="DataSet"/> filed with records and, if necessary, schema.</para></returns>
@@ -183,7 +183,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         }
 
         /// <summary>
-        /// <para>Executes a command and returns the result in a new <see cref="DataSet"/>.</para>
+        /// Executes a command and returns the result in a new <see cref="DataSet"/>.
         /// </summary>
         /// <param name="command"><para>The command to execute to fill the <see cref="DataSet"/></para></param>
         /// <param name="transaction"><para>The transaction to participate in when executing this reader.</para></param>
@@ -203,7 +203,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         }
 
         /// <summary>
-        /// <para>Loads a <see cref="DataSet"/> from a <see cref="DbCommand"/>.</para>
+        /// Loads a <see cref="DataSet"/> from a <see cref="DbCommand"/>.
         /// </summary>
         /// <param name="command">
         /// <para>The command to execute to fill the <see cref="DataSet"/>.</para>
@@ -221,7 +221,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         }
 
         /// <summary>
-        /// <para>Loads a <see cref="DataSet"/> from a <see cref="DbCommand"/> in a transaction.</para>
+        /// Loads a <see cref="DataSet"/> from a <see cref="DbCommand"/> in a transaction.
         /// </summary>
         /// <param name="command">
         /// <para>The command to execute to fill the <see cref="DataSet"/>.</para>
@@ -428,7 +428,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         }
 
         /// <summary>
-        /// <para>Creates a <see cref="DbCommand"/> for a stored procedure.</para>
+        /// Creates a <see cref="DbCommand"/> for a stored procedure.
         /// </summary>
         /// <param name="storedProcedureName"><para>The name of the stored procedure.</para></param>
         /// <param name="parameterValues"><para>The list of parameters for the procedure.</para></param>
@@ -445,7 +445,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
         }
 
         /// <summary>
-        /// <para>Discovers parameters on the <paramref name="command"/> and assigns the values from <paramref name="parameterValues"/> to the <paramref name="command"/>s Parameters list.</para>
+        /// Discovers parameters on the <paramref name="command"/> and assigns the values from <paramref name="parameterValues"/> to the <paramref name="command"/>s Parameters list.
         /// </summary>
         /// <param name="command">The command the parameter values will be assigned to</param>
         /// <param name="parameterValues">The parameter values that will be assigned to the command.</param>
@@ -459,7 +459,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle
             base.AssignParameters(command, parameterValues);
         }
         /// <summary>
-        /// <para>Creates a <see cref="DbCommand"/> for a stored procedure.</para>
+        /// Creates a <see cref="DbCommand"/> for a stored procedure.
         /// </summary>
         /// <param name="storedProcedureName"><para>The name of the stored procedure.</para></param>
         /// <returns><para>The <see cref="DbCommand"/> for the stored procedure.</para></returns>

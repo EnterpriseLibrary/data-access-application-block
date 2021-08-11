@@ -4,6 +4,9 @@ using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.OleDb.Configuration.Fluent
 {
+    ///<summary>
+    /// Provides extensions for OLE DB database provider.
+    ///</summary>
     public static class DatabaseProviderExtensions
     {
         /// <summary>
