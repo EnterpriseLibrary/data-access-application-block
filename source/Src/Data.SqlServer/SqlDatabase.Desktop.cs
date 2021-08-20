@@ -22,7 +22,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of a <paramref name="command"/> which will return a <see cref="IDataReader"/>.</para>
+        /// Initiates the asynchronous execution of a <paramref name="command"/> which will return a <see cref="IDataReader"/>.
         /// </summary>
         /// <param name="command">
         /// <para>The <see cref="SqlCommand"/> to execute.</para>
@@ -55,7 +55,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of a <paramref name="command"/> inside a transaction which will return a <see cref="IDataReader"/>.</para>
+        /// Initiates the asynchronous execution of a <paramref name="command"/> inside a transaction which will return a <see cref="IDataReader"/>.
         /// </summary>
         /// <param name="command">
         /// <para>The <see cref="SqlCommand"/> to execute.</para>
@@ -82,7 +82,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> which will return a <see cref="IDataReader"/>.</para>
+        /// Initiates the asynchronous execution of <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> which will return a <see cref="IDataReader"/>.
         /// </summary>
         /// <param name="storedProcedureName">
         /// <para>The name of the stored procedure to execute.</para>
@@ -118,7 +118,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> inside a transaction which will return a <see cref="IDataReader"/>.</para>
+        /// Initiates the asynchronous execution of <paramref name="storedProcedureName"/> using the given <paramref name="parameterValues" /> inside a transaction which will return a <see cref="IDataReader"/>.
         /// </summary>
         /// <param name="transaction">
         /// <para>The <see cref="DbTransaction"/> to execute the command within.</para>
@@ -148,11 +148,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the <paramref name="commandText"/>
+        /// Initiates the asynchronous execution of the <paramref name="commandText"/>
         /// interpreted as specified by the <paramref name="commandType" /> which will return
         /// a <see cref="IDataReader"/>. When the async operation completes, the
         /// <paramref name="callback"/> will be invoked on another thread to process the
-        /// result.</para>
+        /// result.
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>
@@ -188,7 +188,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql
         }
 
         /// <summary>
-        /// <para>Initiates the asynchronous execution of the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> inside an transaction which will return a <see cref="IDataReader"/>.</para>
+        /// Initiates the asynchronous execution of the <paramref name="commandText"/> interpreted as specified by the <paramref name="commandType" /> inside an transaction which will return a <see cref="IDataReader"/>.
         /// </summary>
         /// <param name="commandType">
         /// <para>One of the <see cref="CommandType"/> values.</para>

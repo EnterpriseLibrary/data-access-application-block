@@ -7,11 +7,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql.Configuration.Fluent
 {
     public static class DatabaseProviderExtensions
     {
-        ///<summary>
+        /// <summary>
         /// A Sql database for use with the System.Data.SqlClient namespace.
-        ///</summary>
+        /// </summary>
         /// <param name="context">Configuration context</param>
-        ///<returns></returns>
+        /// <returns></returns>
         /// <seealso cref="System.Data.SqlClient"/>
         public static IDatabaseSqlDatabaseConfiguration ASqlDatabase(this IDatabaseConfigurationProviders context)
         {
