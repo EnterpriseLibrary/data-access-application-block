@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.SqlServer", "Src\Data.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.OleDb", "Src\Data.OleDb\Data.OleDb.csproj", "{4CC8278A-A7A4-4EDB-A533-9665D11498B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Odbc", "Src\Data.Odbc\Data.Odbc.csproj", "{883CEA76-BDAC-493B-B991-30910EF72091}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Odbc", "Src\Data.Odbc\Data.Odbc.csproj", "{883CEA76-BDAC-493B-B991-30910EF72091}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
