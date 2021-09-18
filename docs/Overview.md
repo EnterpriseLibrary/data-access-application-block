@@ -38,7 +38,7 @@ ODBC               | EnterpriseLibrary.Data.Odbc.NetCore      | .NET 4.5.2, 4.6,
 SQL Server CE      | EnterpriseLibrary.Data.SqlCe.NetCore     | .NET 4.5.2, 4.6, 4.7
 
 ### Configuration
-After installing the appropriate package(S), you should add the following configuration elements to your app.config or web.config
+After installing the appropriate package(s), you should add the following configuration elements to your app.config or web.config
 file.
 1. Under the `<configSections>` element, add the following section:
 ```xml
@@ -46,11 +46,11 @@ file.
 ```
 2. Under the `<connectionStrings>` section, add a normal connection string to your database, with a `name`,
    `connectionString` and `providerName` attributes. DAAB supports the following provider names:
-    1. `System.Data.SqlClient`
-    2. `Oracle.ManagedDataAccess.Client`
+    1. `System.Data.SqlClient` (.NET built-in provider for SQL Server)
+    2. `Oracle.ManagedDataAccess.Client` (Managed ADO.NET provider by Oracle, known as ODP.NET)
     3. `System.Data.OleDb`
     4. `System.Data.Odbc`
-    5. `System.Data.SqlServerCe.4.0`
+    5. `System.Data.SqlServerCe.4.0` (Latest provider for SQL Server CE, available as a NuGet package)
 3. Under the root `<configuration>` element, but somewhere bellow the `<configSections>`, add the following section:
 ```xml
   <dataConfiguration defaultDatabase="MyConnectionString">
@@ -65,8 +65,8 @@ file.
       <add databaseType="" name="" />
     </providerMappings>
 ```
-    1. `name` is a provider name, as listed above in section 2.
-    2. `databaseType` is one of the following types:
+  1. `name` is a provider name, as listed above in section 2.
+  2. `databaseType` is one of the following types:
 
     Database      | databaseType    
     --------------|--------------
@@ -77,8 +77,25 @@ file.
     OLE DB        | "Microsoft.Practices.EnterpriseLibrary.Data.OleDb.OleDbDatabase, Microsoft.Practices.EnterpriseLibrary.Data.OleDb"
     ODBC          | "Microsoft.Practices.EnterpriseLibrary.Data.Odbc.OdbcDatabase, Microsoft.Practices.EnterpriseLibrary.Data.Odbc"
 
-#### Oracle Configuration
+    You can add multiple mappings if you access more than one database type.
 
+#### Oracle Configuration
+For Oracle databases, we also need to configure packages.
+1. Under `<configSections>`, in addition to the `dataConfiguration` section, add
+```xml
+   <section name="oracleConnectionSettings" type="Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration.OracleConnectionSettings, Microsoft.Practices.EnterpriseLibrary.Data.Oracle" />
+```
+2. Under the root `<configuration>` element, but somewhere bellow the `<configSections>`, add the following section:
+```xml
+   <oracleConnectionSettings>
+     <add name="OracleTest">
+       <packages>
+         <add name="ENTLIBTEST" prefix="GetProductDetailsById" />
+       </packages>
+     </add>
+   </oracleConnectionSettings>
+```
+  1. `name` points to the name of a connection string from section 2 above.
 ### Code Examples
 
  [1]: https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn440726(v=pandp.60)
