@@ -104,7 +104,7 @@ For Oracle databases, we also need to configure packages.
 The simplest approach for creating a `Database` object or one of its descendants is calling the `CreateDefault`
 or `Create` method of the `DatabaseProviderFactory` class, as shown here, and storing these instances in
 application-wide variables so that they can be accessed from anywhere in the code.
-```csharp
+```cs
 // Configure the DatabaseFactory to read its configuration from the .config file
 DatabaseProviderFactory factory = new DatabaseProviderFactory();
 
@@ -129,7 +129,7 @@ As alternative to using the `DatabaseProviderFactory` class, you could use the s
 to create your `Database` instances. You must invoke the `SetDatabaseProviderFactory` method to set the details
 of the default database from the configuration file.
 
-```csharp
+```cs
 DatabaseFactory.SetDatabaseProviderFactory(factory, false);
 defaultDB = DatabaseFactory.CreateDatabase("ExampleDatabase");
 // Uses the default database from the configuration file.
@@ -139,7 +139,7 @@ sqlServerDB = DatabaseFactory.CreateDatabase() as SqlDatabase;
 In addition to using configuration to define the databases you will use, the Data Access block allows you to create
 instances of concrete types that inherit from the Database class directly in your code, as shown here.
 
-```csharp
+```cs
 SqlDatabase sqlDatabase = new SqlDatabase(myConnectionString);
 ```
 
