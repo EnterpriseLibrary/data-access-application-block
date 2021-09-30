@@ -1,4 +1,4 @@
-## Data Access Application Block User Guide
+﻿## Data Access Application Block User Guide
 
 [TOC]
 
@@ -101,6 +101,47 @@ For Oracle databases, we also need to configure packages.
 
 
 ### Code Examples
+The simplest approach for creating a `Database` object or one of its descendants is calling the `CreateDefault`
+or `Create` method of the `DatabaseProviderFactory` class, as shown here, and storing these instances in
+application-wide variables so that they can be accessed from anywhere in the code.
+```csharp
+// Configure the DatabaseFactory to read its configuration from the .config file
+DatabaseProviderFactory factory = new DatabaseProviderFactory();
+
+// Create the default Database object from the factory.
+// The actual concrete type is determined by the configuration settings.
+Database defaultDB = factory.CreateDefault();
+
+// Create a Database object from the factory using the connection string name.
+Database namedDB = factory.Create("ExampleDatabase");
+```
+where "ExampleDatabase" is a `name` of a connection string. With `CreateDefault`, the connection string specified by
+the `defaultDatabase` attribute of the `dataConfiguration` element in web.config is used, as described above.
+Using the default database is a useful approach because you can change which of the databases defined in your
+configuration is the default simply by editing the configuration file, without requiring recompilation or
+redeployment of the application.
+
+Some features are only available in the concrete types for a specific database. For example, the `ExecuteXmlReader`
+method is only available in the `SqlDatabase` class. If you want to use such features, you must cast the database
+type you instantiate to the appropriate concrete type.
+
+As alternative to using the `DatabaseProviderFactory` class, you could use the static `DatabaseFactory` façade
+to create your `Database` instances. You must invoke the `SetDatabaseProviderFactory` method to set the details
+of the default database from the configuration file.
+
+```csharp
+DatabaseFactory.SetDatabaseProviderFactory(factory, false);
+defaultDB = DatabaseFactory.CreateDatabase("ExampleDatabase");
+// Uses the default database from the configuration file.
+sqlServerDB = DatabaseFactory.CreateDatabase() as SqlDatabase;
+```
+
+In addition to using configuration to define the databases you will use, the Data Access block allows you to create
+instances of concrete types that inherit from the Database class directly in your code, as shown here.
+
+```csharp
+SqlDatabase sqlDatabase = new SqlDatabase(myConnectionString);
+```
 
  [1]: https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn440726(v=pandp.60)
  [2]: https://www.nuget.org/packages/EnterpriseLibrary.Data.NetCore/
