@@ -101,6 +101,8 @@ For Oracle databases, we also need to configure packages.
 
 
 ### Code Examples
+
+#### Creating Database Instances
 The simplest approach for creating a `Database` object or one of its descendants is calling the `CreateDefault`
 or `Create` method of the `DatabaseProviderFactory` class, as shown here, and storing these instances in
 application-wide variables so that they can be accessed from anywhere in the code.
@@ -141,6 +143,43 @@ instances of concrete types that inherit from the Database class directly in you
 
 ```cs
 SqlDatabase sqlDatabase = new SqlDatabase(myConnectionString);
+```
+
+#### Reading Rows Using a Query with No Parameters
+To read rows using a stored procedure with no parameters, retrieve an `IDataReader` and read values from it:
+```cs
+// Call the ExecuteReader method by specifying just the stored procedure name.
+using (IDataReader reader = namedDB.ExecuteReader("MyStoredProcName"))
+{
+    // Use the values in the rows as required.
+    DisplayRowValues(reader);
+}
+```
+`ExecuteReader` also accept a `CommandType`, but the default value is `CommandType.StoredProcedure`.
+
+To use an inline SQL statement, specify a `CommandType.Text`:
+```cs
+// Call the ExecuteReader method by specifying the command type
+// as a SQL statement, and passing in the SQL statement.
+using (IDataReader reader = namedDB.ExecuteReader(CommandType.Text, "SELECT TOP 1 * FROM OrderList"))
+{
+    // Use the values in the rows as required - here we are just displaying them.
+    DisplayRowValues(reader);
+}
+```
+
+```cs
+private void DisplayRowValues(IDataReader reader)
+{
+    while (reader.Read())
+    {
+        for (int i = 0; i < reader.FieldCount; i++)
+        {
+            Console.WriteLine("{0} = {1}", reader.GetName(i), reader[i].ToString());
+        }
+        Console.WriteLine();
+    }
+}
 ```
 
  [1]: https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn440726(v=pandp.60)
