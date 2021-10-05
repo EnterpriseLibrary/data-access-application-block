@@ -168,6 +168,7 @@ using (IDataReader reader = namedDB.ExecuteReader(CommandType.Text, "SELECT TOP 
 }
 ```
 
+You read the values from the `IDataReader` normally:
 ```cs
 private void DisplayRowValues(IDataReader reader)
 {
@@ -178,6 +179,60 @@ private void DisplayRowValues(IDataReader reader)
             Console.WriteLine("{0} = {1}", reader.GetName(i), reader[i].ToString());
         }
         Console.WriteLine();
+    }
+}
+```
+#### Reading Rows Using a Query with unnamed Parameters
+If you use only input parameters, you can pass their values to the stored procedure or SQL statement directly
+and let the `Database` class wrap them in the appropriate `DbParameter` objects. You must pass them in the same
+order as they are expected by the query, because you are not using names for these parameters. The following code
+executes a stored procedure that takes a single string parameter.
+```cs
+// Call the ExecuteReader method with the stored procedure
+// name and an Object array containing the parameter values.
+using (IDataReader reader = defaultDB.ExecuteReader("ListOrdersByState", "Colorado"))
+{
+    // Use the values in the rows as required - here we are just displaying them.
+    DisplayRowValues(reader);
+}
+```
+
+#### Reading Rows Using a Query with named Parameters
+If you need to specify the data-types of the parameters, e.g. if it can't be inferred from the .NET data type, or you
+need to specify the parameter direction (input or output), you can access the provider independent `DbCommand`
+object for the query and add parameters using methods on the `Database` object. You can add parameters with a
+specific direction using the `AddInParameter` or `AddOutParameter` method, or by using the `AddParameter`
+method and providing a value for the `ParameterDirection` parameter. You can change the value of existing parameters
+already added to the command using the `GetParameterValue` and `SetParameterValue` methods.
+```cs
+// Read data with a SQL statement that accepts one parameter prefixed with @.
+string sqlStatement = "SELECT TOP 1 * FROM OrderList WHERE State LIKE @state";
+
+// Create a suitable command type and add the required parameter.
+using (DbCommand sqlCmd = defaultDB.GetSqlStringCommand(sqlStatement))
+{
+    // Any required prefix, such as '@' or ':' will be added automatically if missing.
+    defaultDB.AddInParameter(sqlCmd, "state", DbType.String, "New York");
+    
+    // Call the ExecuteReader method with the command.
+    using (IDataReader sqlReader = defaultDB.ExecuteReader(sqlCmd))
+    {
+        DisplayRowValues(sqlReader);
+    }
+}
+
+// Now read the same data with a stored procedure that accepts one parameter.
+string storedProcName = "ListOrdersByState";
+
+// Create a suitable command type and add the required parameter.
+using (DbCommand sprocCmd = defaultDB.GetStoredProcCommand(storedProcName))
+{
+    defaultDB.AddInParameter(sprocCmd, "state", DbType.String, "New York");
+    
+    // Call the ExecuteReader method with the command.
+    using (IDataReader sprocReader = defaultDB.ExecuteReader(sprocCmd))
+    {
+        DisplayRowValues(sprocReader);
     }
 }
 ```
