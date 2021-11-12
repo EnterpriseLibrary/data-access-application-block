@@ -236,6 +236,69 @@ using (DbCommand sprocCmd = defaultDB.GetStoredProcCommand(storedProcName))
     }
 }
 ```
+#### Retrieving Data as Objects
+DAAB allows you to extract data using a query, and have the data returned to you as a sequence of objects that
+implements the `IEnumerable` interface. This allows you to execute queries, or obtain lists or arrays of objects
+that represent the original data in the database.
+
+The block provides two core classes for performing this kind of query: the `SprocAccessor` and the
+`SqlStringAccessor`. You can create and execute these accessors in one operation using the `ExecuteSprocAccessor`
+and `ExecuteSqlAccessor` extension methods of the `Database` class, or create a new accessor directly and then call its
+`Execute` method.
+
+If you do not specify an output mapper, the block uses a default map builder class that maps the column names
+of the returned data to properties of the objects it creates. Alternatively, you can create a custom mapping to
+specify the relationship between columns in the row set and the properties of the objects. Inferring the details
+required to create the correct mappings means that the default output mappers **can have an effect
+on performance**. You may prefer to create your own custom mappers and retain a reference to them for reuse when
+possible to maximize performance of your data access processes when using accessors.
+
+The following code shows how you can use an accessor to execute a stored procedure. You must specify the object
+type that you want the data returned as—in this example it is a simple class named `Product` that has the three
+properties: `ID`, `Name`, and `Description`.
+
+The stored procedure takes a single parameter that is a search string, and returns details of all products in
+the database that contain this string. Therefore, the code calls the `ExecuteSprocAccessor` extension method
+passing the search string as the single parameter. It specifies the `Product` class as the type of object to
+return, and passes to the method the name of the stored procedure to execute and the array of parameter values.
+
+```cs
+// Create and execute a sproc accessor that uses the default
+// parameter and output mappings.
+var productData = defaultDB.ExecuteSprocAccessor<Product>("GetProductList", "%bike%");
+
+// Display the results
+foreach (var item in results)
+{
+    Console.WriteLine("Product ID: {0}", item.ID);
+    Console.WriteLine("Product Name: {0}", item.Name);
+    Console.WriteLine("Description: {0}", item.Description);
+    Console.WriteLine();
+}
+```
+
+#### Creating and Using Mappers
+
+In some cases, you may need to create a custom parameter mapper to pass your parameters to the query that the
+accessor will execute. This typically occurs when you need to execute a SQL statement to work with a database
+system that does not support parameter resolution, or when a default mapping cannot be inferred due to a mismatch
+in the number or types of the parameters. The parameter mapper class must implement the `IParameterMapper` interface
+and contain a method named `AssignParameters` that takes a reference to the current `Command` instance and the array
+of parameters. The method simply needs to add the required parameters to the `Command` object's `Parameters`
+collection.
+
+More often, you will need to create a custom output mapper. To help you do this, the block provides a class called
+`MapBuilder` that you can use to create the set of mappings you require between the columns of the data set returned
+by the query and the properties of the objects you need.
+
+By default, the accessor will expect to generate a simple sequence of a single type of object (in our earlier
+example, this was a sequence of the `Product` class). However, you can use an accessor to return a more complex
+graph of objects if you wish. For example, you might execute a query that returns a series of `Order` objects and
+the related `OrderLines` objects for all of the selected orders. Simple output mapping cannot cope with this scenario,
+and neither can the `MapBuilder` class. In this case, you would create a result set mapper by implementing the
+`IResultSetMapper` interface. Your custom row set mapper must contain a method named `MapSet` that receives a
+reference to an object that implements the `IDataReader` interface. The method should read all of the data available
+through the data reader, processes it to create the sequence of objects you require, and return this sequence.
 
  [1]: https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn440726(v=pandp.60)
  [2]: https://www.nuget.org/packages/EnterpriseLibrary.Data.NetCore/
