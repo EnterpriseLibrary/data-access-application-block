@@ -300,5 +300,47 @@ and neither can the `MapBuilder` class. In this case, you would create a result 
 reference to an object that implements the `IDataReader` interface. The method should read all of the data available
 through the data reader, processes it to create the sequence of objects you require, and return this sequence.
 
+#### Retrieving XML Data
+SQL Server allows you to extract data as a series of XML elements, by executing specially formatted SQL queries.
+The Data Access block provides the `ExecuteXmlReader` method for querying data as XML. It takes a SQL statement
+that contains the `FOR XML` statement and executes it against the database, returning the result as an `XmlReader`.
+You can iterate through the resulting XML elements or work with them in any of the ways supported by the XML
+classes in the .NET Framework. However, as the implementations of this type of query differ in other database
+systems, it is only available when you specifically use the `SqlDatabase` class (rather than the `Database` class).
+
+The following code shows how you can obtain a `SqlDatabase` instance, specify a suitable XML query, and execute
+it using the `ExecuteXmlReader` method.
+
+```cs
+// Create a SqlDatabase object from configuration using the default database.
+SqlDatabase sqlServerDB = DatabaseFactory.CreateDatabase() as SqlDatabase;
+
+// Specify a SQL query that returns XML data.
+string xmlQuery = "SELECT * FROM OrderList WHERE State = @state FOR XML AUTO";
+
+// Create a suitable command type and add the required parameter
+// NB: ExecuteXmlReader is only available for SQL Server databases
+using (DbCommand xmlCmd = sqlServerDB.GetSqlStringCommand(xmlQuery))
+{
+    xmlCmd.Parameters.Add(new SqlParameter("state", "Colorado"));
+    using (XmlReader reader = sqlServerDB.ExecuteXmlReader(xmlCmd))
+    {
+        // Iterate through the elements in the XmlReader
+        while (!reader.EOF)
+        {
+            if (reader.IsStartElement())
+            {
+                Console.WriteLine(reader.ReadOuterXml());
+            }
+        }
+    }
+}
+```
+
+ **Note:** by default, the result is an XML fragment, and not a valid XML document. It is, effectively, a sequence
+of XML elements that represent each row in the results set. Therefore, at minimum, you must wrap the output with a
+single root element so that it is well-formed. See [XmlReader][3] for more details.
+
  [1]: https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn440726(v=pandp.60)
  [2]: https://www.nuget.org/packages/EnterpriseLibrary.Data.NetCore/
+ [3]: https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=netframework-4.8
