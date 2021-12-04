@@ -341,6 +341,46 @@ using (DbCommand xmlCmd = sqlServerDB.GetSqlStringCommand(xmlQuery))
 of XML elements that represent each row in the results set. Therefore, at minimum, you must wrap the output with a
 single root element so that it is well-formed. See [XmlReader][3] for more details.
 
+#### Retrieving Single Scalar Values
+The Data Access block provides the `ExecuteScalar` method to extract a single scalar value based on a query that
+selects either a single row or a single value. It executes the query you specify, and then returns the value of
+the first column of the first row of the result set as an Object type.
+
+The `ExecuteScalar` method has a set of overloads similar to the `ExecuteReader` method we used earlier in this
+document. You can specify a `CommandType` (the default is `StoredProcedure`) and either a SQL statement or a stored
+procedure name. You can also pass in an array of `Object` instances that represent the parameters for the query.
+Alternatively, you can pass to the method a `Command` object that contains any parameters you require.
+
+The following code demonstrates passing a `Command` object to the method to execute both an inline SQL statement
+and a stored procedure. It obtains a suitable `Command` instance from the current Database instance using the
+`GetSqlStringCommand` and `GetStoredProcCommand` methods. You can add parameters to the command before calling
+the `ExecuteScalar` method if required. However, to demonstrate the way the method works, the code here simply
+extracts the complete row set. The result is a single `Object` that you must cast to the appropriate type before
+displaying or consuming it in your code.
+
+```cs
+// Create a suitable command type for a SQL statement.
+// NB: For efficiency, aim to return only a single value or a single row.
+using (DbCommand sqlCmd = defaultDB.GetSqlStringCommand("SELECT [Name] FROM States"))
+{
+    // Call the ExecuteScalar method of the command.
+    Console.WriteLine("Result using a SQL statement: {0}", defaultDB.ExecuteScalar(sqlCmd).ToString());
+}
+
+// Create a suitable command type for a stored procedure.
+// NB: For efficiency, aim to return only a single value or a single row.
+using (DbCommand sprocCmd = defaultDB.GetStoredProcCommand("GetStatesList"))
+{
+    // Call the ExecuteScalar method of the command.
+    Console.WriteLine("Result using a stored procedure: {0}", defaultDB.ExecuteScalar(sprocCmd).ToString());
+}
+```
+The result it produces is shown here.
+```
+Result using a SQL statement: Alabama
+Result using a stored procedure: Alabama
+```
+
  [1]: https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn440726(v=pandp.60)
  [2]: https://www.nuget.org/packages/EnterpriseLibrary.Data.NetCore/
  [3]: https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=netframework-4.8
