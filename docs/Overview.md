@@ -380,7 +380,83 @@ The result it produces is shown here.
 Result using a SQL statement: Alabama
 Result using a stored procedure: Alabama
 ```
+#### Retrieving Data Asynchronously
+Databases are a major bottleneck in any enterprise application. One way that applications can minimize the
+performance hit from data access is to perform it asynchronously. This means that the application code can
+continue to execute, and the user interface can remain interactive during the process.  It is also very
+useful in server applications where you can avoid blocking threads that could handle other requests, thus
+improving utilization. However, keep in mind that asynchronous data access has an effect on connection and
+data streaming performance over the wire. Don’t expect a query that returns ten rows to show any improvement
+using an asynchronous approach—it is more likely to take longer to return the results!
+
+The Data Access block provides asynchronous `Begin` and `End` versions of many of the standard data access
+methods, including `ExecuteReader`, `ExecuteScalar`, `ExecuteXmlReader`, and `ExecuteNonQuery`. It also
+provides asynchronous `Begin` and `End` versions of the `Execute` method for accessors that return data as a
+sequence of objects. This approach is known as the Asynchronous Programming Model (APM). A future version of
+the block will also support the [Task Parallel Library][4] (TPL). In the mean time, you can use
+[TaskFactory.FromAsync][5] to wrap a `Begin` and `End` method with a `Task`.
+
+Asynchronous processing in the Data Access block is only available for SQL Server databases. The `Database` class
+includes a property named `SupportsAsync` that you can query to see if the current Database instance
+supports asynchronous operations. The example for this chapter contains a simple check for this.
+
+The `BeginExecuteReader` method does not accept a `CommandBehavior` parameter. By default, the method will
+automatically set the `CommandBehavior` property on the underlying reader to `CloseConnection` unless you
+specify a transaction when you call the method. If you do specify a transaction, it does not set the
+`CommandBehavior` property.
+
+Always ensure you call the appropriate `EndExecute` method when you use asynchronous data access, even if you
+do not actually require access to the results, or call the Cancel method on the connection. Failing to do so
+can cause memory leaks and consume additional system resources.
+
+Using asynchronous data access with the Multiple Active Results Set (MARS) feature of ADO.NET may produce
+unexpected behavior, and should generally be avoided.
+
+##### Retrieving Row Set Data Asynchronously using BeginXXX and EndXXX Methods
+The following code creates a `DBCommand` instance and adds two parameters, and then calls the `BeginExecuteReader`
+method of the `Database` class to start the process. The code passes to this method a reference to the command
+to execute (with its parameters already added), a Lambda expression to execute when the data retrieval process
+completes, and a **null** value for the `AsyncState` parameter. The Lambda expression then calls the
+`EndExecuteReader` method to obtain the results of the query execution. At this point you can consume the row
+set in your application. Notice that the callback expression should handle any errors that may occur during the
+asynchronous operation.
+
+```cs
+// Create command to execute stored procedure and add parameters.
+DbCommand cmd = asyncDB.GetStoredProcCommand("ListOrdersSlowly");
+asyncDB.AddInParameter(cmd, "state", DbType.String, "Colorado");
+asyncDB.AddInParameter(cmd, "status", DbType.String, "DRAFT");
+
+// Execute the query asynchronously specifying the command and the expression to execute when the data access
+// process completes.
+asyncDB.BeginExecuteReader(cmd,
+  asyncResult =>
+  {
+    // Lambda expression executed when the data access completes.
+    try
+    {
+      using (IDataReader reader = asyncDB.EndExecuteReader(asyncResult))
+      {
+        DisplayRowValues(reader);
+      }
+    }
+    catch (Exception ex)
+    {
+      Console.WriteLine("Error after data access completed: {0}", ex.Message);
+    }
+  }, null);
+```
+
+As mentioned above, you can wrap a BeginXXX and EndXXX methods with a Task.
+```cs
+await Task<IDataReader>.Factory
+        .FromAsync<DbCommand>(asyncDB.BeginExecuteReader, 
+        asyncDB.EndExecuteReader, cmd, null);
+```
+
 
  [1]: https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn440726(v=pandp.60)
  [2]: https://www.nuget.org/packages/EnterpriseLibrary.Data.NetCore/
  [3]: https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=netframework-4.8
+ [4]: https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/task-parallel-library-tpl
+ [5]: https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskfactory.fromasync
