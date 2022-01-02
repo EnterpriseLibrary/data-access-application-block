@@ -447,6 +447,12 @@ asyncDB.BeginExecuteReader(cmd,
   }, null);
 ```
 
+The `AsyncState` parameter can be used to pass any required state information into the callback. For example,
+when you use a callback method instead of a lambda expression, you would pass a reference to the current `Database`
+instance as the `AsyncState` parameter so that the callback code can call the `EndExecuteReader` (or other
+appropriate End method) to obtain the results. When you use a Lambda expression, the current Database instance
+is available within the expression and, therefore, you do not need to populate the `AsyncState` parameter.
+
 As mentioned above, you can wrap a BeginXXX and EndXXX methods with a Task.
 ```cs
 await Task<IDataReader>.Factory
