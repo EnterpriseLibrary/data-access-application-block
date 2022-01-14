@@ -56,6 +56,8 @@ querying using techniques such as Language Integrated Query (LINQ).
 However, the block is not intended to be an Object/Relational Mapping (O/RM) solution. Although it uses mappings to
 relate parameters and relational data with the properties of objects, but does not implement an O/RM modeling solution.
 
+Detailed tutorial and API reference is at https://enterpriselibrary.github.io/daab/
+
 ## How to help
 Interested in helping out? That's great. Look at the [issues](https://github.com/EnterpriseLibrary/data-access-application-block/issues)
 and see if there's something you'd like to work on, or [open a new issue](https://github.com/EnterpriseLibrary/data-access-application-block/issues/new/choose)
