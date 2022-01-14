@@ -1,4 +1,4 @@
-﻿## Data Access Application Block User Guide
+﻿## Data Access Application Block User Guide  {#Overview}
 
 [TOC]
 
@@ -37,7 +37,7 @@ Oracle             | EnterpriseLibrary.Data.Oracle.NetCore    | .NET 4.5.2, 4.6,
 ODBC               | EnterpriseLibrary.Data.Odbc.NetCore      | .NET 4.5.2, 4.6, 4.7; .NET Core 2.1, 3.1; .NET Standard 2.0
 SQL Server CE      | EnterpriseLibrary.Data.SqlCe.NetCore     | .NET 4.5.2, 4.6, 4.7
 
-### Configuration
+### Configuration  {#Configuration}
 After installing the appropriate package(s), you should add the following configuration elements to your app.config or web.config
 file.
 1. Under the `<configSections>` element, add the following section:
@@ -412,7 +412,6 @@ can cause memory leaks and consume additional system resources.
 Using asynchronous data access with the Multiple Active Results Set (MARS) feature of ADO.NET may produce
 unexpected behavior, and should generally be avoided.
 
-##### Retrieving Row Set Data Asynchronously using BeginXXX and EndXXX Methods
 The following code creates a `DBCommand` instance and adds two parameters, and then calls the `BeginExecuteReader`
 method of the `Database` class to start the process. The code passes to this method a reference to the command
 to execute (with its parameters already added), a Lambda expression to execute when the data retrieval process
