@@ -10,8 +10,9 @@ automatically detect your database type from the `providerName` property of the 
 to specify in the Web.config or App.config what database you are using.
 
 To update your package from version 6.* to version 7.0, follow these steps:
-1. Upgrade EnterpriseLibrary.Data.NetCore to version 7.0
-2. Install the database-specific package for your database, using the following table:
+<ol>
+  <li>Upgrade EnterpriseLibrary.Data.NetCore to version 7.0
+  <li>Install the database-specific package for your database, using the following table:
    
    Supported Database | Package                                  | .NET Framework support
    -------------------|------------------------------------------|------------
@@ -21,8 +22,8 @@ To update your package from version 6.* to version 7.0, follow these steps:
    ODBC               | EnterpriseLibrary.Data.Odbc.NetCore      | .NET 4.5.2, 4.6, 4.7; .NET Core 2.1, 3.1; .NET Standard 2.0
    SQL Server CE      | EnterpriseLibrary.Data.SqlCe.NetCore     | .NET 4.5.2, 4.6, 4.7
 
-3. Follow the instructions at the [Configuration](@ref Configuration) section to configure your database.
-4. The base namespaces for the database providers other than the Generic provider have changed. If you reference
+  <li>Follow the instructions at the [Configuration](@ref Configuration) section to configure your database.
+  <li>The base namespaces for the database providers other than the Generic provider have changed. If you reference
    database-specific types, such as `SqlDatabase` or `OracleDatabase`, you should change the `using` statements
    (`Imports` in VB.NET) as follows:
 
@@ -33,3 +34,4 @@ To update your package from version 6.* to version 7.0, follow these steps:
    Oracle             | Microsoft.Practices.EnterpriseLibrary.Data.Oracle
    ODBC               | Microsoft.Practices.EnterpriseLibrary.Data.Odbc
    SQL Server CE      | Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
+</ol>
