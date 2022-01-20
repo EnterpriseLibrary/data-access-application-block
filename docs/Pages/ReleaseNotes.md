@@ -2,6 +2,9 @@
 ## Version 7.0 RC1
 * The block was split to several NuGet packages, one for each database provider. See [Upgrade](@ref Upgrade) and
   [User Guide](@ref Overview) for details.
+* Support for some older .NET frameworks was dropped, in favor of Long Term Support versions:
+  * Dropped support for .NET Framework 4.0, 4.5, .NET Core 2.0, 3.0.
+  * Added support for .NET Framework 4.5.2, .NET Core 2.1, 3.1
 * Fixed [bug #23 Oracle RAW data type is not cast to byte[] correctly][1]
 * Fixed [bug #31 SprocAccessor<TResult>.Execute(params object[]) throws ObjectDisposedException under Oracle][2]
 * Fixed [bug #32 DatabaseProviderFactory.Create(String) fails for an ODBC provider under .NET Core][3]

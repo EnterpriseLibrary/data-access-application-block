@@ -44,7 +44,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Odbc
         /// <param name="discoveryCommand">The <see cref="DbCommand"/> to do the discovery.</param>
         /// <exception cref="NotSupportedException">Always</exception>
         /// <remarks>While <see cref="OdbcCommandBuilder"/> supports deriving parameters, we don't know
-        /// which specific database will be used, what are it's parameter discovery capabilities are,
+        /// which specific database will be used, what are it's parameter discovery capabilities,
         /// and other differences. So we can't support deriving parameters automatically.</remarks>
         protected override void DeriveParameters(DbCommand discoveryCommand)
         {
