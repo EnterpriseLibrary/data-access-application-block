@@ -128,10 +128,20 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.SqlDatabaseFixtures
             string sqlCommand = "CustomerOrdersAddwithOutParm";
             DbCommand dbCommandWrapper = db.GetStoredProcCommand(sqlCommand);
             CreateCommandParameter(db, dbCommandWrapper, "@CustomerId", DbType.Int16, ParameterDirection.Input, 3);
-            CreateCommandParameter(db, dbCommandWrapper, "@QtyOrdered", DbType.Int16, ParameterDirection.Output, 16);
+            CreateCommandParameter(db, dbCommandWrapper, "@QtyOrdered", DbType.Int16, ParameterDirection.Output, size: 16);
             db.ExecuteNonQuery(dbCommandWrapper);
             Assert.AreEqual(234, Convert.ToInt32(dbCommandWrapper.Parameters["@QtyOrdered"].Value));
 
+        }
+
+        [TestMethod]
+        public void ResultIsReadWhenDbCmdWithSpInOutParam()
+        {
+            Database db = DatabaseFactory.CreateDatabase("DataSQLTest");
+            DbCommand command = db.GetStoredProcCommand("GetPrevProductName");
+            CreateCommandParameter(db, command, "@ProductName", DbType.String, ParameterDirection.InputOutput, "Tofu", 50);
+            db.ExecuteNonQuery(command);
+            Assert.AreEqual("Konbu", command.Parameters["@ProductName"].Value);
         }
 
         [TestMethod]

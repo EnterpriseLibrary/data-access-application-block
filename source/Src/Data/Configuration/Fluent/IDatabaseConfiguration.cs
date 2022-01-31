@@ -4,16 +4,16 @@ using Microsoft.Practices.EnterpriseLibrary.Common;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
 {
-    ///<summary>
+    /// <summary>
     /// Supports configuring the data connections via fluent-style interface.
-    ///</summary>
+    /// </summary>
     public interface IDatabaseConfiguration : IFluentInterface
     {
-        ///<summary>
+        /// <summary>
         /// Configure a named database.
-        ///</summary>
-        ///<param name="databaseName">Name of database to configure</param>
-        ///<returns></returns>
+        /// </summary>
+        /// <param name="databaseName">Name of database to configure</param>
+        /// <returns></returns>
         IDatabaseConfigurationProperties ForDatabaseNamed(string databaseName);
     }
 }

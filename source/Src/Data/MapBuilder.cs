@@ -14,30 +14,30 @@ using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
 namespace Microsoft.Practices.EnterpriseLibrary.Data
 {
     /// <summary>
-    /// Static entry point for the <see cref="IMapBuilderContext&lt;TResult&gt;"/> interface, which allows to build reflection-based <see cref="IRowMapper&lt;TResult&gt;"/>s.
+    /// Static entry point for the <see cref="IMapBuilderContext{TResult}"/> interface, which allows to build reflection-based <see cref="IRowMapper{TResult}"/>s.
     /// </summary>
-    /// <typeparam name="TResult">The type for which a <see cref="IRowMapper&lt;TResult&gt;"/> should be build.</typeparam>
-    /// <seealso cref="IMapBuilderContext&lt;TResult&gt;"/>
-    /// <seealso cref="IRowMapper&lt;TResult&gt;"/>
+    /// <typeparam name="TResult">The type for which a <see cref="IRowMapper{TResult}"/> should be build.</typeparam>
+    /// <seealso cref="IMapBuilderContext{TResult}"/>
+    /// <seealso cref="IRowMapper{TResult}"/>
     public static class MapBuilder<TResult>
         where TResult : new()
     {
         /// <summary>
-        /// Returns a <see cref="IRowMapper&lt;TResult&gt;"/> that maps all properties for <typeparamref name="TResult"/> based on name.
+        /// Returns a <see cref="IRowMapper{TResult}"/> that maps all properties for <typeparamref name="TResult"/> based on name.
         /// </summary>
-        /// <returns>A new instance of <see cref="IRowMapper&lt;TResult&gt;"/>.</returns>
+        /// <returns>A new instance of <see cref="IRowMapper{TResult}"/>.</returns>
         public static IRowMapper<TResult> BuildAllProperties()
         {
             return MapAllProperties().Build();
         }
 
         /// <summary>
-        /// Returns a <see cref="IMapBuilderContext&lt;TResult&gt;"/> that can be used to build a <see cref="IRowMapper&lt;TResult&gt;"/>.
-        /// The <see cref="IMapBuilderContext&lt;TResult&gt;"/> has a mapping set up for all properties of <typeparamref name="TResult"/> based on name.
+        /// Returns a <see cref="IMapBuilderContext{TResult}"/> that can be used to build a <see cref="IRowMapper{TResult}"/>.
+        /// The <see cref="IMapBuilderContext{TResult}"/> has a mapping set up for all properties of <typeparamref name="TResult"/> based on name.
         /// </summary>
-        /// <seealso cref="IMapBuilderContext&lt;TResult&gt;"/>
-        /// <seealso cref="IRowMapper&lt;TResult&gt;"/>
-        /// <returns>A new instance of <see cref="IMapBuilderContext&lt;TResult&gt;"/>.</returns>
+        /// <seealso cref="IMapBuilderContext{TResult}"/>
+        /// <seealso cref="IRowMapper{TResult}"/>
+        /// <returns>A new instance of <see cref="IMapBuilderContext{TResult}"/>.</returns>
         public static IMapBuilderContext<TResult> MapAllProperties()
         {
             IMapBuilderContext<TResult> context = new MapBuilderContext();
@@ -55,12 +55,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        /// Returns a <see cref="IMapBuilderContext&lt;TResult&gt;"/> that can be used to build a <see cref="IRowMapper&lt;TResult&gt;"/>.
-        /// The <see cref="IMapBuilderContext&lt;TResult&gt;"/> has no mappings to start out with.
+        /// Returns a <see cref="IMapBuilderContext{TResult}"/> that can be used to build a <see cref="IRowMapper{TResult}"/>.
+        /// The <see cref="IMapBuilderContext{TResult}"/> has no mappings to start out with.
         /// </summary>
-        /// <seealso cref="IMapBuilderContext&lt;TResult&gt;"/>
-        /// <seealso cref="IRowMapper&lt;TResult&gt;"/>
-        /// <returns>A new instance of <see cref="IMapBuilderContext&lt;TResult&gt;"/>.</returns>
+        /// <seealso cref="IMapBuilderContext{TResult}"/>
+        /// <seealso cref="IRowMapper{TResult}"/>
+        /// <returns>A new instance of <see cref="IMapBuilderContext{TResult}"/>.</returns>
         public static IMapBuilderContext<TResult> MapNoProperties()
         {
             return new MapBuilderContext();
@@ -153,17 +153,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             private static PropertyInfo ExtractPropertyInfo<TMember>(Expression<Func<TResult, TMember>> propertySelector)
             {
                 MemberExpression memberExpression = propertySelector.Body as MemberExpression;
-                if (memberExpression == null) throw new ArgumentException(Resources.ExceptionArgumentMustBePropertyExpression, "propertySelector");
+                if (memberExpression == null) throw new ArgumentException(Resources.ExceptionArgumentMustBePropertyExpression, nameof(propertySelector));
 
                 PropertyInfo property = memberExpression.Member as PropertyInfo;
-                if (property == null) throw new ArgumentException(Resources.ExceptionArgumentMustBePropertyExpression, "propertySelector");
+                if (property == null) throw new ArgumentException(Resources.ExceptionArgumentMustBePropertyExpression, nameof(propertySelector));
 
                 return NormalizePropertyInfo(property);
             }
 
             private static PropertyInfo NormalizePropertyInfo(PropertyInfo property)
             {
-                if (property == null) throw new ArgumentNullException("property");
+                if (property == null) throw new ArgumentNullException(nameof(property));
                 return typeof(TResult).GetProperty(property.Name);
             }
 
@@ -197,9 +197,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
     }
 
     /// <summary>
-    /// A fluent interface that can be used to construct a <see cref="IRowMapper&lt;TResult&gt;"/>.
+    /// A fluent interface that can be used to construct a <see cref="IRowMapper{TResult}"/>.
     /// </summary>
-    /// <typeparam name="TResult">The type for which a <see cref="IRowMapper&lt;TResult&gt;"/> should be build.</typeparam>
+    /// <typeparam name="TResult">The type for which a <see cref="IRowMapper{TResult}"/> should be build.</typeparam>
     public interface IMapBuilderContext<TResult> : IFluentInterface
     {
         /// <summary>
@@ -248,18 +248,18 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         IMapBuilderContextMap<TResult, object> Map(PropertyInfo property);
 
         /// <summary>
-        /// Builds the <see cref="IRowMapper&lt;TResult&gt;"/> that can be used to map data structures to clr types.
+        /// Builds the <see cref="IRowMapper{TResult}"/> that can be used to map data structures to clr types.
         /// </summary>
-        /// <returns>An instance of <see cref="IRowMapper&lt;TResult&gt;"/>.</returns>
+        /// <returns>An instance of <see cref="IRowMapper{TResult}"/>.</returns>
         IRowMapper<TResult> Build();
     }
 
     /// <summary>
-    /// A fluent interface that can be used to construct a <see cref="IRowMapper&lt;TResult&gt;"/>.
+    /// A fluent interface that can be used to construct a <see cref="IRowMapper{TResult}"/>.
     /// </summary>
-    /// <typeparam name="TResult">The type for which a <see cref="IRowMapper&lt;TResult&gt;"/> should be build.</typeparam>
+    /// <typeparam name="TResult">The type for which a <see cref="IRowMapper{TResult}"/> should be build.</typeparam>
     /// <typeparam name="TMember">The type of the member for which a mapping needs to specified.</typeparam>
-    /// <seealso cref="IMapBuilderContext&lt;TResult&gt;"/>
+    /// <seealso cref="IMapBuilderContext{TResult}"/>
     public interface IMapBuilderContextMap<TResult, TMember> : IFluentInterface
     {
         /// <summary>

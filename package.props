@@ -6,26 +6,42 @@
     <PreAssemblyName>Microsoft.Practices.EnterpriseLibrary</PreAssemblyName>
     <PrePackageName>EnterpriseLibrary</PrePackageName>
     <PostPackageName>.NetCore</PostPackageName>
-    <PackageReleaseNotes>This package is distributed as .NET Standard 2.0, .NET Core 2.0, .NET Core 3.0, .NET 4.0, 4.5, 4.6, 4.7 package.</PackageReleaseNotes>
+    <PackageReleaseNotes>This package is distributed as .NET Standard 2.0, .NET Core 2.1, .NET Core 3.1, 4.5.2, 4.6, 4.7 package. See project wiki for migration from previous versions instructions.</PackageReleaseNotes>
 
-    <SemanticVersionSuffix></SemanticVersionSuffix>
+    <SemanticVersionSuffix>-rc1</SemanticVersionSuffix>
     <PackageVersion>$(Version)$(SemanticVersionSuffix)</PackageVersion>
     <Authors>Enterprise Library Open Source Project</Authors>
-    <Copyright>Copyright © Microsoft 2008</Copyright>
-    <PackageIconUrl>https://nuget.org/Media/Default/Packages/Unity/2.0/entlib_new_icon_100x100.png</PackageIconUrl>
+    <Copyright>Copyright © Microsoft 2008, Enterprise Library Open Source Project 2017</Copyright>
+    <PackageIcon>entlib_new_icon_100x100.png</PackageIcon>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/EnterpriseLibrary/data-access-application-block</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 
-    <RepositoryUrl>https://github.com/EnterpriseLibrary/data-access-application-block</RepositoryUrl>
+    <RepositoryUrl>https://github.com/EnterpriseLibrary/data-access-application-block.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+
+    <OutputPath>$(SolutionDir)..\bin\$(MSBuildProjectName)\$(Configuration)\</OutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="..\..\..\entlib_new_icon_100x100.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  
   <PropertyGroup>
     <OracleManagedDataAccessCore>2.18.3</OracleManagedDataAccessCore>
-    <SystemConfigurationConfigurationManagerVersion>4.6.0-preview6.19303.8</SystemConfigurationConfigurationManagerVersion>
+    <SystemConfigurationConfigurationManagerVersion>4.6.0</SystemConfigurationConfigurationManagerVersion>
     <SystemDataOdbcVersion>4.5.0</SystemDataOdbcVersion>
-    <SystemDataSqlClientVersion>4.7.0-preview6.19303.8</SystemDataSqlClientVersion>
+    <SystemDataSqlClientVersion>4.7.0</SystemDataSqlClientVersion>
   </PropertyGroup>
 
   <PropertyGroup>

@@ -1,9 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data.Common;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data
@@ -15,10 +12,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
     public interface IParameterMapper
     {
         /// <summary>
-        /// 
+        /// Assigns the values from <paramref name="parameterValues"/> to the <paramref name="command"/>'s Parameters list.
         /// </summary>
-        /// <param name="command"></param>
-        /// <param name="parameterValues"></param>
+        /// <param name="command">The command the parameter values will be assigned to</param>
+        /// <param name="parameterValues">The parameter values that will be assigned to the command.</param>
         void AssignParameters(DbCommand command, object[] parameterValues);
     }
 }

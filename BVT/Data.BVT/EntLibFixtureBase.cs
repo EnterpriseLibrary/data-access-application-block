@@ -178,7 +178,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
                                     string Parametername,
                                     DbType dbType,
                                     ParameterDirection dir,
-                                    object value)
+                                    object value = null,
+                                    int size = 0)
         {
             if (dir == ParameterDirection.Input)
             {
@@ -186,7 +187,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT
             }
             else if (dir == ParameterDirection.Output)
             {
-                db.AddOutParameter(comm, Parametername, dbType, (int)value);
+                db.AddOutParameter(comm, Parametername, dbType, size);
+            }
+            else if (dir == ParameterDirection.InputOutput)
+            {
+                db.AddInOutParameter(comm, Parametername, dbType, size, value);
             }
         }
 

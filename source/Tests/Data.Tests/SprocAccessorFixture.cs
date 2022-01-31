@@ -647,7 +647,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
 
             try
             {
-                var result = accessor.Execute("Chai");
+                List<object> result = accessor.Execute("Chai").ToList();
                 Assert.Fail();
             }
             catch (InvalidOperationException ioe)

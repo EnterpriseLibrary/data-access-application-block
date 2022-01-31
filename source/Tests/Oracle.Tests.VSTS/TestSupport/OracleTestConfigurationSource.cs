@@ -2,6 +2,7 @@
 
 using System.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.TestSupport;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests.TestSupport
@@ -30,6 +31,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests.TestSupport
             connectionStrings.ConnectionStrings.Add(connectionString);
 
             configSource.Add("connectionStrings", connectionStrings);
+
+            var dbSettings = configSource.GetSection(DatabaseSettings.SectionName) as DatabaseSettings;
+            DbProviderMapping mapping = new DbProviderMapping(DbProviderMapping.DefaultOracleProviderName, typeof(OracleDatabase));
+            dbSettings.ProviderMappings.Add(mapping);
+
             return configSource;
         }
     }

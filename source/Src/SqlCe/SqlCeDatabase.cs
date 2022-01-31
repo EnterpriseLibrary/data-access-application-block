@@ -6,6 +6,7 @@ using System.Data.Common;
 using System.Data.SqlServerCe;
 using System.Globalization;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.Properties;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
@@ -15,14 +16,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
     ///        easier.
     /// </summary>
     /// <remarks>
-    ///        <para>
-    ///            Because SQL Server CE has no connection pooling and the cost of opening the initial
-    ///            connection is high, this class implements a simple connection pool.
-    ///        </para>
-    ///        <para>
-    ///            SQL Server CE requires full trust to run, so it cannot be used in partial-trust
-    ///            environments.
-    ///        </para>
+    /// <para>
+    ///     Because SQL Server CE has no connection pooling and the cost of opening the initial
+    ///     connection is high, this class implements a simple connection pool.
+    /// </para>
+    /// <para>
+    ///     SQL Server CE requires full trust to run, so it cannot be used in partial-trust
+    ///     environments.
+    /// </para>
     /// </remarks>
     [ConfigurationElementType(typeof(SqlCeDatabaseData))]
     public class SqlCeDatabase : Database
@@ -48,7 +49,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
         }
 
         /// <summary>
-        ///        <para>Creates a connection for this database.</para>
+        /// Creates a connection for this database.
         /// </summary>
         /// <remarks>
         ///        This method has been overridden to support keeping a single connection open until you
@@ -57,7 +58,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
         /// <returns>
         ///        <para>The <see cref="DbConnection"/> for this database.</para>
         /// </returns>
-        /// <seealso cref="DbConnection"/>        
+        /// <seealso cref="DbConnection"/>
         public override DbConnection CreateConnection()
         {
             using (DatabaseConnectionWrapper wrapper = SqlCeConnectionPool.CreateConnection(this))
@@ -192,15 +193,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
         }
 
         /// <summary>
-        /// <para>Gets the parameter token used to delimit parameters for the SQL Server database.</para>
+        /// Gets the parameter token used to delimit parameters for the SQL Server database.
         /// </summary>
         /// <value>
-        /// <para>The "@" symbol.</para>
+        /// The "@" symbol.
         /// </value>
-        protected char ParameterToken
-        {
-            get { return '@'; }
-        }
+        protected char ParameterToken => '@';
 
         #region SqlCeExtensions
 
@@ -354,10 +352,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
         ///        new abilities and better performance over a standard reader. This method provides access to
         ///        this reader.
         /// </summary>
+        /// <remarks>
         ///        Unlike other Execute... methods that take a <see cref="DbCommand"/> instance, this method
         ///        does not set the command behavior to close the connection when you close the reader.
         ///        That means you'll need to close the connection yourself, by calling the
         ///        command.Connection.Close() method after you're finished using the reader.
+        /// </remarks>
         /// <param name="command">The command that contains the SQL SELECT statement to execute.</param>
         /// <param name="transaction">Transaction to execute the command under.</param>
         /// <param name="options">Controls how the <see cref="SqlCeResultSet"/> behaves.</param>
@@ -375,10 +375,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
         ///        new abilities and better performance over a standard reader. This method provides access to
         ///        this reader.
         /// </summary>
+        /// <remarks>
         ///        Unlike other Execute... methods that take a <see cref="DbCommand"/> instance, this method
         ///        does not set the command behavior to close the connection when you close the reader.
         ///        That means you'll need to close the connection yourself, by calling the
         ///        command.Connection.Close() method after you're finished using the reader.
+        /// </remarks>
         /// <param name="command">The command that contains the SQL SELECT statement to execute.</param>
         /// <param name="transaction">Transaction to execute the command under.</param>
         /// <param name="parameters">An option set of <see cref="DbParameter"/> parameters.</param>
@@ -421,7 +423,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
         /// </summary>
         /// <returns>
         ///        The ID of the row added, or -1 if no row was added or if the table doesn't have an identity column.
-        ///    </returns>
+        /// </returns>
         private int GetLastId(DbConnection connection)
         {
             using (DbCommand command = GetSqlStringCommand("SELECT @@IDENTITY"))
@@ -473,9 +475,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe
 
         #endregion
 
-        /// <devdoc>
-        /// Listens for the RowUpdate event on a dataa dapter to support UpdateBehavior.Continue.
-        /// </devdoc>
+        /// <summary>
+        /// Listens for the RowUpdate event on a data adapter to support UpdateBehavior.Continue.
+        /// </summary>
         private void OnSqlRowUpdated(object sender, SqlCeRowUpdatedEventArgs rowThatCouldNotBeWritten)
         {
             if (rowThatCouldNotBeWritten.RecordsAffected == 0)

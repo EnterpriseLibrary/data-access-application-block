@@ -4,8 +4,6 @@ using System;
 using System.Data;
 using System.Data.Common;
 using System.IO;
-using Microsoft.Practices.EnterpriseLibrary.Data;
-using Microsoft.Practices.EnterpriseLibrary.Data.BVT;
 using Microsoft.Practices.EnterpriseLibrary.Data.Oracle;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Oracle.ManagedDataAccess.Client;

@@ -2,9 +2,12 @@
 
 using System;
 using System.Configuration;
+using System.Data.Common;
 using System.Linq;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent;
+using Microsoft.Practices.EnterpriseLibrary.Data.Oracle;
 using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql.Configuration;
@@ -118,11 +121,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 
             var connectionStrings = new ConnectionStringsSection();
             connectionStrings.ConnectionStrings.Add(new ConnectionStringSettings
-                                                        {
-                                                            Name = "someSetting",
-                                                            ConnectionString = "someConnectionString",
-                                                            ProviderName = "non registered"
-                                                        });
+            {
+                Name = "someSetting",
+                ConnectionString = "someConnectionString",
+                ProviderName = "non registered"
+            });
 
             configSource.Add("connectionStrings", connectionStrings);
 
@@ -137,6 +140,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
     }
 
     [TestClass]
+    [Ignore("We don't support this scenario now. Provider must be mapped to be used.")]
     public class GivenAConfigurationSourceWithASqlProviderConnectionString
     {
         private DatabaseSyntheticConfigSettings configSettings;
@@ -417,6 +421,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 
             configSource.Add("connectionStrings", connectionStrings);
 
+            configSource.AddOracleDatabaseProviderMapping();
+
             configSettings = new DatabaseSyntheticConfigSettings(configSource.GetSection);
         }
 
@@ -450,6 +456,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 
             var oracleSettings = new OracleConnectionSettings();
             configSource.Add(OracleConnectionSettings.SectionName, oracleSettings);
+
+            configSource.AddOracleDatabaseProviderMapping();
 
             configSettings = new DatabaseSyntheticConfigSettings(configSource.GetSection);
         }
@@ -487,6 +495,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
             var oracleSettings = new OracleConnectionSettings();
             oracleSettings.OracleConnectionsData.Add(oracleConnectionData);
             configSource.Add(OracleConnectionSettings.SectionName, oracleSettings);
+
+            configSource.AddOracleDatabaseProviderMapping();
 
             configSettings = new DatabaseSyntheticConfigSettings(configSource.GetSection);
         }
@@ -534,16 +544,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 
             Assert.IsTrue(databases.Count >= 8);
             CollectionAssert.AreEquivalent(
-                new[] 
+                new[]
                 {
                     "LocalSqlServer",
-                    "Service_Dflt", 
-                    "OracleTest", 
-                    "OdbcDatabase", 
-                    "mapping1", 
-                    "mapping2", 
-                    "NewDatabase", 
-                    "DbWithSqlServerAuthn", 
+                    "Service_Dflt",
+                    "OracleTest",
+                    "OdbcDatabase",
+                    "OleDbDatabase",
+                    "mapping1",
+                    "mapping2",
+                    "NewDatabase",
+                    "DbWithSqlServerAuthn",
                     "NorthwindPersistFalse"
                 },
                 databases.Keys);

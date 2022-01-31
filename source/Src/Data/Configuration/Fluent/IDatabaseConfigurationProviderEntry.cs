@@ -4,14 +4,14 @@ using Microsoft.Practices.EnterpriseLibrary.Common;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
 {
-    ///<summary>
+    /// <summary>
     /// This interface support the database configuration fluent interface.
-    ///</summary>
+    /// </summary>
     public interface IDatabaseConfigurationProviderEntry : IFluentInterface
     {
-        ///<summary>
+        /// <summary>
         /// Specify the type of database.
-        ///</summary>
+        /// </summary>
         IDatabaseConfigurationProviders ThatIs { get; }
     }
 }

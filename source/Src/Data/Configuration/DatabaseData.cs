@@ -12,12 +12,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
     /// </summary>
     public abstract class DatabaseData
     {
-        ///<summary>
+        /// <summary>
         /// Initializes a new instance of the <see cref="DatabaseData"/> class with a connection string and a configuration
         /// source.
-        ///</summary>
-        ///<param name="connectionStringSettings">The <see cref="ConnectionStringSettings"/> for the represented database.</param>
-        ///<param name="configurationSource">The <see cref="IConfigurationSource"/> from which additional information can 
+        /// </summary>
+        /// <param name="connectionStringSettings">The <see cref="ConnectionStringSettings"/> for the represented database.</param>
+        /// <param name="configurationSource">The <see cref="IConfigurationSource"/> from which additional information can 
         /// be retrieved if necessary.</param>
         protected DatabaseData(ConnectionStringSettings connectionStringSettings, Func<string, ConfigurationSection> configurationSource)
         {
@@ -30,9 +30,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration
         /// </summary>
         protected ConnectionStringSettings ConnectionStringSettings { get; private set; }
 
-        ///<summary>
+        /// <summary>
         /// Gets the function to access configuration information.
-        ///</summary>
+        /// </summary>
         protected Func<string, ConfigurationSection> ConfigurationSource { get; private set; }
 
         /// <summary>

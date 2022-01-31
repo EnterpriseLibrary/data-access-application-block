@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data.Properties;
 
@@ -18,62 +17,66 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         readonly string sqlString;
 
         /// <summary>
-        /// Creates a new instance of <see cref="SqlStringAccessor&lt;TResult&gt;"/> that works for a specific <paramref name="database"/>
-        /// and uses <paramref name="rowMapper"/> to convert the returned rows to clr type <typeparamref name="TResult"/>.
+        /// Creates a new instance of <see cref="SqlStringAccessor{TResult}"/> that works for a specific <paramref name="database"/>
+        /// and uses <paramref name="rowMapper"/> to convert the returned rows to CLR type <typeparamref name="TResult"/>.
         /// </summary>
         /// <param name="database">The <see cref="Database"/> used to execute the SQL.</param>
         /// <param name="sqlString">The SQL that will be executed.</param>
-        /// <param name="rowMapper">The <see cref="IRowMapper&lt;TResult&gt;"/> that will be used to convert the returned data to clr type <typeparamref name="TResult"/>.</param>
+        /// <param name="rowMapper">The <see cref="IRowMapper{TResult}"/> that will be used to convert the returned data to clr type <typeparamref name="TResult"/>.</param>
         public SqlStringAccessor(Database database, string sqlString, IRowMapper<TResult> rowMapper)
             : this(database, sqlString, new DefaultSqlStringParameterMapper(), rowMapper)
         {
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="SqlStringAccessor&lt;TResult&gt;"/> that works for a specific <paramref name="database"/>
-        /// and uses <paramref name="resultSetMapper"/> to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.
+        /// Creates a new instance of <see cref="SqlStringAccessor{TResult}"/> that works for a specific <paramref name="database"/>
+        /// and uses <paramref name="resultSetMapper"/> to convert the returned set to an enumerable of CLR type <typeparamref name="TResult"/>.
         /// </summary>
         /// <param name="database">The <see cref="Database"/> used to execute the SQL.</param>
         /// <param name="sqlString">The SQL that will be executed.</param>
-        /// <param name="resultSetMapper">The <see cref="IResultSetMapper&lt;TResult&gt;"/> that will be used to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.</param>
+        /// <param name="resultSetMapper">The <see cref="IResultSetMapper{TResult}"/> that will be used to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.</param>
         public SqlStringAccessor(Database database, string sqlString, IResultSetMapper<TResult> resultSetMapper)
             : this(database, sqlString, new DefaultSqlStringParameterMapper(), resultSetMapper)
         {
         }
         
         /// <summary>
-        /// Creates a new instance of <see cref="SqlStringAccessor&lt;TResult&gt;"/> that works for a specific <paramref name="database"/>
-        /// and uses <paramref name="rowMapper"/> to convert the returned rows to clr type <typeparamref name="TResult"/>.
+        /// Creates a new instance of <see cref="SqlStringAccessor{TResult}"/> that works for a specific <paramref name="database"/>
+        /// and uses <paramref name="rowMapper"/> to convert the returned rows to CLR type <typeparamref name="TResult"/>.
         /// The <paramref name="parameterMapper"/> will be used to interpret the parameters passed to the Execute method.
         /// </summary>
         /// <param name="database">The <see cref="Database"/> used to execute the SQL.</param>
         /// <param name="sqlString">The SQL that will be executed.</param>
         /// <param name="parameterMapper">The <see cref="IParameterMapper"/> that will be used to interpret the parameters passed to the Execute method.</param>
-        /// <param name="rowMapper">The <see cref="IRowMapper&lt;TResult&gt;"/> that will be used to convert the returned data to clr type <typeparamref name="TResult"/>.</param>
+        /// <param name="rowMapper">The <see cref="IRowMapper{TResult}"/> that will be used to convert the returned data to clr type <typeparamref name="TResult"/>.</param>
+        /// <exception cref="ArgumentException"><paramref name="sqlString"/> is <b>null</b> or empty.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="parameterMapper"/> is <b>null</b>.</exception>
         public SqlStringAccessor(Database database, string sqlString, IParameterMapper parameterMapper, IRowMapper<TResult> rowMapper)
             : base(database, rowMapper)
         {
             if (string.IsNullOrEmpty(sqlString)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString);
-            if (parameterMapper == null) throw new ArgumentNullException("parameterMapper");
+            if (parameterMapper == null) throw new ArgumentNullException(nameof(parameterMapper));
 
             this.parameterMapper = parameterMapper;
             this.sqlString = sqlString;
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="SqlStringAccessor&lt;TResult&gt;"/> that works for a specific <paramref name="database"/>
-        /// and uses <paramref name="resultSetMapper"/> to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.
+        /// Creates a new instance of <see cref="SqlStringAccessor{TResult}"/> that works for a specific <paramref name="database"/>
+        /// and uses <paramref name="resultSetMapper"/> to convert the returned set to an enumerable of CLR type <typeparamref name="TResult"/>.
         /// The <paramref name="parameterMapper"/> will be used to interpret the parameters passed to the Execute method.
         /// </summary>
         /// <param name="database">The <see cref="Database"/> used to execute the SQL.</param>
         /// <param name="sqlString">The SQL that will be executed.</param>
         /// <param name="parameterMapper">The <see cref="IParameterMapper"/> that will be used to interpret the parameters passed to the Execute method.</param>
-        /// <param name="resultSetMapper">The <see cref="IResultSetMapper&lt;TResult&gt;"/> that will be used to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.</param>
+        /// <param name="resultSetMapper">The <see cref="IResultSetMapper{TResult}"/> that will be used to convert the returned set to an enumerable of clr type <typeparamref name="TResult"/>.</param>
+        /// <exception cref="ArgumentException"><paramref name="sqlString"/> is <b>null</b> or empty.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="parameterMapper"/> is <b>null</b>.</exception>
         public SqlStringAccessor(Database database, string sqlString, IParameterMapper parameterMapper, IResultSetMapper<TResult> resultSetMapper)
             : base(database, resultSetMapper)
         {
             if (string.IsNullOrEmpty(sqlString)) throw new ArgumentException(Resources.ExceptionNullOrEmptyString);
-            if (parameterMapper == null) throw new ArgumentNullException("parameterMapper");
+            if (parameterMapper == null) throw new ArgumentNullException(nameof(parameterMapper));
 
             this.parameterMapper = parameterMapper;
             this.sqlString = sqlString;

@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="Microsoft.SqlServer.Compact" Version="4.0.8876.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
     <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
   </ItemGroup>
@@ -26,15 +27,15 @@
   <ItemGroup>
     <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
     <PackageReference Include="$(PrePackageName).Common$(PostPackageName)" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
+    <ProjectReference Include="..\..\source\Src\Data.Odbc\Data.Odbc.csproj" />
+    <ProjectReference Include="..\..\source\Src\Data.OleDb\Data.OleDb.csproj" />
+    <ProjectReference Include="..\..\source\Src\Data.Oracle\Data.Oracle.csproj" />
+    <ProjectReference Include="..\..\source\Src\Data.SqlServer\Data.SqlServer.csproj" />
 
     <ProjectReference Include="..\..\source\Src\Data\Data.csproj" />
     <ProjectReference Include="..\..\source\Src\SqlCe\Data.SqlCe.csproj" />
 
     <Reference Include="System.Configuration" />
-
-    <Reference Include="System.Data.SqlServerCe">
-      <HintPath>..\..\lib\System.Data.SqlServerCe.dll</HintPath>
-    </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Management.Instrumentation" />
     <Reference Include="System.Messaging" />

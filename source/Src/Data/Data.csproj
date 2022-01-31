@@ -2,7 +2,7 @@
   <Import Project="..\..\..\package.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net46;net47;netstandard2.0;netcoreapp2.0;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>net452;net46;net47;netstandard2.0;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
 
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
     <FileVersion>$(Version).$(Revision)</FileVersion>
@@ -31,9 +31,9 @@
     <PackageReference Include="$(PrePackageName).Common$(PostPackageName)" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
   </ItemGroup>
 
-  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
-    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="$(OracleManagedDataAccessCore)" />
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard'))">
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="$(SystemConfigurationConfigurationManagerVersion)" />
+    <!-- required for System.Data.Common shim -->
     <PackageReference Include="System.Data.Odbc" Version="$(SystemDataOdbcVersion)" />
     <PackageReference Include="System.Data.SqlClient" Version="$(SystemDataSqlClientVersion)" />
   </ItemGroup>
@@ -41,13 +41,8 @@
   <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
     <Reference Include="System.Transactions" />
     <Reference Include="System.Configuration" />
-    <PackageReference Include="Oracle.ManagedDataAccess" Version="18.3.0" />
   </ItemGroup>
 
-  <ItemGroup Condition="('$(TargetFramework)' == 'netcoreapp3.0')">
-    <PackageReference Include="System.Data.OleDb" Version="4.6.0-preview6.19303.8" />
-  </ItemGroup>
-  
   <ItemGroup>
     <Compile Include="..\..\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
@@ -61,12 +56,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DesignResources.resx</DependentUpon>
-    </Compile>
-
-    <Compile Update="Oracle\Configuration\DesignResources.Designer.cs">
-      <DependentUpon>DesignResources.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
     </Compile>
 
     <Compile Update="Properties\Resources.Designer.cs">
@@ -86,13 +75,8 @@
       <LastGenOutput>DesignResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     
-    <EmbeddedResource Update="Oracle\Configuration\DesignResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>DesignResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    
     <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -124,20 +108,13 @@
     </Content>
   </ItemGroup>
 
-  <!-- .NET Core 2.0 and .NET Standard 2.0 don't have OleDb support (.NET Core 3+ does) -->
-  <ItemGroup Condition="('$(TargetFramework)' == 'netstandard2.0') OR ('$(TargetFramework)' == 'netcoreapp2.0')">
-    <Compile Remove="**\OleDb*.cs" />
-    <Compile Remove="**\*.Desktop.cs" />
-  </ItemGroup>
-
   <!-- .NET Core 2.0 and .NET Standard 2.0 have incomplete System.Data.Common implementations, so they need these helpers -->
-  <ItemGroup Condition="!('$(TargetFramework)' == 'netstandard2.0') AND !('$(TargetFramework)' == 'netcoreapp2.0')">
+  <ItemGroup Condition="!('$(TargetFramework)' == 'netstandard2.0')">
     <Compile Remove="System.Data.Common\*.cs" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <OutputPath>$(SolutionDir)..\bin\Debug\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -163,7 +140,6 @@
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <OutputPath>$(SolutionDir)..\bin\Release\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>

@@ -69,8 +69,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <exception cref="InvalidOperationException">The factory is already set and <paramref name="throwIfSet"/> is <see langword="true"/>.</exception>
         public static void SetDatabases(Func<Database> createDefaultDatabase, Func<string, Database> createNamedDatabase, bool throwIfSet = true)
         {
-            Guard.ArgumentNotNull(createDefaultDatabase, "createDefaultDatabase");
-            Guard.ArgumentNotNull(createNamedDatabase, "createNamedDatabase");
+            Guard.ArgumentNotNull(createDefaultDatabase, nameof(createDefaultDatabase));
+            Guard.ArgumentNotNull(createNamedDatabase, nameof(createNamedDatabase));
 
             var currentCreateDb = DatabaseFactory.createNamedDatabase;
             var currentCreateDefaultDb = DatabaseFactory.createDefaultDatabase;

@@ -1,20 +1,14 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
-using System.Collections.Generic;
 using System.Data.Common;
-using System.Linq;
-using System.Text;
-using Microsoft.Practices.EnterpriseLibrary.Common;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
-using Microsoft.Practices.EnterpriseLibrary.Data.Oracle;
-using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
 {
-    ///<summary>
+    /// <summary>
     /// Starting point for data configuration.
-    ///</summary>
+    /// </summary>
     /// <seealso cref="DataConfigurationSourceBuilderExtensions"/>
     public interface IDataConfiguration : IDatabaseConfiguration
     {
@@ -39,8 +33,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
         /// <param name="databaseType">The <see cref="Database"/> type.</param>
         /// <returns></returns>
         /// <seealso cref="GenericDatabase"/>
-        /// <seealso cref="SqlDatabase" />
-        /// <seealso cref="OracleDatabase" />
         IDataConfiguration MappedToDatabase(Type databaseType);
 
         /// <summary>
@@ -49,8 +41,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Fluent
         /// <typeparam name="T">Database type to map to</typeparam>
         /// <returns></returns>
         /// <seealso cref="GenericDatabase"/>
-        /// <seealso cref="SqlDatabase" />
-        /// <seealso cref="OracleDatabase" />
-        IDataConfiguration MappedToDatabase<T>() where T : Data.Database;
+        IDataConfiguration MappedToDatabase<T>() where T : Database;
     }
 }

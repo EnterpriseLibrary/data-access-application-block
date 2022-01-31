@@ -15,18 +15,17 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         private readonly DatabaseConnectionWrapper connectionWrapper;
 
         /// <summary>
-        /// Create a new <see cref='RefCountingDataReader'/> that wraps
-        /// the given <paramref name="innerReader"/> and properly
-        /// cleans the refcount on the given <paramref name="connection"/>
-        /// when done.
+        /// Create a new <see cref='RefCountingDataReader'/> that wraps the given
+        /// <paramref name="innerReader"/> and properly cleans the refcount on the given
+        /// <paramref name="connection"/> when done.
         /// </summary>
         /// <param name="connection">Connection to close.</param>
         /// <param name="innerReader">Reader to do the actual work.</param>
         public RefCountingDataReader(DatabaseConnectionWrapper connection, IDataReader innerReader)
             : base(innerReader)
         {
-            Guard.ArgumentNotNull(connection, "connection");
-            Guard.ArgumentNotNull(innerReader, "innerReader");
+            Guard.ArgumentNotNull(connection, nameof(connection));
+            Guard.ArgumentNotNull(innerReader, nameof(innerReader));
 
             connectionWrapper = connection;
             connectionWrapper.AddRef();
@@ -35,7 +34,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         /// <summary>
         /// Closes the <see cref="T:System.Data.IDataReader"/> Object.
         /// </summary>
-        /// <filterpriority>2</filterpriority>
         public override void Close()
         {
             if (!IsClosed)

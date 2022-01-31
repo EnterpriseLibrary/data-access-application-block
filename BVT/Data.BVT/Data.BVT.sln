@@ -1,11 +1,20 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.BVT", "Data.BVT.csproj", "{FA79AA63-2EDF-4833-A1F6-581EAA5E3573}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.BVT", "Data.BVT.csproj", "{FA79AA63-2EDF-4833-A1F6-581EAA5E3573}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "..\..\source\Src\Data\Data.csproj", "{D349B6D8-992F-443F-BB57-57E50DD98794}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "..\..\source\Src\Data\Data.csproj", "{D349B6D8-992F-443F-BB57-57E50DD98794}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.SqlCe", "..\..\source\Src\SqlCe\Data.SqlCe.csproj", "{14DD9908-BB61-4402-810A-4C8A999163A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.SqlCe", "..\..\source\Src\SqlCe\Data.SqlCe.csproj", "{14DD9908-BB61-4402-810A-4C8A999163A9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Oracle", "..\..\source\Src\Data.Oracle\Data.Oracle.csproj", "{8DB17173-E6BB-4A76-A241-F53EE6A0BD0F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.SqlServer", "..\..\source\Src\Data.SqlServer\Data.SqlServer.csproj", "{2D0FB68C-61FC-4BE2-8788-7976CF6ADF8C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.OleDb", "..\..\source\Src\Data.OleDb\Data.OleDb.csproj", "{A786A2DF-F8BE-433D-99CC-E100376F3F91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Odbc", "..\..\source\Src\Data.Odbc\Data.Odbc.csproj", "{44D30D83-3148-4B05-A4DD-C5208349DE97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,8 +34,27 @@ Global
 		{14DD9908-BB61-4402-810A-4C8A999163A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14DD9908-BB61-4402-810A-4C8A999163A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14DD9908-BB61-4402-810A-4C8A999163A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DB17173-E6BB-4A76-A241-F53EE6A0BD0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DB17173-E6BB-4A76-A241-F53EE6A0BD0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DB17173-E6BB-4A76-A241-F53EE6A0BD0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DB17173-E6BB-4A76-A241-F53EE6A0BD0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D0FB68C-61FC-4BE2-8788-7976CF6ADF8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D0FB68C-61FC-4BE2-8788-7976CF6ADF8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D0FB68C-61FC-4BE2-8788-7976CF6ADF8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D0FB68C-61FC-4BE2-8788-7976CF6ADF8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A786A2DF-F8BE-433D-99CC-E100376F3F91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A786A2DF-F8BE-433D-99CC-E100376F3F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A786A2DF-F8BE-433D-99CC-E100376F3F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A786A2DF-F8BE-433D-99CC-E100376F3F91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44D30D83-3148-4B05-A4DD-C5208349DE97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44D30D83-3148-4B05-A4DD-C5208349DE97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44D30D83-3148-4B05-A4DD-C5208349DE97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44D30D83-3148-4B05-A4DD-C5208349DE97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {132952EA-7DA5-42D2-A2D4-1A603BE16817}
 	EndGlobalSection
 EndGlobal

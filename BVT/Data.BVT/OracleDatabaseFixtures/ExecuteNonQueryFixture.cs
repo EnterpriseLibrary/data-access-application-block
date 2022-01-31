@@ -126,6 +126,16 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.OracleDatabaseFixtures
         }
 
         [TestMethod]
+        public void ValueIsReturnedWhenUsingStoredProcInOutParam()
+        {
+            Database db = DatabaseFactory.CreateDatabase("OracleTest");
+            DbCommand command = db.GetStoredProcCommand("GetEmployeeLastName");
+            db.AddInOutParameter(command, "vName", DbType.String, 50, "Michael");
+            db.ExecuteNonQuery(command);
+            Assert.AreEqual("Suyama", command.Parameters["vName"].Value);
+        }
+
+        [TestMethod]
         public void RecordsAreSavedWhenUsingSqlTextAndTransactionIsCommitted()
         {
             Database db = DatabaseFactory.CreateDatabase("OracleTest");

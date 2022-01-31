@@ -1,13 +1,11 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
-using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Text;
-using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseOLEDB
@@ -183,6 +181,33 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.BVT.GenericDatabaseOLEDB
             }
         }
 
+        #endregion
+
+        #region "SP, Parm"
+
+        [TestMethod]
+        [DeploymentItem(@"TestFiles\Items.xml")]
+        public void ParameterDiscoverySupportedOnSqlServerOleDbProvider()
+        {
+            Database db = DatabaseFactory.CreateDatabase("GenericSQLTest");
+            string spName = "CustomerOrdersAddwithParm";
+            object actualResult = db.ExecuteScalar(spName, new object[] { 22, "apple", 1, 800 });
+            Assert.AreEqual(Convert.ToInt32(actualResult.ToString().Trim()), 800);
+        }
+
+        /// <summary>
+        /// The Oracle database instance should be started to run this test.
+        /// </summary>
+        [TestMethod]
+        [DeploymentItem(@"TestFiles\Items.xml")]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void ParametersDiscoveryNotSupportedOnOracleOleDbProvider()
+        {
+            Database db = DatabaseFactory.CreateDatabase("OracleOleTest");
+            string spName = "GetProductName";
+            object actualResult = db.ExecuteScalar(spName, 3);
+            Assert.AreEqual(Convert.ToString(actualResult), "Product3");
+        }
         #endregion
 
         #region "Transaction, CommandType, Command Text"

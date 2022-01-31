@@ -7,10 +7,10 @@ using System.Transactions;
 namespace Microsoft.Practices.EnterpriseLibrary.Data
 {
     /// <summary>
-    ///        This class manages the connections that will be used when transactions are active
-    ///        as a result of instantiating a <see cref="TransactionScope"/>. When a transaction
-    ///        is active, all database access must be through this single connection unless you want
-    ///        to use a distributed transaction, which is an expensive operation.
+    /// This class manages the connections that will be used when transactions are active
+    /// as a result of instantiating a <see cref="TransactionScope"/>. When a transaction
+    /// is active, all database access must be through this single connection unless you want
+    /// to use a distributed transaction, which is an expensive operation.
     /// </summary>
     public static class TransactionScopeConnections
     {
@@ -20,11 +20,11 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
             new Dictionary<Transaction, Dictionary<string, DatabaseConnectionWrapper>>();
 
         /// <summary>
-        ///        Returns a connection for the current transaction. This will be an existing <see cref="DbConnection"/>
-        ///        instance or a new one if there is a <see cref="TransactionScope"/> active. Otherwise this method
-        ///        returns null.
+        /// Returns a connection for the current transaction. This will be an existing <see cref="DbConnection"/>
+        /// instance or a new one if there is a <see cref="TransactionScope"/> active. Otherwise this method
+        /// returns null.
         /// </summary>
-        /// <param name="db"></param>
+        /// <param name="db">The database to get the connection for</param>
         /// <returns>Either a <see cref="DbConnection"/> instance or null.</returns>
         public static DatabaseConnectionWrapper GetConnection(Database db)
         {
@@ -71,8 +71,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data
         }
 
         /// <summary>
-        ///        This event handler is called whenever a transaction is about to be disposed, which allows
-        ///        us to remove the transaction from our list and dispose the connection instance we created.
+        /// This event handler is called whenever a transaction is about to be disposed, which allows
+        /// us to remove the transaction from our list and dispose the connection instance we created.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

@@ -21,7 +21,7 @@ namespace System.Data.Common
 
         private static ConnectionState _initState; // closed, connecting, open
         private static DataTable _providerTable;
-        private static object _lockobj = new object();
+        private static readonly object _lockobj = new object();
 
         /// <summary>
         /// Gets the DbProviderFactory by the provider name  
@@ -30,7 +30,7 @@ namespace System.Data.Common
         /// <returns>The <see cref="DbProviderFactory"/>  with provided name</returns>
         static public DbProviderFactory GetFactory(string providerInvariantName)
         {
-            ADP.CheckArgumentLength(providerInvariantName, "providerInvariantName");
+            ADP.CheckArgumentLength(providerInvariantName, nameof(providerInvariantName));
 
             // NOTES: Include the Framework Providers and any other Providers listed in the config file.
             DataTable providerTable = GetProviderTable();
@@ -55,7 +55,7 @@ namespace System.Data.Common
 
         static internal DbProviderFactory GetFactory(DataRow providerRow)
         {
-            ADP.CheckArgumentNull(providerRow, "providerRow");
+            ADP.CheckArgumentNull(providerRow, nameof(providerRow));
 
             // fail with ConfigProviderMissing rather than ColumnNotInTheTable exception
             DataColumn column = providerRow.Table.Columns[AssemblyQualifiedName];
@@ -147,7 +147,7 @@ namespace System.Data.Common
                         case ConnectionState.Open:
                             break;
                         default:
-                            Debug.Assert(false, "unexpected state");
+                            Debug.Fail("unexpected state");
                             break;
                     }
                 }
@@ -164,7 +164,7 @@ namespace System.Data.Common
             //  <add name="OracleClient Data Provider" invariant="Oracle.ManagedDataAccess.Client" description=".Net Framework Data Provider for Oracle" type="Oracle.ManagedDataAccess.Client.OracleClientFactory, Oracle.ManagedDataAccess.Client, Version=%ASSEMBLY_VERSION%, Culture=neutral, PublicKeyToken=%ECMA_PUBLICKEY%"/>
             //  <add name="SqlClient Data Provider" invariant="System.Data.SqlClient" description=".Net Framework Data Provider for SqlServer" type="System.Data.SqlClient.SqlClientFactory, System.Data, Version=%ASSEMBLY_VERSION%, Culture=neutral, PublicKeyToken=%ECMA_PUBLICKEY%"/>
             Type sysDataType = typeof(System.Data.SqlClient.SqlClientFactory);
-            string asmQualName = sysDataType.AssemblyQualifiedName.ToString().Replace(DbProviderFactoriesConfigurationHandler.sqlclientPartialAssemblyQualifiedName, DbProviderFactoriesConfigurationHandler.oracleclientPartialAssemblyQualifiedName);
+            string asmQualName = sysDataType.AssemblyQualifiedName.Replace(DbProviderFactoriesConfigurationHandler.sqlclientPartialAssemblyQualifiedName, DbProviderFactoriesConfigurationHandler.oracleclientPartialAssemblyQualifiedName);
             DbProviderFactoryConfigSection[] dbFactoriesConfigSection = new DbProviderFactoryConfigSection[(int)DbProvidersIndex.DbProvidersIndexCount];
 
             //ToDo: Missing providers in .Net Core
@@ -225,13 +225,13 @@ namespace System.Data.Common
                     bool flagIncludeToTable = false;
 
                     // OracleClient Provider: Include only if it installed
-                    if (configDataTable.Rows[i][AssemblyQualifiedName].ToString().ToLowerInvariant().Contains(DbProviderFactoriesConfigurationHandler.oracleclientProviderNamespace.ToString().ToLowerInvariant()))
+                    if (configDataTable.Rows[i][AssemblyQualifiedName].ToString().ToLowerInvariant().Contains(DbProviderFactoriesConfigurationHandler.oracleclientProviderNamespace.ToLowerInvariant()))
                     {
                         Type providerType = Type.GetType(configDataTable.Rows[i][AssemblyQualifiedName].ToString());
                         if (providerType != null)
                         {
                             // NOTES: Try and create a instance; If it fails, it will throw a System.NullReferenceException exception;
-                            System.Reflection.FieldInfo providerInstance = providerType.GetField(Instance, System.Reflection.BindingFlags.DeclaredOnly | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+                            Reflection.FieldInfo providerInstance = providerType.GetField(Instance, Reflection.BindingFlags.DeclaredOnly | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
                             if ((null != providerInstance) && (providerInstance.FieldType.IsSubclassOf(typeof(DbProviderFactory))))
                             {
                                 Debug.Assert(providerInstance.IsPublic, "field not public");

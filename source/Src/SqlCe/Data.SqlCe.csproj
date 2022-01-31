@@ -2,7 +2,7 @@
   <Import Project="..\..\..\package.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net46;net47</TargetFrameworks>
+    <TargetFrameworks>net452;net46;net47</TargetFrameworks>
 
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
     <FileVersion>$(Version).$(Revision)</FileVersion>
@@ -16,6 +16,7 @@
     <Description>The Data Access Application Block SQL CE Data Provider let developers use SQL CE databases in conjunction with the Data Access Application Block.</Description>
     <Summary>The Data Access Application Block SQL CE Data Provider let developers use SQL CE databases in conjunction with the Data Access Application Block.</Summary>
     <PackageTags>entlib entlib6 Enterprise Library data daab dab sql ce compact LOB futures OSS</PackageTags>
+    <PackageReleaseNotes>This package is distributed as .NET 4.5.2, 4.6, 4.7 package. See project wiki for migration from previous versions instructions.</PackageReleaseNotes>
 
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\EnterpriseLibrary.snk</AssemblyOriginatorKeyFile>
@@ -29,12 +30,8 @@
   <ItemGroup>
     <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
     <PackageReference Include="$(PrePackageName).Common$(PostPackageName)" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
-
+    <PackageReference Include="Microsoft.SqlServer.Compact" Version="4.0.8876.1" />
     <ProjectReference Include="..\Data\Data.csproj" />
-
-    <Reference Include="System.Data.SqlServerCe">
-      <HintPath>..\..\..\lib\System.Data.SqlServerCe.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
@@ -91,7 +88,6 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -105,7 +101,6 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
