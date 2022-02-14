@@ -459,6 +459,62 @@ await Task<IDataReader>.Factory
         asyncDB.EndExecuteReader, cmd, null);
 ```
 
+#### Updating Data
+The Data Access block makes it easy to execute inline SQL statements, or SQL statements within stored procedures,
+that use the `UPDATE`, `DELETE`, or `INSERT` keywords. queries against a database. You can execute these kinds of
+queries using the `ExecuteNonQuery` method of the `Database` class.
+
+The `ExecuteNonQuery` method has a broad set of overloads. You can specify a `CommandType` (the default is
+`StoredProcedure`) and either a SQL statement or a stored procedure name. You can also pass in an array of Object
+instances that represent the parameters for the query. Alternatively, you can pass to the method a `Command` object
+that contains any parameters you require. There are also `Begin` and `End` versions that allow you to execute update
+queries asynchronously. A future version will support a Task based asynchronous method.
+
+The following code shows how you can use the `ExecuteNonQuery` method to update a row in a table in the database.
+It updates the Description column of a single row in the Products table, checks that the update succeeded, and then
+updates it again to return it to the original value. The first step is to create the command and add the required
+parameters, as you've seen in earlier examples, and then call the `ExecuteNonQuery` method with the command as the
+single parameter. Next, the code changes the value of the command parameter named `description` to the original
+value in the database, and then executes the compensating update.
+
+```cs
+string oldDescription = "Carries 4 bikes securely; steel construction, fits 2\" receiver hitch.";
+string newDescription = "Bikes tend to fall off after a few miles.";
+
+// Create command to execute the stored procedure and add the parameters.
+DbCommand cmd = defaultDB.GetStoredProcCommand("UpdateProductsTable");
+defaultDB.AddInParameter(cmd, "productID", DbType.Int32, 84);
+defaultDB.AddInParameter(cmd, "description", DbType.String, newDescription);
+
+// Execute the query and check if one row was updated.
+if (defaultDB.ExecuteNonQuery(cmd) == 1)
+{
+  // Update succeeded.
+}
+else
+{
+    Console.WriteLine("ERROR: Could not update just one row.");
+}
+
+// Change the value of the second parameter
+defaultDB.SetParameterValue(cmd, "description", oldDescription);
+
+// Execute query and check if one row was updated
+if (defaultDB.ExecuteNonQuery(cmd) == 1)
+{
+  // Update succeeded.
+}
+else
+{
+    Console.WriteLine("ERROR: Could not update just one row.");
+}
+```
+
+The `ExecuteNonQuery` method returns an integer value that is the number of rows updated (or, to use the more
+accurate term, affected) by the query. In this example, we are specifying a single row as the target for the update
+by selecting on the unique ID column. Therefore, we expect only one row to be updated—any other value means there
+was a problem. If you are expecting to update multiple rows, you would check for a non-zero returned value.
+
 
  [1]: https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn440726(v=pandp.60)
  [2]: https://www.nuget.org/packages/EnterpriseLibrary.Data.NetCore/
