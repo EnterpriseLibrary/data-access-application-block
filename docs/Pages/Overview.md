@@ -283,8 +283,8 @@ In some cases, you may need to create a custom parameter mapper to pass your par
 accessor will execute. This typically occurs when you need to execute a SQL statement to work with a database
 system that does not support parameter resolution, or when a default mapping cannot be inferred due to a mismatch
 in the number or types of the parameters. The parameter mapper class must implement the `IParameterMapper` interface
-and contain a method named `AssignParameters` that takes a reference to the current `Command` instance and the array
-of parameters. The method simply needs to add the required parameters to the `Command` object's `Parameters`
+and contain a method named `AssignParameters` that takes a reference to the current `DbCommand` instance and the array
+of parameters. The method simply needs to add the required parameters to the `DbCommand` object's `Parameters`
 collection.
 
 More often, you will need to create a custom output mapper. To help you do this, the block provides a class called
@@ -349,10 +349,10 @@ the first column of the first row of the result set as an Object type.
 The `ExecuteScalar` method has a set of overloads similar to the `ExecuteReader` method we used earlier in this
 document. You can specify a `CommandType` (the default is `StoredProcedure`) and either a SQL statement or a stored
 procedure name. You can also pass in an array of `Object` instances that represent the parameters for the query.
-Alternatively, you can pass to the method a `Command` object that contains any parameters you require.
+Alternatively, you can pass to the method a `DbCommand` object that contains any parameters you require.
 
-The following code demonstrates passing a `Command` object to the method to execute both an inline SQL statement
-and a stored procedure. It obtains a suitable `Command` instance from the current Database instance using the
+The following code demonstrates passing a `DbCommand` object to the method to execute both an inline SQL statement
+and a stored procedure. It obtains a suitable `DbCommand` instance from the current Database instance using the
 `GetSqlStringCommand` and `GetStoredProcCommand` methods. You can add parameters to the command before calling
 the `ExecuteScalar` method if required. However, to demonstrate the way the method works, the code here simply
 extracts the complete row set. The result is a single `Object` that you must cast to the appropriate type before
@@ -466,7 +466,7 @@ queries using the `ExecuteNonQuery` method of the `Database` class.
 
 The `ExecuteNonQuery` method has a broad set of overloads. You can specify a `CommandType` (the default is
 `StoredProcedure`) and either a SQL statement or a stored procedure name. You can also pass in an array of Object
-instances that represent the parameters for the query. Alternatively, you can pass to the method a `Command` object
+instances that represent the parameters for the query. Alternatively, you can pass to the method a `DbCommand` object
 that contains any parameters you require. There are also `Begin` and `End` versions that allow you to execute update
 queries asynchronously. A future version will support a Task based asynchronous method.
 
@@ -515,9 +515,83 @@ accurate term, affected) by the query. In this example, we are specifying a sing
 by selecting on the unique ID column. Therefore, we expect only one row to be updated—any other value means there
 was a problem. If you are expecting to update multiple rows, you would check for a non-zero returned value.
 
+#### Working with DataSets
+##### Retrieving data as DataSet
+
+If you need to retrieve data and store it in a way that allows you to push changes back into the database, you
+will usually use a `DataSet`. The Data Access block supports simple operations on a normal (non-typed) `DataSet`,
+including the capability to fill a `DataSet` and then update the original database table from the `DataSet`.
+
+To fill a `DataSet`, you use the [ExecuteDataSet](@ref Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteDataSet)
+method, which returns a new instance of the `DataSet` class populated with a table containing the data for each
+row set returned by the query (which may be a multiple-statement batch query). The tables in this `DataSet` will
+have default names such as Table, Table1, and Table2.
+
+If you want to load data into an existing `DataSet`, you use the `LoadDataSet` method. This allows you to
+specify the name(s) of the target table(s) in the `DataSet`, and lets you add additional tables to an existing
+`DataSet` or refresh the contents of specific tables in the DataSet.
+
+Both of these methods have a broad set of overloads. You can specify a `CommandType` (the default is `StoredProcedure`)
+and either a SQL statement or a stored procedure name. You can also pass the values that represent the input
+parameters for the query. Alternatively, you can pass to the method a `DbCommand` object that contains any parameters
+you require.
+
+The following code example shows how you can use the `ExecuteDataSet` method with a SQL statement; with a stored
+procedure and a parameter array; and with a command pre-populated with parameters. The code assumes you have created
+the Data Access block `Database` instance named `db`.
+
+```cs
+DataSet productDataSet;
+
+// Using a SQL statement.
+string sql = "SELECT CustomerName, CustomerPhone FROM Customers";
+productDataSet = db.ExecuteDataSet(CommandType.Text, sql);
+
+// Using a stored procedure and a parameter array.
+productDataSet = db.ExecuteDataSet("GetProductsByCategory", "%bike%");
+
+// Using a stored procedure and a named parameter.
+DbCommand cmd = db.GetStoredProcCommand("GetProductsByCategory");
+db.AddInParameter(cmd, "CategoryID", DbType.Int32, 7);
+productDataSet = db.ExecuteDataSet(cmd);
+```
+
+##### Updating the Database from a DataSet
+To update data in a database from a `DataSet`, you use the [UpdateDataSet](@ref Microsoft.Practices.EnterpriseLibrary.Data.Database.UpdateDataSet)
+method, which returns a total count of the number of rows affected by the update, delete, and insert operations.
+The overloads of this method allow you to specify the source `DataSet` containing the updated rows, the name of
+the table in the database to update, and references to the three [DbCommand] instances that the method will
+execute to perform UPDATE, DELETE, and INSERT operations on the specified database table.
+
+In addition, you can specify a value for the [UpdateBehavior](@ref  Microsoft.Practices.EnterpriseLibrary.Data.UpdateBehavior),
+which determines how the method will apply the updates to the target table rows. You can specify one of the following
+values for this parameter:
+
+* **Standard**. If the underlying ADO.NET update process encounters an error, the update stops and no subsequent
+  updates are applied to the target table.
+* **Continue**. If the underlying ADO.NET update process encounters an error, the update will continue and attempt
+  to apply any subsequent updates.
+* **Transactional**. If the underlying ADO.NET update process encounters an error, all the updates made to all rows
+  will be rolled back.
+
+Finally, you can optionally provide a value for the `updateBatchSize` parameter of the `UpdateDataSet`
+method. This forces the method to attempt to perform updates in batches instead of sending each one to the database
+individually. This is more efficient, but the return value for the method will show only the number of updates made
+in the final batch, and not the total number for all batches. Typically, you are likely to use a batch size value
+between 10 and 100. You should experiment to find the most appropriate batch size; it depends on the type of
+database you are using, the query you are executing, and the number of parameters for the query.
+
+The following examples demonstrates the `ExecuteDataSet` and `UpdateDataSet` methods. It uses the simple overloads
+of the `ExecuteDataSet` and `LoadDataSet` methods to fill two `DataSet` instances, using a separate routine named
+`DisplayTableNames` (not shown here) to display the table names and a count of the number of rows in these tables.
+This shows one of the differences between these two methods. Note that the `LoadDataSet` method requires a reference
+to an existing `DataSet` instance, and an array containing the names of the tables to populate.
+
+
 
  [1]: https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn440726(v=pandp.60)
  [2]: https://www.nuget.org/packages/EnterpriseLibrary.Data.NetCore/
  [3]: https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=netframework-4.8
  [4]: https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/task-parallel-library-tpl
  [5]: https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskfactory.fromasync
+ [DbCommand]: https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbcommand
