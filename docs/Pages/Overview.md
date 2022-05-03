@@ -587,7 +587,74 @@ of the `ExecuteDataSet` and `LoadDataSet` methods to fill two `DataSet` instance
 This shows one of the differences between these two methods. Note that the `LoadDataSet` method requires a reference
 to an existing `DataSet` instance, and an array containing the names of the tables to populate.
 
+```cs
+string selectSQL = "SELECT Id, Name, Description FROM Products WHERE Id > 90";
 
+// Fill a DataSet from the Products table using the simple approach.
+DataSet simpleDS = defaultDB.ExecuteDataSet(CommandType.Text, selectSQL);
+DisplayTableNames(simpleDS, "ExecuteDataSet");
+
+// Fill a DataSet from the Products table using the LoadDataSet method.
+// This allows you to specify the name(s) for the table(s) in the DataSet.
+DataSet loadedDS = new DataSet("ProductsDataSet");
+defaultDB.LoadDataSet(CommandType.Text, selectSQL, loadedDS, new string[] { "Products" });
+DisplayTableNames(loadedDS, "LoadDataSet");
+```
+This produces the following result:
+```
+Tables in the DataSet obtained using the ExecuteDataSet method:
+ - Table named 'Table' contains 6 rows.
+
+Tables in the DataSet obtained using the LoadDataSet method:
+ - Table named 'Products' contains 6 rows.
+```
+
+Let's say you updated, added and deleted some row in the Products table. The next stage is to create the
+commands that the `UpdateDataSet` method will use to update the target table in the database. The code declares
+three suitable SQL statements, and then builds the commands and adds the requisite parameters to them. Note that
+each parameter may be applied to multiple rows in the target table, so the actual value must be dynamically set
+based on the contents of the DataSet row whose updates are currently being applied to the target table.
+
+This means that you must specify, in addition to the parameter name and data type, the name and the version
+(Current or Original) of the row in the DataSet to take the value from. For an INSERT command, you need the
+current version of the row that contains the new values. For a DELETE command, you need the original value of
+the ID to locate the row in the table that will be deleted. For an UPDATE command, you need the original value
+of the ID to locate the row in the table that will be updated, and the current version of the values with which
+to update the remaining columns in the target table row.
+
+```cs
+
+string addSQL = "INSERT INTO Products (Name, Description) VALUES (@name, @description)";
+string updateSQL = "UPDATE Products SET Name = @name, Description = @description WHERE Id = @id";
+string deleteSQL = "DELETE FROM Products WHERE Id = @id";
+
+// Create the commands to update the original table in the database
+DbCommand insertCommand = defaultDB.GetSqlStringCommand(addSQL);
+defaultDB.AddInParameter(insertCommand, "name", DbType.String, "Name", DataRowVersion.Current);
+defaultDB.AddInParameter(insertCommand, "description", DbType.String, "Description", DataRowVersion.Current);
+
+DbCommand updateCommand = defaultDB.GetSqlStringCommand(updateSQL);
+defaultDB.AddInParameter(updateCommand, "name", DbType.String, "Name", DataRowVersion.Current);
+defaultDB.AddInParameter(updateCommand, "description", DbType.String, "Description", DataRowVersion.Current);
+defaultDB.AddInParameter(updateCommand, "id", DbType.String, "Id", DataRowVersion.Original);
+
+DbCommand deleteCommand = defaultDB.GetSqlStringCommand(deleteSQL);
+defaultDB.AddInParameter(deleteCommand, "id", DbType.Int32, "Id", DataRowVersion.Original);
+```
+
+Finally, you can apply the changes by calling the UpdateDataSet method, as shown here:
+
+```cs
+// Apply the updates in the DataSet to the original table in the database.
+int rowsAffected = defaultDB.UpdateDataSet(loadedDS, "Products", insertCommand, updateCommand, deleteCommand, UpdateBehavior.Standard);
+Console.WriteLine("Updated a total of {0} rows in the database.", rowsAffected);
+```
+The code captures and displays the number of rows affected by the updates. As expected, this is three, as shown
+in the final section of the output from the example.
+
+```
+Updated a total of 3 rows in the database.
+```
 
  [1]: https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn440726(v=pandp.60)
  [2]: https://www.nuget.org/packages/EnterpriseLibrary.Data.NetCore/
