@@ -103,7 +103,7 @@ For Oracle databases, we also need to configure packages.
 ### Code Examples
 
 #### Creating Database Instances
-The simplest approach for creating a `Database` object or one of its descendants is calling the `CreateDefault`
+The simplest approach for creating a [Database] object or one of its descendants is calling the `CreateDefault`
 or `Create` method of the `DatabaseProviderFactory` class, as shown here, and storing these instances in
 application-wide variables so that they can be accessed from anywhere in the code.
 ```cs
@@ -139,7 +139,7 @@ sqlServerDB = DatabaseFactory.CreateDatabase() as SqlDatabase;
 ```
 
 In addition to using configuration to define the databases you will use, the Data Access block allows you to create
-instances of concrete types that inherit from the Database class directly in your code, as shown here.
+instances of concrete types that inherit from the `Database` class directly in your code, as shown here.
 
 ```cs
 SqlDatabase sqlDatabase = new SqlDatabase(myConnectionString);
@@ -352,7 +352,7 @@ procedure name. You can also pass in an array of `Object` instances that represe
 Alternatively, you can pass to the method a `DbCommand` object that contains any parameters you require.
 
 The following code demonstrates passing a `DbCommand` object to the method to execute both an inline SQL statement
-and a stored procedure. It obtains a suitable `DbCommand` instance from the current Database instance using the
+and a stored procedure. It obtains a suitable `DbCommand` instance from the current `Database` instance using the
 `GetSqlStringCommand` and `GetStoredProcCommand` methods. You can add parameters to the command before calling
 the `ExecuteScalar` method if required. However, to demonstrate the way the method works, the code here simply
 extracts the complete row set. The result is a single `Object` that you must cast to the appropriate type before
@@ -397,7 +397,7 @@ the block will also support the [Task Parallel Library][4] (TPL). In the mean ti
 [TaskFactory.FromAsync][5] to wrap a `Begin` and `End` method with a `Task`.
 
 Asynchronous processing in the Data Access block is only available for SQL Server databases. The `Database` class
-includes a property named `SupportsAsync` that you can query to see if the current Database instance
+includes a property named `SupportsAsync` that you can query to see if the current `Database` instance
 supports asynchronous operations. The example for this chapter contains a simple check for this.
 
 The `BeginExecuteReader` method does not accept a `CommandBehavior` parameter. By default, the method will
@@ -449,13 +449,13 @@ asyncDB.BeginExecuteReader(cmd,
 The `AsyncState` parameter can be used to pass any required state information into the callback. For example,
 when you use a callback method instead of a lambda expression, you would pass a reference to the current `Database`
 instance as the `AsyncState` parameter so that the callback code can call the `EndExecuteReader` (or other
-appropriate End method) to obtain the results. When you use a Lambda expression, the current Database instance
+appropriate End method) to obtain the results. When you use a Lambda expression, the current `Database` instance
 is available within the expression and, therefore, you do not need to populate the `AsyncState` parameter.
 
 As mentioned above, you can wrap a BeginXXX and EndXXX methods with a Task.
 ```cs
 await Task<IDataReader>.Factory
-        .FromAsync<DbCommand>(asyncDB.BeginExecuteReader, 
+        .FromAsync<DbCommand>(asyncDB.BeginExecuteReader, .
         asyncDB.EndExecuteReader, cmd, null);
 ```
 
@@ -656,9 +656,119 @@ in the final section of the output from the example.
 Updated a total of 3 rows in the database.
 ```
 
+#### Managing Connections
+Connections are scarce, expensive in terms of resource usage, and can cause a big performance hit if not managed
+correctly. You must obviously open a connection before you can access data, and you should make sure it is closed
+after you have finished with it. However, if the operating system does actually create a new connection, and then
+closes and destroys it every time, execution in your applications would flow like molasses.
+
+Instead, ADO.NET holds a pool of open connections that it hands out to applications that require them. Data access
+code must still go through the motions of calling the methods to create, open, and close connections, but ADO.NET
+automatically retrieves connections from the connection pool when possible, and decides when and whether to actually
+close the underlying connection and dispose it. The main issues arise when you have to decide when and how your code
+should call the `Close` method. The Data Access block helps to resolve these issues by automatically managing
+connections as far as is reasonably possible.
+
+When you use the Data Access block to retrieve a `DataSet`, the `ExecuteDataSet` method automatically opens and
+closes the connection to the database. If an error occurs, it will ensure that the connection is closed. If you
+want to keep a connection open, perhaps to perform multiple operations over that connection, you can access the
+`ActiveConnection` property of your `DbCommand` object and open it before calling the ExecuteDataSet method. The
+`ExecuteDataSet` method will leave the connection open when it completes, so you must ensure that your code
+closes it afterwards.
+
+In contrast, when you retrieve a `DataReader` or an `XmlReader`, the [ExecuteReader](@ref Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteReader)
+method (or, in the case of the `XmlReader`, the [ExecuteXmlReader](@ref Microsoft.Practices.EnterpriseLibrary.Data.Sql.SqlDatabase.ExecuteXmlReader)
+method) must leave the connection open so that you can read the data. The `ExecuteReader` method sets the
+`CommandBehavior` property of the reader to `CloseConnection` so that the connection is closed when you dispose the
+reader. Commonly, you will use a using construct to ensure that the reader is disposed, as shown here:
+
+```cs
+using (IDataReader reader = db.ExecuteReader(cmd))
+{
+    // use the reader here
+}
+```
+
+Typically, when you use the `ExecuteXmlReader` method, you will explicitly close the connection after you dispose
+the reader. This is because the underlying `XmlReader` class does not expose a `CommandBehavior` property. However,
+you should still use the same approach as with a `DataReader` (a using statement) to ensure that the `XmlReader`
+is correctly closed and disposed.
+
+```cs
+using (XmlReader reader = db.ExecuteXmlReader(cmd))
+{
+    // use the reader here
+}
+```
+
+Finally, if you want to be able to access the connection your code is using, perhaps to create connection-based
+transactions in your code, you can use the Data Access block methods to explicitly create a connection for your
+data access methods to use. This means that you must manage the connection yourself, usually through a using
+statement as shown below, which automatically closes and disposes the connection:
+
+```cs
+using (DbConnection conn = db.CreateConnection())
+{
+    conn.Open();
+    try
+    {
+        // perform data access here
+    }
+    catch
+    {
+        // handle any errors here
+    }
+}
+```
+
+#### Working with Connection-Based Transactions
+A common requirement in many applications is to perform multiple updates to data so that they all succeed,
+or can all be undone (rolled back) to leave the databases in a valid state that is consistent with the original
+content. The traditional example is when your bank carries out a monetary transaction that requires them to subtract
+a payment from one account and add the same amount to another account (or perhaps slightly less, with the commission
+going into their own account).
+
+Transactions should follow the four **ACID** principles. These are **Atomicity** (all of the tasks of a transaction
+are performed or none of them are), **Consistency** (the database remains in a consistent state before and after the
+transaction), **Isolation** (other operations cannot access or see the data in an intermediate state during a
+transaction), and **Durability** (the results of a successful transaction are persisted and will survive system
+failure).
+
+You can execute transactions when all of the updates occur in a single database by using the features of your
+database system (by including the relevant commands such as `BEGIN TRANSACTION` and `ROLLBACK TRANSACTION` in
+your stored procedures). ADO.NET also provides features that allow you to perform connection-based transactions
+over a single connection. This allows you to perform multiple actions on different tables in the same database,
+and manage the commit or rollback in your data access code.
+
+All of the methods of the Data Access block that retrieve or update data have overloads that accept a reference
+to an existing transaction as a DbTransaction type. As an example of their use, the following code explicitly
+creates a transaction over a connection. It assumes you have created the Data Access block [Database] instance named
+`db` and two [DbCommand] instances named `cmdA` and `cmdB`.
+
+```cs
+using (DbConnection conn = db.CreateConnection())
+{
+    conn.Open();
+    DbTransaction trans = conn.BeginTransaction();
+
+    try
+    {
+        // execute commands, passing in the current transaction to each one
+        db.ExecuteNonQuery(cmdA, trans);
+        db.ExecuteNonQuery(cmdB, trans);
+        trans.Commit();    // commit the transaction
+    }
+    catch
+    {
+        trans.Rollback();  // rollback the transaction
+    }
+}
+```
+
  [1]: https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn440726(v=pandp.60)
  [2]: https://www.nuget.org/packages/EnterpriseLibrary.Data.NetCore/
  [3]: https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=netframework-4.8
  [4]: https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/task-parallel-library-tpl
  [5]: https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskfactory.fromasync
  [DbCommand]: https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbcommand
+ [Database]: @ref Microsoft.Practices.EnterpriseLibrary.Data.Database
