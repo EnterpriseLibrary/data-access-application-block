@@ -765,6 +765,30 @@ using (DbConnection conn = db.CreateConnection())
 }
 ```
 
+#### Working with Distributed Transactions
+If you need to access different databases as part of the same transaction (including databases on separate servers),
+of if you need to include other data sources such as Microsoft Message Queuing (MSMQ) in your transaction, you must
+use a distributed transaction coordinator (DTC) mechanism such as Windows Component Services.
+
+However, ADO.NET supports the concept of automatic transactions through the [TransactionScope] class. You can specify
+that a series of actions require transactional support, but ADO.NET will not generate an expensive distributed
+transaction until you actually open more than one connection within the transaction scope. This means that you
+can perform multiple transacted updates to different tables in the same database over a single connection. As soon
+as you open a new connection, ADO.NET automatically creates a distributed transaction (using Windows Component
+Services), and enrolls the original connections and all new connections created within the transaction scope into
+that distributed transaction. You then call methods on the transaction scope to either commit all updates, or to
+roll back (undo) all of them.
+
+This is done by the underlying ADO.NET. DAAB has no direct interaction with the DTC mechanism.
+
+Typically, you will use the [TransactionScope] class in the following way:
+```cs
+using (TransactionScope scope = new TransactionScope(TransactionScopeOption.RequiresNew))
+{
+    // perform data access here
+}
+```
+
  [1]: https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn440726(v=pandp.60)
  [2]: https://www.nuget.org/packages/EnterpriseLibrary.Data.NetCore/
  [3]: https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=netframework-4.8
@@ -772,3 +796,4 @@ using (DbConnection conn = db.CreateConnection())
  [5]: https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskfactory.fromasync
  [DbCommand]: https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbcommand
  [Database]: @ref Microsoft.Practices.EnterpriseLibrary.Data.Database
+ [TransactionScope]: https://learn.microsoft.com/en-us/dotnet/api/system.transactions.transactionscope
