@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\package.props" />
 
   <PropertyGroup>
@@ -42,7 +42,7 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Extensions" />
     <PackageReference Include="Moq" Version="4.0.10827" />
-    <PackageReference Include="Oracle.ManagedDataAccess" Version="18.3.0" />
+    <PackageReference Include="Oracle.ManagedDataAccess" Version="21.9.0" />
   </ItemGroup>
 
   <ItemGroup>
