@@ -117,7 +117,7 @@ Database defaultDB = factory.CreateDefault();
 // Create a Database object from the factory using the connection string name.
 Database namedDB = factory.Create("ExampleDatabase");
 ```
-where "ExampleDatabase" is a `name` of a connection string. With `CreateDefault`, the connection string specified by
+where "ExampleDatabase" is a `name` of a connection string. With [CreateDefault], the connection string specified by
 the `defaultDatabase` attribute of the `dataConfiguration` element in web.config is used, as described above.
 Using the default database is a useful approach because you can change which of the databases defined in your
 configuration is the default simply by editing the configuration file, without requiring recompilation or
@@ -789,11 +789,23 @@ using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Requ
 }
 ```
 
- [1]: https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn440726(v=pandp.60)
+The example uses the Microsoft Distributed Transaction Coordinator (DTC) service. You must ensure that this
+service is running before you execute the example; depending on your operating system it may not be set to
+start automatically. To start the service, open the Services MMC snap-in from your Administrative Tools menu,
+right-click on the Distributed Transaction Coordinator service, and click Start. To see the effects of the
+`TransactionScope` and the way that it promotes a transaction, open the Component Services MMC snap-in from your
+Administrative Tools menu and expand the Component Services node until you can see the Transaction List in the
+central pane of the snap-in.
+
+Your code should call the `Complete` method of the `TransactionScope` object before it exits the `using` block in
+order to preserve the changes in the database, otherwise they are rolled back automatically.
+
+ [1]: https://learn.microsoft.com/en-us/previous-versions/msp-n-p/dn440726(v=pandp.60)
  [2]: https://www.nuget.org/packages/EnterpriseLibrary.Data.NetCore/
- [3]: https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=netframework-4.8
- [4]: https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/task-parallel-library-tpl
- [5]: https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskfactory.fromasync
- [DbCommand]: https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbcommand
+ [3]: https://learn.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=netframework-4.8
+ [4]: https://learn.microsoft.com/en-us/dotnet/standard/parallel-programming/task-parallel-library-tpl
+ [5]: https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskfactory.fromasync
+ [CreateDefault]: @ref Microsoft.Practices.EnterpriseLibrary.Data.DatabaseProviderFactory.CreateDefault
+ [DbCommand]: https://learn.microsoft.com/en-us/dotnet/api/system.data.common.dbcommand
  [Database]: @ref Microsoft.Practices.EnterpriseLibrary.Data.Database
  [TransactionScope]: https://learn.microsoft.com/en-us/dotnet/api/system.transactions.transactionscope
