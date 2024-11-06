@@ -2,7 +2,7 @@
   <Import Project="..\..\..\package.props" />
   
   <PropertyGroup>
-    <TargetFrameworks>net452;net46;net47;netstandard2.0;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net452;net46;net47;netstandard2.0;netcoreapp3.1;net8.0</TargetFrameworks>
 
     <AssemblyName>$(PreAssemblyName).Data.OleDb</AssemblyName>
     <RootNamespace>$(PreAssemblyName).Data.OleDb</RootNamespace>
@@ -36,7 +36,7 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup Condition="$(TargetFramework.StartsWith('netcoreapp')) OR ('$(TargetFramework)' == 'netstandard2.0')">
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netcoreapp')) OR ('$(TargetFramework)' == 'netstandard2.0') OR '$(TargetFramework)' == 'net8.0'">
     <PackageReference Include="System.Data.OleDb" Version="4.6.0" />
   </ItemGroup>
 
