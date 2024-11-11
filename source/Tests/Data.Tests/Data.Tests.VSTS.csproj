@@ -2,7 +2,7 @@
   <Import Project="..\..\..\package.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net47;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net47;netcoreapp3.1;net8.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
 
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>

@@ -21,6 +21,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.Configuration.Fluent;
 #endif
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Oracle.ManagedDataAccess.Client;
+using OracleDatabase = Microsoft.Practices.EnterpriseLibrary.Data.Oracle.OracleDatabase;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 {
