@@ -4,6 +4,7 @@
 		<MinorVersion>0</MinorVersion>
 		<ReleaseVersion>0</ReleaseVersion>
 		<Revision>0</Revision>
+		
 
 		<SemanticVersionSuffix>-rc1</SemanticVersionSuffix>
 	</PropertyGroup>
