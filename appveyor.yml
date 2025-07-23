@@ -29,7 +29,7 @@ before_build:
 - cmd: dotnet restore "source\Data.sln"
 
 build:
-  project: source\Data.sln
+  project: .\source\Data.sln
   parallel: true
   verbosity: minimal
 
