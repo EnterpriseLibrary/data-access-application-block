@@ -26,6 +26,7 @@ build_script:
   - dotnet build source\Tests\SqlCe.Tests\Data.SqlCe.Tests.VSTS.csproj --configuration %CONFIGURATION%
 
 
+
 dotnet_csproj:
   patch: false
 
@@ -33,7 +34,7 @@ before_build:
 - cmd: dotnet restore "source\Data.sln"
 
 before_test:
-  - xcopy /y /s "source\Tests\SqlCe.Tests\lib\sqlce\*.*" "source\Tests\SqlCe.Tests\bin\Debug\"
+  - xcopy /y /s "source\Tests\SqlCe.Tests\lib\sqlce\*.*" "source\Tests\SqlCe.Tests\bin\Release\net47\"
 
 build:
   project: source\Data.sln
