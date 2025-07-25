@@ -43,6 +43,9 @@ artifacts:
 - path: 'bin\Release\EnterpriseLibrary.Data.*.nupkg'
   name: 'EnterpriseLibrary.Data'
 
+test_script:
+- dotnet test --filter "TestCategory!=SqlCe"
+
 on_success:
   - ps: git config --global credential.helper store
   - ps: Add-Content "$HOME\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
