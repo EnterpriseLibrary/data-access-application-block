@@ -24,6 +24,7 @@ install:
 
 build_script:
   - dotnet build source\Tests\SqlCe.Tests\Data.SqlCe.Tests.VSTS.csproj --configuration %CONFIGURATION%
+  - dotnet build source\Tests\SqlCe.Tests\Data.Tests.VSTS.csproj --configuration %CONFIGURATION%
 
 
 
@@ -53,6 +54,7 @@ artifacts:
 
 test_script:
   - dotnet test source\Tests\SqlCe.Tests\Data.SqlCe.Tests.VSTS.csproj --configuration %CONFIGURATION% --no-build
+  - dotnet test source\Tests\SqlCe.Tests\Data.Tests.VSTS.csproj --configuration %CONFIGURATION% --no-build
 
 on_success:
   - ps: git config --global credential.helper store
