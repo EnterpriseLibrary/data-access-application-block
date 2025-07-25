@@ -22,6 +22,10 @@ install:
   - ps: $xRevision.Node.InnerText = $env:revision
   - ps: $xRevision.Node.OwnerDocument.Save($xRevision.Path)
 
+build_script:
+  - dotnet build source\Tests\SqlCe.Tests\Data.SqlCe.Tests.VSTS.csproj --configuration %CONFIGURATION%
+
+
 dotnet_csproj:
   patch: false
 
@@ -47,7 +51,7 @@ artifacts:
   name: 'EnterpriseLibrary.Data'
 
 test_script:
-- dotnet test --filter "TestCategory!=SqlCe"
+  - dotnet test source\Tests\SqlCe.Tests\Data.SqlCe.Tests.VSTS.csproj --configuration %CONFIGURATION% --no-build
 
 on_success:
   - ps: git config --global credential.helper store
