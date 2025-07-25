@@ -9,7 +9,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Data.SqlCe.Tests.VSTS
 {
     [TestClass]
-    [TestCategory("SqlCe")]
 
     public class SqlCeExtensionsFixutre
     {

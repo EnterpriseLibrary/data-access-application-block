@@ -21,6 +21,8 @@ install:
   - ps: $xRevision = Select-Xml -Path $env:version_file_path -XPath "/Project/PropertyGroup/Revision"
   - ps: $xRevision.Node.InnerText = $env:revision
   - ps: $xRevision.Node.OwnerDocument.Save($xRevision.Path)
+  - choco install sqlservercompact --version 4.0.8482.1 -y
+  - choco install sqlservercompact --version 3.5.8080.0 -y
 
 dotnet_csproj:
   patch: false
