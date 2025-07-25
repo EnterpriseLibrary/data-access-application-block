@@ -21,13 +21,15 @@ install:
   - ps: $xRevision = Select-Xml -Path $env:version_file_path -XPath "/Project/PropertyGroup/Revision"
   - ps: $xRevision.Node.InnerText = $env:revision
   - ps: $xRevision.Node.OwnerDocument.Save($xRevision.Path)
-  - choco install sqlservercompact --version 3.5.8080.0 -y
 
 dotnet_csproj:
   patch: false
 
 before_build:
 - cmd: dotnet restore "source\Data.sln"
+
+before_test:
+  - xcopy /y /s "source\Tests\SqlCe.Tests\lib\sqlce\*.*" "source\Tests\SqlCe.Tests\bin\Debug\"
 
 build:
   project: source\Data.sln
