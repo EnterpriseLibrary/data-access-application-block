@@ -63,5 +63,4 @@ build_script:
   - msbuild source\Data.sln /p:Configuration=Release
 
 test_script:
-  - dotnet test source\Tests\SqlCe.Tests\Data.SqlCe.Tests.VSTS.csproj -c Release
-  - dotnet test source\Tests\Data.Tests\Data.Tests.VSTS.csproj -c Release
+  - dotnet test source\Data.sln -c Release --filter "FullyQualifiedName!~Oracle"
