@@ -62,3 +62,6 @@ on_success:
 build_script:
   - msbuild source\Data.sln /p:Configuration=Release
 
+
+test_script:
+  - dotnet test source\Data.sln -c Release --filter "TestCategory!=Oracle"

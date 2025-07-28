@@ -9,6 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
 {
     [TestClass]
+    [TestCategory("Oracle")]
     public class OracleExecuteNonQueryFixture
     {
         ExecuteNonQueryFixture baseFixture;

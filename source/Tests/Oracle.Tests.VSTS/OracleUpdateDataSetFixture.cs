@@ -12,6 +12,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
     /// using ExecuteUpdateDataTable
     /// </summary>
     [TestClass]
+    [TestCategory("Oracle")]
     public class OracleUpdateDataSetFixture : UpdateDataSetFixture
     {
         [TestInitialize]

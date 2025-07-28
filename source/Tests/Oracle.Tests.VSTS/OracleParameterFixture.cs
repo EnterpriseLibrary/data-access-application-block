@@ -10,6 +10,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
 {
     [TestClass]
+    [TestCategory("Oracle")]
     public class OracleParameterFixture
     {
         Guid referenceGuid = new Guid("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");

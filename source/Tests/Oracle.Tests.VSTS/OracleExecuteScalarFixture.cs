@@ -12,6 +12,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
     /// Test the ExecuteScalar method on the Database class
     /// </summary>
     [TestClass]
+    [TestCategory("Oracle")]
     public class OracleExecuteScalarFixture
     {
         static Database db;

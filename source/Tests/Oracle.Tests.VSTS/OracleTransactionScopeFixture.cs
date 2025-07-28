@@ -26,6 +26,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
     /// </summary>
     [TestClass]
     [Ignore]
+    [TestCategory("Oracle")]
     public class OracleTransactionScopeFixture
     {
         TransactionScopeFixture baseFixture;
