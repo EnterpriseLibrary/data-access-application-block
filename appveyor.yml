@@ -62,3 +62,6 @@ on_success:
 build_script:
   - msbuild source\Data.sln /p:Configuration=Release
 
+test_script:
+  - dotnet test source\Tests\Data.SqlCe.Tests.VSTS\Data.SqlCe.Tests.VSTS.csproj -c Release
+  - dotnet test source\Tests\Data.Tests.VSTS\Data.Tests.VSTS.csproj -c Release
