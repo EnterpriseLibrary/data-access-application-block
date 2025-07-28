@@ -12,7 +12,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
     /// Use the Data Access Application Block to execute a create a stored procedure script using ExecNonQuery.
     /// </summary>
     [TestClass]
-    [TestCategory("Oracle")]
+    
     public class OracleStoredProcedureCreatingFixture : StoredProcedureCreationBase
     {
         [TestInitialize]

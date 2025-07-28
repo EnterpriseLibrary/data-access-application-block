@@ -11,7 +11,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
 {
 #pragma warning disable 612, 618
     [TestClass]
-    [TestCategory("Oracle")]
+    
     public class WhenSprocAccessorIsCreatedForOracleDatabase : ArrangeActAssert
     {
         OracleDatabase database;

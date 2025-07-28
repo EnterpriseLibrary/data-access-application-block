@@ -14,7 +14,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
     /// Test the ExecuteReader method on the Database class
     /// </summary>
     [TestClass]
-    [TestCategory("Oracle")]
+    
     public class OracleExecuteReaderFixture
     {
         const string insertString = "Insert into Region values (99, 'Midwest')";
