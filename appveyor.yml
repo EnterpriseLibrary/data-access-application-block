@@ -6,6 +6,10 @@ skip_tags: true
 services:
   - mssql2017
 
+init:
+- ps: |
+    Invoke-Sqlcmd -Query "CREATE DATABASE [TestDb]" -ServerInstance ".\SQL2017"
+
 install:
   - ps: Write-Host "SQL Server Compact installed" -foregroundcolor Green
   - ps: $env:version_file_path = ".\version.props"

@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
+using System.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Configuration;
@@ -15,21 +16,42 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.TestSupport
 
         public static DictionaryConfigurationSource CreateConfigurationSource()
         {
-            DictionaryConfigurationSource source = new DictionaryConfigurationSource();
+            var source = new DictionaryConfigurationSource();
 
-            DatabaseSettings settings = new DatabaseSettings();
-            settings.DefaultDatabase = "Service_Dflt";
-            DbProviderMapping mapping = new DbProviderMapping(DbProviderMapping.DefaultSqlProviderName, typeof(SqlDatabase));
-            settings.ProviderMappings.Add(mapping);
+            
+            var connectionStringSettings = new ConnectionStringSettings(
+                "Service_Dflt", 
+                "Data Source=localhost;Initial Catalog=TestDb;Integrated Security=True;", 
+                "System.Data.SqlClient" 
+            );
 
-            OracleConnectionSettings oracleConnectionSettings = new OracleConnectionSettings();
-            OracleConnectionData data = new OracleConnectionData();
-            data.Name = "OracleTest";
+            var connectionStringsSection = new ConnectionStringsSection();
+            connectionStringsSection.ConnectionStrings.Add(connectionStringSettings);
+
+            source.Add("connectionStrings", connectionStringsSection);
+
+            
+            var settings = new DatabaseSettings
+            {
+                DefaultDatabase = "Service_Dflt"
+            };
+            settings.ProviderMappings.Add(
+                new DbProviderMapping(DbProviderMapping.DefaultSqlProviderName, typeof(SqlDatabase))
+            );
+
+            
+            var oracleConnectionSettings = new OracleConnectionSettings();
+            var data = new OracleConnectionData
+            {
+                Name = "OracleTest"
+            };
             data.Packages.Add(new OraclePackageData("TESTPACKAGE", "TESTPACKAGETOTRANSLATE"));
             oracleConnectionSettings.OracleConnectionsData.Add(data);
 
+            
             source.Add(DatabaseSettings.SectionName, settings);
             source.Add(OracleConnectionSettings.SectionName, oracleConnectionSettings);
+            source.Add("connectionStrings", connectionStringsSection); // Important: register this
 
             return source;
         }
