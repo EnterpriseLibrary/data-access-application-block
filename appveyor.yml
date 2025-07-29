@@ -63,4 +63,3 @@ on_success:
 build_script:
   - msbuild source\Data.sln /p:Configuration=Release
 
-  
