@@ -15,7 +15,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.Tests
         {
             Database db = null;
             DatabaseProviderFactory factory = new DatabaseProviderFactory(TestConfigurationSource.CreateConfigurationSource());
-            db = factory.CreateDefault();
+            db = factory.Create("SqlCeTestConnection");
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
