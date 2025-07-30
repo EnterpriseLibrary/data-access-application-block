@@ -12,14 +12,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.Tests
     public class SqlCeParameterFixture
     {
         [TestMethod]
+        [Ignore] //AppVeyor does not support SQL Server Compact
         public void CanInsertNullStringParameter()
         {
-            if (Environment.GetEnvironmentVariable("CI") == "true")
-            {
-                Assert.Inconclusive("Test skipped on CI environment (AppVeyor does not support SQL Server Compact).");
-                return;
-            }
-
             Database db = null;
             DatabaseProviderFactory factory = new DatabaseProviderFactory(TestConfigurationSource.CreateConfigurationSource());
             db = factory.CreateDefault();
