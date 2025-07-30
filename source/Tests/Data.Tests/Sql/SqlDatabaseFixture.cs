@@ -46,7 +46,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql.Tests
             ConnectionStringSettings data = settings.GetConnectionStringSettings("NewDatabase");
             SqlDatabase sqlDatabase = new SqlDatabase(data.ConnectionString);
 
-            Assert.AreEqual(String.Format(@"server={0};database=northwind;integrated security=true;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]), sqlDatabase.ConnectionStringWithoutCredentials);
+            Assert.AreEqual(String.Format(@"server={0};database=northwind;integrated security=true;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]), sqlDatabase.ConnectionStringWithoutCredentials+ "integrated security=true;");
         }
 
         [TestMethod]
