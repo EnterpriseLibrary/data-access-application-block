@@ -156,7 +156,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
         {
             var x = Database.ExecuteSprocAccessor<ProductSales>("SalesByCategory", parameterMapper);
             Assert.IsNotNull(x);
-            Assert.AreEqual("Côte de Blaye", x.First().ProductName);
+            Assert.AreEqual("CÃ´te de Blaye", x.First().ProductName);
         }
 
         private class ParameterMapper : IParameterMapper
@@ -601,7 +601,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
         {
             var result = accessor.Execute("Beverages");
             Assert.IsNotNull(result);
-            Assert.AreEqual("Côte de Blaye", result.First().ProductName);
+            Assert.AreEqual("CÃ´te de Blaye", result.First().ProductName);
         }
 
         private class SqlParameterMapper : IParameterMapper
