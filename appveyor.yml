@@ -45,8 +45,6 @@ build:
 after_build:
   - cmd: scripts\CREATE_Northwind.bat
 
-after_test:
-  - cmd: scripts\DROP_Northwind.bat
 
 artifacts:
 - path: 'bin\Release\EnterpriseLibrary.Data.*.nupkg'
