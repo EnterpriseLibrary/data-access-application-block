@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
+using System;
 using System.Data;
 using System.Data.Common;
 using Data.SqlCe.Tests.VSTS;
@@ -13,6 +14,12 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.Tests
         [TestMethod]
         public void CanInsertNullStringParameter()
         {
+            if (Environment.GetEnvironmentVariable("CI") == "true")
+            {
+                Assert.Inconclusive("Test skipped on CI environment (AppVeyor does not support SQL Server Compact).");
+                return;
+            }
+
             Database db = null;
             DatabaseProviderFactory factory = new DatabaseProviderFactory(TestConfigurationSource.CreateConfigurationSource());
             db = factory.CreateDefault();
