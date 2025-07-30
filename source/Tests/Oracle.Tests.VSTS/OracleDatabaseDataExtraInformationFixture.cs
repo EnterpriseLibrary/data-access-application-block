@@ -14,6 +14,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
     /// Summary description for OracleDatabaseDataExtraInformationFixture
     /// </summary>
     [TestClass]
+    
     public class OracleDatabaseDataExtraInformationFixture
     {
         [TestInitialize]

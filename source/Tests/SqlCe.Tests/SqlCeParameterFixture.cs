@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
+using System;
 using System.Data;
 using System.Data.Common;
 using Data.SqlCe.Tests.VSTS;
@@ -11,6 +12,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.Tests
     public class SqlCeParameterFixture
     {
         [TestMethod]
+        [Ignore] //AppVeyor does not support SQL Server Compact
         public void CanInsertNullStringParameter()
         {
             Database db = null;

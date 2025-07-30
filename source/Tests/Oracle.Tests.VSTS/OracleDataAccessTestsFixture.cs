@@ -9,6 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
 {
+    
     [TestClass]
     public class OracleDataAccessTestsFixture
     {

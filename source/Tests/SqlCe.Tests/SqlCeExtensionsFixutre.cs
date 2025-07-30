@@ -9,6 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Data.SqlCe.Tests.VSTS
 {
     [TestClass]
+
     public class SqlCeExtensionsFixutre
     {
         TestConnectionString testConnection;

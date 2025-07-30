@@ -1,4 +1,4 @@
-image: Visual Studio 2019
+image: Visual Studio 2022
 configuration: Release
 platform: Any CPU
 skip_tags: true
@@ -22,11 +22,20 @@ install:
   - ps: $xRevision.Node.InnerText = $env:revision
   - ps: $xRevision.Node.OwnerDocument.Save($xRevision.Path)
 
+
 dotnet_csproj:
   patch: false
 
 before_build:
 - cmd: dotnet restore "source\Data.sln"
+
+before_test:
+  - xcopy /y /s "source\Tests\SqlCe.Tests\lib\sqlce\*.*" "source\Tests\SqlCe.Tests\bin\Release\net47\"
+  - xcopy /y /s "source\Tests\SqlCe.Tests\lib\sqlce\*.*" "source\Tests\Data.Tests\bin\Release\net47\"
+  - xcopy /y /s "source\Tests\SqlCe.Tests\lib\sqlce\*.*" "source\Tests\Oracle.Tests.VSTS\bin\Release\net47\"
+  - xcopy /y /s "source\Tests\SqlCe.Tests\lib\sqlce\*.*" "source\Tests\Oracle.Tests\bin\Release\net47\"
+  - ps: |
+      sqlcmd -S "127.0.0.1,1433" -U sa -P "Password12!" -Q "IF DB_ID('Northwind') IS NULL CREATE DATABASE Northwind"
 
 build:
   project: source\Data.sln
@@ -36,18 +45,21 @@ build:
 after_build:
   - cmd: scripts\CREATE_Northwind.bat
 
-after_test:
-  - cmd: scripts\DROP_Northwind.bat
 
 artifacts:
 - path: 'bin\Release\EnterpriseLibrary.Data.*.nupkg'
   name: 'EnterpriseLibrary.Data'
 
-on_success:
-  - ps: git config --global credential.helper store
-  - ps: Add-Content "$HOME\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
-  - ps: git config --global user.email "$env:github_email"
-  - ps: git config --global user.name "$env:github_name"
-  - git pull
-  - git commit -m "Revision update by AppVeyor [ci skip]" -- version.props
-  - git push
+
+#on_success:
+#  - ps: git config --global credential.helper store
+#  - ps: Add-Content "$HOME\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
+#  - ps: git config --global user.email "$env:github_email"
+#  - ps: git config --global user.name "$env:github_name"
+#  - git pull
+#  - git commit -m "Revision update by AppVeyor [ci skip]" -- version.props
+#  - git push
+
+build_script:
+  - msbuild source\Data.sln /p:Configuration=Release
+

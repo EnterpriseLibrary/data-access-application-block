@@ -19,7 +19,7 @@ namespace Data.SqlCe.Tests.VSTS
             settings.DefaultDatabase = "SqlCeTestConnection";
 
             ConnectionStringsSection section = new ConnectionStringsSection();
-            section.ConnectionStrings.Add(new ConnectionStringSettings("SqlCeTestConnection", "Data Source='testdb.sdf'", "System.Data.SqlServerCe.4.0"));
+            section.ConnectionStrings.Add(new ConnectionStringSettings("SqlCeTestConnection", "Data Source='TestDb.sdf'", "System.Data.SqlServerCe.4.0"));
 
             source.Add(DatabaseSettings.SectionName, settings);
             source.Add("connectionStrings", section);

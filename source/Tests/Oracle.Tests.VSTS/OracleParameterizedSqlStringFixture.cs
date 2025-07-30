@@ -13,6 +13,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
     /// Tests SqlDatabase.GetSqlStringCommand when using a parameterized sql string
     /// </summary>
     [TestClass]
+    
     public class OracleParameterizedSqlStringFixture
     {
         Database db;

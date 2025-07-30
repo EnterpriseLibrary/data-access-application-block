@@ -13,6 +13,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Oracle.Tests
 {
 #pragma warning disable 612, 618
     [TestClass]
+    
     public class OracleDatabaseFixture
     {
         IConfigurationSource configurationSource;
