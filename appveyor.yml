@@ -51,14 +51,14 @@ artifacts:
   name: 'EnterpriseLibrary.Data'
 
 
-on_success:
-  - ps: git config --global credential.helper store
-  - ps: Add-Content "$HOME\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
-  - ps: git config --global user.email "$env:github_email"
-  - ps: git config --global user.name "$env:github_name"
-  - git pull
-  - git commit -m "Revision update by AppVeyor [ci skip]" -- version.props
-  - git push
+#on_success:
+#  - ps: git config --global credential.helper store
+#  - ps: Add-Content "$HOME\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
+#  - ps: git config --global user.email "$env:github_email"
+#  - ps: git config --global user.name "$env:github_name"
+#  - git pull
+#  - git commit -m "Revision update by AppVeyor [ci skip]" -- version.props
+#  - git push
 
 build_script:
   - msbuild source\Data.sln /p:Configuration=Release
