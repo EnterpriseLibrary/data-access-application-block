@@ -29,7 +29,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
             Assert.IsNotNull(createdObject);
             Assert.IsInstanceOfType(createdObject, typeof(SqlDatabase));
             Assert.AreEqual(String.Format(@"server={0};database=northwind;integrated security=true;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]),
-                            createdObject.ConnectionStringWithoutCredentials);
+                            createdObject.ConnectionStringWithoutCredentials + "integrated security=true;");
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
             Assert.IsNotNull(createdObject);
             Assert.IsInstanceOfType(createdObject, typeof(SqlDatabase));
             Assert.AreEqual(String.Format(@"server={0};database=northwind;integrated security=true;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]),
-                            createdObject.ConnectionStringWithoutCredentials);
+                            createdObject.ConnectionStringWithoutCredentials + "integrated security=true;");
         }
 
         [TestMethod]
@@ -52,7 +52,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests.Configuration
 
             Assert.IsNotNull(createdObject);
             Assert.AreEqual(String.Format(@"server={0};database=northwind;integrated security=true;", ConfigurationManager.AppSettings["SqlServerDatabaseInstance"]),
-                            createdObject.ConnectionStringWithoutCredentials);
+                            createdObject.ConnectionStringWithoutCredentials + "integrated security=true;");
         }
 
         [TestMethod]
