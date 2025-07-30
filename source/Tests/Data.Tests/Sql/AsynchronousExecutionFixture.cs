@@ -975,7 +975,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql.Tests
         {
             var result = database.EndExecuteScalar(asyncResult);
             Assert.IsNotNull(result);
-            Assert.AreEqual("Côte de Blaye", result);
+            Assert.AreEqual("CÃ´te de Blaye", result);
         }
 
         [TestMethod]
@@ -1008,7 +1008,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Sql.Tests
         {
             object result = database.EndExecuteScalar(asyncResult);
             Assert.IsNotNull(result);
-            Assert.AreEqual("Côte de Blaye", result);
+            Assert.AreEqual("CÃ´te de Blaye", result);
         }
 
         [TestMethod]
