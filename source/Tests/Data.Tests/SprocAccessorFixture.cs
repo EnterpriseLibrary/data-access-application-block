@@ -601,7 +601,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
         {
             var result = accessor.Execute("Beverages");
             Assert.IsNotNull(result);
-            Assert.AreEqual("Côte de Blaye", result.First().ProductName);
+            Assert.AreEqual("CÃ´te de Blaye", result.First().ProductName);
         }
 
         private class SqlParameterMapper : IParameterMapper
