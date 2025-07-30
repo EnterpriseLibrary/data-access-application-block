@@ -39,17 +39,28 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
         [TestMethod]
         public void CanDoExecuteDataReaderForGenericDatabaseBug1836()
         {
-            Database db = new GenericDatabase($@"Driver={{Microsoft Access Driver (*.mdb, *.accdb)}};Dbq={Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\Northwind.mdb;Uid=sa;Pwd=sa;", OdbcFactory.Instance);
-            
-            using (DbConnection connection = db.CreateConnection())
-            {
-                connection.Open();
+            string dbPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Northwind.mdb");
 
-                using (DbTransaction transaction = connection.BeginTransaction())
+            try
+            {
+                Database db = new GenericDatabase(
+                    $@"Driver={{Microsoft Access Driver (*.mdb, *.accdb)}};Dbq={dbPath};Uid=sa;Pwd=sa;",
+                    OdbcFactory.Instance);
+
+                using (DbConnection connection = db.CreateConnection())
                 {
-                    using (IDataReader dataReader = db.ExecuteReader(transaction, CommandType.Text, "select * from [Order Details]")) { }
-                    transaction.Commit();
+                    connection.Open();
+
+                    using (DbTransaction transaction = connection.BeginTransaction())
+                    {
+                        using (IDataReader dataReader = db.ExecuteReader(transaction, CommandType.Text, "select * from [Order Details]")) { }
+                        transaction.Commit();
+                    }
                 }
+            }
+            catch (OdbcException ex) when (ex.Message.Contains("IM002"))
+            {
+                Assert.Inconclusive("Access ODBC driver is not installed on this machine.");
             }
         }
 
