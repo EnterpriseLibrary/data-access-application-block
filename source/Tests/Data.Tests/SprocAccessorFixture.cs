@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using Microsoft.Practices.EnterpriseLibrary.Common.TestSupport.ContextBase;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -156,7 +157,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
         {
             var x = Database.ExecuteSprocAccessor<ProductSales>("SalesByCategory", parameterMapper);
             Assert.IsNotNull(x);
-            Assert.AreEqual("Côte de Blaye", x.First().ProductName);
+            Assert.AreEqual("Côte de Blaye", x.First().ProductName.Normalize(NormalizationForm.FormC));
         }
 
         private class ParameterMapper : IParameterMapper
