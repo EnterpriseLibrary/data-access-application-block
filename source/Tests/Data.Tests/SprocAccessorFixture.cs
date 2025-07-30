@@ -157,7 +157,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Data.Tests
         {
             var x = Database.ExecuteSprocAccessor<ProductSales>("SalesByCategory", parameterMapper);
             Assert.IsNotNull(x);
-            Assert.AreEqual("Côte de Blaye", x.First().ProductName.Normalize(NormalizationForm.FormC));
+            Assert.AreEqual("Côte de Blaye".Normalize(NormalizationForm.FormC), x.First().ProductName.Normalize(NormalizationForm.FormC));
         }
 
         private class ParameterMapper : IParameterMapper
