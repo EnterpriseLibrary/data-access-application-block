@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\..\package.props" />
   <PropertyGroup>
-    <TargetFrameworks>net452;net46;net47;netstandard2.0;netcoreapp3.1;net8.0</TargetFrameworks>
+    <TargetFrameworks>net452;net46;net47;netstandard2.0;netcoreapp3.1;net10.0</TargetFrameworks>
     <AssemblyName>$(PreAssemblyName).Data.SqlServer</AssemblyName>
     <RootNamespace>$(PreAssemblyName).Data.Sql</RootNamespace>
     <PackageId>$(PrePackageName).Data.SqlServer$(PostPackageName)</PackageId>
@@ -28,7 +28,7 @@
   <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
     <PackageReference Include="System.Data.SqlClient" Version="$(SystemDataSqlClientVersionNetCore)" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
     <PackageReference Include="System.Data.SqlClient" Version="$(SystemDataSqlClientVersionNet8)" />
   </ItemGroup>
   

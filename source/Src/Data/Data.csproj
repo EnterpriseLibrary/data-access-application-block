@@ -3,7 +3,7 @@
 	
 
 	<PropertyGroup>
-    <TargetFrameworks>net452;net46;net47;netstandard2.0;netcoreapp3.1;net8.0</TargetFrameworks>
+    <TargetFrameworks>net452;net46;net47;netstandard2.0;netcoreapp3.1;net10.0</TargetFrameworks>
 
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
     <FileVersion>$(Version).$(Revision)</FileVersion>
@@ -39,7 +39,7 @@
     <PackageReference Include="System.Data.SqlClient" Version="$(SystemDataSqlClientVersionNetCore)" />
   </ItemGroup>
 
-  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp')) AND '$(TargetFramework)' != 'net8.0'">
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp')) AND '$(TargetFramework)' != 'net10.0'">
     <Reference Include="System.Transactions" />
     <Reference Include="System.Configuration" />
   </ItemGroup>
