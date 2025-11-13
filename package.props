@@ -52,7 +52,7 @@
 	<PropertyGroup>
 		<!--In order to debug the EntLib dependencies open 'Data (With Dependencies).sln' and change 'EntLibDependencyType' value to Project -->
 		<EntLibDependencyType>Package</EntLibDependencyType>
-		<EntLibCommonVersion>7.0.0-rc1</EntLibCommonVersion>
+		<EntLibCommonVersion>7.0.0-rc2</EntLibCommonVersion>
 	</PropertyGroup>
 
 </Project>
